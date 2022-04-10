@@ -1,0 +1,55 @@
+.banner {
+
+    height: 700px;
+    overflow: hidden;
+
+    .text {
+        z-index: 100;
+        position: absolute;
+        color: white;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+
+        .type {
+            font-family: 'TypoBold';
+            font-size: 28px;
+            letter-spacing: 8px;
+            margin-bottom: 100px;
+            opacity: 80%;
+        }
+
+        .place {
+            color: rgb(219, 219, 219);
+            font-family: 'DMSerif';
+            font-size: 50px;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .person {
+            z-index: 100;
+            color: white;
+            font-family: 'TypoBold';
+            font-size: 60px;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+    }
+
+    .background {
+        background: black;
+
+        img {
+            opacity: 35%;
+        }
+
+    }
+
+}
+
+.gallery {
+    margin: 90px;
+}

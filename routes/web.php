@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('main.main');
 });
 
+Route::get('/photoshoot', function () {
+    return view('main.photoshoot');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

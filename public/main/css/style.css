@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "TypoBold";
+  src: url(/fonts/TypoBold.otf?03c7d5d74b0cbbc75d7afebb20a4be34) format("opentype");
+}
+@font-face {
+  font-family: "DMSerif";
+  src: url(/fonts/DMSerif.ttf?c63bc97c84c421f39c7a3b21a5e243e7) format("truetype");
+}
+.banner {
+  height: 700px;
+  overflow: hidden;
+}
+.banner .text {
+  z-index: 100;
+  position: absolute;
+  color: white;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.banner .text .type {
+  font-family: "TypoBold";
+  font-size: 28px;
+  letter-spacing: 8px;
+  margin-bottom: 100px;
+  opacity: 80%;
+}
+.banner .text .place {
+  color: rgb(219, 219, 219);
+  font-family: "DMSerif";
+  font-size: 50px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.banner .text .person {
+  z-index: 100;
+  color: white;
+  font-family: "TypoBold";
+  font-size: 60px;
+  margin-top: 0;
+  padding-top: 0;
+}
+.banner .background {
+  background: black;
+}
+.banner .background img {
+  opacity: 35%;
+}
+
+.gallery {
+  margin: 90px;
+}

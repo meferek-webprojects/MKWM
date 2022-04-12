@@ -1,0 +1,28 @@
+.hero {
+
+    width: 100vw;
+    height: 960px;
+    background: black;
+    overflow: hidden;
+    object-fit: none;  
+    object-position: center top;
+
+    img {
+        opacity: 40%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .hero {
+
+        height: 960px;
+        background: black;
+        overflow: hidden;
+    
+        img {
+            opacity: 40%;
+        }
+    }
+
+}

@@ -3,8 +3,49 @@
   src: url(/fonts/TypoBold.otf?03c7d5d74b0cbbc75d7afebb20a4be34) format("opentype");
 }
 @font-face {
+  font-family: "Typo";
+  src: url(/fonts/TypoRegular.otf?d0b8d0cc42e2ec119cd9e58de93fa1c3) format("opentype");
+}
+@font-face {
   font-family: "DMSerif";
   src: url(/fonts/DMSerif.ttf?c63bc97c84c421f39c7a3b21a5e243e7) format("truetype");
+}
+.navbar {
+  z-index: 999;
+  position: absolute;
+  background: rgba(255, 255, 255, 0) !important;
+  right: 50%;
+  margin-top: 25px;
+  transform: translateX(50%);
+}
+.navbar .nav-item, .navbar .nav-link {
+  font-family: "Typo";
+  color: white !important;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.navbar .logo {
+  font-family: "Typo";
+  font-size: 50px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .navbar {
+    position: absolute;
+    right: 5%;
+    margin-top: 25px;
+    transform: translateX(50%);
+  }
+  .navbar .nav-item, .navbar .nav-link {
+    font-family: "Typo";
+    color: white !important;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+  .navbar .logo {
+    font-family: "Typo";
+    font-size: 50px;
+  }
 }
 .banner {
   height: 700px;
@@ -50,4 +91,72 @@
 
 .gallery {
   margin: 90px;
+}
+
+@media only screen and (max-width: 880px) {
+  .banner {
+    height: 300px;
+    overflow: hidden;
+  }
+  .banner .text {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    top: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .banner .text .type {
+    font-family: "TypoBold";
+    font-size: 15px;
+    letter-spacing: 8px;
+    margin-bottom: 40px;
+    opacity: 80%;
+  }
+  .banner .text .place {
+    color: rgb(219, 219, 219);
+    font-family: "DMSerif";
+    font-size: 24px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .banner .text .person {
+    z-index: 100;
+    color: white;
+    font-family: "TypoBold";
+    font-size: 30px;
+    margin-top: 0;
+    padding-top: 0;
+    white-space: nowrap;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .gallery {
+    margin: 60px;
+  }
+}
+.hero {
+  width: 100vw;
+  height: 960px;
+  background: black;
+  overflow: hidden;
+  -o-object-fit: none;
+     object-fit: none;
+  -o-object-position: center top;
+     object-position: center top;
+}
+.hero img {
+  opacity: 40%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .hero {
+    height: 960px;
+    background: black;
+    overflow: hidden;
+  }
+  .hero img {
+    opacity: 40%;
+  }
 }

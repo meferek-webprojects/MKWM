@@ -24,14 +24,42 @@
     </div>
 
     <div class="gallery">
-        <div id="lightgallery">
-            <a href="{{ url('images/img/natalia.jpg') }}" data-lg-size="1600-2400">
-                <img class="img-fluid" alt=".." src="{{ url('images/img/natalia.jpg') }}" />
-            </a>
-            <a href="{{ url('images/img/natalia.jpg') }}" data-lg-size="1024-800">
-                <img class="img-fluid" alt=".." src="{{ url('images/img/natalia.jpg') }}" />
-            </a>
+        <div class="row">
+            <div class="col-lg p-0">
+                <div id="lightgallery">
+                    <a href="{{ url('images/photoshoots/1/1.jpg') }}" data-lg-size="1600-2400">
+                        <img class="img-fluid" alt=".." src="{{ url('images/photoshoots/1/1.jpg') }}" />
+                    </a>
+                    <a href="{{ url('images/photoshoots/1/2.jpg') }}" data-lg-size="1024-800">
+                        <img class="img-fluid" alt=".." src="{{ url('images/photoshoots/1/2.jpg') }}" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg p-0">
+                <div id="lightgallery">
+                    <a href="{{ url('images/photoshoots/1/3.jpg') }}" data-lg-size="1600-2400">
+                        <img class="img-fluid" alt=".." src="{{ url('images/photoshoots/1/3.jpg') }}" />
+                    </a>
+                    <a href="{{ url('images/photoshoots/1/4.jpg') }}" data-lg-size="1024-800">
+                        <img class="img-fluid" alt=".." src="{{ url('images/photoshoots/1/4.jpg') }}" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg p-0">
+                <div id="lightgallery">
+                    <a href="{{ url('images/photoshoots/1/5.jpg') }}" data-lg-size="1600-2400">
+                        <img class="img-fluid" alt=".." src="{{ url('images/photoshoots/1/5.jpg') }}" />
+                    </a>
+                    <a href="{{ url('images/photoshoots/1/6.jpg') }}" data-lg-size="1024-800">
+                        <img class="img-fluid" alt=".." src="{{ url('images/photoshoots/1/6.jpg') }}" />
+                    </a>
+                    <a href="{{ url('images/photoshoots/1/7.jpg') }}" data-lg-size="1024-800">
+                        <img class="img-fluid" alt=".." src="{{ url('images/photoshoots/1/7.jpg') }}" />
+                    </a>
+                </div>
+            </div>
         </div>
+        
     </div>
 
 @endsection

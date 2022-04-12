@@ -1,0 +1,47 @@
+.navbar {
+
+    z-index: 999;
+    position: absolute;
+    background: #fff0!important;
+    right: 50%;
+    margin-top: 25px;
+    transform: translateX(50%);
+
+    .nav-item, .nav-link{
+        font-family: 'Typo';
+        color: white!important;
+        font-size: 20px;
+        text-transform: uppercase;
+    
+    }
+    
+    .logo {
+        font-family: 'Typo';
+        font-size: 50px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .navbar {
+
+        position: absolute;
+        right: 5%;
+        margin-top: 25px;
+        transform: translateX(50%);
+    
+        .nav-item, .nav-link{
+            font-family: 'Typo';
+            color: white!important;
+            font-size: 20px;
+            text-transform: uppercase;
+        
+        }
+        
+        .logo {
+            font-family: 'Typo';
+            font-size: 50px;
+        }
+    }
+
+}

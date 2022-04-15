@@ -11,12 +11,16 @@
   src: url(/fonts/DMSerif.ttf?c63bc97c84c421f39c7a3b21a5e243e7) format("truetype");
 }
 .navbar {
+  width: 100%;
   z-index: 999;
   position: absolute;
   background: rgba(255, 255, 255, 0) !important;
   right: 50%;
   margin-top: 25px;
   transform: translateX(50%);
+}
+.navbar .nav-item {
+  padding: 0px 50px;
 }
 .navbar .nav-item, .navbar .nav-link {
   font-family: "Typo";
@@ -28,23 +32,110 @@
   font-family: "Typo";
   font-size: 50px;
 }
+.navbar .navbar-toggler {
+  z-index: 1001;
+  position: absolute;
+  right: 4%;
+}
 
+@media only screen and (max-width: 1500px) {
+  .navbar .nav-item {
+    padding: 0px 30px;
+  }
+}
 @media only screen and (max-width: 1200px) {
   .navbar {
     position: absolute;
-    right: 5%;
+    right: 50%;
     margin-top: 25px;
     transform: translateX(50%);
+  }
+  .navbar .navbar-nav {
+    position: absolute !important;
+    top: 700% !important;
+    right: 50% !important;
+    transform: translateX(50%);
+    background-color: rgba(0, 0, 0, 0.5333333333);
+    width: 80vw;
+    padding: 50px 0;
+  }
+  .navbar #nav-logo {
+    display: none;
+  }
+  .navbar .nav-item {
+    padding: 0 !important;
+    transition: all 0.3s;
+  }
+  .navbar .nav-item:hover {
+    font-weight: bold;
+    letter-spacing: 5px;
+    transition: all 0.3s;
   }
   .navbar .nav-item, .navbar .nav-link {
     font-family: "Typo";
     color: white !important;
-    font-size: 20px;
+    font-size: 30px;
     text-transform: uppercase;
   }
   .navbar .logo {
     font-family: "Typo";
     font-size: 50px;
+  }
+}
+.last-photoshoot {
+  margin-left: 100px;
+}
+.last-photoshoot .type {
+  font-family: "TypoBold";
+  font-size: 25px;
+  letter-spacing: 8px;
+  margin-top: 150px;
+  margin-bottom: 40px;
+  opacity: 80%;
+}
+.last-photoshoot .place {
+  color: rgb(200, 200, 200);
+  font-family: "DMSerif";
+  font-size: 35px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.last-photoshoot .person {
+  color: rgba(0, 0, 0, 0.7529411765);
+  font-family: "TypoBold";
+  font-size: 50px;
+  margin-top: 0;
+  padding-top: 0;
+  white-space: nowrap;
+}
+
+@media only screen and (max-width: 991px) {
+  .last-photoshoot {
+    margin-left: 50px;
+  }
+  .last-photoshoot .type {
+    font-family: "TypoBold";
+    font-size: 25px;
+    letter-spacing: 8px;
+    margin-top: 150px;
+    margin-bottom: 40px;
+    opacity: 80%;
+  }
+  .last-photoshoot .place {
+    color: rgb(200, 200, 200);
+    font-family: "DMSerif";
+    font-size: 35px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .last-photoshoot .person {
+    color: rgba(0, 0, 0, 0.7529411765);
+    font-family: "TypoBold";
+    font-size: 50px;
+    margin-top: 0;
+    padding-top: 0;
+    white-space: nowrap;
+    margin-bottom: 150px;
   }
 }
 .banner {
@@ -137,26 +228,33 @@
   }
 }
 .hero {
-  width: 100vw;
-  height: 960px;
+  width: 100%;
+  height: 910px;
   background: black;
   overflow: hidden;
-  -o-object-fit: none;
-     object-fit: none;
-  -o-object-position: center top;
-     object-position: center top;
 }
 .hero img {
   opacity: 40%;
+  width: 100%;
 }
 
+@media only screen and (max-width: 1520px) {
+  .hero {
+    overflow: hidden;
+    height: 700px;
+  }
+}
 @media only screen and (max-width: 1200px) {
   .hero {
-    height: 960px;
+    height: 750px;
     background: black;
     overflow: hidden;
   }
   .hero img {
-    opacity: 40%;
+    width: 1300px;
+    -o-object-fit: none;
+       object-fit: none;
+    -o-object-position: 100% 30%;
+       object-position: 100% 30%;
   }
 }

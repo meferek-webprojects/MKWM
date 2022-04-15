@@ -25,25 +25,25 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto d-flex align-items-center">
-                        <li class="nav-item px-5">
+                        <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
-                        <li class="nav-item px-5">
-                            <a class="nav-link" aria-current="page" href="#">We</a>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Us</a>
                         </li>
-                        <li class="nav-item px-5">
+                        <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Photography</a>
                         </li>
-                        <li class="nav-item px-5 d-none d-xl-block">
+                        <li id="nav-logo" class="nav-item">
                             <a class="nav-link logo" aria-current="page" href="#">MKWM</a>
                         </li>
-                        <li class="nav-item px-5">
+                        <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Videography</a>
                         </li>
-                        <li class="nav-item px-5">
+                        <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Contact</a>
                         </li>
-                        <li class="nav-item px-5 d-none d-xl-block">
+                        <li class="nav-item d-none d-xl-block">
                             <a class="nav-link" aria-current="page" href="#"><i data-feather="search"></i></a>
                         </li>
                     </ul>
@@ -54,6 +54,8 @@
         <div class="hero">
             <img class="" src="{{ url('images/img/natalia.jpg') }}" alt="">
         </div>
+
+        @yield('content')
 
     </div>
 

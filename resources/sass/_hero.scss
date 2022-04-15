@@ -1,14 +1,24 @@
 .hero {
 
-    width: 100vw;
-    height: 960px;
+    width: 100%;
+    height: 910px;
     background: black;
     overflow: hidden;
-    object-fit: none;  
-    object-position: center top;
 
     img {
         opacity: 40%;
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 1520px) {
+
+    .hero {
+
+        overflow: hidden;
+        height: 700px;
+
     }
 }
 
@@ -16,12 +26,14 @@
 
     .hero {
 
-        height: 960px;
+        height: 750px;
         background: black;
         overflow: hidden;
     
         img {
-            opacity: 40%;
+            width: 1300px;
+            object-fit: none;
+            object-position: 100% 30%;
         }
     }
 

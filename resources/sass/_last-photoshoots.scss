@@ -1,0 +1,67 @@
+.last-photoshoot {
+
+    margin-left: 100px;
+
+    .type {
+        font-family: 'TypoBold';
+        font-size: 25px;
+        letter-spacing: 8px;
+        margin-top: 150px;
+        margin-bottom: 40px;
+        opacity: 80%;
+    }
+
+    .place {
+        color: rgb(200, 200, 200);
+        font-family: 'DMSerif';
+        font-size: 35px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .person {
+        color: #000000c0;
+        font-family: 'TypoBold';
+        font-size: 50px;
+        margin-top: 0;
+        padding-top: 0;
+        white-space: nowrap;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+
+    .last-photoshoot {
+
+        margin-left: 50px;
+
+        .type {
+            font-family: 'TypoBold';
+            font-size: 25px;
+            letter-spacing: 8px;
+            margin-top: 150px;
+            margin-bottom: 40px;
+            opacity: 80%;
+        }
+
+        .place {
+            color: rgb(200, 200, 200);
+            font-family: 'DMSerif';
+            font-size: 35px;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .person {
+            color: #000000c0;
+            font-family: 'TypoBold';
+            font-size: 50px;
+            margin-top: 0;
+            padding-top: 0;
+            white-space: nowrap;
+            margin-bottom: 150px;
+        }
+
+    }
+
+}

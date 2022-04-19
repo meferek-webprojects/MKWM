@@ -5,7 +5,7 @@
 <div class="last-photoshoot">
     <div class="big-photoshoot">
         <div class="row p-0 m-0">
-            <div class="col-lg-6 p-0 m-0">
+            <div class="col-xl-6 p-0 m-0 my-auto">
                 <div class="text">
                     <div class="type">
                         LAST PHOTOSHOOT
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 p-0 m-0">
+            <div class="col-xl-6 p-0 m-0">
                 <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
             </div>
         </div>

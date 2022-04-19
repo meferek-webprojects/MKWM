@@ -128,8 +128,7 @@
   font-family: "TypoBold";
   font-size: 25px;
   letter-spacing: 8px;
-  margin-top: 150px;
-  margin-bottom: 40px;
+  margin-top: 40px;
   opacity: 80%;
 }
 .last-photoshoot .place {
@@ -148,33 +147,46 @@
   white-space: nowrap;
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1200px) {
   .last-photoshoot {
     margin-left: 50px;
+    margin-right: 50px;
   }
   .last-photoshoot .type {
-    font-family: "TypoBold";
     font-size: 25px;
     letter-spacing: 8px;
-    margin-top: 150px;
-    margin-bottom: 40px;
+    margin-top: 60px;
+    margin-bottom: 20px;
     opacity: 80%;
   }
   .last-photoshoot .place {
     color: rgb(200, 200, 200);
-    font-family: "DMSerif";
-    font-size: 35px;
+    font-size: 34px;
     margin-bottom: 0;
     padding-bottom: 0;
   }
   .last-photoshoot .person {
     color: rgba(0, 0, 0, 0.7529411765);
-    font-family: "TypoBold";
-    font-size: 50px;
+    font-size: 45px;
     margin-top: 0;
+    margin-bottom: 50px;
     padding-top: 0;
     white-space: nowrap;
-    margin-bottom: 150px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .last-photoshoot {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .last-photoshoot .type {
+    font-size: 20px;
+  }
+  .last-photoshoot .place {
+    font-size: 29px;
+  }
+  .last-photoshoot .person {
+    font-size: 40px;
   }
 }
 .banner {

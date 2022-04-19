@@ -1,0 +1,134 @@
+.mini-photoshoots {
+
+    .mini-photo {
+
+        .text {
+
+            margin-left: 20px;
+
+            .place {
+                color: rgb(200, 200, 200);
+                font-family: 'DMSerif';
+                font-size: 25px;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+
+            .person {
+                color: #000000c0;
+                font-family: 'TypoBold';
+                font-size: 30px;
+                margin-top: 0;
+                padding-top: 0;
+                white-space: nowrap;
+            }
+        }
+
+        .thumb {
+            height: 250px;
+            overflow: hidden;
+        }
+
+    }
+
+}
+
+@media only screen and (max-width: 1200px) {
+    .mini-photoshoots {
+
+        margin: 50px;
+
+        .mini-photo {
+    
+            .text {
+
+                margin-left: 0;
+
+    
+                .place {
+
+                    font-size: 25px;
+
+                }
+    
+                .person {
+                    font-size: 30px;
+                }
+            }
+
+            &:nth-child(even) {
+                .text {
+                    margin-left: 25px;
+                }
+            }
+    
+        }
+    }
+}
+@media only screen and (max-width: 940px) {
+
+    .mini-photoshoots {
+
+        .mini-photo {
+    
+            .text {
+    
+                .place {
+                    color: rgb(200, 200, 200);
+
+                }
+    
+                .person {
+
+                }
+            }
+    
+            .thumb {
+                height: 150px;
+                overflow: hidden;
+            }
+    
+        }
+    
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .mini-photoshoots {
+        margin: 30px;
+    }
+
+}
+
+@media only screen and (max-width: 635px) {
+    
+    .mini-photoshoots {
+
+        .mini-photo {
+    
+            .text {
+
+                text-align: center;
+                margin: 0!important;
+
+                .place {
+                    font-size: 20px;
+                    display: none;
+                }
+    
+                .person {
+                    font-size: 20px;
+                }
+            }
+
+            .thumb img {
+                max-width: 200%;
+                transform: translateX(-23%);
+            }
+    
+        }
+    }
+    
+}

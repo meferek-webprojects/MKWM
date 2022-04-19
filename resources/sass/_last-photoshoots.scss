@@ -1,7 +1,9 @@
 .last-photoshoot {
 
-    margin-left: 100px;
-
+    .text {
+        margin-left: 100px;
+    }
+    
     .type {
         font-family: 'TypoBold';
         font-size: 25px;
@@ -31,9 +33,13 @@
 @media only screen and (max-width: 1200px) {
 
     .last-photoshoot {
-
+        
         margin-left: 50px;
         margin-right: 50px;
+
+        .text {
+            margin-left: 0;
+        }
 
         .type {
             font-size: 25px;

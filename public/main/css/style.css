@@ -35,8 +35,8 @@
   color: white !important;
   font-size: 20px;
   text-transform: uppercase;
-  transition: opacity 2s, transform 2s;
-  transition-delay: 2s;
+  transition: opacity 0.4s, transform 0.4s;
+  transition-delay: 0.4s;
 }
 .navbar .logo {
   font-family: "Typo";
@@ -54,11 +54,11 @@
 }
 .navbar #search-button {
   left: 0;
-  transition: left 2s 0s;
+  transition: left 0.4s 0s;
 }
 .navbar #search-button.active {
   left: calc(-100% + 149px);
-  transition-delay: 2s;
+  transition-delay: 0.4s;
 }
 .navbar .searchbar {
   font-size: 20px;
@@ -69,10 +69,10 @@
   transform: translateY(-50%);
   right: 149px;
   left: calc(100% - 25px);
-  transition: left 2s 0s, opacity 0s 2s, padding 0s 0s;
+  transition: left 0.4s 0s, opacity 0s 0.4s, padding 0s 0s;
 }
 .navbar .searchbar.active {
-  transition: left 2s 2s, opacity 0s 2s, padding 0s 4s;
+  transition: left 0.4s 0.4s, opacity 0s 0.4s, padding 0s 0.8s;
   opacity: 1 !important;
   left: 124px !important;
   padding: 6px 12px !important;

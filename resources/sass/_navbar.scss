@@ -6,7 +6,9 @@
     background-color: #0000;
     top: 0;
     padding-top: 25px;
-    transition: background-color .3s, padding-top .3s;
+    transition:
+        background-color $navbar-scroll-changes-duration,
+        padding-top $navbar-scroll-changes-duration;
     
     .nav-item{
         padding: 0px 50px;
@@ -22,8 +24,10 @@
         color: white!important;
         font-size: 20px;
         text-transform: uppercase;
-        transition: opacity 2s, transform 2s;
-        transition-delay: 2s;
+        transition:
+            opacity $navbar-items-hiding-duration,
+            transform $navbar-items-hiding-duration;
+        transition-delay: $searchbar-opening-duration;
     }
     
     .logo{
@@ -45,12 +49,12 @@
 
     #search-button{
         left: 0;
-        transition: left 2s 0s;
+        transition: left $searchbar-opening-duration 0s;
     }
 
     #search-button.active{
         left: calc(-100% + 149px);
-        transition-delay: 2s;
+        transition-delay: $navbar-items-hiding-duration;
     }
 
     .searchbar{
@@ -62,11 +66,17 @@
         transform: translateY(-50%);
         right: 149px;
         left: calc(100% - 25px);
-        transition: left 2s 0s, opacity 0s 2s, padding 0s 0s;
+        transition:
+            left $searchbar-opening-duration 0s,
+            opacity 0s $searchbar-opening-duration,
+            padding 0s 0s;
     }
 
     .searchbar.active{
-        transition: left 2s 2s, opacity 0s 2s, padding 0s 4s;
+        transition:
+            left $searchbar-opening-duration $navbar-items-hiding-duration,
+            opacity 0s $navbar-items-hiding-duration,
+            padding 0s calc($searchbar-opening-duration + $navbar-items-hiding-duration);
         opacity: 1!important;
         left: 124px!important;
         padding: 6px 12px!important;

@@ -1,33 +1,65 @@
-.navbar {
+.navbar{
 
     width: 100%;
     z-index: 999;
     position: absolute;
-    background: #fff0!important;
-    right: 50%;
-    margin-top: 25px;
-    transform: translateX(50%);
+    background-color: #0000;
+    top: 0;
+    padding-top: 25px;
+    transition: background-color .3s, padding-top .3s;
     
-    .nav-item {
+    .nav-item{
         padding: 0px 50px;
-    }
-
-    .nav-item, .nav-link{
         font-family: 'Typo';
         color: white!important;
         font-size: 20px;
         text-transform: uppercase;
+        user-select: none;
+    }
+
+    .nav-link{
+        font-family: 'Typo';
+        color: white!important;
+        font-size: 20px;
+        text-transform: uppercase;
+        transition: opacity .2s, transform .2s;
+        transition-delay: .2s;
     }
     
-    .logo {
+    .logo{
         font-family: 'Typo';
         font-size: 50px;
     }
 
-    .navbar-toggler {
+    .navbar-toggler{
         z-index: 1001;
         position: absolute;
         right: 4%;
+    }
+
+    .hidden{
+        transition-delay: 0s!important;
+        opacity: 0!important;
+        transform: translateY(20px)!important;
+    }
+
+    .searchbar{
+        font-size: 20px;
+        opacity: 0;
+        padding: 6px 0;
+        width: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 124px;
+        left: calc(100% - 124px);
+        transition: left .2s 0s, opacity 0s .2s, padding .2s 0s;
+    }
+
+    .active{
+        transition-delay: .2s!important;
+        opacity: 1!important;
+        left: 50px!important;
+        padding: 6px 12px!important;
     }
 }
 
@@ -37,6 +69,15 @@
 
         .nav-item {
             padding: 0px 30px;
+        }
+
+        .searchbar{
+            right: 84px;
+            left: calc(100% - 84px);
+        }
+
+        .active{
+            left: 30px!important;
         }
     }
 

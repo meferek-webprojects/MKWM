@@ -14,19 +14,29 @@
   width: 100%;
   z-index: 999;
   position: absolute;
-  background: rgba(255, 255, 255, 0) !important;
-  right: 50%;
-  margin-top: 25px;
-  transform: translateX(50%);
+  background-color: rgba(0, 0, 0, 0);
+  top: 0;
+  padding-top: 25px;
+  transition: background-color 0.3s, padding-top 0.3s;
 }
 .navbar .nav-item {
   padding: 0px 50px;
-}
-.navbar .nav-item, .navbar .nav-link {
   font-family: "Typo";
   color: white !important;
   font-size: 20px;
   text-transform: uppercase;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.navbar .nav-link {
+  font-family: "Typo";
+  color: white !important;
+  font-size: 20px;
+  text-transform: uppercase;
+  transition: opacity 0.2s, transform 0.2s;
+  transition-delay: 0.2s;
 }
 .navbar .logo {
   font-family: "Typo";
@@ -37,10 +47,39 @@
   position: absolute;
   right: 4%;
 }
+.navbar .hidden {
+  transition-delay: 0s !important;
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+}
+.navbar .searchbar {
+  font-size: 20px;
+  opacity: 0;
+  padding: 6px 0;
+  width: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 124px;
+  left: calc(100% - 124px);
+  transition: left 0.2s 0s, opacity 0s 0.2s, padding 0.2s 0s;
+}
+.navbar .active {
+  transition-delay: 0.2s !important;
+  opacity: 1 !important;
+  left: 50px !important;
+  padding: 6px 12px !important;
+}
 
 @media only screen and (max-width: 1500px) {
   .navbar .nav-item {
     padding: 0px 30px;
+  }
+  .navbar .searchbar {
+    right: 84px;
+    left: calc(100% - 84px);
+  }
+  .navbar .active {
+    left: 30px !important;
   }
 }
 @media only screen and (max-width: 1200px) {
@@ -229,32 +268,20 @@
 }
 .hero {
   width: 100%;
-  height: 910px;
+  height: 100vh;
+  position: relative;
   background: black;
   overflow: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 .hero img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   opacity: 40%;
-  width: 100%;
-}
-
-@media only screen and (max-width: 1520px) {
-  .hero {
-    overflow: hidden;
-    height: 700px;
-  }
-}
-@media only screen and (max-width: 1200px) {
-  .hero {
-    height: 750px;
-    background: black;
-    overflow: hidden;
-  }
-  .hero img {
-    width: 1300px;
-    -o-object-fit: none;
-       object-fit: none;
-    -o-object-position: 100% 30%;
-       object-position: 100% 30%;
-  }
+  min-height: 100%;
+  min-width: 100%;
 }

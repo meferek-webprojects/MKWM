@@ -18,15 +18,15 @@
     
     <div class="container-fluid p-0">
 
-        <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-xl navbar-dark position-fixed">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i data-feather="menu"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto d-flex align-items-center">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto d-flex align-items-center position-relative">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Us</a>
@@ -34,7 +34,7 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Photography</a>
                         </li>
-                        <li id="nav-logo" class="nav-item">
+                        <li class="nav-item" id="nav-logo">
                             <a class="nav-link logo" aria-current="page" href="#">MKWM</a>
                         </li>
                         <li class="nav-item">
@@ -43,8 +43,9 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Contact</a>
                         </li>
-                        <li class="nav-item d-none d-xl-block">
-                            <a class="nav-link" aria-current="page" href="#"><i data-feather="search"></i></a>
+                        <input type="text" class="searchbar form-control position-absolute">
+                        <li class="nav-item d-none d-xl-block" id="search-button">
+                            <i data-feather="search"></i>
                         </li>
                     </ul>
                 </div>
@@ -52,12 +53,36 @@
         </nav>
 
         <div class="hero">
-            <img class="" src="{{ url('images/img/natalia.jpg') }}" alt="">
+            <img src="{{ url('images/img/natalia.jpg') }}" alt="">
         </div>
 
         @yield('content')
 
     </div>
+
+    <script>
+        $('#search-button').on('click', () => {
+            $('.nav-link').toggleClass('hidden');
+            $('.searchbar').toggleClass('active');
+        });
+
+        $('.hero').on('click', () => {
+            $('.nav-link').removeClass('hidden');
+            $('.searchbar').removeClass('active');
+        });
+        
+        $('.last-photoshoot').on('click', () => {
+            $('.nav-link').removeClass('hidden');
+            $('.searchbar').removeClass('active');
+        });
+
+        $(document).scroll(() => {
+            if($(document).scrollTop())
+                $('.navbar').css({'background-color': '#000a', 'padding-top': '0'});
+            else
+                $('.navbar').css({'background-color': '', 'padding-top': ''});
+        })
+    </script>
 
     <script>
         feather.replace();

@@ -81,7 +81,7 @@
 
         $(document).scroll(() => {
             if($(document).scrollTop())
-                $('.navbar').css({'background-color': '#000a', 'padding-top': '0'});
+                $('.navbar').css({'background-color': '#000a', 'padding-top': '7px'});
             else
                 $('.navbar').css({'background-color': '', 'padding-top': ''});
         })

@@ -43,8 +43,8 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Contact</a>
                         </li>
-                        <input type="text" class="searchbar form-control position-absolute">
-                        <li class="nav-item d-none d-xl-block" id="search-button">
+                        <input type="text" class="searchbar position-absolute border-0">
+                        <li class="nav-item d-none d-xl-block position-relative" id="search-button">
                             <i data-feather="search"></i>
                         </li>
                     </ul>
@@ -64,16 +64,19 @@
         $('#search-button').on('click', () => {
             $('.nav-link').toggleClass('hidden');
             $('.searchbar').toggleClass('active');
+            $('#search-button').toggleClass('active');
         });
 
         $('.hero').on('click', () => {
             $('.nav-link').removeClass('hidden');
             $('.searchbar').removeClass('active');
+            $('#search-button').removeClass('active');
         });
         
         $('.last-photoshoot').on('click', () => {
             $('.nav-link').removeClass('hidden');
             $('.searchbar').removeClass('active');
+            $('#search-button').removeClass('active');
         });
 
         $(document).scroll(() => {

@@ -128,7 +128,8 @@
   font-family: "TypoBold";
   font-size: 25px;
   letter-spacing: 8px;
-  margin-top: 40px;
+  margin-top: 10px;
+  margin-bottom: 60px;
   opacity: 80%;
 }
 .last-photoshoot .place {
@@ -294,7 +295,7 @@
 .mini-photoshoots .mini-photo .text .person {
   color: rgba(0, 0, 0, 0.7529411765);
   font-family: "TypoBold";
-  font-size: 30px;
+  font-size: 35px;
   margin-top: 0;
   padding-top: 0;
   white-space: nowrap;
@@ -304,6 +305,11 @@
   overflow: hidden;
 }
 
+@media only screen and (max-width: 1650px) {
+  .mini-photoshoots .mini-photo .thumb {
+    height: 200px;
+  }
+}
 @media only screen and (max-width: 1200px) {
   .mini-photoshoots {
     margin: 50px;
@@ -315,10 +321,13 @@
     font-size: 25px;
   }
   .mini-photoshoots .mini-photo .text .person {
-    font-size: 30px;
+    font-size: 35px;
   }
   .mini-photoshoots .mini-photo:nth-child(even) .text {
     margin-left: 25px;
+  }
+  .mini-photoshoots .mini-photo .thumb {
+    height: 250px;
   }
 }
 @media only screen and (max-width: 940px) {
@@ -328,11 +337,6 @@
   .mini-photoshoots .mini-photo .thumb {
     height: 150px;
     overflow: hidden;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .mini-photoshoots {
-    margin: 30px;
   }
 }
 @media only screen and (max-width: 635px) {
@@ -350,6 +354,11 @@
   .mini-photoshoots .mini-photo .thumb img {
     max-width: 200%;
     transform: translateX(-23%);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .mini-photoshoots {
+    margin: 30px;
   }
 }
 .hero {

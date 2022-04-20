@@ -17,7 +17,7 @@
             .person {
                 color: #000000c0;
                 font-family: 'TypoBold';
-                font-size: 30px;
+                font-size: 35px;
                 margin-top: 0;
                 padding-top: 0;
                 white-space: nowrap;
@@ -31,6 +31,12 @@
 
     }
 
+}
+
+@media only screen and (max-width: 1650px) {
+    .mini-photoshoots .mini-photo .thumb {
+        height: 200px;
+    }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -52,7 +58,7 @@
                 }
     
                 .person {
-                    font-size: 30px;
+                    font-size: 35px;
                 }
             }
 
@@ -61,8 +67,14 @@
                     margin-left: 25px;
                 }
             }
+
+            
+            .thumb {
+                height: 250px;
+            }
     
         }
+        
     }
 }
 @media only screen and (max-width: 940px) {
@@ -90,14 +102,6 @@
     
         }
     
-    }
-
-}
-
-@media only screen and (max-width: 600px) {
-
-    .mini-photoshoots {
-        margin: 30px;
     }
 
 }
@@ -130,5 +134,13 @@
     
         }
     }
-    
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    .mini-photoshoots {
+        margin: 30px;
+    }
+
 }

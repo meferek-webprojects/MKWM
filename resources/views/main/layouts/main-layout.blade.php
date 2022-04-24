@@ -43,7 +43,7 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Contact</a>
                         </li>
-                        <input type="text" class="searchbar position-absolute border-0">
+                        <input type="text" class="searchbar position-absolute border-0" placeholder="Szukaj sesji...">
                         <li class="nav-item d-none d-xl-block position-relative" id="search-button">
                             <i data-feather="search"></i>
                         </li>

@@ -1,0 +1,59 @@
+.cta {
+    background-color: #0e0e0e;
+    padding: 50px 250px;
+    color: white;
+
+    h3 {
+        font-family: 'TypoBold';
+        text-transform: uppercase;
+        letter-spacing: 10px;   
+        margin: 5px;
+    }
+
+    input {
+        border: none;
+        border-radius: 0;
+        font-family: 'TypoBold';
+        letter-spacing: 3px;
+    }
+
+    .btn {
+        border: 1px solid white;
+        border-radius: 0;
+        width: 100%;
+        font-family: 'TypoBold';
+        letter-spacing: 5px;
+        color: #fff;
+        background: #0e0e0e;
+
+        &:hover {
+            color: #0e0e0e;
+            background: #fff;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 1600px) {
+    .cta {
+        background-color: #0e0e0e;
+        padding: 50px 150px;
+        color: white;
+
+        h3 {
+            font-size: 25px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .cta {
+        background-color: #0e0e0e;
+        padding: 50px 100px;
+        color: white;
+
+        h3 {
+            font-size: 20px;
+        }
+    }
+}

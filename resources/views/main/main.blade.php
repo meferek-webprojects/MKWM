@@ -113,4 +113,57 @@
 
 </div>
 
+<div class="cta">
+    <div class="row p-0 m-0">
+        <div class="col-lg-6 p-0 m-0">
+            <h3>Zapisz się na sesję</h3>
+        </div>
+        <div class="col-lg-6 p-0 m-0">
+            <form action="" method="POST">
+                <div class="row">
+                    <div class="col-8">
+                        <input type="text" class="form-control" placeholder="E-mail">
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-light">WYŚLIJ</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="about-us">
+    <h3>ABOUT US</h3>    
+    <div class="row p-0 m-0">
+        <div class="col-lg-6 p-0 m-0">
+            <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="img-fluid">
+        </div>
+        <div class="col-lg-6 p-0 m-0">
+            <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="img-fluid">
+        </div>
+    </div>
+</div>
+
+<hr class="breakline">
+
+<div class="testimonials">
+    
+    <div class="title">
+        <h3>Testimonials</h3>
+        
+    </div>
+
+    <div class="opinions">
+        <div class="text">
+
+        </div>
+        <div class="author">
+            <img src="" alt=""> Natalia Regulska
+        </div>
+    </div>
+
+</div>
+
 @endsection

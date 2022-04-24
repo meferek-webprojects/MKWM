@@ -7,6 +7,10 @@
   src: url(/fonts/TypoRegular.otf?d0b8d0cc42e2ec119cd9e58de93fa1c3) format("opentype");
 }
 @font-face {
+  font-family: "TypoItalic";
+  src: url(/fonts/TypoItalic.otf?5eb71e3b7f38b7b47d927d902bf63395) format("opentype");
+}
+@font-face {
   font-family: "DMSerif";
   src: url(/fonts/DMSerif.ttf?c63bc97c84c421f39c7a3b21a5e243e7) format("truetype");
 }
@@ -394,8 +398,87 @@
   min-width: 100%;
 }
 .hero .hero-text div:first-child {
-  font-size: 42px;
+  font-family: "Typo";
+  font-size: 60px;
 }
 .hero .hero-text div:last-child {
-  font-size: 28px;
+  font-family: "TypoItalic";
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+@media only screen and (max-width: 800px) {
+  .hero .hero-text div:first-child {
+    font-family: "Typo";
+    font-size: 50px;
+  }
+  .hero .hero-text div:last-child {
+    font-family: "TypoItalic";
+    font-size: 25px;
+    letter-spacing: 1px;
+  }
+}
+hr.breakline {
+  opacity: 0;
+  margin: 50px 0;
+}
+
+.about-us h3 {
+  font-family: "TypoBold";
+  letter-spacing: 7px;
+  color: rgba(0, 0, 0, 0.7529411765);
+  text-align: center;
+  margin: 100px;
+}
+
+.cta {
+  background-color: #0e0e0e;
+  padding: 50px 250px;
+  color: white;
+}
+.cta h3 {
+  font-family: "TypoBold";
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  margin: 5px;
+}
+.cta input {
+  border: none;
+  border-radius: 0;
+  font-family: "TypoBold";
+  letter-spacing: 3px;
+}
+.cta .btn {
+  border: 1px solid white;
+  border-radius: 0;
+  width: 100%;
+  font-family: "TypoBold";
+  letter-spacing: 5px;
+  color: #fff;
+  background: #0e0e0e;
+}
+.cta .btn:hover {
+  color: #0e0e0e;
+  background: #fff;
+}
+
+@media only screen and (max-width: 1600px) {
+  .cta {
+    background-color: #0e0e0e;
+    padding: 50px 150px;
+    color: white;
+  }
+  .cta h3 {
+    font-size: 25px;
+  }
+}
+@media only screen and (max-width: 1250px) {
+  .cta {
+    background-color: #0e0e0e;
+    padding: 50px 100px;
+    color: white;
+  }
+  .cta h3 {
+    font-size: 20px;
+  }
 }

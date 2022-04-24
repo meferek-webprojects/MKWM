@@ -12,12 +12,33 @@
     }
 
     .hero-text div:first-child{
-        font-size: 42px;
+        font-family: 'Typo';
+        font-size: 60px;
     }
     
     .hero-text div:last-child{
-        font-size: 28px;
+        font-family: 'TypoItalic';
+        font-size: 30px;
+        letter-spacing: 1px;
     }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .hero {
+
+        .hero-text div:first-child{
+            font-family: 'Typo';
+            font-size: 50px;
+        }
+        
+        .hero-text div:last-child{
+            font-family: 'TypoItalic';
+            font-size: 25px;
+            letter-spacing: 1px;
+        } 
+    }
+
 }
 
 // @media only screen and (max-width: 1520px) {

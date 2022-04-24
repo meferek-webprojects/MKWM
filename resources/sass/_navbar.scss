@@ -48,8 +48,11 @@
     }
 
     #search-button{
+        cursor: pointer;
         left: 0;
         transition: left $searchbar-opening-duration 0s;
+        padding: 8px;
+        margin: 0 42px;
     }
 
     #search-button.active{

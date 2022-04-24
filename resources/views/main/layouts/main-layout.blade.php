@@ -52,8 +52,12 @@
             </div>
         </nav>
 
-        <div class="hero">
-            <img src="{{ url('images/img/natalia.jpg') }}" alt="">
+        <div class="hero position-relative overflow-hidden w-100">
+            <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image position-absolute start-50 translate-middle-x ">
+            <div class="hero-text text-center position-absolute top-50 start-50 translate-middle">
+                <div>EVERYONE DESERVES</div>
+                <div>to see your own beauty</div>
+            </div>
         </div>
 
         @yield('content')
@@ -61,29 +65,36 @@
     </div>
 
     <script>
-        $('#search-button').on('click', () => {
+        $('body').on('click', () => {
+            if($('.searchbar').hasClass('active')){
+                $('.nav-link').toggleClass('hidden');
+                $('.searchbar').toggleClass('active');
+                $('#search-button').toggleClass('active');
+            }
+        });
+
+        $('#search-button').on('click', event => {
+            event.stopPropagation();
             $('.nav-link').toggleClass('hidden');
             $('.searchbar').toggleClass('active');
             $('#search-button').toggleClass('active');
         });
 
-        $('.hero').on('click', () => {
-            $('.nav-link').removeClass('hidden');
-            $('.searchbar').removeClass('active');
-            $('#search-button').removeClass('active');
-        });
-        
-        $('.last-photoshoot').on('click', () => {
-            $('.nav-link').removeClass('hidden');
-            $('.searchbar').removeClass('active');
-            $('#search-button').removeClass('active');
-        });
+        $('.searchbar').on('click', event => event.stopPropagation());
 
         $(document).scroll(() => {
-            if($(document).scrollTop())
+            let scrollTop = $(document).scrollTop();
+            let filterBlur = (-window.innerHeight / 2 + scrollTop) / 100;
+
+            if(scrollTop){
                 $('.navbar').css({'background-color': '#000a', 'padding-top': '7px'});
-            else
+
+                if(scrollTop < window.innerHeight)
+                    $('.hero').css({'top': (scrollTop / 2), 'filter': (filterBlur > 0 ? 'blur('+filterBlur+'px)' : '')});
+            }else{
                 $('.navbar').css({'background-color': '', 'padding-top': ''});
+                $('.hero').css('top', '');
+            }
         })
     </script>
 

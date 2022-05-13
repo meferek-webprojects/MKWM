@@ -15,11 +15,10 @@
   src: url(/fonts/DMSerif.ttf?c63bc97c84c421f39c7a3b21a5e243e7) format("truetype");
 }
 .navbar {
-  width: 100%;
-  z-index: 999;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0);
+  position: fixed;
   top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
   padding-top: 25px;
   transition: background-color 0.3s, padding-top 0.3s;
 }
@@ -34,6 +33,10 @@
       -ms-user-select: none;
           user-select: none;
 }
+.navbar .nav-item .logo {
+  font-family: "Typo";
+  font-size: 50px;
+}
 .navbar .nav-link {
   font-family: "Typo";
   color: white !important;
@@ -42,19 +45,16 @@
   transition: opacity 0.4s, transform 0.4s;
   transition-delay: 0.4s;
 }
-.navbar .logo {
-  font-family: "Typo";
-  font-size: 50px;
-}
-.navbar .navbar-toggler {
-  z-index: 1001;
-  position: absolute;
-  right: 4%;
-}
-.navbar .hidden {
+.navbar .nav-link.hidden {
   transition-delay: 0s !important;
   opacity: 0 !important;
   transform: translateY(20px) !important;
+}
+.navbar .navbar-toggler {
+  z-index: 1001;
+  position: fixed;
+  right: 4%;
+  top: 40px;
 }
 .navbar #search-button {
   cursor: pointer;
@@ -64,22 +64,23 @@
   margin: 0 42px;
 }
 .navbar #search-button.active {
-  left: calc(-100% + 149px);
+  left: calc(-100% + 124px + 25px);
   transition-delay: 0.4s;
 }
 .navbar .searchbar {
   font-size: 20px;
   opacity: 0;
   padding: 6px 0;
+  border-radius: 3px;
   width: auto;
   top: 50%;
   transform: translateY(-50%);
-  right: 149px;
+  right: 124px;
   left: calc(100% - 25px);
-  transition: left 0.4s 0s, opacity 0s 0.4s, padding 0s 0s;
+  transition: left 0.4s 0s, opacity 0s 0.4s, padding 0.2s 0s;
 }
 .navbar .searchbar.active {
-  transition: left 0.4s 0.4s, opacity 0s 0.4s, padding 0s 0.8s;
+  transition: left 0.4s 0.4s, opacity 0s 0.4s, padding 0.2s 0.6s;
   opacity: 1 !important;
   left: 124px !important;
   padding: 6px 12px !important;
@@ -89,54 +90,19 @@
   .navbar .nav-item {
     padding: 0px 30px;
   }
-  .navbar #search-button.active {
-    left: calc(-100% + 89px);
-  }
-  .navbar .searchbar {
-    right: 89px;
-    left: calc(100% - 5px);
-  }
-  .navbar .searchbar.active {
-    left: 84px !important;
-  }
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1199px) {
   .navbar {
-    position: absolute;
-    right: 50%;
-    margin-top: 25px;
-    transform: translateX(50%);
+    margin: 0;
+    inset: 0;
+    transition: none;
   }
   .navbar .navbar-nav {
-    position: absolute !important;
-    top: 700% !important;
-    right: 50% !important;
-    transform: translateX(50%);
     background-color: rgba(0, 0, 0, 0.5333333333);
     width: 80vw;
     padding: 50px 0;
-  }
-  .navbar #nav-logo {
-    display: none;
-  }
-  .navbar .nav-item {
-    padding: 0 !important;
-    transition: all 0.3s;
-  }
-  .navbar .nav-item:hover {
-    font-weight: bold;
-    letter-spacing: 5px;
-    transition: all 0.3s;
-  }
-  .navbar .nav-item, .navbar .nav-link {
-    font-family: "Typo";
-    color: white !important;
-    font-size: 30px;
-    text-transform: uppercase;
-  }
-  .navbar .logo {
-    font-family: "Typo";
-    font-size: 50px;
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
   }
 }
 .last-photoshoot {
@@ -171,8 +137,8 @@
 
 @media only screen and (max-width: 1200px) {
   .last-photoshoot {
-    margin-left: 50px;
-    margin-right: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
   .last-photoshoot .text {
     margin-left: 0;
@@ -201,8 +167,8 @@
 }
 @media only screen and (max-width: 600px) {
   .last-photoshoot {
-    margin-left: 30px;
-    margin-right: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
   .last-photoshoot .type {
     font-size: 20px;
@@ -336,7 +302,7 @@
 }
 @media only screen and (max-width: 1200px) {
   .mini-photoshoots {
-    margin: 50px;
+    padding: 50px;
   }
   .mini-photoshoots .mini-photo .text {
     margin-left: 0;
@@ -382,7 +348,7 @@
 }
 @media only screen and (max-width: 600px) {
   .mini-photoshoots {
-    margin: 30px;
+    padding: 30px;
   }
 }
 .hero {

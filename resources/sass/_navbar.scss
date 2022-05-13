@@ -1,14 +1,12 @@
 .navbar{
-
-    width: 100%;
-    z-index: 999;
-    position: absolute;
-    background-color: #0000;
+    position: fixed;
     top: 0;
+    width: 100%;
+    background-color: #0000;
     padding-top: 25px;
     transition:
-        background-color $navbar-scroll-changes-duration,
-        padding-top $navbar-scroll-changes-duration;
+        background-color $navbar-scroll-change-duration,
+        padding-top $navbar-scroll-change-duration;
     
     .nav-item{
         padding: 0px 50px;
@@ -17,6 +15,11 @@
         font-size: 20px;
         text-transform: uppercase;
         user-select: none;
+
+        .logo{
+            font-family: 'Typo';
+            font-size: 50px;
+        }
     }
 
     .nav-link{
@@ -28,23 +31,19 @@
             opacity $navbar-items-hiding-duration,
             transform $navbar-items-hiding-duration;
         transition-delay: $searchbar-opening-duration;
-    }
-    
-    .logo{
-        font-family: 'Typo';
-        font-size: 50px;
+
+        &.hidden{
+            transition-delay: 0s!important;
+            opacity: 0!important;
+            transform: translateY(20px)!important;
+        }
     }
 
     .navbar-toggler{
         z-index: 1001;
-        position: absolute;
+        position: fixed;
         right: 4%;
-    }
-
-    .hidden{
-        transition-delay: 0s!important;
-        opacity: 0!important;
-        transform: translateY(20px)!important;
+        top: 40px;
     }
 
     #search-button{
@@ -53,36 +52,37 @@
         transition: left $searchbar-opening-duration 0s;
         padding: 8px;
         margin: 0 42px;
-    }
 
-    #search-button.active{
-        left: calc(-100% + 149px);
-        transition-delay: $navbar-items-hiding-duration;
+        &.active{
+            left: calc(-100% + 124px + (50px - $searchbar-to-button-distance));
+            transition-delay: $navbar-items-hiding-duration;
+        }
     }
 
     .searchbar{
         font-size: 20px;
         opacity: 0;
         padding: 6px 0;
+        border-radius: 3px;
         width: auto;
         top: 50%;
         transform: translateY(-50%);
-        right: 149px;
-        left: calc(100% - 25px);
+        right: 124px;
+        left: calc(100% - (50px - $searchbar-to-button-distance));
         transition:
             left $searchbar-opening-duration 0s,
             opacity 0s $searchbar-opening-duration,
-            padding 0s 0s;
-    }
+            padding calc($searchbar-opening-duration / 2) 0s;
 
-    .searchbar.active{
-        transition:
-            left $searchbar-opening-duration $navbar-items-hiding-duration,
-            opacity 0s $navbar-items-hiding-duration,
-            padding 0s calc($searchbar-opening-duration + $navbar-items-hiding-duration);
-        opacity: 1!important;
-        left: 124px!important;
-        padding: 6px 12px!important;
+        &.active{
+            transition:
+                left $searchbar-opening-duration $navbar-items-hiding-duration,
+                opacity 0s $navbar-items-hiding-duration,
+                padding calc($searchbar-opening-duration / 2) calc(($searchbar-opening-duration / 2) + $navbar-items-hiding-duration);
+            opacity: 1!important;
+            left: 124px!important;
+            padding: 6px 12px!important;
+        }
     }
 }
 
@@ -93,69 +93,54 @@
         .nav-item {
             padding: 0px 30px;
         }
-
-        #search-button.active{
-            left: calc(-100% + 89px);
-        }
-
-        .searchbar{
-            right: 89px;
-            left: calc(100% - 5px);
-        }
-
-        .searchbar.active{
-            left: 84px!important;
-        }
     }
 
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1199px) {
 
     .navbar {
+        margin: 0;
+        inset: 0;
+        transition: none;
 
         .navbar-nav {
-            position: absolute!important;
-            top: 700%!important;
-            right: 50%!important;
-            transform: translateX(50%);
+            // position: absolute!important;
+            // top: 0!important;
+            // right: 50%!important;
+            // transform: translateX(50%);
             background-color: #0008;
             width: 80vw;
             padding: 50px 0;
-
+            backdrop-filter: blur(5px);
         }
 
-        #nav-logo {
-            display: none;
-        }
+        // #nav-logo {
+        //     display: none;
+        // }
 
-        position: absolute;
-        right: 50%;
-        margin-top: 25px;
-        transform: translateX(50%);
+        // .nav-item {
+        //     padding: 0!important;
+        //     transition: all 0.3s;
 
-        .nav-item {
-            padding: 0!important;
-            transition: all 0.3s;
-
-            &:hover {
-                font-weight: bold;
-                letter-spacing: 5px;
-                transition: all 0.3s;
-            }
-        }
+        //     &:hover {
+        //         font-weight: bold;
+        //         letter-spacing: 5px;
+        //         transition: all 0.3s;
+        //     }
+        // }
     
-        .nav-item, .nav-link{
-            font-family: 'Typo';
-            color: white!important;
-            font-size: 30px;
-            text-transform: uppercase;
-        }
+        // .nav-item, .nav-link{
+        //     font-family: 'Typo';
+        //     color: white!important;
+        //     font-size: 30px;
+        //     text-transform: uppercase;
+        // }
         
-        .logo {
-            font-family: 'Typo';
-            font-size: 50px;
-        }
+        // .logo {
+        //     font-family: 'Typo';
+        //     font-size: 50px;
+        // }
     }
 
 }

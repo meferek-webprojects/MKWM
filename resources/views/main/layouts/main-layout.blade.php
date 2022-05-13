@@ -19,13 +19,13 @@
     
     <div class="container-fluid p-0">
 
-        <nav class="navbar navbar-expand-xl navbar-dark position-fixed">
+        <nav class="navbar navbar-expand-xl navbar-dark">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i data-feather="menu"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto d-flex align-items-center position-relative">
+                    <ul class="navbar-nav mb-2 mb-lg-0 mx-auto d-flex align-items-center position-relative">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Główna</a>
                         </li>
@@ -35,7 +35,7 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Fotografia</a>
                         </li>
-                        <li class="nav-item" id="nav-logo">
+                        <li class="nav-item d-none d-xl-block" id="nav-logo">
                             <a class="nav-link logo" aria-current="page" href="#">MKWM</a>
                         </li>
                         <li class="nav-item">
@@ -44,10 +44,10 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Kontakt</a>
                         </li>
-                        <input type="text" class="searchbar position-absolute border-0" placeholder="Szukaj sesji...">
                         <li class="nav-item d-none d-xl-block position-relative" id="search-button">
                             <i data-feather="search"></i>
                         </li>
+                        <input type="text" class="searchbar position-absolute border-0" placeholder="Szukaj sesji...">
                     </ul>
                 </div>
             </div>
@@ -88,14 +88,29 @@
             let filterBlur = (-window.innerHeight / 2 + scrollTop) / 100;
 
             if(scrollTop){
-                $('.navbar').css({'background-color': '#000a', 'padding-top': '7px'});
+                if(window.innerWidth > 1199)
+                    $('.navbar').css({'background-color': '#000a', 'padding-top': '7px'});
+                else
+                    $('.navbar').removeAttr('style');
 
                 if(scrollTop < window.innerHeight)
                     $('.hero').css({'top': (scrollTop / 2), 'filter': (filterBlur > 0 ? 'blur('+filterBlur+'px)' : '')});
             }else{
-                $('.navbar').css({'background-color': '', 'padding-top': ''});
-                $('.hero').css('top', '');
+                $('.navbar').removeAttr('style');
+                $('.hero').removeAttr('style');
             }
+        })
+
+        $(window).resize(() => {
+            let scrollTop = $(document).scrollTop();
+
+            if(scrollTop){
+                if(window.innerWidth > 1199)
+                    $('.navbar').css({'background-color': '#000a', 'padding-top': '7px'});
+                else
+                    $('.navbar').removeAttr('style');
+            }else
+                $('.navbar').removeAttr('style');
         })
     </script>
 

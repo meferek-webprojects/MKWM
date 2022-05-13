@@ -17,13 +17,11 @@ class ShortTaskController extends Controller
 
         $data = Auth::user();
 
-        echo strtoupper(substr($data->name, 0, 1).substr($data->surname, 0, 1));
-
-        // $user = User::find(Auth::user()->id);
-        // $user->theme = $newTheme;
-        // $user->save();
+        $user = User::find(Auth::user()->id);
+        $user->theme = $newTheme;
+        $user->save();
         
-        // return redirect()->back();
+        return redirect()->back();
 
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+/////////////////// LANDING PAGE ///////////////////
+
 Route::get('/', function () {
     return view('main.main');
 });
@@ -20,6 +25,23 @@ Route::get('/', function () {
 Route::get('/photoshoot', function () {
     return view('main.photoshoot');
 });
+
+Route::get('/logout', function () {
+    if(Auth::check()) Auth::logout();
+    return redirect('/');
+});
+
+
+
+/////////////////// AUTH /////////////////// 
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dboard', [App\Http\Controllers\DashboardController::class, 'dashboard']);
+});
+
+
+
+/////////////////// OTHERS ///////////////////
 
 Auth::routes();
 

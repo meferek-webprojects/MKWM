@@ -1,73 +1,56 @@
-@extends('layouts.app')
+@extends('dashboard.layouts.minimal-layout')
+
+@section('title')
+    <title>MKWM - Stwórz konto</title>
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <div class="app app-auth-sign-up align-content-stretch d-flex flex-wrap justify-content-end">
+        <div class="app-auth-background d-lg-flex d-none">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+
+            <div class="app-auth-container">
+                <div class="logo">
+                    <a href="{{ url('/') }}">MKWM</a>
+                </div>
+                <p class="auth-description">Wprowadź poniższe dane aby się zalogować na naszej platformie.<br></p>
+
+                <div class="auth-credentials m-b-xxl">
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-style-light" role="alert">
+                            @foreach ($errors->all() as $error)
+                                {{ $error }} <br>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    <label for="signUpEmail" class="form-label">Adres e-mail</label>
+                    <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror m-b-md" id="signUpEmail" aria-describedby="signUpEmail" placeholder="adam@mkwmstudios.pl" required>
+
+                    <label for="signUpPassword" class="form-label">Hasło</label>
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror m-b-md" id="signUpPassword" aria-describedby="signUpPassword" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required>
+
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="rememberMe"type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <label class="form-check-label" for="rememberMe">
+                        Zapamiętaj mnie
+                    </label>
+                </div>
+
+                <div class="auth-submit mt-5">
+                    <button type="submit" class="btn btn-primary">Zaloguj się</a>
+                </div>
+                <div class="divider"></div>
+                <p class="auth-description-2">Nie masz konta? <a href="{{ url('/register') }}">Stórz konto</a></p>
+                <p class="auth-description-2">Zapomniałeś hasło? <a href="{{ route('password.request') }}">Odzyskaj konto</a></p>
+            </div>
+
+        </form>
     </div>
-</div>
 @endsection

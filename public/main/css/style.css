@@ -20,6 +20,7 @@
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
   padding-top: 25px;
+  z-index: 1000;
   transition: background-color 0.3s, padding-top 0.3s;
 }
 .navbar .nav-item {
@@ -55,6 +56,10 @@
   position: fixed;
   right: 4%;
   top: 40px;
+  background-color: rgba(0, 0, 0, 0.3333333333);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  color: white;
 }
 .navbar #search-button {
   cursor: pointer;
@@ -98,11 +103,16 @@
     transition: none;
   }
   .navbar .navbar-nav {
-    background-color: rgba(0, 0, 0, 0.5333333333);
-    width: 80vw;
-    padding: 50px 0;
-    -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.6666666667);
+    width: calc(100vw - 100px);
+    height: calc(100vh - 150px);
+    padding: 20vh 0;
+    justify-content: space-between;
+    -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+  }
+  .navbar .navbar-nav .nav-link {
+    font-size: 32px;
   }
 }
 .last-photoshoot {

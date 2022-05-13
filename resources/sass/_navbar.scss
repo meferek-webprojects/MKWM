@@ -4,6 +4,7 @@
     width: 100%;
     background-color: #0000;
     padding-top: 25px;
+    z-index: 1000;
     transition:
         background-color $navbar-scroll-change-duration,
         padding-top $navbar-scroll-change-duration;
@@ -44,6 +45,9 @@
         position: fixed;
         right: 4%;
         top: 40px;
+        background-color: #0005;
+        backdrop-filter: blur(3px);
+        color: white;
     }
 
     #search-button{
@@ -105,14 +109,16 @@
         transition: none;
 
         .navbar-nav {
-            // position: absolute!important;
-            // top: 0!important;
-            // right: 50%!important;
-            // transform: translateX(50%);
-            background-color: #0008;
-            width: 80vw;
-            padding: 50px 0;
-            backdrop-filter: blur(5px);
+            background-color: #000a;
+            width: calc(100vw - 100px);
+            height: calc(100vh - 150px);
+            padding: 20vh 0;
+            justify-content: space-between;
+            backdrop-filter: blur(6px);
+
+            .nav-link{
+                font-size: 32px;
+            }
         }
 
         // #nav-logo {

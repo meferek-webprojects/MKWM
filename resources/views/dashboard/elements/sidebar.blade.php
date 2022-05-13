@@ -1,0 +1,114 @@
+@section('sidebar')
+    <div class="app-sidebar">
+        <div class="logo">
+            <a href="{{ url('/') }}" class="logo-icon"><span class="logo-text">MKWM</span></a>
+            <div class="sidebar-user-switcher user-activity-online">
+                <a href="#">
+                    
+                    {{-- <img src="{{ url('images/img/logo.png') }}"> --}}
+                    <div class="avatar avatar-xs" id="avatar-index">
+                        <div class="avatar-title">LK</div>
+                    </div>
+                    <span class="user-info-text">{{ Auth::user()->name; }}<br><span class="user-state-info">Super człowiek</span></span>
+                    
+                </a>
+            </div>
+        </div>
+        <div class="app-menu ps ps--active-y">
+            <ul class="accordion-menu">
+                <li class="sidebar-title">
+                    GŁÓWNE
+                </li>
+                <li class="active-page">
+                    <a href="#" class="active"><i class="material-icons-two-tone">dashboard</i>Strona główna</a>
+                </li>
+                <li>
+                    <a href="#"><i class="material-icons-two-tone">account_circle</i>Twój profil</a>
+                </li>
+                <li class="sidebar-title">
+                    TWOJE SESJE
+                </li>
+                <li>
+                    <a href=""><i class="material-icons-two-tone">photo</i>ROK<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                    <ul class="sub-menu" style="display: none;">
+                        <li>
+                            <a href="#">MIESIĄC<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                            <ul class="sub-menu" style="display: none;">
+                                <li>
+                                    <a href="sign-in.html">NAZWA</a>
+                                </li>
+                                <li>
+                                    <a href="sign-up.html">NAZWA 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">NAZWA 3</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-title">
+                    TWOJE FILMY
+                </li>
+                <li>
+                    <a href=""><i class="material-icons-two-tone">movie</i>ROK<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                    <ul class="sub-menu" style="display: none;">
+                        <li>
+                            <a href="#">MIESIĄC<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                            <ul class="sub-menu" style="display: none;">
+                                <li>
+                                    <a href="sign-in.html">NAZWA</a>
+                                </li>
+                                <li>
+                                    <a href="sign-up.html">NAZWA 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">NAZWA 3</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-title">
+                    ADMINISTRATORSKIE
+                </li>
+                <li class="">
+                    <a href="#"><i class="material-icons-two-tone">people</i>Użytkownicy<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                    <ul class="sub-menu" style="display: none;">
+                        <li>
+                            <a href="/users">Wszyscy użytkownicy</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href=""><i class="material-icons-two-tone">folder</i>Sesje<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                    <ul class="sub-menu" style="display: none;">
+                        <li>
+                            <a href="/session-list">Wszystkie sesje</a>
+                        </li>
+                        <li>
+                            <a href="/session-add">Dodaj sesje</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="#"><i class="material-icons-two-tone">work</i>Portfolio<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                    <ul class="sub-menu" style="display: none;">
+                        <li>
+                            <a href="/portfolio-photo">Fotograficzne</a>
+                        </li>
+                        <li>
+                            <a href="/portfolio-video">Filmowe</a>
+                        </li>
+                        <li>
+                            <a href="/portfolio-design">Design</a>
+                        </li>
+                        <li>
+                            <a href="/portfolio-web">Web</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 846px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 706px;"></div></div></div>
+    </div>
+@endsection

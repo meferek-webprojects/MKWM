@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ url('/main/plugins/bs5/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('main/css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url('favicon.ico') }}">
     <script src="{{ url('/main/plugins/bs5/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('/main/plugins/feather-icons/feather-icons.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -26,22 +27,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto d-flex align-items-center position-relative">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" aria-current="page" href="#">Główna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Us</a>
+                            <a class="nav-link" aria-current="page" href="#">My</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Photography</a>
+                            <a class="nav-link" aria-current="page" href="#">Fotografia</a>
                         </li>
                         <li class="nav-item" id="nav-logo">
                             <a class="nav-link logo" aria-current="page" href="#">MKWM</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Videography</a>
+                            <a class="nav-link" aria-current="page" href="#">Filmografia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Contact</a>
+                            <a class="nav-link" aria-current="page" href="#">Kontakt</a>
                         </li>
                         <input type="text" class="searchbar position-absolute border-0" placeholder="Szukaj sesji...">
                         <li class="nav-item d-none d-xl-block position-relative" id="search-button">

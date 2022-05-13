@@ -1,28 +1,36 @@
-@extends('layouts.app')
+@extends('dashboard.layouts.minimal-layout')
+
+@section('title')
+    <title>MKWM - Zweryfikuj konto</title>
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+    <div class="app app-auth-sign-up align-content-stretch d-flex flex-wrap justify-content-end">
+        <div class="app-auth-background d-lg-flex d-none">
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
-                </div>
-            </div>
         </div>
+        <div class="app-auth-container">
+            <div class="logo">
+                <a href="{{ url('/') }}">MKWM</a>
+            </div>
+            <p class="auth-description">Aby kontynuować aktywuj swoje konto linkiem aktywacyjnym, który został wysłany na twój adres email.<br></p>
+
+            @if (session('resent'))
+                <div class="alert alert-info alert-style-light" role="alert">
+                    Nowy link aktywacyjny został wysłany na twój adres email.
+                </div>
+            @endif
+
+            <div class="auth-submit mt-5">
+
+
+                <form method="POST" action="{{ route('verification.resend') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Wyślij link ponownie</a>
+                </form>
+            </div>
+            <div class="divider"></div>
+        </div>
+
     </div>
-</div>
 @endsection

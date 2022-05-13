@@ -32,7 +32,7 @@
                     <input type="text" name="name" value="{{ old('name') }}" class="form-control m-b-md" id="signUpUsername" aria-describedby="signUpUsername" placeholder="Adam" required>
 
                     <label for="signUpSurname" class="form-label">Nazwisko</label>
-                    <input type="text" name="surname" value="{{ old('surname') }}" class="form-control m-b-md" id="signUpSurname" aria-describedby="signUpUsername" placeholder="Kowalski" required>
+                    <input type="text" name="surname" value="{{ old('surname') }}" class="form-control m-b-md" id="signUpSurname" aria-describedby="signUpSurname" placeholder="Kowalski" required>
 
                     <label for="signUpEmail" class="form-label">Adres e-mail</label>
                     <input type="email" name="email" value="{{ old('email') }}" class="form-control m-b-md" id="signUpEmail" aria-describedby="signUpEmail" placeholder="adam@mkwmstudios.pl" required>

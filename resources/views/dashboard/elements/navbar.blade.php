@@ -23,7 +23,11 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="material-icons">dark_mode</i></a>
+                            @if(Auth::user()->theme == 'dark')
+                                <a class="nav-link" href="{{ url('/change-theme') }}"><i class="material-icons">light_mode</i></a>
+                            @else
+                                <a class="nav-link" href="{{ url('/change-theme') }}"><i class="material-icons">dark_mode</i></a>
+                            @endif
                         </li>
                     </ul>
                 </div>

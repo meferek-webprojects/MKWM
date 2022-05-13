@@ -24,7 +24,9 @@
     @yield('added-css')
 
     <link href="{{ url('dashboard/css/main.css') }}" rel="stylesheet">
-    <link href="{{ url('dashboard/css/darktheme.css') }}" rel="stylesheet">
+    @if(Auth::user()->theme == 'dark')
+        <link href="{{ url('dashboard/css/darktheme.css') }}" rel="stylesheet">
+    @endif
     <link href="{{ url('dashboard/css/custom.css') }}" rel="stylesheet">
 
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/neptune.png">

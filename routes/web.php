@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ShortTaskController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,14 +38,18 @@ Route::get('/logout', function () {
 
 /////////////////// AUTH /////////////////// 
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dboard', [App\Http\Controllers\DashboardController::class, 'dashboard']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dboard', [DashboardController::class, 'dashboard']);
 });
 
+/////////////////// AUTH SHORT PATHS /////////////////// 
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/change-theme', [ShortTaskController::class, 'change_theme']);
+});
 
 
 /////////////////// OTHERS ///////////////////
 
-Auth::routes();
-
+Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

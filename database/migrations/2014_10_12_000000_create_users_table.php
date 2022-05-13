@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('sex')->nullable();
             $table->text('description')->nullable();
             $table->string('phone')->nullable();
-            $table->enum('theme', ['light', 'dark'])->default('dark');
+            $table->enum('theme', ['light', 'dark'])->default('light');
             $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

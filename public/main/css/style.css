@@ -60,6 +60,7 @@
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
   color: white;
+  border-radius: 0;
 }
 .navbar #search-button {
   cursor: pointer;
@@ -112,7 +113,12 @@
             backdrop-filter: blur(6px);
   }
   .navbar .navbar-nav .nav-link {
-    font-size: 32px;
+    font-size: 28px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .navbar .navbar-nav .nav-link {
+    font-size: 24px;
   }
 }
 .last-photoshoot {
@@ -457,4 +463,91 @@ hr.breakline {
   .cta h3 {
     font-size: 20px;
   }
+}
+.portfolio {
+  text-align: center;
+}
+.portfolio h4.our-portfolio {
+  color: #212529;
+  font-family: "TypoBold";
+  font-size: 25px;
+  letter-spacing: 8px;
+  margin-top: 10px;
+  margin-bottom: 60px;
+}
+.portfolio h4 {
+  color: rgb(200, 200, 200);
+  font-family: "DMSerif";
+  font-size: 25px;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+}
+.portfolio h3 {
+  color: #212529;
+  font-family: "TypoBold";
+  font-size: 32px;
+  letter-spacing: 10px;
+  margin-top: 10px;
+  margin-bottom: 60px;
+}
+.portfolio .movies .text {
+  color: #212529;
+  font-family: "TypoBold";
+  font-size: 24px;
+  letter-spacing: 4px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.youtube-player {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  margin: 5px;
+}
+
+.youtube-player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: transparent;
+}
+
+.youtube-player img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  height: auto;
+  cursor: pointer;
+  transition: 0.4s all;
+}
+
+.youtube-player img:hover {
+  -webkit-filter: brightness(75%);
+}
+
+.youtube-player .play {
+  height: 72px;
+  width: 72px;
+  left: 50%;
+  top: 50%;
+  margin-left: -36px;
+  margin-top: -36px;
+  position: absolute;
+  cursor: pointer;
 }

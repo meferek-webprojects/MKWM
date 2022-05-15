@@ -48,6 +48,7 @@
         background-color: #0005;
         backdrop-filter: blur(3px);
         color: white;
+        border-radius: 0;
     }
 
     #search-button{
@@ -117,7 +118,7 @@
             backdrop-filter: blur(6px);
 
             .nav-link{
-                font-size: 32px;
+                font-size: 28px;
             }
         }
 
@@ -150,3 +151,18 @@
     }
 
 }
+
+@media only screen and (max-width: 650px) {
+
+    .navbar {
+
+        .navbar-nav {
+
+            .nav-link{
+                font-size: 24px;
+            }
+        }
+    }
+
+}
+

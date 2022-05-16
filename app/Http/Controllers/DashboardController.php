@@ -11,4 +11,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.dboard');
     }
+
+    public function account()
+    {
+        return view('dashboard.account');
+    }
+
 }

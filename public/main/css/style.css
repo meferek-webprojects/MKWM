@@ -472,11 +472,11 @@
 }
 .hero .hero-text div:first-child {
   font-family: "Typo";
-  font-size: 60px;
+  font-size: 75px;
 }
 .hero .hero-text div:last-child {
-  font-family: "TypoItalic";
-  font-size: 30px;
+  font-family: "DMSerif";
+  font-size: 35px;
   letter-spacing: 1px;
 }
 

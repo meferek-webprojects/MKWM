@@ -57,7 +57,7 @@
             <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image position-absolute start-50 translate-middle-x ">
             <div id="hero-text" class="hero-text text-center position-absolute top-50 start-50 translate-middle">
                 <div>EVERYONE DESERVES</div>
-                <div>to see your own beauty</div>
+                <div>to see own beauty</div>
             </div>
         </div>
 
@@ -101,7 +101,7 @@
 
                 if(scrollTop < window.innerHeight) {
                     $('.hero').css({'top': (scrollTop / 2)});
-                    // $('#hero-text').css({'opacity': filterBlur '%;'});
+                    $('#hero-text').css({'opacity': filterBlur '%;'});
                 }
             }else{
                 $('.navbar').removeAttr('style');

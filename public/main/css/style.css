@@ -197,6 +197,7 @@
   .last-photoshoot {
     padding-left: 30px;
     padding-right: 30px;
+    margin-bottom: 20px;
   }
   .last-photoshoot .type {
     font-size: 20px;
@@ -552,6 +553,18 @@ hr.breakline {
   }
   .cta h3 {
     font-size: 20px;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .cta {
+    text-align: center;
+    background-color: #0e0e0e;
+    padding: 50px 100px;
+    color: white;
+  }
+  .cta h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
   }
 }
 .portfolio {

@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0 mx-auto d-flex align-items-center position-relative">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ url('/photoshoot') }}">Główna</a>
+                            <a class="nav-link" aria-current="page" href="{{ url('/') }}">Główna</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">My</a>
@@ -38,7 +38,7 @@
                             <a class="nav-link" aria-current="page" href="#">Fotografia</a>
                         </li>
                         <li class="nav-item d-none d-xl-block" id="nav-logo">
-                            <a class="nav-link logo" aria-current="page" href="{{ url('/photoshoot') }}">MKWM</a>
+                            <a class="nav-link logo" aria-current="page" href="{{ url('/') }}">MKWM</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Filmografia</a>
@@ -57,6 +57,12 @@
 
         @yield('content')
 
+        <div class="footer text-center pb-5">
+            <h2>MKWM</h2>
+            <h6><a href="#">Polityka prywatności oraz polityka ciasteczek</a></h6>
+            <h5>Copyright &copy; 2022 Mateusz Krysiak & Krzysztof Stępniak <h5>
+        </div>
+        
     </div>
 
     @yield('added-js')

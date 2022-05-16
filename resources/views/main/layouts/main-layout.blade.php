@@ -55,13 +55,19 @@
 
         <div class="hero position-relative overflow-hidden w-100">
             <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image position-absolute start-50 translate-middle-x ">
-            <div class="hero-text text-center position-absolute top-50 start-50 translate-middle">
+            <div id="hero-text" class="hero-text text-center position-absolute top-50 start-50 translate-middle">
                 <div>EVERYONE DESERVES</div>
                 <div>to see your own beauty</div>
             </div>
         </div>
 
         @yield('content')
+
+        <div class="footer text-center pb-5">
+            <h2>MKWM</h2>
+            <h6><a href="#">Polityka prywatności oraz polityka ciasteczek</a></h6>
+            <h5>Copyright &copy; 2022 Mateusz Krysiak & Krzysztof Stępniak <h5>
+        </div>
 
     </div>
 
@@ -93,8 +99,10 @@
                 else
                     $('.navbar').removeAttr('style');
 
-                if(scrollTop < window.innerHeight)
-                    $('.hero').css({'top': (scrollTop / 2), 'filter': (filterBlur > 0 ? 'blur('+filterBlur+'px)' : '')});
+                if(scrollTop < window.innerHeight) {
+                    $('.hero').css({'top': (scrollTop / 2)});
+                    // $('#hero-text').css({'opacity': filterBlur '%;'});
+                }
             }else{
                 $('.navbar').removeAttr('style');
                 $('.hero').removeAttr('style');

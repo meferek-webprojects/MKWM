@@ -65,6 +65,7 @@
 @endsection
 
 @section('added-js')
+
     <script src="{{ url('main/plugins/lightGallery-clear/js/lightgallery-allclear.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {

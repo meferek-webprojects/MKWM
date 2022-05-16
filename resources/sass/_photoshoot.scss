@@ -52,6 +52,16 @@
 
 .gallery {
     margin: 90px;
+    align-items: center;
+    text-align: center;
+
+    #lightgallery {
+        
+        img {
+            max-height: 500px;    
+        }
+    }
+
 }
 
 @media only screen and (max-width: 1140px) {
@@ -141,6 +151,20 @@
             }
     
         }
+    }
+
+    .gallery {
+        margin: 90px;
+        align-items: center;
+        text-align: center;
+    
+        #lightgallery {
+            
+            img {
+                max-height: max-content;    
+            }
+        }
+    
     }
 }
 

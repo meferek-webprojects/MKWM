@@ -25,9 +25,27 @@ Route::get('/', function () {
     return view('main.main');
 });
 
-Route::get('/photoshoot', function () {
-    return view('main.photoshoot');
+Route::get('/movie', function () {
+    return view('main.movie');
 });
+
+Route::get('/studio', function () {
+    return view('main.studio');
+});
+
+Route::get('/plener', function () {
+    return view('main.plener');
+});
+
+Route::get('/event', function () {
+    return view('main.event');
+});
+
+Route::get('/product', function () {
+    return view('main.product');
+});
+
+
 
 Route::get('/logout', function () {
     if(Auth::check()) Auth::logout();
@@ -42,12 +60,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dboard', [DashboardController::class, 'dashboard']);
 });
 
+
 /////////////////// AUTH SHORT PATHS /////////////////// 
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/change-theme', [ShortTaskController::class, 'change_theme']);
 });
 
+/////////////////// ADMIN AUTH PATHS/////////////////// 
+
+// Route::middleware(['auth', 'verified'])->group(function () {
+
+// });
 
 /////////////////// OTHERS ///////////////////
 

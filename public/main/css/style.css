@@ -254,6 +254,11 @@
 
 .gallery {
   margin: 90px;
+  align-items: center;
+  text-align: center;
+}
+.gallery #lightgallery img {
+  max-height: 500px;
 }
 
 @media only screen and (max-width: 1140px) {
@@ -331,6 +336,17 @@
     margin-top: 0;
     padding-top: 0;
     white-space: nowrap;
+  }
+
+  .gallery {
+    margin: 90px;
+    align-items: center;
+    text-align: center;
+  }
+  .gallery #lightgallery img {
+    max-height: -webkit-max-content;
+    max-height: -moz-max-content;
+    max-height: max-content;
   }
 }
 @media only screen and (max-width: 450px) {

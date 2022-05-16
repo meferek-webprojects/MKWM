@@ -197,7 +197,7 @@
   .last-photoshoot {
     padding-left: 30px;
     padding-right: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
   .last-photoshoot .type {
     font-size: 20px;
@@ -486,7 +486,7 @@
     font-size: 50px;
   }
   .hero .hero-text div:last-child {
-    font-family: "TypoItalic";
+    font-family: "DMSerif";
     font-size: 25px;
     letter-spacing: 1px;
   }

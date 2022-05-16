@@ -101,7 +101,7 @@
 
                 if(scrollTop < window.innerHeight) {
                     $('.hero').css({'top': (scrollTop / 2)});
-                    $('#hero-text').css({'opacity': filterBlur '%;'});
+                    // $('#hero-text').css({'opacity': filterBlur '%'});
                 }
             }else{
                 $('.navbar').removeAttr('style');

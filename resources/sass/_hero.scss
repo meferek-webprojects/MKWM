@@ -13,12 +13,12 @@
 
     .hero-text div:first-child{
         font-family: 'Typo';
-        font-size: 60px;
+        font-size: 75px;
     }
     
     .hero-text div:last-child{
-        font-family: 'TypoItalic';
-        font-size: 30px;
+        font-family: 'DMSerif';
+        font-size: 35px;
         letter-spacing: 1px;
     }
 }
@@ -33,37 +33,10 @@
         }
         
         .hero-text div:last-child{
-            font-family: 'TypoItalic';
+            font-family: 'DMSerif';
             font-size: 25px;
             letter-spacing: 1px;
         } 
     }
 
 }
-
-// @media only screen and (max-width: 1520px) {
-
-//     .hero {
-
-//         overflow: hidden;
-//         height: 700px;
-
-//     }
-// }
-
-// @media only screen and (max-width: 1200px) {
-
-//     .hero {
-
-//         height: 750px;
-//         background: black;
-//         overflow: hidden;
-    
-//         img {
-//             width: 1300px;
-//             object-fit: none;
-//             object-position: 100% 30%;
-//         }
-//     }
-
-// }

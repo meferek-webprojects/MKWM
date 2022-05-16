@@ -8,6 +8,11 @@
     transition:
         background-color $navbar-scroll-change-duration,
         padding-top $navbar-scroll-change-duration;
+
+    &.full {
+        padding-top: 7px;
+        background-color: #000;
+    }
     
     .nav-item{
         padding: 0px 50px;
@@ -76,10 +81,11 @@
     }
 
     .searchbar{
-        font-size: 20px;
+        text-transform: uppercase;
+        font-family: 'Typo';
+        font-size: 18px;
         opacity: 0;
         padding: 6px 0;
-        border-radius: 3px;
         width: auto;
         top: 50%;
         transform: translateY(-50%);
@@ -89,6 +95,10 @@
             left $searchbar-opening-duration 0s,
             opacity 0s $searchbar-opening-duration,
             padding calc($searchbar-opening-duration / 2) 0s;
+        
+        &:focus-visible {
+            outline: none !important;
+        }
 
         &.active{
             transition:
@@ -120,6 +130,11 @@
         padding: 0;
         top: 50%;
         transition: none;
+        
+        &.full {
+            padding-top: 7px;
+            background-color: #0000;
+        }
 
         .navbar-collapse{
             transform: translateY(-50%);

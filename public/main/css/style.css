@@ -23,6 +23,10 @@
   z-index: 1000;
   transition: background-color 0.3s, padding-top 0.3s;
 }
+.navbar.full {
+  padding-top: 7px;
+  background-color: #000;
+}
 .navbar .nav-item {
   padding: 0px 50px;
   font-family: "Typo";
@@ -85,16 +89,20 @@
   transition-delay: 0.4s;
 }
 .navbar .searchbar {
-  font-size: 20px;
+  text-transform: uppercase;
+  font-family: "Typo";
+  font-size: 18px;
   opacity: 0;
   padding: 6px 0;
-  border-radius: 3px;
   width: auto;
   top: 50%;
   transform: translateY(-50%);
   right: 124px;
   left: calc(100% - 25px);
   transition: left 0.4s 0s, opacity 0s 0.4s, padding 0.2s 0s;
+}
+.navbar .searchbar:focus-visible {
+  outline: none !important;
 }
 .navbar .searchbar.active {
   transition: left 0.4s 0.4s, opacity 0s 0.4s, padding 0.2s 0.6s;
@@ -114,6 +122,10 @@
     padding: 0;
     top: 50%;
     transition: none;
+  }
+  .navbar.full {
+    padding-top: 7px;
+    background-color: rgba(0, 0, 0, 0);
   }
   .navbar .navbar-collapse {
     transform: translateY(-50%);
@@ -201,6 +213,7 @@
   .last-photoshoot {
     padding-left: 30px;
     padding-right: 30px;
+    margin-bottom: 40px;
   }
   .last-photoshoot .type {
     font-size: 20px;
@@ -213,6 +226,7 @@
   }
 }
 .banner {
+  margin-top: 100px;
   height: 700px;
   overflow: hidden;
 }
@@ -220,7 +234,7 @@
   z-index: 100;
   position: absolute;
   color: white;
-  top: 20%;
+  top: 28%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -256,8 +270,52 @@
 
 .gallery {
   margin: 90px;
+  align-items: center;
+  text-align: center;
+}
+.gallery #lightgallery img {
+  max-height: 500px;
 }
 
+@media only screen and (max-width: 1140px) {
+  .banner {
+    margin-top: 0px;
+    height: 300px;
+    overflow: hidden;
+  }
+  .banner .text {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    top: 9%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .banner .text .type {
+    font-family: "TypoBold";
+    font-size: 16px;
+    letter-spacing: 8px;
+    margin-bottom: 40px;
+    opacity: 80%;
+  }
+  .banner .text .place {
+    color: rgb(219, 219, 219);
+    font-family: "DMSerif";
+    font-size: 24px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .banner .text .person {
+    z-index: 100;
+    color: white;
+    font-family: "TypoBold";
+    font-size: 30px;
+    margin-top: 0;
+    padding-top: 0;
+    white-space: nowrap;
+  }
+}
 @media only screen and (max-width: 880px) {
   .banner {
     height: 300px;
@@ -267,7 +325,7 @@
     z-index: 100;
     position: absolute;
     color: white;
-    top: 14%;
+    top: 9%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -291,6 +349,55 @@
     color: white;
     font-family: "TypoBold";
     font-size: 30px;
+    margin-top: 0;
+    padding-top: 0;
+    white-space: nowrap;
+  }
+
+  .gallery {
+    margin: 90px;
+    align-items: center;
+    text-align: center;
+  }
+  .gallery #lightgallery img {
+    max-height: -webkit-max-content;
+    max-height: -moz-max-content;
+    max-height: max-content;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .banner {
+    height: 200px;
+    overflow: hidden;
+  }
+  .banner .text {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .banner .text .type {
+    font-family: "TypoBold";
+    font-size: 14px;
+    letter-spacing: 8px;
+    margin-bottom: 40px;
+    opacity: 80%;
+  }
+  .banner .text .place {
+    color: rgb(219, 219, 219);
+    font-family: "DMSerif";
+    font-size: 20px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .banner .text .person {
+    z-index: 100;
+    color: white;
+    font-family: "TypoBold";
+    font-size: 26px;
     margin-top: 0;
     padding-top: 0;
     white-space: nowrap;
@@ -397,11 +504,11 @@
 }
 .hero .hero-text div:first-child {
   font-family: "Typo";
-  font-size: 60px;
+  font-size: 75px;
 }
 .hero .hero-text div:last-child {
-  font-family: "TypoItalic";
-  font-size: 30px;
+  font-family: "DMSerif";
+  font-size: 35px;
   letter-spacing: 1px;
 }
 
@@ -411,7 +518,7 @@
     font-size: 50px;
   }
   .hero .hero-text div:last-child {
-    font-family: "TypoItalic";
+    font-family: "DMSerif";
     font-size: 25px;
     letter-spacing: 1px;
   }
@@ -478,6 +585,18 @@ hr.breakline {
   }
   .cta h3 {
     font-size: 20px;
+  }
+}
+@media only screen and (max-width: 620px) {
+  .cta {
+    text-align: center;
+    background-color: #0e0e0e;
+    padding: 50px 40px;
+    color: white;
+  }
+  .cta h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
   }
 }
 .portfolio {
@@ -566,4 +685,69 @@ hr.breakline {
   margin-top: -36px;
   position: absolute;
   cursor: pointer;
+}
+
+.footer {
+  padding-top: 50px;
+  font-family: "Typo";
+  background-color: black;
+  color: white;
+}
+.footer h2 {
+  font-family: "Typo";
+  font-size: 60px;
+  margin-bottom: 30px;
+}
+.footer h5 {
+  text-transform: uppercase;
+  font-size: 15px;
+  opacity: 0.5;
+}
+.footer h6 {
+  margin-bottom: 15px;
+  transition: 0.3s all;
+}
+.footer h6 a, .footer h6 a:not(:hover) {
+  text-decoration: none;
+  color: rgb(208, 208, 208);
+  transition: 0.3s all;
+}
+.footer h6 a:hover, .footer h6 a:not(:hover):hover {
+  color: rgb(255, 255, 255);
+  transition: 0.3s all;
+}
+.footer img {
+  width: 200px;
+}
+
+@media only screen and (max-width: 700px) {
+  .footer {
+    padding-top: 50px;
+    font-family: "Typo";
+    background-color: black;
+    color: white;
+  }
+  .footer h2 {
+    font-family: "Typo";
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+  .footer h5 {
+    text-transform: uppercase;
+    font-size: 13px;
+    opacity: 0.5;
+  }
+  .footer h6 {
+    margin-bottom: 15px;
+    transition: 0.3s all;
+  }
+  .footer h6 a, .footer h6 a:not(:hover) {
+    text-decoration: none;
+    color: rgb(208, 208, 208);
+    transition: 0.3s all;
+  }
+  .footer h6 a:hover, .footer h6 a:not(:hover):hover {
+    color: rgb(255, 255, 255);
+    transition: 0.3s all;
+  }
 }

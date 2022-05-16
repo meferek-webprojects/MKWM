@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="last-photoshoot">
+<div onClick="function(){document.location.href = {{ url('/photoshoot') }} }" class="last-photoshoot">
     <div class="big-photoshoot">
         <div class="row p-0 m-0">
             <div class="col-xl-6 p-0 m-0 my-auto">
@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<div class="mini-photoshoots">
+<div class="mini-photoshoots d-none d-sm-block">
 
     <div class="row m-0 p-0">
 
@@ -119,12 +119,12 @@
             <h3>Zapisz się na sesję</h3>
         </div>
         <div class="col-lg-6 p-0 m-0">
-            <form action="" method="POST">
+            <form action="{{ url('/') }}" method="GET">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-sm-8">
                         <input type="text" class="form-control" placeholder="E-mail">
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-4">
                         <button class="btn btn-light">WYŚLIJ</button>
                     </div>
                 </div>
@@ -132,7 +132,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="about-us">
     <h3>ABOUT US</h3>    
@@ -240,5 +239,6 @@
     }
   
     document.addEventListener('DOMContentLoaded', initYouTubeVideos);
-  </script>
+</script>
+
 @endsection

@@ -23,6 +23,10 @@
   z-index: 1000;
   transition: background-color 0.3s, padding-top 0.3s;
 }
+.navbar.full {
+  padding-top: 7px;
+  background-color: #000;
+}
 .navbar .nav-item {
   padding: 0px 50px;
   font-family: "Typo";
@@ -106,6 +110,10 @@
     margin: 0;
     inset: 0;
     transition: none;
+  }
+  .navbar.full {
+    padding-top: 7px;
+    background-color: rgba(0, 0, 0, 0);
   }
   .navbar .navbar-nav {
     background-color: rgba(0, 0, 0, 0.6666666667);
@@ -201,6 +209,7 @@
   }
 }
 .banner {
+  margin-top: 100px;
   height: 700px;
   overflow: hidden;
 }
@@ -246,6 +255,44 @@
   margin: 90px;
 }
 
+@media only screen and (max-width: 1140px) {
+  .banner {
+    height: 300px;
+    overflow: hidden;
+  }
+  .banner .text {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    top: 9%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .banner .text .type {
+    font-family: "TypoBold";
+    font-size: 16px;
+    letter-spacing: 8px;
+    margin-bottom: 40px;
+    opacity: 80%;
+  }
+  .banner .text .place {
+    color: rgb(219, 219, 219);
+    font-family: "DMSerif";
+    font-size: 24px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .banner .text .person {
+    z-index: 100;
+    color: white;
+    font-family: "TypoBold";
+    font-size: 30px;
+    margin-top: 0;
+    padding-top: 0;
+    white-space: nowrap;
+  }
+}
 @media only screen and (max-width: 880px) {
   .banner {
     height: 300px;
@@ -255,7 +302,7 @@
     z-index: 100;
     position: absolute;
     color: white;
-    top: 14%;
+    top: 9%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -279,6 +326,44 @@
     color: white;
     font-family: "TypoBold";
     font-size: 30px;
+    margin-top: 0;
+    padding-top: 0;
+    white-space: nowrap;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .banner {
+    height: 200px;
+    overflow: hidden;
+  }
+  .banner .text {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .banner .text .type {
+    font-family: "TypoBold";
+    font-size: 14px;
+    letter-spacing: 8px;
+    margin-bottom: 40px;
+    opacity: 80%;
+  }
+  .banner .text .place {
+    color: rgb(219, 219, 219);
+    font-family: "DMSerif";
+    font-size: 20px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .banner .text .person {
+    z-index: 100;
+    color: white;
+    font-family: "TypoBold";
+    font-size: 26px;
     margin-top: 0;
     padding-top: 0;
     white-space: nowrap;

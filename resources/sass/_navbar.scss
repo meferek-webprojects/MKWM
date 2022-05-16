@@ -8,6 +8,11 @@
     transition:
         background-color $navbar-scroll-change-duration,
         padding-top $navbar-scroll-change-duration;
+
+    &.full {
+        padding-top: 7px;
+        background-color: #000;
+    }
     
     .nav-item{
         padding: 0px 50px;
@@ -113,6 +118,11 @@
         margin: 0;
         inset: 0;
         transition: none;
+
+        &.full {
+            padding-top: 7px;
+            background-color: #0000;
+        }
 
         .navbar-nav {
             background-color: #000a;

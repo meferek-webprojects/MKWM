@@ -168,7 +168,7 @@
 <hr class="breakline">
 
 <div class="portfolio">
-    <h4 class="our-portfolio">NASZE PORTFOLIO</h4>
+    <h4 class="our-portfolio d-none d-md-block">NASZE PORTFOLIO</h4>
     <h4>FOTOGRAFIA</h4>
     <h3>PORTFOLIO</h3>    
     <div class="row p-0 m-0">

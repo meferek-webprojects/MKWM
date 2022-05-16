@@ -24,10 +24,10 @@
                     GŁÓWNE
                 </li>
                 <li class="active-page">
-                    <a href="#" class="active"><i class="material-icons-two-tone">dashboard</i>Strona główna</a>
+                    <a href="{{ url('/dboard') }}" class="active"><i class="material-icons-two-tone">dashboard</i>Strona główna</a>
                 </li>
                 <li>
-                    <a href="#"><i class="material-icons-two-tone">account_circle</i>Twój profil</a>
+                    <a href="{{ url('/account') }}"><i class="material-icons-two-tone">account_circle</i>Twój profil</a>
                 </li>
                 <li class="sidebar-title">
                     TWOJE SESJE
@@ -73,10 +73,11 @@
                         </li>
                     </ul>
                 </li>
+                @if(Auth::user()->hasRole(10))
                 <li class="sidebar-title">
                     ADMINISTRATORSKIE
                 </li>
-                <li class="">
+                <li>
                     <a href="#"><i class="material-icons-two-tone">people</i>Użytkownicy<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                     <ul class="sub-menu" style="display: none;">
                         <li>
@@ -84,7 +85,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="">
+                <li>
                     <a href=""><i class="material-icons-two-tone">folder</i>Sesje<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                     <ul class="sub-menu" style="display: none;">
                         <li>
@@ -95,7 +96,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="">
+                <li>
                     <a href="#"><i class="material-icons-two-tone">work</i>Portfolio<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                     <ul class="sub-menu" style="display: none;">
                         <li>
@@ -112,6 +113,7 @@
                         </li>
                     </ul>
                 </li>
+                @endif
             </ul>
         <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 846px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 706px;"></div></div></div>
     </div>

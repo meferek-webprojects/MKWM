@@ -1,22 +1,10 @@
 <?php
+////////////////// METHODS //////////////////
 
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ShortTaskController;
-
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 
 
 /////////////////// LANDING PAGE ///////////////////
@@ -45,8 +33,6 @@ Route::get('/product', function () {
     return view('main.product');
 });
 
-
-
 Route::get('/logout', function () {
     if(Auth::check()) Auth::logout();
     return redirect('/');
@@ -58,7 +44,9 @@ Route::get('/logout', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dboard', [DashboardController::class, 'dashboard']);
+    Route::get('/account', [DashboardController::class, 'account']);
 });
+
 
 
 /////////////////// AUTH SHORT PATHS /////////////////// 
@@ -66,6 +54,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/change-theme', [ShortTaskController::class, 'change_theme']);
 });
+
+
 
 /////////////////// ADMIN AUTH PATHS/////////////////// 
 

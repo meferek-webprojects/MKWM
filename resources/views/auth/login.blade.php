@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.minimal-layout')
 
 @section('title')
-    <title>MKWM - Stwórz konto</title>
+    <title>MKWM - Zaloguj się</title>
 @endsection
 
 @section('content')

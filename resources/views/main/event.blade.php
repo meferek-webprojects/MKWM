@@ -24,9 +24,9 @@
     </div>
 
     <div class="gallery">
-        <div class="mx-auto" id="lightgallery">
+        <div class="mx-auto">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" id="lightgallery">
                     <a href="{{ url('images/photoshoots/1/1.jpg') }}">
                         <img class="img-fluid mb-1" alt=".." src="{{ url('images/photoshoots/1/1.jpg') }}" />
                     </a>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="last-photoshoot">
+<div onClick="function(){document.location.href = {{ url('/photoshoot') }} }" class="last-photoshoot">
     <div class="big-photoshoot">
         <div class="row p-0 m-0">
             <div class="col-xl-6 p-0 m-0 my-auto">

@@ -40,13 +40,24 @@
         }
     }
 
-    .navbar-toggler{
+    .navbar-show{
         z-index: 1001;
         position: fixed;
         right: 4%;
         top: 40px;
-        background-color: #0005;
-        backdrop-filter: blur(3px);
+        background-color: #000a;
+        backdrop-filter: blur(6px) invert(100%);
+        color: white;
+        border-radius: 0;
+    }
+
+    .navbar-hide{
+        z-index: 1001;
+        position: fixed;
+        right: 4%;
+        top: 40px;
+        background-color: #000a;
+        backdrop-filter: blur(6px) invert(100%);
         color: white;
         border-radius: 0;
     }
@@ -106,50 +117,28 @@
 
     .navbar {
         margin: 0;
-        inset: 0;
+        padding: 0;
+        top: 50%;
         transition: none;
 
-        .navbar-nav {
-            background-color: #000a;
-            width: calc(100vw - 100px);
-            height: calc(100vh - 150px);
-            padding: 20vh 0;
-            justify-content: space-between;
-            backdrop-filter: blur(6px);
+        .navbar-collapse{
+            transform: translateY(-50%);
+            z-index: 1002;
 
-            .nav-link{
-                font-size: 28px;
+            .navbar-nav {
+                background-color: #000a;
+                width: 100%;
+                height: 100vh;
+                padding: 20vh 0;
+                justify-content: space-between;
+                backdrop-filter: blur(6px);
+
+                .nav-link{
+                    font-size: 28px;
+                }
             }
         }
-
-        // #nav-logo {
-        //     display: none;
-        // }
-
-        // .nav-item {
-        //     padding: 0!important;
-        //     transition: all 0.3s;
-
-        //     &:hover {
-        //         font-weight: bold;
-        //         letter-spacing: 5px;
-        //         transition: all 0.3s;
-        //     }
-        // }
-    
-        // .nav-item, .nav-link{
-        //     font-family: 'Typo';
-        //     color: white!important;
-        //     font-size: 30px;
-        //     text-transform: uppercase;
-        // }
-        
-        // .logo {
-        //     font-family: 'Typo';
-        //     font-size: 50px;
-        // }
     }
-
 }
 
 @media only screen and (max-width: 650px) {
@@ -163,6 +152,5 @@
             }
         }
     }
-
 }
 

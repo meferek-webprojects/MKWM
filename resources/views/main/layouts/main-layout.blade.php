@@ -20,8 +20,8 @@
     <div class="container-fluid p-0">
 
         <nav class="navbar navbar-expand-xl navbar-dark">
-            <div class="container-fluid">
-                <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="container-fluid p-0">
+                <button class="navbar-toggler navbar-show shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i data-feather="menu"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -48,6 +48,9 @@
                             <i data-feather="search"></i>
                         </li>
                         <input type="text" class="searchbar position-absolute border-0" placeholder="Szukaj sesji...">
+                        <button class="navbar-toggler navbar-hide shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i data-feather="x"></i>
+                        </button>
                     </ul>
                 </div>
             </div>

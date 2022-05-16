@@ -51,14 +51,25 @@
   opacity: 0 !important;
   transform: translateY(20px) !important;
 }
-.navbar .navbar-toggler {
+.navbar .navbar-show {
   z-index: 1001;
   position: fixed;
   right: 4%;
   top: 40px;
-  background-color: rgba(0, 0, 0, 0.3333333333);
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.6666666667);
+  -webkit-backdrop-filter: blur(6px) invert(100%);
+          backdrop-filter: blur(6px) invert(100%);
+  color: white;
+  border-radius: 0;
+}
+.navbar .navbar-hide {
+  z-index: 1001;
+  position: fixed;
+  right: 4%;
+  top: 40px;
+  background-color: rgba(0, 0, 0, 0.6666666667);
+  -webkit-backdrop-filter: blur(6px) invert(100%);
+          backdrop-filter: blur(6px) invert(100%);
   color: white;
   border-radius: 0;
 }
@@ -100,19 +111,24 @@
 @media only screen and (max-width: 1199px) {
   .navbar {
     margin: 0;
-    inset: 0;
+    padding: 0;
+    top: 50%;
     transition: none;
   }
-  .navbar .navbar-nav {
+  .navbar .navbar-collapse {
+    transform: translateY(-50%);
+    z-index: 1002;
+  }
+  .navbar .navbar-collapse .navbar-nav {
     background-color: rgba(0, 0, 0, 0.6666666667);
-    width: calc(100vw - 100px);
-    height: calc(100vh - 150px);
+    width: 100%;
+    height: 100vh;
     padding: 20vh 0;
     justify-content: space-between;
     -webkit-backdrop-filter: blur(6px);
             backdrop-filter: blur(6px);
   }
-  .navbar .navbar-nav .nav-link {
+  .navbar .navbar-collapse .navbar-nav .nav-link {
     font-size: 28px;
   }
 }

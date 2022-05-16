@@ -55,27 +55,24 @@
   opacity: 0 !important;
   transform: translateY(20px) !important;
 }
-.navbar .navbar-show {
+.navbar .navbar-toggler {
   z-index: 1001;
   position: fixed;
   right: 4%;
   top: 40px;
   background-color: rgba(0, 0, 0, 0.6666666667);
-  -webkit-backdrop-filter: blur(6px) invert(100%);
-          backdrop-filter: blur(6px) invert(100%);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
   color: white;
   border-radius: 0;
 }
-.navbar .navbar-hide {
-  z-index: 1001;
-  position: fixed;
-  right: 4%;
-  top: 40px;
-  background-color: rgba(0, 0, 0, 0.6666666667);
-  -webkit-backdrop-filter: blur(6px) invert(100%);
-          backdrop-filter: blur(6px) invert(100%);
-  color: white;
-  border-radius: 0;
+.navbar .navbar-show {
+  opacity: 1;
+  transition: opacity 0s 0s;
+}
+.navbar .navbar-show[aria-expanded=true] {
+  opacity: 0;
+  transition: opacity 0s 0.2s;
 }
 .navbar #search-button {
   cursor: pointer;
@@ -151,6 +148,14 @@
 }
 .last-photoshoot {
   background-color: white;
+  cursor: pointer;
+}
+.last-photoshoot .img-fluid {
+  transition: transform 0.3s;
+}
+.last-photoshoot:hover .img-fluid {
+  overflow: hidden;
+  transform: scale(1.2);
 }
 .last-photoshoot .text {
   margin-left: 100px;
@@ -213,7 +218,7 @@
   .last-photoshoot {
     padding-left: 30px;
     padding-right: 30px;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
   }
   .last-photoshoot .type {
     font-size: 20px;
@@ -410,6 +415,7 @@
 }
 .mini-photoshoots {
   background-color: white;
+  cursor: pointer;
 }
 .mini-photoshoots .mini-photo .text {
   margin-left: 20px;
@@ -432,6 +438,10 @@
 .mini-photoshoots .mini-photo .thumb {
   height: 250px;
   overflow: hidden;
+  transition: transform 0.3s;
+}
+.mini-photoshoots .mini-photo:hover .thumb {
+  transform: scale(1.2);
 }
 
 @media only screen and (max-width: 1650px) {
@@ -533,7 +543,8 @@ hr.breakline {
   letter-spacing: 7px;
   color: rgba(0, 0, 0, 0.7529411765);
   text-align: center;
-  margin: 100px;
+  padding: 100px;
+  background-color: white;
 }
 
 .cta {

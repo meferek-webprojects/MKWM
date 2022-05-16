@@ -45,26 +45,25 @@
         }
     }
 
-    .navbar-show{
+    .navbar-toggler{
         z-index: 1001;
         position: fixed;
         right: 4%;
         top: 40px;
         background-color: #000a;
-        backdrop-filter: blur(6px) invert(100%);
+        backdrop-filter: blur(6px);
         color: white;
         border-radius: 0;
     }
 
-    .navbar-hide{
-        z-index: 1001;
-        position: fixed;
-        right: 4%;
-        top: 40px;
-        background-color: #000a;
-        backdrop-filter: blur(6px) invert(100%);
-        color: white;
-        border-radius: 0;
+    .navbar-show{
+        opacity: 1;
+        transition: opacity 0s 0s;
+    }
+
+    .navbar-show[aria-expanded=true]{
+        opacity: 0;
+        transition: opacity 0s .2s;
     }
 
     #search-button{

@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 p-0 m-0">
+            <div class="col-xl-6 p-0 m-0 overflow-hidden">
                 <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
             </div>
         </div>

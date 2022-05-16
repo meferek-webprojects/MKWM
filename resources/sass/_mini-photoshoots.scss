@@ -1,5 +1,6 @@
 .mini-photoshoots {
     background-color: white;
+    cursor: pointer;
 
     .mini-photo {
 
@@ -28,6 +29,11 @@
         .thumb {
             height: 250px;
             overflow: hidden;
+            transition: transform .3s;
+        }
+
+        &:hover .thumb{
+            transform: scale(1.2);
         }
 
     }

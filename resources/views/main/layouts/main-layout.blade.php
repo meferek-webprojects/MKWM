@@ -48,7 +48,7 @@
                             <i data-feather="search"></i>
                         </li>
                         <input type="text" class="searchbar position-absolute border-0" placeholder="Szukaj sesji...">
-                        <button class="navbar-toggler navbar-hide shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <i data-feather="x"></i>
                         </button>
                     </ul>
@@ -56,8 +56,8 @@
             </div>
         </nav>
 
-        <div class="hero position-relative overflow-hidden w-100">
-            <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image position-absolute start-50 translate-middle-x ">
+        <div class="hero position-sticky overflow-hidden w-100">
+            <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image position-absolute start-50 translate-middle-x">
             <div id="hero-text" class="hero-text text-center position-absolute top-50 start-50 translate-middle">
                 <div>EVERYONE DESERVES</div>
                 <div>to see own beauty</div>
@@ -94,7 +94,6 @@
 
         $(document).scroll(() => {
             let scrollTop = $(document).scrollTop();
-            let filterBlur = (-window.innerHeight / 2 + scrollTop) / 100;
 
             if(scrollTop){
                 if(window.innerWidth > 1199)
@@ -102,9 +101,8 @@
                 else
                     $('.navbar').removeAttr('style');
 
-                if(scrollTop < window.innerHeight) {
-                    $('.hero').css({'top': (scrollTop / 2)});
-                    // $('#hero-text').css({'opacity': filterBlur '%'});
+                if(scrollTop / 2 < window.innerHeight) {
+                    $('.hero').css({'top': -(scrollTop / 2)});
                 }
             }else{
                 $('.navbar').removeAttr('style');

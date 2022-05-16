@@ -74,16 +74,20 @@
   transition-delay: 0.4s;
 }
 .navbar .searchbar {
-  font-size: 20px;
+  text-transform: uppercase;
+  font-family: "Typo";
+  font-size: 18px;
   opacity: 0;
   padding: 6px 0;
-  border-radius: 3px;
   width: auto;
   top: 50%;
   transform: translateY(-50%);
   right: 124px;
   left: calc(100% - 25px);
   transition: left 0.4s 0s, opacity 0s 0.4s, padding 0.2s 0s;
+}
+.navbar .searchbar:focus-visible {
+  outline: none !important;
 }
 .navbar .searchbar.active {
   transition: left 0.4s 0.4s, opacity 0s 0.4s, padding 0.2s 0.6s;

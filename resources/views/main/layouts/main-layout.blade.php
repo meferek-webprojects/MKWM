@@ -47,7 +47,7 @@
                         <li class="nav-item d-none d-xl-block position-relative" id="search-button">
                             <i data-feather="search"></i>
                         </li>
-                        <input type="text" class="searchbar position-absolute border-0" placeholder="Szukaj sesji...">
+                        <input type="text" class="searchbar position-absolute border-0" placeholder="Szukaj sesji">
                     </ul>
                 </div>
             </div>

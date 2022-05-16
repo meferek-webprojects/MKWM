@@ -65,10 +65,11 @@
     }
 
     .searchbar{
-        font-size: 20px;
+        text-transform: uppercase;
+        font-family: 'Typo';
+        font-size: 18px;
         opacity: 0;
         padding: 6px 0;
-        border-radius: 3px;
         width: auto;
         top: 50%;
         transform: translateY(-50%);
@@ -78,6 +79,10 @@
             left $searchbar-opening-duration 0s,
             opacity 0s $searchbar-opening-duration,
             padding calc($searchbar-opening-duration / 2) 0s;
+        
+        &:focus-visible {
+            outline: none !important;
+        }
 
         &.active{
             transition:

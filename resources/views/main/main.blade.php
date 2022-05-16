@@ -204,6 +204,13 @@
     </div>
 </div>
 
+<div class="footer text-center pb-5">
+    {{-- <img class="img-fluid text-center" src="{{ url('images/img/logo-dark.png') }}" alt=""> --}}
+    <h2>MKWM</h2>
+    <h6><a href="#">Polityka prywatności oraz polityka ciasteczek</a></h6>
+    <h5>Copyright &copy; 2022 Mateusz Krysiak & Krzysztof Stępniak <h5>
+</div>
+
 <script>
     /*
      * Light YouTube Embeds by @labnol

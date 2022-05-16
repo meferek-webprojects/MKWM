@@ -555,3 +555,68 @@ hr.breakline {
   position: absolute;
   cursor: pointer;
 }
+
+.footer {
+  padding-top: 50px;
+  font-family: "Typo";
+  background-color: black;
+  color: white;
+}
+.footer h2 {
+  font-family: "Typo";
+  font-size: 60px;
+  margin-bottom: 30px;
+}
+.footer h5 {
+  text-transform: uppercase;
+  font-size: 15px;
+  opacity: 0.5;
+}
+.footer h6 {
+  margin-bottom: 15px;
+  transition: 0.3s all;
+}
+.footer h6 a, .footer h6 a:not(:hover) {
+  text-decoration: none;
+  color: rgb(208, 208, 208);
+  transition: 0.3s all;
+}
+.footer h6 a:hover, .footer h6 a:not(:hover):hover {
+  color: rgb(255, 255, 255);
+  transition: 0.3s all;
+}
+.footer img {
+  width: 200px;
+}
+
+@media only screen and (max-width: 700px) {
+  .footer {
+    padding-top: 50px;
+    font-family: "Typo";
+    background-color: black;
+    color: white;
+  }
+  .footer h2 {
+    font-family: "Typo";
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+  .footer h5 {
+    text-transform: uppercase;
+    font-size: 13px;
+    opacity: 0.5;
+  }
+  .footer h6 {
+    margin-bottom: 15px;
+    transition: 0.3s all;
+  }
+  .footer h6 a, .footer h6 a:not(:hover) {
+    text-decoration: none;
+    color: rgb(208, 208, 208);
+    transition: 0.3s all;
+  }
+  .footer h6 a:hover, .footer h6 a:not(:hover):hover {
+    color: rgb(255, 255, 255);
+    transition: 0.3s all;
+  }
+}

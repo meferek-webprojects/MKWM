@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ShortTaskController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SessionController;
 
 
 /////////////////// LANDING PAGE ///////////////////
@@ -69,6 +70,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
 
     Route::resource('user', UserController::class)->only(['index']);
+    Route::resource('session', SessionController::class);
     
 });
 

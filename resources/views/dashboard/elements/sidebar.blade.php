@@ -81,7 +81,7 @@
                     <a href="#"><i class="material-icons-two-tone">people</i>Użytkownicy<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                     <ul class="sub-menu" style="display: none;">
                         <li>
-                            <a href="/users">Wszyscy użytkownicy</a>
+                            <a href="{{ route('user.index') }}">Wszyscy użytkownicy</a>
                         </li>
                     </ul>
                 </li>

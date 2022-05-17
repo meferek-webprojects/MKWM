@@ -28,9 +28,9 @@
         <link href="{{ url('dashboard/css/darktheme.css') }}" rel="stylesheet">
     @endif
     <link href="{{ url('dashboard/css/custom.css') }}" rel="stylesheet">
-
+{{-- 
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/neptune.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/neptune.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/neptune.png"> --}}
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

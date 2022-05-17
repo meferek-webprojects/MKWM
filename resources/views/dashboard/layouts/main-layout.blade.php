@@ -712,6 +712,23 @@
         </div>
         <div class="pace-activity"></div>
     </div>
+    
+    @if (@session('primary'))
+        <x-alert type="primary" :message="@session('primary')" />
+    @endif
+    @if (@session('danger'))
+        <x-alert type="danger" :message="@session('danger')" />
+    @endif
+    @if (@session('warning'))
+        <x-alert type="warning" :message="@session('warning')" />
+    @endif
+    @if (@session('info'))
+        <x-alert type="info" :message="@session('info')" />
+    @endif
+    @if (@session('success'))
+        <x-alert type="success" :message="@session('success')" />
+    @endif
+
     <div class="app align-content-stretch d-flex flex-wrap">
 
         @yield('sidebar')
@@ -735,6 +752,8 @@
     <script src="{{ url('dashboard/js/main.min.js') }}"></script>
     <script src="{{ url('dashboard/js/custom.js') }}"></script>
     <script src="{{ url('dashboard/js/pages/dashboard.js') }}"></script>
+    <script src="{{ url('dashboard/js/alertDismiss.js') }}"></script>
+
 
     @yield('added-js')
 

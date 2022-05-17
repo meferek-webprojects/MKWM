@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ShortTaskController;
+use App\Http\Controllers\UserController;
 
 
 /////////////////// LANDING PAGE ///////////////////
@@ -43,8 +44,12 @@ Route::get('/logout', function () {
 /////////////////// AUTH /////////////////// 
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
     Route::get('/dboard', [DashboardController::class, 'dashboard']);
     Route::get('/account', [DashboardController::class, 'account']);
+
+    Route::resource('user', UserController::class);
+
 });
 
 

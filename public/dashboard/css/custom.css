@@ -1,1 +1,23 @@
 /* Your Custom CSS Goes here */
+
+.notifi {
+    position: fixed;
+    z-index: 9999;
+    bottom: 10;
+    right: 10;
+    width: 300px;
+}
+
+@media only screen and (max-width: 1101px) {
+
+    .navbar-nav {
+        flex-direction: row;
+    }
+
+}
+
+@media only screen and (max-width: 384px) {
+    #change-theme {
+        display: none;
+    }
+}

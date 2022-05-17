@@ -97,6 +97,17 @@
                     </ul>
                 </li>
                 <li>
+                    <a href=""><i class="material-icons-two-tone">pin_drop</i>Miejsca<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                    <ul class="sub-menu" style="display: none;">
+                        <li>
+                            <a href="/place-list">Wszystkie miejsca</a>
+                        </li>
+                        <li>
+                            <a href="/place-add">Dodaj miejsce</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a href="#"><i class="material-icons-two-tone">work</i>Portfolio<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                     <ul class="sub-menu" style="display: none;">
                         <li>

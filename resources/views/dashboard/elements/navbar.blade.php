@@ -22,7 +22,7 @@
                                 <li><a class="dropdown-item" href="#">Nowa informacja</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li id="change-theme" class="nav-item d-flex-inline">
                             @if(Auth::user()->theme == 'dark')
                                 <a class="nav-link" href="{{ url('/change-theme') }}"><i class="material-icons">light_mode</i></a>
                             @else

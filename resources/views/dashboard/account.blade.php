@@ -21,8 +21,9 @@
                     </div>
                 </div>
 
-                <form action="{{ url('') }}" method="POST">
+                <form action="{{ route('user.update', Auth::user()->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
 
                     <div class="row">
                         <div class="col-lg-2">
@@ -43,13 +44,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="name" placeholder="Imię" value="{{ Auth::user()->name }}">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Imię" value="{{ Auth::user()->name }}">
                                                 <label for="name">Imię</label>
                                             </div>        
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="surname" placeholder="Imię" value="{{ Auth::user()->surname }}">
+                                                <input type="text" class="form-control" id="surname" name="surname" placeholder="Imię" value="{{ Auth::user()->surname }}">
                                                 <label for="surname">Nazwisko</label>
                                             </div>        
                                         </div>
@@ -69,13 +70,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input type="email" class="form-control" id="email" placeholder="E-mail" value="{{ Auth::user()->email }}">
+                                                <input disabled type="email" class="form-control" id="email" placeholder="E-mail" name="email" value="{{ Auth::user()->email }}">
                                                 <label for="email">E-mail</label>
                                             </div>        
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3">
-                                                <input type="text" class="form-control" id="phone" placeholder="Telefon" value="{{ Auth::user()->phone }}">
+                                                <input type="text" class="form-control" id="phone" placeholder="Telefon" name="phone" value="{{ Auth::user()->phone }}">
                                                 <label for="phone">Telefon</label>
                                             </div>        
                                         </div>

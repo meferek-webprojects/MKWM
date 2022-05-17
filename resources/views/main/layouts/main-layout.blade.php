@@ -25,7 +25,7 @@
                     <i data-feather="menu"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0 mx-auto d-flex align-items-center position-relative">
+                    <ul class="navbar-nav mx-auto d-flex align-items-center position-relative">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ url('/') }}">Główna</a>
                         </li>

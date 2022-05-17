@@ -1,12 +1,15 @@
-.mini-photoshoots {
+.extra-photoshoots {
     background-color: white;
     cursor: pointer;
+    width: 100%;
 
-    .mini-photo {
+    .extra-photoshoot {
+        width: 50%;
+        background-color: white;
 
-        .text {
-
-            margin-left: 20px;
+        .photoshoot-info {
+            width: 50%;
+            padding-left: 20px;
 
             .place {
                 color: rgb(200, 200, 200);
@@ -26,124 +29,69 @@
             }
         }
 
-        .thumb {
-            height: 250px;
+        .photoshoot-image {
             overflow: hidden;
-            transition: transform .3s;
-        }
+            width: 50%;
+            height: 100%;
+            
 
-        &:hover .thumb{
-            transform: scale(1.2);
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                transition: transform .3s, filter .3s;
+                
+                &:hover{
+                    transform: scale(1.15);
+                    filter: brightness(75%);
+                }
+            }
         }
 
     }
 
 }
 
-@media only screen and (max-width: 1650px) {
-    .mini-photoshoots .mini-photo .thumb {
-        height: 200px;
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    .mini-photoshoots {
-
+@media only screen and (max-width: 1199px) {
+    .extra-photoshoots {
         padding: 50px;
 
-        .mini-photo {
+        .extra-photoshoot {
+            width: 100%;
     
-            .text {
-
+            .photoshoot-info {
                 margin-left: 0;
 
     
                 .place {
-
                     font-size: 25px;
-
                 }
     
                 .person {
                     font-size: 35px;
                 }
             }
-
-            &:nth-child(even) {
-                .text {
-                    margin-left: 25px;
-                }
-            }
-
-            
-            .thumb {
-                height: 250px;
-            }
-    
         }
-        
     }
 }
-@media only screen and (max-width: 940px) {
 
-    .mini-photoshoots {
+@media only screen and (max-width: 740px){
+    .extra-photoshoots {
+        padding: 30px;
 
-        .mini-photo {
+        .extra-photoshoot{
     
-            .text {
-    
-                .place {
-                    color: rgb(200, 200, 200);
-
-                }
-            }
-    
-            .thumb {
-                height: 150px;
-                overflow: hidden;
-            }
-    
-        }
-    
-    }
-
-}
-
-@media only screen and (max-width: 635px) {
-    
-    .mini-photoshoots {
-
-        .mini-photo {
-    
-            .text {
-
-                text-align: center;
-                margin: 0!important;
+            .photoshoot-info{
 
                 .place {
                     font-size: 20px;
-                    display: none;
                 }
     
                 .person {
-                    font-size: 20px;
+                    font-size: 28px;
                 }
             }
-
-            .thumb img {
-                max-width: 200%;
-                transform: translateX(-23%);
-            }
-    
         }
     }
-
-}
-
-@media only screen and (max-width: 600px) {
-
-    .mini-photoshoots {
-        padding: 30px;
-    }
-
 }

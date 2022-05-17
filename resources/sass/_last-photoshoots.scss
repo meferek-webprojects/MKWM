@@ -1,107 +1,117 @@
-.last-photoshoot {
+.last-photoshoot{
     background-color: white;
     cursor: pointer;
 
-    .img-fluid{
-        transition: transform .3s;
-    }
+    .photoshoot-info{
+        width: 50%;
+        padding-left: 100px;
 
-    &:hover .img-fluid{
-        overflow: hidden;
-        transform: scale(1.2);
-    }
-
-    .text {
-        margin-left: 100px;
-    }
-    
-    .type {
-        font-family: 'TypoBold';
-        font-size: 25px;
-        letter-spacing: 8px;
-        margin-top: 10px;
-        margin-bottom: 60px;
-        opacity: 80%;
-    }
-
-    .place {
-        color: rgb(200, 200, 200);
-        font-family: 'DMSerif';
-        font-size: 35px;
-        margin-bottom: 0;
-        padding-bottom: 0;
-    }
-
-    .person {
-        color: #000000c0;
-        font-family: 'TypoBold';
-        font-size: 50px;
-        margin-top: 0;
-        padding-top: 0;
-        white-space: nowrap;
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-
-    .last-photoshoot {
-        
-        padding-left: 50px;
-        padding-right: 50px;
-
-        .text {
-            margin-left: 0;
-        }
-
-        .type {
+        .type{
+            font-family: 'TypoBold';
             font-size: 25px;
             letter-spacing: 8px;
-            margin-top: 60px;
-            margin-bottom: 20px;
+            margin-top: 10px;
+            margin-bottom: 60px;
             opacity: 80%;
         }
-
-        .place {
+    
+        .place{
             color: rgb(200, 200, 200);
-            font-size: 34px;
+            font-family: 'DMSerif';
+            font-size: 35px;
             margin-bottom: 0;
             padding-bottom: 0;
         }
-
-        .person {
+    
+        .person{
             color: #000000c0;
-            font-size: 45px;
+            font-family: 'TypoBold';
+            font-size: 50px;
             margin-top: 0;
-            margin-bottom: 50px;
             padding-top: 0;
             white-space: nowrap;
         }
+    }
 
+    .photoshoot-image{
+        width: 50%;
+
+        img{
+            transition: transform .3s, filter .3s;
+    
+            &:hover{
+                transform: scale(1.15);
+                filter: brightness(75%);
+            }
+        }
     }
 
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1199px) {
 
-    .last-photoshoot {
+    .last-photoshoot{
+        padding: 60px 50px 0 50px;
 
-        padding-left: 30px;
-        padding-right: 30px;
-        padding-bottom: 40px;
+        .photoshoot-info{
+            width: 100%;
+            padding-left: 0;
 
-        .type {
-            font-size: 20px;
-
+            .type{
+                font-size: 25px;
+                letter-spacing: 8px;
+                margin-bottom: 20px;
+                opacity: 80%;
+            }
+    
+            .place{
+                color: rgb(200, 200, 200);
+                font-size: 34px;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+    
+            .person{
+                color: #000000c0;
+                font-size: 45px;
+                margin-top: 0;
+                margin-bottom: 50px;
+                padding-top: 0;
+                white-space: nowrap;
+            }
         }
 
-        .place {
-            font-size: 29px;
+        .photoshoot-image{
+            width: 100%;
         }
-
-        .person {
-            font-size: 40px;
-        }
-
     }
+}
 
+@media only screen and (max-width: 740px){
+
+    .last-photoshoot{
+        padding: 60px 30px;
+
+        .photoshoot-info{
+
+            .type{
+                font-size: 20px;
+            }
+
+            .place{
+                font-size: 28px;
+            }
+
+            .person{
+                font-size: 40px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 575px){
+
+    .last-photoshoot{
+        padding: 40px 15px;
+    }
 }

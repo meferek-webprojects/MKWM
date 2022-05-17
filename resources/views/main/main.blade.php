@@ -2,115 +2,79 @@
 
 @section('content')
 
-<div onClick="function(){document.location.href = {{ url('/photoshoot') }} }" class="last-photoshoot">
-    <div class="big-photoshoot">
-        <div class="row p-0 m-0">
-            <div class="col-xl-6 p-0 m-0 my-auto">
-                <div class="text">
-                    <div class="type">
-                        LAST PHOTOSHOOT
-                    </div>
-                    <div class="place">
-                        Studio
-                    </div>
-                    <div class="person">
-                        Natalia Regulska
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 p-0 m-0 overflow-hidden">
-                <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
-            </div>
+<div class="last-photoshoot d-flex flex-wrap w-100" onclick="window.location='{{ url('/photoshoot') }}'">
+    <div class="photoshoot-info my-auto">
+        <div class="type">
+            LAST PHOTOSHOOT
         </div>
+        <div class="place">
+            Studio
+        </div>
+        <div class="person">
+            Natalia Regulska
+        </div>
+    </div>
+    <div class="photoshoot-image overflow-hidden">
+        <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
     </div>
 </div>
 
-<div class="mini-photoshoots d-none d-sm-block">
-
-    <div class="row m-0 p-0">
-
-        <div class="col-xl-6 m-0 p-0 mini-photo">
-
-            <div class="row p-0 m-0">
-                <div class="col-6 p-0 m-0 order-xl-2 my-auto">
-                    <div class="text">
-                        <div class="place">
-                            Studio
-                        </div>
-                        <div class="person">
-                            Natalia Regulska
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 p-0 m-0 order-xl-1 thumb">
-                    <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
-                </div>
+<div class="extra-photoshoots d-none d-sm-flex flex-wrap">
+    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
+        <div class="photoshoot-info order-xl-1">
+            <div class="place">
+                Studio
             </div>
-
-        </div>
-
-        <div class="col-xl-6 m-0 p-0 mini-photo">
-
-            <div class="row p-0 m-0">
-                <div class="col-6 p-0 m-0 order-2 my-auto">
-                    <div class="text">
-                        <div class="place">
-                            Studio
-                        </div>
-                        <div class="person">
-                            Natalia Regulska
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 p-0 m-0 order-1 thumb">
-                    <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
-                </div>
+            <div class="person">
+                Natalia Regulska
             </div>
-
         </div>
-
-        <div class="col-xl-6 m-0 p-0 mini-photo">
-
-            <div class="row p-0 m-0">
-                <div class="col-6 p-0 m-0 my-auto">
-                    <div class="text">
-                        <div class="place">
-                            Studio
-                        </div>
-                        <div class="person">
-                            Natalia Regulska
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 p-0 m-0 thumb">
-                    <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
-                </div>
-            </div>
-            
+        <div class="photoshoot-image order-xl-0">
+            <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
         </div>
-
-        <div class="col-xl-6 m-0 p-0 mini-photo">
-
-            <div class="row p-0 m-0">
-                <div class="col-6 p-0 m-0 order-xl-2 thumb">
-                    <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
-                </div>
-                <div class="col-6 p-0 m-0 order-xl-1 my-auto">
-                    <div class="text">
-                        <div class="place">
-                            Studio
-                        </div>
-                        <div class="person">
-                            Natalia Regulska
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
     </div>
 
+    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
+        <div class="photoshoot-info order-1">
+            <div class="place">
+                Studio
+            </div>
+            <div class="person">
+                Natalia Regulska
+            </div>
+        </div>
+        <div class="photoshoot-image order-0">
+            <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
+        </div>
+    </div>
+
+    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
+        <div class="photoshoot-info">
+            <div class="place">
+                Studio
+            </div>
+            <div class="person">
+                Natalia Regulska
+            </div>
+        </div>
+        <div class="photoshoot-image">
+            <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
+        </div>
+    </div>
+
+    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
+        <div class="photoshoot-info order-1 order-xl-0">
+            <div class="place">
+                Studio
+            </div>
+            <div class="person">
+                Natalia Regulska
+            </div>
+        </div>
+        <div class="photoshoot-image order-0 order-xl-1">
+            <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
+        </div>
+    </div>
 </div>
 
 <div class="cta">
@@ -125,7 +89,7 @@
                         <input type="text" class="form-control" placeholder="E-mail">
                     </div>
                     <div class="col-sm-4">
-                        <button class="btn btn-light">WYŚLIJ</button>
+                        <button class="btn btn-light mt-3 mt-sm-0">WYŚLIJ</button>
                     </div>
                 </div>
             </form>
@@ -168,7 +132,7 @@
 <hr class="breakline">
 
 <div class="portfolio">
-    <h4 class="our-portfolio d-none d-md-block">NASZE PORTFOLIO</h4>
+    <h4 class="our-portfolio">NASZE PORTFOLIO</h4>
     <h4>FOTOGRAFIA</h4>
     <h3>PORTFOLIO</h3>    
     <div class="row p-0 m-0">
@@ -225,9 +189,9 @@
         var videoId = playerElements[n].dataset.id;
         var div = document.createElement('div');
         div.setAttribute('data-id', videoId);
-        var thumbNode = document.createElement('img');
-        thumbNode.src = '../../images/yt-thumb/2.jpg'.replace('ID', videoId);
-        div.appendChild(thumbNode);
+        var photoshoot-imageNode = document.createElement('img');
+        photoshoot-imageNode.src = '../../images/yt-photoshoot-image/2.jpg'.replace('ID', videoId);
+        div.appendChild(photoshoot-imageNode);
         var playButton = document.createElement('div');
         playButton.setAttribute('class', 'play');
         div.appendChild(playButton);

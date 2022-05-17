@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SessionController extends Controller
 {
@@ -13,7 +15,9 @@ class SessionController extends Controller
      */
     public function index()
     {
-        //
+        $sessions = DB::table('sessions')->get();
+
+        return view('dashboard.session-list')->with('sessions', $sessions);
     }
 
     /**

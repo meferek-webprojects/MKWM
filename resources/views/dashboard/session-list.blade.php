@@ -31,17 +31,17 @@
                                             <th>ID</th>
                                             <th>Nazwa</th>
                                             <th>Model/ka</th>
-                                            <th>Data dołączenia</th>
+                                            <th>Data sesji</th>
                                             <th>&nbsp;</th>
                                             <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($users as $user)
+                                        @foreach($sessions as $session)
                                             <tr>
                                                 <td>{{ $user->id }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
+                                                <td></td>
+                                                <td>{{ $user->date }}</td>
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>
                                                     <form action="#" method="POST">

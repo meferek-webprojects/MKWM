@@ -33,11 +33,11 @@
                 </div>
                 <div class="d-flex">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link toggle-search" href="#"><i class="material-icons">search</i></a>
+                        <li class="nav-item d-flex">
+                            <a class="nav-link toggle-search my-auto" href="#"><i class="material-icons">search</i></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/logout') }}"><i class="material-icons">logout</i></a>
+                        <li class="nav-item d-flex">
+                            <a class="nav-link my-auto" href="{{ url('/logout') }}"><i class="material-icons">logout</i></a>
                         </li>
                         <li class="nav-item hidden-on-mobile">
                             <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown">4</a>

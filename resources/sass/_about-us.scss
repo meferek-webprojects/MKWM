@@ -44,28 +44,44 @@
     
         .about-image{
             width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    .about{
+        padding: 0 30px;
     
-            img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
+        .about-image{
     
             .image-text{
-                background-color: white;
-                padding: 5px 20px;
     
                 .profession{
-                    color: rgb(200, 200, 200);
-                    font-family: "DMSerif";
-                    font-size: 24px;
+                    font-size: 18px;
                 }
     
                 .person{
-                    color: #000000c0;
-                    font-family: "TypoBold";
-                    font-size: 34px;
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .about{
+        padding: 0 15px;
+    
+        .about-image{
+    
+            .image-text{
+    
+                .profession{
+                    font-size: 14px;
+                }
+    
+                .person{
+                    font-size: 22px;
                 }
             }
         }

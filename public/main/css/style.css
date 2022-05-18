@@ -633,6 +633,91 @@ hr.breakline {
     font-size: 22px;
   }
 }
+.testimonials h3 {
+  font-family: "TypoBold";
+  letter-spacing: 7px;
+  color: rgba(0, 0, 0, 0.7529411765);
+  text-align: center;
+  padding: 100px;
+  background-color: white;
+}
+.testimonials .carousel-inner {
+  aspect-ratio: 10/3;
+}
+.testimonials .carousel-inner .carousel-item {
+  height: 100%;
+  width: 100%;
+}
+.testimonials .carousel-inner .carousel-item img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center 25%;
+     object-position: center 25%;
+  filter: brightness(50%);
+}
+.testimonials .carousel-inner .carousel-item .testimonial {
+  color: white;
+}
+.testimonials .carousel-inner .carousel-item .testimonial .text {
+  font-size: 24px;
+}
+.testimonials .carousel-inner .carousel-item .testimonial .person {
+  font-size: 28px;
+}
+
+@media only screen and (max-width: 1399px) {
+  .testimonials .carousel-inner {
+    aspect-ratio: 10/4;
+  }
+  .testimonials .carousel-inner .testimonial .text {
+    font-size: 22px !important;
+  }
+  .testimonials .carousel-inner .testimonial .person {
+    font-size: 26px !important;
+  }
+}
+@media only screen and (max-width: 1199px) {
+  .testimonials .carousel-inner {
+    aspect-ratio: 10/5;
+  }
+  .testimonials .carousel-inner .testimonial .text {
+    font-size: 20px !important;
+  }
+  .testimonials .carousel-inner .testimonial .person {
+    font-size: 24px !important;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .testimonials .carousel-inner {
+    aspect-ratio: 10/6;
+  }
+  .testimonials .carousel-inner .testimonial {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .testimonials .carousel-inner {
+    aspect-ratio: 10/7;
+  }
+  .testimonials .carousel-inner .testimonial .text {
+    font-size: 18px !important;
+  }
+  .testimonials .carousel-inner .testimonial .person {
+    font-size: 22px !important;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .testimonials .carousel-inner {
+    aspect-ratio: 10/8;
+  }
+  .testimonials .carousel-inner .testimonial .text {
+    font-size: 16px !important;
+  }
+  .testimonials .carousel-inner .testimonial .person {
+    font-size: 20px !important;
+  }
+}
 .cta {
   background-color: #0e0e0e;
   padding: 50px 250px;
@@ -704,8 +789,7 @@ hr.breakline {
   font-family: "TypoBold";
   font-size: 25px;
   letter-spacing: 8px;
-  margin-top: 10px;
-  margin-bottom: 60px;
+  margin: 60px 0;
 }
 .portfolio h4 {
   color: rgb(200, 200, 200);

@@ -128,24 +128,42 @@
 <hr class="breakline">
 
 <div class="testimonials">
-    
-    <div class="title">
-        <h3>Testimonials</h3>
-        
-    </div>
-
-    <div class="opinions">
-        <div class="text">
-
+    <h3>TESTIMONIALS</h3>    
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
         </div>
-        <div class="author">
-            <img src="" alt=""> Natalia Regulska
+        <div class="carousel-inner">
+            <div class="carousel-item position-relative active">
+                <img src="{{ url('/images/img/mateusz.jpg') }}" class="d-block w-100" alt="">
+                <div class="testimonial position-absolute top-50 start-50 translate-middle text-center">
+                    <p class="text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis iusto blanditiis doloribus porro dolor officiis repudiandae illum sint maxime. At!
+                    </p>
+                    <div class="person">Mateusz Krysiak</div>
+                </div>
+            </div>
+            <div class="carousel-item position-relative">
+                <img src="{{ url('/images/img/natalia.jpg') }}" class="d-block w-100" alt="">
+                <div class="testimonial position-absolute top-50 start-50 translate-middle text-center">
+                    <p class="text">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni totam quas dicta non quisquam amet aliquam dolorum distinctio molestiae reiciendis.
+                    </p>
+                    <div class="person">Natalia Regulska</div>
+                </div>
+            </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-
 </div>
-
-<hr class="breakline">
 
 <div class="portfolio">
     <h4 class="our-portfolio">NASZE PORTFOLIO</h4>

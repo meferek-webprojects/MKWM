@@ -1,0 +1,132 @@
+.testimonials{
+
+    h3{
+        font-family: 'TypoBold';
+        letter-spacing: 7px;
+        color: #000000c0;
+        text-align: center;
+        padding: 100px;
+        background-color: white;
+    }
+
+    .carousel-inner{
+        aspect-ratio: 10 / 3;
+
+        .carousel-item{
+            height: 100%;
+            width: 100%;
+
+            img{
+                height: 100%;
+                object-fit: cover;
+                object-position: center 25%;
+                filter: brightness(50%);
+            }
+
+            .testimonial{
+                color: white;
+
+                .text{
+                    font-size: 24px;
+                }
+
+                .person{
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1399px) {
+    .testimonials{
+    
+        .carousel-inner{
+            aspect-ratio: 10 / 4;
+
+            .testimonial{
+
+                .text{
+                    font-size: 22px!important;
+                }
+
+                .person{
+                    font-size: 26px!important;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .testimonials{
+    
+        .carousel-inner{
+            aspect-ratio: 10 / 5;
+
+            .testimonial{
+            
+                .text{
+                    font-size: 20px!important;
+                }
+
+                .person{
+                    font-size: 24px!important;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .testimonials{
+    
+        .carousel-inner{
+            aspect-ratio: 10 / 6;
+
+            .testimonial{
+                width: 60%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .testimonials{
+    
+        .carousel-inner{
+            aspect-ratio: 10 / 7;
+
+            .testimonial{
+            
+                .text{
+                    font-size: 18px!important;
+                }
+
+                .person{
+                    font-size: 22px!important;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .testimonials{
+    
+        .carousel-inner{
+            aspect-ratio: 10 / 8;
+
+            .testimonial{
+            
+                .text{
+                    font-size: 16px!important;
+                }
+
+                .person{
+                    font-size: 20px!important;
+                }
+            }
+        }
+    }
+}

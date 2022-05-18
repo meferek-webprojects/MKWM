@@ -101,9 +101,10 @@
                 else
                     $('.navbar').removeAttr('style');
 
-                if(scrollTop / 2 < window.innerHeight) {
-                    $('.hero').css({'top': -(scrollTop / 2)});
-                }
+                if(scrollTop <= window.innerHeight)
+                    $('.hero').css({'top': -(scrollTop / 2), 'opacity': ''});
+                else
+                    $('.hero').css({'opacity': '0'});
             }else{
                 $('.navbar').removeAttr('style');
                 $('.hero').removeAttr('style');

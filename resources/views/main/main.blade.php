@@ -97,14 +97,30 @@
     </div>
 </div>
 
-<div class="about-us">
+<div class="about">
     <h3>ABOUT US</h3>    
-    <div class="row p-0 m-0">
-        <div class="col-lg-6 p-0 m-0">
+    <div class="about-info d-flex flex-wrap w-100">
+        <div class="about-image position-relative order-1 order-xl-0">
             <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="img-fluid">
+            <div class="image-text position-absolute bottom-0 start-0 mb-3 ms-2">
+                <div class="profession">
+                    Fotograf
+                </div>
+                <div class="person">
+                    Mateusz Krysiak
+                </div>
+            </div>
         </div>
-        <div class="col-lg-6 p-0 m-0">
+        <div class="about-image position-relative order-0 order-xl-0">
             <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="img-fluid">
+            <div class="image-text position-absolute top-0 end-0 mt-3 me-2">
+                <div class="profession">
+                    Fotograf
+                </div>
+                <div class="person">
+                    Mateusz Krysiak
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -146,6 +146,11 @@
     right: 30px;
   }
 }
+@media only screen and (max-width: 575px) {
+  .navbar .navbar-toggler {
+    right: 15px;
+  }
+}
 .last-photoshoot {
   background-color: white;
   cursor: pointer;
@@ -438,14 +443,14 @@
 .extra-photoshoots .extra-photoshoot .photoshoot-info .place {
   color: rgb(200, 200, 200);
   font-family: "DMSerif";
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 .extra-photoshoots .extra-photoshoot .photoshoot-info .person {
   color: rgba(0, 0, 0, 0.7529411765);
   font-family: "TypoBold";
-  font-size: 35px;
+  font-size: 30px;
   margin-top: 0;
   padding-top: 0;
   white-space: nowrap;
@@ -535,7 +540,7 @@ hr.breakline {
   margin: 50px 0;
 }
 
-.about-us h3 {
+.about h3 {
   font-family: "TypoBold";
   letter-spacing: 7px;
   color: rgba(0, 0, 0, 0.7529411765);
@@ -543,7 +548,62 @@ hr.breakline {
   padding: 100px;
   background-color: white;
 }
+.about .about-image {
+  width: 50%;
+}
+.about .about-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.about .about-image .image-text {
+  background-color: white;
+  padding: 5px 20px;
+}
+.about .about-image .image-text .profession {
+  color: rgb(200, 200, 200);
+  font-family: "DMSerif";
+  font-size: 24px;
+}
+.about .about-image .image-text .person {
+  color: rgba(0, 0, 0, 0.7529411765);
+  font-family: "TypoBold";
+  font-size: 34px;
+}
 
+@media only screen and (max-width: 1199px) {
+  .about {
+    padding: 0 50px;
+  }
+  .about .about-image {
+    width: 100%;
+  }
+  .about .about-image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
+  }
+  .about .about-image .image-text {
+    background-color: white;
+    padding: 5px 20px;
+  }
+  .about .about-image .image-text .profession {
+    color: rgb(200, 200, 200);
+    font-family: "DMSerif";
+    font-size: 24px;
+  }
+  .about .about-image .image-text .person {
+    color: rgba(0, 0, 0, 0.7529411765);
+    font-family: "TypoBold";
+    font-size: 34px;
+  }
+}
 .cta {
   background-color: #0e0e0e;
   padding: 50px 250px;

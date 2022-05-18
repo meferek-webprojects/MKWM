@@ -21,7 +21,7 @@ class ShortTaskController extends Controller
         $user->theme = $newTheme;
         $user->save();
         
-        return redirect()->back();
+        return redirect()->back()->with('sucess', 'Pomyślnie zmieniono motyw');
 
     }
 }

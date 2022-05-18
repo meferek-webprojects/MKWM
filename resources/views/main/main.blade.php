@@ -205,9 +205,9 @@
         var videoId = playerElements[n].dataset.id;
         var div = document.createElement('div');
         div.setAttribute('data-id', videoId);
-        var photoshoot-imageNode = document.createElement('img');
-        photoshoot-imageNode.src = '../../images/yt-photoshoot-image/2.jpg'.replace('ID', videoId);
-        div.appendChild(photoshoot-imageNode);
+        var photoshootimageNode = document.createElement('img');
+        photoshootimageNode.src = '../../images/yt-photoshoot-image/2.jpg'.replace('ID', videoId);
+        div.appendChild(photoshootimageNode);
         var playButton = document.createElement('div');
         playButton.setAttribute('class', 'play');
         div.appendChild(playButton);

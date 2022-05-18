@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="page-description">
-                            <h1>{{ Auth::user()->name; }}, tutaj możesz zmienić swoje dane</h1>
+                            <h1>Ustawienia</h1>
                         </div>
                     </div>
                 </div>

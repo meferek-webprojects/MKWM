@@ -20,7 +20,8 @@ return new class extends Migration
             $table->enum('type', ['public', 'private']);
             $table->text('description');
             $table->json('users_id');
-            $table->integer('downloads');
+            $table->integer('downloads')->default(0);
+            $table->text('link')->nullable();
             $table->integer('place_id');
             $table->date('date');
             $table->timestamps();

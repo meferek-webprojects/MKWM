@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ShortTaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\PlaceController;
 
 
 /////////////////// LANDING PAGE ///////////////////
@@ -49,7 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dboard', [DashboardController::class, 'dashboard']);
     Route::get('/account', [DashboardController::class, 'account']);
 
-    Route::resource('user', UserController::class)->except(['index']);
+    Route::resource('user', UserController::class)->except(['index','create']);
 
 });
 
@@ -69,8 +70,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
 
-    Route::resource('user', UserController::class)->only(['index']);
+    Route::resource('user', UserController::class)->only(['index','create']);
     Route::resource('session', SessionController::class);
+    Route::resource('place', PlaceController::class);
+
     
 });
 

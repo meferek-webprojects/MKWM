@@ -92,7 +92,7 @@
                             <a href="{{ route('session.index') }}">Wszystkie sesje</a>
                         </li>
                         <li>
-                            <a href="/session-add">Dodaj sesje</a>
+                            <a href="{{ route('session.create') }}">Dodaj sesje</a>
                         </li>
                     </ul>
                 </li>
@@ -100,10 +100,10 @@
                     <a href=""><i class="material-icons-two-tone">pin_drop</i>Miejsca<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                     <ul class="sub-menu" style="display: none;">
                         <li>
-                            <a href="/place-list">Wszystkie miejsca</a>
+                            <a href="{{ route('place.index') }}">Wszystkie miejsca</a>
                         </li>
                         <li>
-                            <a href="/place-add">Dodaj miejsce</a>
+                            <a href="{{ route('place.create') }}">Dodaj miejsce</a>
                         </li>
                     </ul>
                 </li>

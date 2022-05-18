@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="rememberMe"type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <input class="form-check-input" type="checkbox" id="rememberMe" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                     <label class="form-check-label" for="rememberMe">
                         Zapamiętaj mnie
                     </label>
@@ -47,7 +47,7 @@
                     <button type="submit" class="btn btn-primary">Zaloguj się</a>
                 </div>
                 <div class="divider"></div>
-                <p class="auth-description-2">Nie masz konta? <a href="{{ url('/register') }}">Stórz konto</a></p>
+                <p class="auth-description-2">Nie masz konta? <a href="{{ url('/register') }}">Stwórz konto</a></p>
                 <p class="auth-description-2">Zapomniałeś hasło? <a href="{{ route('password.request') }}">Odzyskaj konto</a></p>
             </div>
 

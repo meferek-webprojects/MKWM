@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class SessionController extends Controller
+use App\Models\Places;
+
+class PlaceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,9 @@ class SessionController extends Controller
      */
     public function index()
     {
-        $sessions = DB::table('sessions')->get();
+        $places = DB::table('places')->get();
 
-        return view('dashboard.session-list')->with('sessions', $sessions);
+        return view('dashboard.place-list')->with('places', $places);
     }
 
     /**
@@ -27,10 +29,7 @@ class SessionController extends Controller
      */
     public function create()
     {
-        $places = DB::table('places')->get();
-        $users = DB::table('users')->get();
-
-        return view('dashboard.session-add')->with('places', $places);
+        return view('dashboard.place-add');
     }
 
     /**
@@ -41,7 +40,14 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $place = new Places;
+        $place->name = $request->name;
+        $link = substr(explode(" ", $request->link)[1], 5);
+        $place->link = substr($link, 0, -1);
+
+        $place->save();
+
+        return redirect('/place')->with('success', 'Pomyślnie dodano nowe miejsce');
     }
 
     /**
@@ -63,7 +69,9 @@ class SessionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $place = Places::find($id);
+
+        return view('dashboard.place-add')->with('place', $place);
     }
 
     /**
@@ -75,7 +83,20 @@ class SessionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $place = Places::find($id);
+        $place->name = $request->name;
+        if(strpos($request->link, " ")){ 
+            $link = substr(explode(" ", $request->link)[1], 5);
+            $place->link = substr($link, 0, -1);
+
+        }
+        else { 
+            $place->link =  $request->link;
+         }
+
+        $place->save();
+
+        return redirect('/place')->with('success', 'Pomyślnie zaktualizowano miejsce');
     }
 
     /**
@@ -86,6 +107,8 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Places::find($id)->delete();
+
+        return redirect('/place')->with('warning', 'Pomyślnie usunięto miejsce');
     }
 }

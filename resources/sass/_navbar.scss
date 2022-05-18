@@ -45,6 +45,44 @@
         }
     }
 
+    .nav-link:not(.logo), #search-button{
+        position: relative;
+
+        &::before, &::after{
+            content: '';
+            position: absolute;
+            width: 50%;
+            bottom: 0;
+            height: 2px;
+            background-color: white;
+            transition: transform .2s;
+            transform: scaleX(0);
+        }
+
+        &::before{
+            left: 0;
+            transform-origin: left;
+        }
+
+        &::after{
+            right: 0;
+            transform-origin: right;
+        }
+
+        &:hover{
+
+            &::before{
+                transform: scaleX(1);
+                transform-origin: right;
+            }
+
+            &::after{
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+    }
+
     .navbar-toggler{
         z-index: 1001;
         position: fixed;

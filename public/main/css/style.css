@@ -55,10 +55,10 @@
   opacity: 0 !important;
   transform: translateY(20px) !important;
 }
-.navbar .nav-link:not(.logo), .navbar #search-button {
+.navbar .nav-link:not(.logo) {
   position: relative;
 }
-.navbar .nav-link:not(.logo)::before, .navbar .nav-link:not(.logo)::after, .navbar #search-button::before, .navbar #search-button::after {
+.navbar .nav-link:not(.logo)::before, .navbar .nav-link:not(.logo)::after {
   content: "";
   position: absolute;
   width: 50%;
@@ -68,19 +68,19 @@
   transition: transform 0.2s;
   transform: scaleX(0);
 }
-.navbar .nav-link:not(.logo)::before, .navbar #search-button::before {
+.navbar .nav-link:not(.logo)::before {
   left: 0;
   transform-origin: left;
 }
-.navbar .nav-link:not(.logo)::after, .navbar #search-button::after {
+.navbar .nav-link:not(.logo)::after {
   right: 0;
   transform-origin: right;
 }
-.navbar .nav-link:not(.logo):hover::before, .navbar #search-button:hover::before {
+.navbar .nav-link:not(.logo):hover::before {
   transform: scaleX(1);
   transform-origin: right;
 }
-.navbar .nav-link:not(.logo):hover::after, .navbar #search-button:hover::after {
+.navbar .nav-link:not(.logo):hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }

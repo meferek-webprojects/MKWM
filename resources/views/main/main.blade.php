@@ -112,13 +112,13 @@
             </div>
         </div>
         <div class="about-image position-relative order-0 order-xl-0">
-            <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="img-fluid">
+            <img src="{{ url('/images/img/wiktor2.jpg') }}" alt="" class="img-fluid">
             <div class="image-text position-absolute top-0 end-0 mt-3 me-2">
                 <div class="profession">
-                    Fotograf
+                    Filmowiec
                 </div>
                 <div class="person">
-                    Mateusz Krysiak
+                    Wiktor Majewski
                 </div>
             </div>
         </div>

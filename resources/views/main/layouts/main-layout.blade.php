@@ -30,16 +30,16 @@
                             <a class="nav-link" aria-current="page" href="{{ url('/') }}">Główna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">My</a>
+                            <a class="nav-link" aria-current="page" href="#my">My</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Fotografia</a>
+                            <a class="nav-link" aria-current="page" href="#fotografia">Fotografia</a>
                         </li>
                         <li class="nav-item d-none d-xl-block" id="nav-logo">
                             <a class="nav-link logo" aria-current="page" href="{{ url('/') }}">MKWM</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Filmografia</a>
+                            <a class="nav-link" aria-current="page" href="#filmografia">Filmografia</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Kontakt</a>

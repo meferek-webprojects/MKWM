@@ -1,0 +1,72 @@
+.contact {
+    margin-top: 100px;
+    height: 200px;
+    overflow: hidden;
+
+    .text {
+        z-index: 100;
+        position: absolute;
+        color: white;
+        top: 19%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+
+        .type {
+            font-family: 'TypoBold';
+            font-size: 28px;
+            letter-spacing: 8px;
+            margin-bottom: 100px;
+            opacity: 100%;
+        }
+
+    }
+
+    .background {
+        background: black;
+        object-fit: cover;
+        img {
+            opacity: 35%;
+        }
+
+    }
+
+}
+
+
+.big-form {
+    padding: 50px 400px;
+
+    .form {
+        text-align: center;
+
+        input.form-control, textarea.form-control {
+            border: 1px solid rgb(211, 211, 211);
+            border-radius: 0;
+            outline: none;
+
+            &:focus-visible, &:focus {
+                outline: none!important;
+                box-shadow: none;
+            }
+        }
+
+        button {
+            font-family: 'Typo';
+            letter-spacing: 2px;
+            color: white;
+            background: black;
+            margin-top: 20px;
+            border-radius: 0px;
+            padding: 5px 15px;
+            transition: all 0.3s;
+
+
+            &:hover {
+                transition: all 0.3s;
+                color: black;
+                background: white; 
+            }
+        }
+    }
+}

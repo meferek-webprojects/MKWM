@@ -42,7 +42,7 @@
                             <a class="nav-link" aria-current="page" href="#filmografia">Filmografia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Kontakt</a>
+                            <a class="nav-link" aria-current="page" href="{{ url('/kontakt') }}">Kontakt</a>
                         </li>
                         @auth
                             <li class="nav-item">

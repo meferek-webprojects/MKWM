@@ -870,6 +870,67 @@ hr.breakline {
   cursor: pointer;
 }
 
+.contact {
+  margin-top: 100px;
+  height: 200px;
+  overflow: hidden;
+}
+.contact .text {
+  z-index: 100;
+  position: absolute;
+  color: white;
+  top: 19%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.contact .text .type {
+  font-family: "TypoBold";
+  font-size: 28px;
+  letter-spacing: 8px;
+  margin-bottom: 100px;
+  opacity: 100%;
+}
+.contact .background {
+  background: black;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.contact .background img {
+  opacity: 35%;
+}
+
+.big-form {
+  padding: 50px 400px;
+}
+.big-form .form {
+  text-align: center;
+}
+.big-form .form input.form-control, .big-form .form textarea.form-control {
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 0;
+  outline: none;
+}
+.big-form .form input.form-control:focus-visible, .big-form .form input.form-control:focus, .big-form .form textarea.form-control:focus-visible, .big-form .form textarea.form-control:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+.big-form .form button {
+  font-family: "Typo";
+  letter-spacing: 2px;
+  color: white;
+  background: black;
+  margin-top: 20px;
+  border-radius: 0px;
+  padding: 5px 15px;
+  transition: all 0.3s;
+}
+.big-form .form button:hover {
+  transition: all 0.3s;
+  color: black;
+  background: white;
+}
+
 .footer {
   padding-top: 50px;
   font-family: "Typo";

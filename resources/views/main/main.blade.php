@@ -125,8 +125,6 @@
     </div>
 </div>
 
-{{-- <hr class="breakline"> --}}
-
 <div class="testimonials">
     <h3>TESTIMONIALS</h3>    
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -166,7 +164,6 @@
 </div>
 
 <div class="portfolio">
-    <h4 class="our-portfolio">NASZE PORTFOLIO</h4>
     <h4 id="fotografia">FOTOGRAFIA</h4>
     <h3>PORTFOLIO</h3>    
     <div class="row p-0 m-0">

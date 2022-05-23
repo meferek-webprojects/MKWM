@@ -30,6 +30,11 @@
             color: #0e0e0e;
             background: #fff;
         }
+
+        &:active, &:focus-visible {
+            outline: none;
+            box-shadow: none;
+        }
     }
 
 }

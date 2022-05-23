@@ -3,7 +3,7 @@
     h3{
         font-family: 'TypoBold';
         letter-spacing: 7px;
-        color: #000000c0;
+        color: #000000d3;
         text-align: center;
         margin: 0 auto;
         padding: 100px 0;
@@ -21,20 +21,20 @@
                 height: 100%;
                 object-fit: cover;
                 object-position: center 25%;
-                filter: brightness(50%);
+                filter: brightness(40%);
             }
 
             .testimonial{
                 color: white;
 
                 .text{
-                    font-size: 26px;
-                    font-family: "Helvetica";
-                    font-weight: 100;
+                    font-size: 22px;
+                    font-family: "Roboto";
                 }
 
                 .person{
-                    font-size: 30px;
+                    margin-top: 35px;
+                    font-size: 28px;
                     font-family: "TypoBold";
                     letter-spacing: 2px;
                     opacity: 95%;

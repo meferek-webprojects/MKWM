@@ -44,7 +44,7 @@
                                         <div class="col-md-6 my-2">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1"><i class="material-icons">edit_calendar</i></span>
-                                                <input class="form-control flatpickr1" type="text" placeholder="Data sesji"  aria-label="Username" aria-describedby="basic-addon1">
+                                                <input class="form-control flatpickr1" name="date" type="text" placeholder="Data sesji"  aria-label="Username" aria-describedby="basic-addon1">
                                             </div>
                                         </div>
                                         <div class="col-md-6 my-2">
@@ -86,6 +86,13 @@
                                                     <option value="{{ $user->id }}">{{ $user->name.' '.$user->surname }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col my-2 mt-3">
+                                            <label for="id" class="form-label">Link do filmu</label>
+                                            <input type="text" name="link" id="link" class="form-control" placeholder="Link">
                                         </div>
                                     </div>
 

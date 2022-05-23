@@ -97,7 +97,7 @@
     </div>
 </div>
 
-<div class="about">
+<div class="about" id="my">
     <h3>ABOUT US</h3>    
     <div class="about-info d-flex flex-wrap w-100">
         <div class="about-image position-relative order-1 order-xl-0">
@@ -115,10 +115,10 @@
             <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="">
             <div class="image-text position-absolute top-0 end-0 mt-3 me-2">
                 <div class="profession">
-                    Fotograf
+                    Filmowiec
                 </div>
                 <div class="person">
-                    Mateusz Krysiak
+                    Wiktor Majewski
                 </div>
             </div>
         </div>
@@ -167,7 +167,7 @@
 
 <div class="portfolio">
     <h4 class="our-portfolio">NASZE PORTFOLIO</h4>
-    <h4>FOTOGRAFIA</h4>
+    <h4 id="fotografia">FOTOGRAFIA</h4>
     <h3>PORTFOLIO</h3>    
     <div class="row p-0 m-0">
         <div class="col-lg-6 p-0 m-0">
@@ -188,7 +188,7 @@
 </div>
 
 <div class="portfolio mt-5">
-    <h4>FILMOGRAFIA</h4>
+    <h4 id="filmografia">FILMOGRAFIA</h4>
     <h3>PORTFOLIO</h3>    
     <div class="container">
         <div class="row my-4">

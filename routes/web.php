@@ -36,10 +36,16 @@ Route::get('/product', function () {
     return view('main.product');
 });
 
+Route::get('/kontakt', function () {
+    return view('main.contact');
+});
+
 Route::get('/logout', function () {
     if(Auth::check()) Auth::logout();
     return redirect('/');
 });
+
+Route::post('/wiadomosc', [ShortTaskController::class, 'send_mail']);
 
 
 

@@ -5,6 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
+use Carbon\Carbon;
+use Intervention\Image\Facades\Image;
+
+use App\Models\Sessions;
+use App\Models\SessionFiles;
 
 class SessionController extends Controller
 {
@@ -41,7 +51,51 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $session = new Sessions;
+
+        $id = Sessions::orderByDesc('id')->first();
+        if(!isset($id)) $id = 0; else $id = $id->id;
+        $session->id = $id+1;
+
+        $session->name = $request->name;
+        $session->date = $request->date;
+        $session->place_id = $request->place;
+        $session->type = $request->type;
+        $session->kind = $request->kind;
+        $session->description = $request->description;
+        $session->users_id = json_encode($request->users);
+        
+        if(isset($request->link)){
+            $session->link = $request->link;
+        }
+
+        if($request->file('files')){
+
+            $files = $request->file('files');
+
+            foreach($files as $file){
+
+                $sid = SessionFiles::orderByDesc('id')->first();
+                if(!isset($sid)) $id = 0; else $id = $sid->id;
+
+                $session_file = new SessionFiles;
+                $session_file->id = $id+1;
+                $session_file->session_id = $session->id;
+                $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
+                $path = 'images/photoshoots/'.$session->id;
+                $file->move($path, $fileName);
+
+                $session_file->file = $fileName;
+                $session_file->save();
+
+            }
+
+        }   
+
+        $session->save();
+                
+        return redirect('/session')->with('sucess', 'Pomyślnie dodano sesję');
+
     }
 
     /**

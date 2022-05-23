@@ -545,11 +545,11 @@
 }
 .hero .hero-text div:first-child {
   font-family: "Typo";
-  font-size: 75px;
+  font-size: 65px;
 }
 .hero .hero-text div:last-child {
   font-family: "DMSerif";
-  font-size: 35px;
+  font-size: 30px;
   letter-spacing: 1px;
 }
 
@@ -657,9 +657,11 @@ hr.breakline {
 }
 .testimonials .carousel-inner .carousel-item .testimonial .text {
   font-size: 24px;
+  font-family: "Typo";
 }
 .testimonials .carousel-inner .carousel-item .testimonial .person {
   font-size: 28px;
+  font-family: "Typo";
 }
 
 @media only screen and (max-width: 1399px) {
@@ -862,6 +864,67 @@ hr.breakline {
   margin-top: -36px;
   position: absolute;
   cursor: pointer;
+}
+
+.contact {
+  margin-top: 100px;
+  height: 200px;
+  overflow: hidden;
+}
+.contact .text {
+  z-index: 100;
+  position: absolute;
+  color: white;
+  top: 19%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.contact .text .type {
+  font-family: "TypoBold";
+  font-size: 28px;
+  letter-spacing: 8px;
+  margin-bottom: 100px;
+  opacity: 100%;
+}
+.contact .background {
+  background: black;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.contact .background img {
+  opacity: 35%;
+}
+
+.big-form {
+  padding: 50px 400px;
+}
+.big-form .form {
+  text-align: center;
+}
+.big-form .form input.form-control, .big-form .form textarea.form-control {
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 0;
+  outline: none;
+}
+.big-form .form input.form-control:focus-visible, .big-form .form input.form-control:focus, .big-form .form textarea.form-control:focus-visible, .big-form .form textarea.form-control:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+.big-form .form button {
+  font-family: "Typo";
+  letter-spacing: 2px;
+  color: white;
+  background: black;
+  margin-top: 20px;
+  border-radius: 0px;
+  padding: 5px 15px;
+  transition: all 0.3s;
+}
+.big-form .form button:hover {
+  transition: all 0.3s;
+  color: black;
+  background: white;
 }
 
 .footer {

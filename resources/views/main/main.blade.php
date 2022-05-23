@@ -5,7 +5,7 @@
 <div class="last-photoshoot d-flex flex-wrap w-100" onclick="window.location='{{ url('/photoshoot') }}'">
     <div class="photoshoot-info my-auto">
         <div class="type">
-            LAST PHOTOSHOOT
+            OSTATNIA SESJA
         </div>
         <div class="place">
             Studio
@@ -98,7 +98,7 @@
 </div>
 
 <div class="about" id="my">
-    <h3>ABOUT US</h3>    
+    <h3>O NAS</h3>    
     <div class="about-info d-flex flex-wrap w-100">
         <div class="about-image position-relative order-1 order-xl-0">
             <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="">
@@ -126,7 +126,7 @@
 </div>
 
 <div class="testimonials">
-    <h3>TESTIMONIALS</h3>    
+    <h3>REFERENCJE</h3>    
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

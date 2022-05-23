@@ -74,3 +74,29 @@
         }
     }
 }
+
+footer {
+    background-color: black;
+    color: rgb(225, 225, 225);
+    z-index: 9999;
+    position: fixed;
+    bottom: 0%;
+    width: 100vw;
+    font-family: "Roboto"!important;
+
+    a {
+        color: rgb(136, 136, 136);
+        text-decoration: none;
+        transition: .3s all;
+
+        &:hover {
+            color: rgb(194, 194, 194);
+            transition: .3s all;
+        }
+    }
+
+    button {
+        background-color: rgba(255, 255, 255, 0);
+        color: white;
+    }
+}

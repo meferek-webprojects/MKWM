@@ -75,29 +75,12 @@
         <div class="footer text-center pb-5">
             <h2>MKWM</h2>
             <h6><a href="#">Polityka prywatności oraz polityka ciasteczek</a></h6>
-            <h5>Copyright &copy; 2022 Mateusz Krysiak & Krzysztof Stępniak <h5>
+            <h5>Copyright &copy; @php echo date('Y') @endphp Mateusz Krysiak & Krzysztof Stępniak<h5>
         </div>
 
     </div>
 
     <script>
-        $('body').on('click', () => {
-            if($('.searchbar').hasClass('active')){
-                $('.nav-link').toggleClass('hidden');
-                $('.searchbar').toggleClass('active');
-                $('#search-button').toggleClass('active');
-            }
-        });
-
-        $('#search-button').on('click', event => {
-            event.stopPropagation();
-            $('.nav-link').toggleClass('hidden');
-            $('.searchbar').toggleClass('active');
-            $('#search-button').toggleClass('active');
-        });
-
-        $('.searchbar').on('click', event => event.stopPropagation());
-
         $(document).scroll(() => {
             let scrollTop = $(document).scrollTop();
 

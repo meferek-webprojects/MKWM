@@ -1,22 +1,21 @@
 .contact {
-    margin-top: 100px;
     height: 200px;
     overflow: hidden;
+    position: relative;
 
     .text {
         z-index: 100;
         position: absolute;
         color: white;
-        top: 19%;
+        top: 50%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
         text-align: center;
 
         .type {
             font-family: 'TypoBold';
-            font-size: 28px;
+            font-size: calc(1.3rem + .6vw);
             letter-spacing: 8px;
-            margin-bottom: 100px;
             opacity: 100%;
         }
 

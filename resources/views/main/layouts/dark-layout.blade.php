@@ -21,7 +21,7 @@
     
     <div class="container-fluid m-0 p-0">
 
-        <nav class="navbar navbar-expand-xl navbar-dark full">
+        <nav class="navbar navbar-expand-xl navbar-dark full position-sticky">
             <div class="container-fluid">
                 <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i data-feather="menu"></i>
@@ -68,7 +68,7 @@
 
         <div class="footer text-center pb-5">
             <h2>MKWM</h2>
-            <h6><a href="#">Polityka prywatności oraz polityka ciasteczek</a></h6>
+            <h6><a href="{{ url('/polityka-i-ciasteczka') }}">Polityka prywatności oraz polityka ciasteczek</a></h6>
             <h5>Copyright &copy; 2022 Mateusz Krysiak & Krzysztof Stępniak <h5>
         </div>
         

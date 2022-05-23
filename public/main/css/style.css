@@ -149,7 +149,7 @@
     transition: none;
   }
   .navbar.full {
-    padding-top: 7px;
+    padding-top: 0px;
     background-color: rgba(0, 0, 0, 0);
   }
   .navbar .navbar-collapse {
@@ -655,11 +655,13 @@ hr.breakline {
 }
 .testimonials .carousel-inner .carousel-item .testimonial .text {
   font-size: 24px;
-  font-family: "Typo";
+  font-family: "Lato";
 }
 .testimonials .carousel-inner .carousel-item .testimonial .person {
   font-size: 28px;
-  font-family: "Typo";
+  font-family: "TypoBold";
+  letter-spacing: 2px;
+  opacity: 95%;
 }
 
 @media only screen and (max-width: 1399px) {
@@ -897,24 +899,23 @@ hr.breakline {
 }
 
 .contact {
-  margin-top: 100px;
   height: 200px;
   overflow: hidden;
+  position: relative;
 }
 .contact .text {
   z-index: 100;
   position: absolute;
   color: white;
-  top: 19%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 .contact .text .type {
   font-family: "TypoBold";
-  font-size: 28px;
+  font-size: calc(1.3rem + 0.6vw);
   letter-spacing: 8px;
-  margin-bottom: 100px;
   opacity: 100%;
 }
 .contact .background {
@@ -973,6 +974,10 @@ hr.breakline {
     padding: 5px 50px !important;
   }
 }
+.policy {
+  font-size: calc(1.3rem + 0.6vw);
+}
+
 .footer {
   padding-top: 50px;
   font-family: "Typo";

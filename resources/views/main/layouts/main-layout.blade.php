@@ -74,7 +74,7 @@
 
         <div class="footer text-center pb-5">
             <h2>MKWM</h2>
-            <h6><a href="#">Polityka prywatności oraz polityka ciasteczek</a></h6>
+            <h6><a href="{{ url('/polityka-i-ciasteczka') }}">Polityka prywatności oraz polityka ciasteczek</a></h6>
             <h5>Copyright &copy; @php echo date('Y') @endphp Mateusz Krysiak & Krzysztof Stępniak<h5>
         </div>
 

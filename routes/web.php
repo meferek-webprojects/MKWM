@@ -40,6 +40,10 @@ Route::get('/kontakt', function () {
     return view('main.contact');
 });
 
+Route::get('/polityka-i-ciasteczka', function () {
+    return view('main.politics');
+});
+
 Route::get('/logout', function () {
     if(Auth::check()) Auth::logout();
     return redirect('/');

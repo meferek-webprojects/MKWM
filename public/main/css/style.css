@@ -149,7 +149,7 @@
     transition: none;
   }
   .navbar.full {
-    padding-top: 7px;
+    padding-top: 0px;
     background-color: rgba(0, 0, 0, 0);
   }
   .navbar .navbar-collapse {
@@ -868,24 +868,23 @@ hr.breakline {
 }
 
 .contact {
-  margin-top: 100px;
   height: 200px;
   overflow: hidden;
+  position: relative;
 }
 .contact .text {
   z-index: 100;
   position: absolute;
   color: white;
-  top: 19%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 .contact .text .type {
   font-family: "TypoBold";
-  font-size: 28px;
+  font-size: calc(1.3rem + 0.6vw);
   letter-spacing: 8px;
-  margin-bottom: 100px;
   opacity: 100%;
 }
 .contact .background {
@@ -943,70 +942,11 @@ hr.breakline {
   .form button {
     padding: 5px 50px !important;
   }
-
-  .contact {
-    margin-top: 100px;
-    height: 200px;
-    overflow: hidden;
-  }
-  .contact .text {
-    z-index: 100;
-    position: absolute;
-    color: white;
-    top: 19%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-  }
-  .contact .text .type {
-    font-family: "TypoBold";
-    font-size: 20px;
-    letter-spacing: 8px;
-    margin-bottom: 100px;
-    opacity: 100%;
-  }
-  .contact .background {
-    background: black;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  .contact .background img {
-    opacity: 35%;
-  }
 }
 .policy {
-  font-size: 18px !important;
+  font-size: calc(1.3rem + 0.6vw);
 }
 
-@media only screen and (max-width: 1144px) {
-  .politics {
-    height: 250px !important;
-  }
-}
-@media only screen and (max-width: 705px) {
-  .politics {
-    height: 300px !important;
-  }
-}
-@media only screen and (max-width: 544px) {
-  .politics {
-    height: 300px !important;
-  }
-  .politics .text .type {
-    font-size: 4vw;
-  }
-}
-@media only screen and (max-width: 422px) {
-  .politics {
-    height: 200px !important;
-  }
-  .politics .text {
-    top: 16%;
-  }
-  .politics .text .type {
-    font-size: 4vw;
-  }
-}
 .footer {
   padding-top: 50px;
   font-family: "Typo";

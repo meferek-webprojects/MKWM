@@ -75,6 +75,14 @@
     }
 }
 
+@media only screen and (max-width: 993px) {
+    footer {
+        font-size: 12px;
+        width: 100vw;
+        font-family: "Roboto";
+    }
+}
+
 footer {
     background-color: rgba(0, 0, 0, 0.8274509804);
     color: rgb(225, 225, 225);

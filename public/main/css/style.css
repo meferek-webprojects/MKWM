@@ -256,6 +256,9 @@
   .last-photoshoot {
     padding: 60px 30px;
   }
+  .last-photoshoot .photoshoot-info {
+    text-align: center;
+  }
   .last-photoshoot .photoshoot-info .type {
     font-size: 20px;
   }
@@ -654,11 +657,11 @@ hr.breakline {
   color: white;
 }
 .testimonials .carousel-inner .carousel-item .testimonial .text {
-  font-size: 24px;
-  font-family: "Lato";
+  font-size: 26px;
+  font-family: "Roboto";
 }
 .testimonials .carousel-inner .carousel-item .testimonial .person {
-  font-size: 28px;
+  font-size: 30px;
   font-family: "TypoBold";
   letter-spacing: 2px;
   opacity: 95%;
@@ -1012,4 +1015,26 @@ hr.breakline {
     color: rgb(255, 255, 255);
     transition: 0.3s all;
   }
+}
+footer {
+  background-color: black;
+  color: rgb(225, 225, 225);
+  z-index: 9999;
+  position: fixed;
+  bottom: 0%;
+  width: 100vw;
+  font-family: "Roboto" !important;
+}
+footer a {
+  color: rgb(136, 136, 136);
+  text-decoration: none;
+  transition: 0.3s all;
+}
+footer a:hover {
+  color: rgb(194, 194, 194);
+  transition: 0.3s all;
+}
+footer button {
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
 }

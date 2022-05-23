@@ -66,6 +66,12 @@
 
         @yield('content')
 
+        <footer id="ciastko" class="d-none">
+            <div class="container text-center">
+                <p class="text-center pt-3">Ta strona wykorzystuje ciasteczka zgodnie z <a href="https://mkwmstudios.pl/polityka-i-ciasteczka">polityką prywatności</a>! Jeśli się na to nie zgadzasz, opuść tę stronę.<button id="cookieBtn" type="button" class="close"><i data-feather="x"></i></button></p>
+            </div>
+        </footer>
+
         <div class="footer text-center pb-5">
             <h2>MKWM</h2>
             <h6><a href="{{ url('/polityka-i-ciasteczka') }}">Polityka prywatności oraz polityka ciasteczek</a></h6>
@@ -123,6 +129,56 @@
             }else
                 $('.navbar').removeAttr('style');
         })
+    </script>
+
+    <script>
+
+        var button = document.getElementById('cookieBtn');
+        var ciastko = document.getElementById('ciastko');
+
+        window.onload = function() {
+            var ciasteczka = getCookie('ciasteczka');
+            if (ciasteczka == "accept"){
+                ciastko.classList.add('d-none');
+            }
+            else{
+                ciastko.classList.remove('d-none');
+                ciastko.classList.add('d-block');
+            }
+        };
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+
+        function firstEventHandler() {
+
+            ciastko.classList.add('d-none');
+            ciastko.classList.remove('d-block');
+
+            var d = new Date();
+            d.setTime(d.getTime() + (90*24*60*60*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = "ciasteczka=accept;" + expires + ";path=/";
+
+        }
+
+        button.addEventListener('click', firstEventHandler, false);
+
+
     </script>
 
     <script>

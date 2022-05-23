@@ -77,12 +77,13 @@
 
 footer {
     background-color: black;
+    letter-spacing: 1px;
     color: rgb(225, 225, 225);
     z-index: 9999;
     position: fixed;
     bottom: 0%;
     width: 100vw;
-    font-family: "Roboto"!important;
+    font-family: "Typo"!important;
 
     a {
         color: rgb(136, 136, 136);
@@ -96,6 +97,7 @@ footer {
     }
 
     button {
+        border: none;
         background-color: rgba(255, 255, 255, 0);
         color: white;
     }

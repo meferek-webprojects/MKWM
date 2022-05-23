@@ -660,7 +660,8 @@ hr.breakline {
 }
 .testimonials .carousel-inner .carousel-item .testimonial .text {
   font-size: 26px;
-  font-family: "Roboto";
+  font-family: "Helvetica";
+  font-weight: 100;
 }
 .testimonials .carousel-inner .carousel-item .testimonial .person {
   font-size: 30px;
@@ -833,9 +834,10 @@ hr.breakline {
 }
 .portfolio .portfolio-images .portfolio-image .type {
   color: white;
+  text-transform: uppercase;
   font-family: "TypoBold";
   letter-spacing: 10px;
-  font-size: 28px;
+  font-size: 24px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1049,12 +1051,13 @@ hr.breakline {
 }
 footer {
   background-color: black;
+  letter-spacing: 1px;
   color: rgb(225, 225, 225);
   z-index: 9999;
   position: fixed;
   bottom: 0%;
   width: 100vw;
-  font-family: "Roboto" !important;
+  font-family: "Typo" !important;
 }
 footer a {
   color: rgb(136, 136, 136);
@@ -1066,6 +1069,7 @@ footer a:hover {
   transition: 0.3s all;
 }
 footer button {
+  border: none;
   background-color: rgba(255, 255, 255, 0);
   color: white;
 }

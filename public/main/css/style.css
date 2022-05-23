@@ -146,7 +146,6 @@
   .navbar {
     margin: 0;
     padding: 0;
-    top: 50%;
     transition: none;
   }
   .navbar.full {
@@ -154,7 +153,6 @@
     background-color: rgba(0, 0, 0, 0);
   }
   .navbar .navbar-collapse {
-    transform: translateY(-50%);
     z-index: 1002;
   }
   .navbar .navbar-collapse .navbar-nav {
@@ -583,10 +581,6 @@ hr.breakline {
 .about .about-image img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
 }
 .about .about-image .image-text {
   background-color: white;

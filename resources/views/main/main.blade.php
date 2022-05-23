@@ -186,11 +186,11 @@
     </div>
 </div>
 
-<div class="portfolio mt-5">
+<div class="portfolio">
     <h4 id="filmografia">FILMOGRAFIA</h4>
     <h3>PORTFOLIO</h3>    
     <div class="container">
-        <div class="row my-4">
+        <div class="row">
             <div class="col-12 movies">
                 <div class="youtube-player" data-id="R9vtT7CEETo"></div>
                 <div class="text">BACKSTAGE</div>

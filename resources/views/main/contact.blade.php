@@ -22,10 +22,14 @@
             @csrf 
 
             <div class="form">
-                <input class="form-control my-3" type="email" placeholder="Twój e-mail" name="author" required>
-                <input class="form-control my-3" type="text" placeholder="Temat" name="title"required>
-                <textarea name="" id="" cols="30" rows="10" class="form-control" name="message" placeholder="Twoja wiadomość..." required></textarea>
-                <button type="submit">Wyślij wiadomość</button>
+                <div class="row">
+                    <div class="col-12">
+                        <input class="form-control my-3" type="email" placeholder="Twój e-mail" name="author" required>
+                        <input class="form-control my-3" type="text" placeholder="Temat" name="title"required>
+                        <textarea name="" id="" cols="30" rows="10" class="form-control" name="message" placeholder="Twoja wiadomość..." required></textarea>
+                        <button type="submit">WYŚLIJ</button>
+                    </div>
+                </div>
             </div>
             
         </div>

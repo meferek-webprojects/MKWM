@@ -777,6 +777,19 @@ hr.breakline {
     margin-bottom: 20px;
   }
 }
+@media only screen and (max-width: 471px) {
+  .cta {
+    text-align: center;
+    background-color: #0e0e0e;
+    padding: 50px 40px;
+    color: white;
+  }
+  .cta h3 {
+    font-size: 18px;
+    padding: 5px 30px;
+    margin-bottom: 20px;
+  }
+}
 .portfolio {
   text-align: center;
 }
@@ -895,7 +908,7 @@ hr.breakline {
 }
 
 .big-form {
-  padding: 50px 400px;
+  padding: 50px 15vw;
 }
 .big-form .form {
   text-align: center;
@@ -904,19 +917,20 @@ hr.breakline {
   border: 1px solid rgb(211, 211, 211);
   border-radius: 0;
   outline: none;
+  font-size: 18px;
 }
 .big-form .form input.form-control:focus-visible, .big-form .form input.form-control:focus, .big-form .form textarea.form-control:focus-visible, .big-form .form textarea.form-control:focus {
   outline: none !important;
   box-shadow: none;
 }
 .big-form .form button {
-  font-family: "Typo";
-  letter-spacing: 2px;
+  font-family: "TypoBold";
+  letter-spacing: 4px;
   color: white;
   background: black;
   margin-top: 20px;
   border-radius: 0px;
-  padding: 5px 15px;
+  padding: 5px 100px;
   transition: all 0.3s;
 }
 .big-form .form button:hover {
@@ -925,6 +939,15 @@ hr.breakline {
   background: white;
 }
 
+@media only screen and (max-width: 500px) {
+  .big-form {
+    padding: 50px 50px !important;
+  }
+
+  .form button {
+    padding: 5px 50px !important;
+  }
+}
 .footer {
   padding-top: 50px;
   font-family: "Typo";

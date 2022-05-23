@@ -35,7 +35,7 @@
 
 
 .big-form {
-    padding: 50px 400px;
+    padding: 50px calc(15vw);
 
     .form {
         text-align: center;
@@ -44,6 +44,7 @@
             border: 1px solid rgb(211, 211, 211);
             border-radius: 0;
             outline: none;
+            font-size: 18px;
 
             &:focus-visible, &:focus {
                 outline: none!important;
@@ -52,13 +53,13 @@
         }
 
         button {
-            font-family: 'Typo';
-            letter-spacing: 2px;
+            font-family: 'TypoBold';
+            letter-spacing: 4px;
             color: white;
             background: black;
             margin-top: 20px;
             border-radius: 0px;
-            padding: 5px 15px;
+            padding: 5px 100px;
             transition: all 0.3s;
 
 
@@ -69,4 +70,16 @@
             }
         }
     }
+}
+
+@media only screen and (max-width: 500px) {
+
+    .big-form {
+        padding: 50px 50px!important;
+    }
+
+    .form button {
+        padding: 5px 50px!important;
+    }
+
 }

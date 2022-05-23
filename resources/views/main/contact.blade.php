@@ -18,6 +18,12 @@
 
     <div class="big-form">
 
+        @if( @session('success') )
+
+            <b>Wiadomość została wysłana pomyślnie!</b>
+
+        @endif
+
         <form action="{{ url('/wiadomosc') }}" method="POST">
             @csrf 
 

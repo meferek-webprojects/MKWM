@@ -910,6 +910,12 @@ hr.breakline {
 .big-form {
   padding: 50px 15vw;
 }
+.big-form b {
+  font-family: "Typo";
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: rgb(55, 55, 55);
+}
 .big-form .form {
   text-align: center;
 }

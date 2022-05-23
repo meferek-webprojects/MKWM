@@ -74,7 +74,7 @@
 
         <footer id="ciastko" class="d-none">
             <div class="container text-center">
-                <p class="text-center pt-3">Ta strona wykorzystuje ciasteczka zgodnie z <a href="https://mkwmstudios.pl/polityka-i-ciasteczka">polityką prywatności</a>! Jeśli się na to nie zgadzasz, opuść tę stronę.<button id="cookieBtn" type="button" class="close"><i data-feather="x"></i></button></p>
+                <p class="text-center pt-3">Ta strona wykorzystuje ciasteczka zgodnie z <a href="https://mkwmstudios.pl/polityka-i-ciasteczka">polityką prywatności</a>! Jeśli się na to nie zgadzasz, opuść tę stronę<button id="cookieBtn" type="button" class="close"><i data-feather="x"></i></button></p>
             </div>
         </footer>
 

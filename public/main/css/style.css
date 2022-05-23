@@ -470,14 +470,14 @@
 .extra-photoshoots .extra-photoshoot .photoshoot-info .place {
   color: rgb(200, 200, 200);
   font-family: "DMSerif";
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 .extra-photoshoots .extra-photoshoot .photoshoot-info .person {
   color: rgba(0, 0, 0, 0.7529411765);
   font-family: "TypoBold";
-  font-size: 30px;
+  font-size: 32px;
   margin-top: 0;
   padding-top: 0;
   white-space: nowrap;

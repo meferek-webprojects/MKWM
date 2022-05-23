@@ -27,7 +27,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto d-flex align-items-center position-relative">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ url('/') }}">Główna</a>
+                            <a class="nav-link" aria-current="page" href="{{ url('/#') }}">Główna</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#my">My</a>

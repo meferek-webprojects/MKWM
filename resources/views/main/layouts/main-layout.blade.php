@@ -27,31 +27,31 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto d-flex align-items-center position-relative">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ url('/#') }}">Główna</a>
+                            <a class="nav-link" href="{{ url('/#') }}" aria-current="page">Główna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#my">My</a>
+                            <a class="nav-link" href="#my" aria-current="page">My</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#fotografia">Fotografia</a>
+                            <a class="nav-link" href="#fotografia" aria-current="page">Fotografia</a>
                         </li>
                         <li class="nav-item d-none d-xl-block" id="nav-logo">
-                            <a class="nav-link logo" aria-current="page" href="{{ url('/') }}">MKWM</a>
+                            <a class="nav-link logo" href="{{ url('/') }}" aria-current="page">MKWM</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#filmografia">Filmografia</a>
+                            <a class="nav-link" href="#filmografia" aria-current="page">Filmografia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ url('/kontakt') }}">Kontakt</a>
+                            <a class="nav-link" href="{{ url('/kontakt') }}" aria-current="page">Kontakt</a>
                         </li>
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="{{ url('/account') }}"><i data-feather="user"></i></a>
+                                <a class="nav-link" href="{{ url('/account') }}" aria-current="page"><i data-feather="user"></i></a>
                             </li>
                         @endauth
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="{{ url('/login') }}"><i data-feather="log-in"></i></a>
+                                <a class="nav-link" href="{{ url('/login') }}" aria-current="page"><i data-feather="log-in"></i></a>
                             </li>
                         @endguest
                         <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,6 +117,16 @@
             }else
                 $('.navbar').removeAttr('style');
         })
+        
+        var navLinks = document.querySelectorAll('.nav-link');
+        var menuToggle = document.getElementById('navbarSupportedContent');
+        var bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if($(window).width() < 1200) bsCollapse.toggle();
+            })
+        });
     </script>
 
     <script>

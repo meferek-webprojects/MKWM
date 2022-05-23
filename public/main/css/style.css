@@ -826,6 +826,8 @@ hr.breakline {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center 25%;
+     object-position: center 25%;
   filter: brightness(50%);
   transition: filter 0.3s;
 }
@@ -852,6 +854,26 @@ hr.breakline {
   margin-bottom: 60px;
 }
 
+@media only screen and (max-width: 767px) {
+  .portfolio .portfolio-images {
+    height: auto;
+  }
+  .portfolio .portfolio-images .portfolio-image {
+    margin: 0 50px;
+    height: 300px;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .portfolio .portfolio-images .portfolio-image {
+    margin: 0 30px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .portfolio .portfolio-images .portfolio-image {
+    margin: 0 15px;
+  }
+}
 .youtube-player {
   position: relative;
   padding-bottom: 56.25%;

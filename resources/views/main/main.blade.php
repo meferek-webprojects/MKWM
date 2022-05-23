@@ -125,7 +125,7 @@
     </div>
 </div>
 
-<hr class="breakline">
+{{-- <hr class="breakline"> --}}
 
 <div class="testimonials">
     <h3>TESTIMONIALS</h3>    

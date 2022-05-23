@@ -108,21 +108,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#"><i class="material-icons-two-tone">work</i>Portfolio<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
-                    <ul class="sub-menu" style="display: none;">
-                        <li>
-                            <a href="/portfolio-photo">Fotograficzne</a>
-                        </li>
-                        <li>
-                            <a href="/portfolio-video">Filmowe</a>
-                        </li>
-                        <li>
-                            <a href="/portfolio-design">Design</a>
-                        </li>
-                        <li>
-                            <a href="/portfolio-web">Web</a>
-                        </li>
-                    </ul>
+                    <a href="{{ url('/portfolio-photo') }}"><i class="material-icons-two-tone">photo_library</i>Fotografia</a>
+                </li>
+                <li>
+                    <a href="{{ url('/portfolio-video') }}"><i class="material-icons-two-tone">camera</i>Filmografia</a>
                 </li>
                 @endif
             </ul>

@@ -38,11 +38,20 @@
                                     </thead>
                                     <tbody>
                                         @foreach($sessions as $session)
+                                            @php
+                                                $users = json_decode($session->users_id)
+                                            @endphp
                                             <tr>
-                                                <td>{{ $user->id }}</td>
-                                                <td></td>
-                                                <td>{{ $user->date }}</td>
-                                                <td>{{ $user->created_at }}</td>
+                                                <td>{{ $session->id }}</td>
+                                                <td>{{ $session->name }}</td>
+                                                <td>
+                                                    @php
+                                                        foreach($users as $user){
+                                                            echo DB::table('users')->where('id', $user)->first()->name.', ';
+                                                        }
+                                                    @endphp
+                                                </td>
+                                                <td>{{ $session->created_at }}</td>
                                                 <td>
                                                     <form action="#" method="POST">
                                                         <button class="btn btn-outline-warning" type="submit"><i class="material-icons mx-0">lock</i></button>

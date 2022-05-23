@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('portfolios', function (Blueprint $table) {
+        Schema::create('portfolio_files', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['event', 'product', 'plener', 'studio']);
-            $table->enum('kind', ['photo', 'video', 'web', 'design']);
-            $table->string('link')->nullable();
+            $table->integer('portfolio_id');
+            $table->string('file');
+            $table->text('link')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('portfolios');
+        Schema::dropIfExists('portfolio_files');
     }
 };

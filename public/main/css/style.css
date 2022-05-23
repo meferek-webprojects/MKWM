@@ -575,7 +575,8 @@ hr.breakline {
   letter-spacing: 7px;
   color: rgba(0, 0, 0, 0.7529411765);
   text-align: center;
-  margin: 100px auto;
+  margin: 0 auto;
+  padding: 100px 0;
   background-color: white;
 }
 .about .about-image {
@@ -635,7 +636,8 @@ hr.breakline {
   letter-spacing: 7px;
   color: rgba(0, 0, 0, 0.7529411765);
   text-align: center;
-  margin: 100px auto;
+  margin: 0 auto;
+  padding: 100px 0;
   background-color: white;
 }
 .testimonials .carousel-inner {
@@ -801,7 +803,7 @@ hr.breakline {
 .portfolio h4 {
   color: rgb(200, 200, 200);
   font-family: "DMSerif";
-  margin-top: 100px;
+  padding-top: 100px;
   margin-bottom: 20px;
 }
 .portfolio h3 {

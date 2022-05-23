@@ -944,6 +944,39 @@ hr.breakline {
     padding: 5px 50px !important;
   }
 }
+.policy {
+  font-size: 18px !important;
+}
+
+@media only screen and (max-width: 1144px) {
+  .politics {
+    height: 250px !important;
+  }
+}
+@media only screen and (max-width: 705px) {
+  .politics {
+    height: 300px !important;
+  }
+}
+@media only screen and (max-width: 544px) {
+  .politics {
+    height: 300px !important;
+  }
+  .politics .text .type {
+    font-size: 4vw;
+  }
+}
+@media only screen and (max-width: 422px) {
+  .politics {
+    height: 200px !important;
+  }
+  .politics .text {
+    top: 16%;
+  }
+  .politics .text .type {
+    font-size: 4vw;
+  }
+}
 .footer {
   padding-top: 50px;
   font-family: "Typo";

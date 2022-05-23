@@ -1,0 +1,53 @@
+.policy {
+    font-size: 18px!important;
+}
+
+@media only screen and (max-width: 1144px) {
+    .politics {
+        height: 250px!important;
+
+        .text {
+            .type {
+
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 705px) {
+    .politics {
+        height: 300px!important;
+
+        .text {
+            .type {
+                // font-size: 16px!important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 544px) {
+    .politics {
+        height: 300px!important;
+
+        .text {
+            .type {
+                font-size: 4vw;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 422px) {
+    .politics {
+        height: 200px!important;
+
+        .text {
+            top: 16%;
+
+            .type {
+                font-size: 4vw;
+            }
+        }
+    }
+}

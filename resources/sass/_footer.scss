@@ -76,14 +76,13 @@
 }
 
 footer {
-    background-color: black;
-    letter-spacing: 1px;
+    background-color: rgba(0, 0, 0, 0.8274509804);
     color: rgb(225, 225, 225);
     z-index: 9999;
     position: fixed;
     bottom: 0%;
     width: 100vw;
-    font-family: "Typo"!important;
+    font-family: "Roboto";
 
     a {
         color: rgb(136, 136, 136);

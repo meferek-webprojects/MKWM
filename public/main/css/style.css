@@ -14,6 +14,10 @@
   font-family: "DMSerif";
   src: url(/fonts/DMSerif.ttf?c63bc97c84c421f39c7a3b21a5e243e7) format("truetype");
 }
+@font-face {
+  font-family: "Roboto";
+  src: url(/fonts/Roboto-Regular.ttf?fc2b5060f7accec5cf74437196c1b027) format("truetype");
+}
 .navbar {
   position: fixed;
   top: 0;
@@ -660,7 +664,7 @@ hr.breakline {
 }
 .testimonials .carousel-inner .carousel-item .testimonial .text {
   font-size: 22px;
-  font-family: "Arial";
+  font-family: "Roboto";
 }
 .testimonials .carousel-inner .carousel-item .testimonial .person {
   margin-top: 5px;
@@ -1050,14 +1054,13 @@ hr.breakline {
   }
 }
 footer {
-  background-color: black;
-  letter-spacing: 1px;
+  background-color: rgba(0, 0, 0, 0.8274509804);
   color: rgb(225, 225, 225);
   z-index: 9999;
   position: fixed;
   bottom: 0%;
   width: 100vw;
-  font-family: "Typo" !important;
+  font-family: "Roboto";
 }
 footer a {
   color: rgb(136, 136, 136);

@@ -572,7 +572,7 @@ hr.breakline {
   letter-spacing: 7px;
   color: rgba(0, 0, 0, 0.7529411765);
   text-align: center;
-  padding: 100px;
+  margin: 100px auto;
   background-color: white;
 }
 .about .about-image {
@@ -632,7 +632,7 @@ hr.breakline {
   letter-spacing: 7px;
   color: rgba(0, 0, 0, 0.7529411765);
   text-align: center;
-  padding: 100px;
+  margin: 100px auto;
   background-color: white;
 }
 .testimonials .carousel-inner {
@@ -780,27 +780,17 @@ hr.breakline {
 .portfolio {
   text-align: center;
 }
-.portfolio h4.our-portfolio {
-  color: #212529;
-  font-family: "TypoBold";
-  font-size: 25px;
-  letter-spacing: 8px;
-  margin: 60px 0;
-}
 .portfolio h4 {
   color: rgb(200, 200, 200);
   font-family: "DMSerif";
-  font-size: 25px;
+  margin-top: 100px;
   margin-bottom: 20px;
-  padding-bottom: 0;
 }
 .portfolio h3 {
   color: #212529;
   font-family: "TypoBold";
-  font-size: 32px;
   letter-spacing: 10px;
-  margin-top: 10px;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
 }
 .portfolio .movies .text {
   color: #212529;

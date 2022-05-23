@@ -165,21 +165,23 @@
 
 <div class="portfolio">
     <h4 id="fotografia">FOTOGRAFIA</h4>
-    <h3>PORTFOLIO</h3>    
-    <div class="row p-0 m-0">
-        <div class="col-lg-6 p-0 m-0">
+    <h3>PORTFOLIO</h3>
+    <div class="portfolio-images d-flex flex-wrap w-100">
+        <div class="portfolio-image">
             <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="img-fluid">
+            <div class="type">Plener</div>
         </div>
-        <div class="col-lg-6 p-0 m-0">
+        <div class="portfolio-image">
             <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="img-fluid">
+            <div class="type">Studio</div>
         </div>
-    </div>
-    <div class="row p-0 m-0">
-        <div class="col-lg-6 p-0 m-0">
+        <div class="portfolio-image">
             <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="img-fluid">
+            <div class="type">Produkt</div>
         </div>
-        <div class="col-lg-6 p-0 m-0">
+        <div class="portfolio-image">
             <img src="{{ url('/images/img/mateusz.jpg') }}" alt="" class="img-fluid">
+            <div class="type">Event</div>
         </div>
     </div>
 </div>

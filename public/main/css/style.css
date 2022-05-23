@@ -658,7 +658,8 @@ hr.breakline {
 }
 .testimonials .carousel-inner .carousel-item .testimonial .text {
   font-size: 26px;
-  font-family: "Roboto";
+  font-family: "Helvetica";
+  font-weight: 100;
 }
 .testimonials .carousel-inner .carousel-item .testimonial .person {
   font-size: 30px;

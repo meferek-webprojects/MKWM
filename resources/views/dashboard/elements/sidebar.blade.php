@@ -29,6 +29,9 @@
                 <li>
                     <a href="{{ url('/account') }}"><i class="material-icons-two-tone">account_circle</i>Twój profil</a>
                 </li>
+                <li>
+                    <a href="{{ url('/testimonial-add') }}"><i class="material-icons-two-tone">rate_review</i>Dodaj opinię</a>
+                </li>
                 <li class="sidebar-title">
                     TWOJE SESJE
                 </li>

@@ -34,6 +34,7 @@
                                             <th>Data sesji</th>
                                             <th>&nbsp;</th>
                                             <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -54,11 +55,20 @@
                                                 <td>{{ $session->created_at }}</td>
                                                 <td>
                                                     <form action="#" method="POST">
-                                                        <button class="btn btn-outline-warning" type="submit"><i class="material-icons mx-0">lock</i></button>
+                                                        <button class="btn btn-outline-primary" type="submit"><i class="material-icons mx-0">visibility</i></button>
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action="#" method="POST">
+                                                    <form action="{{ route('session.edit', $session->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('GET')
+                                                        <button class="btn btn-outline-info" type="submit"><i class="material-icons mx-0">edit</i></button>
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('session.destroy', $session->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
                                                         <button class="btn btn-outline-danger" type="submit"><i class="material-icons mx-0">delete</i></button>
                                                     </form>
                                                 </td>
@@ -71,7 +81,6 @@
                     </div>
                 </div>
                 
-
             </div>
         </div>
     </div>

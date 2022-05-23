@@ -1,4 +1,17 @@
 /* Your Custom CSS Goes here */
+.preview-box {
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+}
+
+
+.preview-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
 .notifi {
     position: fixed;

@@ -8,6 +8,7 @@
     <link href="{{ url('dashboard/plugins/highlight/styles/github-gist.css') }}" rel="stylesheet">
     <link href="{{ url('dashboard/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ url('dashboard/plugins/flatpickr/flatpickr.min.css') }}" rel="stylesheet">
+    <link href="{{ url('dashboard/plugins/datatables/datatables.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -66,6 +67,43 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table id="datatable1" class="w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>Link</th>
+                                            <th>Typ</th>
+                                            <th>Data stworzenia</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($portfolios as $portfolio)
+                                            <tr>
+                                                <td>{{ $portfolio->link }}</td>
+                                                <td>{{ $portfolio->kind }}</td>
+                                                <td>{{ $portfolio->created_at }}</td>
+                                                <td>
+                                                    <form action="{{ url('/usun') }}" method="POST">
+                                                        @csrf
+
+                                                        <input type="hidden" name="id" value="{{ $portfolio->id }}">
+                                                        <input type="hidden" name="isLink" value="true">
+                                                        <button class="btn btn-outline-danger" type="submit"><i class="material-icons mx-0">delete</i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -75,6 +113,8 @@
     <script src="{{ url('dashboard/plugins/highlight/highlight.pack.js') }}"></script>
     <script src="{{ url('dashboard/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ url('dashboard/plugins/flatpickr/flatpickr.js') }}"></script>
+    <script src="{{ url('dashboard/plugins/datatables/datatables.min.js') }}"></script>
+    <script src="{{ url('dashboard/js/pages/datatables.js') }}"></script>
     <script>
         $('select').select2();
         $(".flatpickr1").flatpickr();

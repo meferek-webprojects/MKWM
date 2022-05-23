@@ -13,15 +13,17 @@
                         <li class="nav-item">
                             <a class="nav-link hide-sidebar-toggle-button" href="#"><i class="material-icons">last_page</i></a>
                         </li>
+                        @if(Auth::user()->hasRole(10))
                         <li class="nav-item dropdown hidden-on-mobile">
                             <a class="nav-link dropdown-toggle" href="#" id="addDropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="material-icons">add</i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="addDropdownLink">
-                                <li><a class="dropdown-item" href="#">Nowa sesja</a></li>
+                                <li><a class="dropdown-item" href="{{ route('session.create') }}">Nowa sesja</a></li>
                                 <li><a class="dropdown-item" href="#">Nowa informacja</a></li>
                             </ul>
                         </li>
+                        @endif
                         <li id="change-theme" class="nav-item d-flex-inline">
                             @if(Auth::user()->theme == 'dark')
                                 <a class="nav-link" href="{{ url('/change-theme') }}"><i class="material-icons">light_mode</i></a>

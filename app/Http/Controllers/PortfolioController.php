@@ -25,21 +25,19 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolios = DB::table('portfolios')->get();  
-        
-        return view('dashboard.portfolio-photo')->with('portfolios', $portfolios);
+        //
     }
 
     public function photo_index()
     {
-        $portfolios = DB::table('portfolios')->get();  
+        $portfolios = DB::table('portfolios')->join('portfolio_files', 'portfolios.id', '=', 'portfolio_files.portfolio_id')->select('portfolio_files.*', 'portfolios.type')->where('kind', 'photo')->get();  
         
         return view('dashboard.portfolio-photo')->with('portfolios', $portfolios);
     }
 
     public function video_index()
     {
-        $portfolios = DB::table('portfolios')->get();  
+        $portfolios = DB::table('portfolios')->where('kind', 'video')->get();  
         
         return view('dashboard.portfolio-video')->with('portfolios', $portfolios);
     }
@@ -142,9 +140,23 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
     }
+
+    public function usun(Request $request) {
+        if(!isset($request->isLink)) {
+            $checkID = PortfolioFiles::find($request->id)->portfolio_id;
+            PortfolioFiles::find($request->id)->delete();
+
+            $checkFiles = PortfolioFiles::where('portfolio_id', $checkID)->count();
+            if($checkFiles == 0) Portfolios::find($checkID)->delete();
+        }
+        else Portfolios::find($request->id)->delete();
+
+        return redirect('/portfolio-photo')->with('warning', 'Pomyślnie usunięto element portfolio');
+    }
+
     
 }

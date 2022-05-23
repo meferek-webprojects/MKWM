@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\SessionFilesController;
 
 
 /////////////////// LANDING PAGE ///////////////////
@@ -85,9 +86,10 @@ Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
     Route::resource('session', SessionController::class);
     Route::get('/portfolio-photo', [PortfolioController::class, 'photo_index']);
     Route::get('/portfolio-video', [PortfolioController::class, 'video_index']);
+    Route::post('/usun', [PortfolioController::class, 'usun']);
     Route::resource('portfolio', PortfolioController::class);
+    Route::resource('sessionfiles', SessionFilesController::class);
     Route::resource('place', PlaceController::class);
-
     
 });
 

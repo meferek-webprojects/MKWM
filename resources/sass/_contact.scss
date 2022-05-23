@@ -89,4 +89,38 @@
         padding: 5px 50px!important;
     }
 
+    .contact {
+        margin-top: 100px;
+        height: 200px;
+        overflow: hidden;
+    
+        .text {
+            z-index: 100;
+            position: absolute;
+            color: white;
+            top: 19%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+    
+            .type {
+                font-family: 'TypoBold';
+                font-size: 20px;
+                letter-spacing: 8px;
+                margin-bottom: 100px;
+                opacity: 100%;
+            }
+    
+        }
+    
+        .background {
+            background: black;
+            object-fit: cover;
+            img {
+                opacity: 35%;
+            }
+    
+        }
+    
+    }
 }

@@ -943,6 +943,36 @@ hr.breakline {
   .form button {
     padding: 5px 50px !important;
   }
+
+  .contact {
+    margin-top: 100px;
+    height: 200px;
+    overflow: hidden;
+  }
+  .contact .text {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    top: 19%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .contact .text .type {
+    font-family: "TypoBold";
+    font-size: 20px;
+    letter-spacing: 8px;
+    margin-bottom: 100px;
+    opacity: 100%;
+  }
+  .contact .background {
+    background: black;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .contact .background img {
+    opacity: 35%;
+  }
 }
 .policy {
   font-size: 18px !important;

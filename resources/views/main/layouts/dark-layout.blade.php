@@ -27,29 +27,38 @@
                     <i data-feather="menu"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0 mx-auto d-flex align-items-center position-relative">
+                    <ul class="navbar-nav mx-auto d-flex align-items-center position-relative">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ url('/') }}">Główna</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">My</a>
+                            <a class="nav-link" aria-current="page" href="#my">My</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Fotografia</a>
+                            <a class="nav-link" aria-current="page" href="#fotografia">Fotografia</a>
                         </li>
                         <li class="nav-item d-none d-xl-block" id="nav-logo">
                             <a class="nav-link logo" aria-current="page" href="{{ url('/') }}">MKWM</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Filmografia</a>
+                            <a class="nav-link" aria-current="page" href="#filmografia">Filmografia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Kontakt</a>
+                            <a class="nav-link" aria-current="page" href="{{ url('/kontakt') }}">Kontakt</a>
                         </li>
-                        <li class="nav-item d-none d-xl-block position-relative" id="search-button">
-                            <i data-feather="search"></i>
-                        </li>
-                        <input type="text" class="searchbar position-absolute border-0" placeholder="Szukaj sesji">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url('/account') }}"><i data-feather="user"></i></a>
+                            </li>
+                        @endauth
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ url('/login') }}"><i data-feather="log-in"></i></a>
+                            </li>
+                        @endguest
+                        <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i data-feather="x"></i>
+                        </button>
                     </ul>
                 </div>
             </div>

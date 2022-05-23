@@ -633,7 +633,7 @@ hr.breakline {
 .testimonials h3 {
   font-family: "TypoBold";
   letter-spacing: 7px;
-  color: rgba(0, 0, 0, 0.7529411765);
+  color: rgba(0, 0, 0, 0.8274509804);
   text-align: center;
   margin: 100px auto;
   background-color: white;
@@ -651,18 +651,18 @@ hr.breakline {
      object-fit: cover;
   -o-object-position: center 25%;
      object-position: center 25%;
-  filter: brightness(50%);
+  filter: brightness(40%);
 }
 .testimonials .carousel-inner .carousel-item .testimonial {
   color: white;
 }
 .testimonials .carousel-inner .carousel-item .testimonial .text {
-  font-size: 26px;
-  font-family: "Helvetica";
-  font-weight: 100;
+  font-size: 22px;
+  font-family: "Arial";
 }
 .testimonials .carousel-inner .carousel-item .testimonial .person {
-  font-size: 30px;
+  margin-top: 5px;
+  font-size: 28px;
   font-family: "TypoBold";
   letter-spacing: 2px;
   opacity: 95%;

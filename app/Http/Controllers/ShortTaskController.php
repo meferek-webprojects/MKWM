@@ -33,4 +33,8 @@ class ShortTaskController extends Controller
 
         return redirect()->back()->with('success', 'Twoje złoszenie zostało wysłane!');
     }
+
+    public function faq(Request $request){
+        return view('dashboard.faq');
+    }
 }

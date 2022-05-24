@@ -11,7 +11,7 @@
                 <div class="navbar-nav" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link hide-sidebar-toggle-button" href="#"><i class="material-icons">last_page</i></a>
+                            <a class="nav-link hide-sidebar-toggle-button" id="sidebar-toggler" href="#"><i class="material-icons">last_page</i></a>
                         </li>
                         @if(Auth::user()->hasRole(10))
                         <li class="nav-item dropdown hidden-on-mobile">

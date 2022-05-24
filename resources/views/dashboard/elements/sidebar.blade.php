@@ -1,6 +1,6 @@
 @section('sidebar')
     <div class="app-sidebar">
-        <div class="logo">
+        <div class="logo" id="logo">
             <a href="{{ url('/') }}" class="logo-icon"><span class="logo-text">MKWM</span></a>
             <div class="sidebar-user-switcher user-activity-online">
                 <a href="#">

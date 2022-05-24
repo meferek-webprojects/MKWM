@@ -735,7 +735,7 @@
         <x-alert type="success" :message="@session('success')" />
     @endif
 
-    <div class="app align-content-stretch d-flex flex-wrap">
+    <div class="app align-content-stretch d-flex flex-wrap" id="app">
 
         @yield('sidebar')
 
@@ -759,6 +759,7 @@
     <script src="{{ url('dashboard/js/custom.js') }}"></script>
     <script src="{{ url('dashboard/js/pages/dashboard.js') }}"></script>
     <script src="{{ url('dashboard/js/alertDismiss.js') }}"></script>
+    <script src="{{ url('dashboard/js/dashboard-cookie-state.js') }}"></script>
 
 
     @yield('added-js')

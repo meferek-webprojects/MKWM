@@ -156,7 +156,7 @@
                     <a href="{{ url('/portfolio-video') }}"><i class="material-icons-two-tone">camera</i>Filmografia</a>
                 </li>
                 <li>
-                    <a href="{{ route('testimonial.index') }}"><i class="material-icons-two-tone">photo_library</i>Referencje</a>
+                    <a href="{{ route('testimonial.index') }}"><i class="material-icons-two-tone">reviews</i>Referencje</a>
                 </li>
                 @endif
             </ul>

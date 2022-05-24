@@ -21,8 +21,8 @@
     
     <div class="container-fluid m-0 p-0">
 
-        <nav class="navbar navbar-expand-xl navbar-dark full position-sticky">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-xl navbar-dark full">
+            <div class="container-fluid p-0">
                 <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i data-feather="menu"></i>
                 </button>

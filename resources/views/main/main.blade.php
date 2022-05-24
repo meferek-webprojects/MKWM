@@ -4,9 +4,11 @@
 
 @php
     $session = DB::table('sessions')->join('session_files', 'session_files.session_id', '=', 'sessions.id')->select('sessions.*', 'session_files.file', 'session_files.favourite')->where('type', 'public')->orderBy('date', 'desc')->where('favourite', true)->orderBy('date', 'desc')->first();
-    $place = DB::table('places')->where('id', $session->place_id)->first();
-    $user = DB::table('users')->where('id', json_decode($session->users_id))->first();
+    if(isset($session)) $place = DB::table('places')->where('id', $session->place_id)->first();
+    if(isset($session)) $user = DB::table('users')->where('id', json_decode($session->users_id))->first();
 @endphp
+
+@if(isset($session))
 <div class="last-photoshoot d-flex flex-wrap w-100" onclick="window.location='{{ url('/photoshoot') }}'">
     <div class="photoshoot-info my-auto">
         <div class="type">
@@ -23,6 +25,7 @@
         <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->file) }}" alt="">
     </div>
 </div>
+@endif
 
 @php
     $sessions = DB::table('sessions')->where('type', 'public')->join('session_files', 'session_files.session_id', '=', 'sessions.id')->select('sessions.*', 'session_files.file', 'session_files.favourite')->orderBy('date', 'desc')->skip(1)->take(4)->get();
@@ -67,48 +70,6 @@
         </div>
     </div>
     @endforeach
-
-    {{-- <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
-        <div class="photoshoot-info order-1">
-            <div class="place">
-                Studio
-            </div>
-            <div class="person">
-                Natalia Regulska
-            </div>
-        </div>
-        <div class="photoshoot-image order-0">
-            <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
-        </div>
-    </div>
-
-    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
-        <div class="photoshoot-info">
-            <div class="place">
-                Studio
-            </div>
-            <div class="person">
-                Natalia Regulska
-            </div>
-        </div>
-        <div class="photoshoot-image">
-            <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
-        </div>
-    </div>
-
-    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
-        <div class="photoshoot-info order-1 order-xl-0">
-            <div class="place">
-                Studio
-            </div>
-            <div class="person">
-                Natalia Regulska
-            </div>
-        </div>
-        <div class="photoshoot-image order-0 order-xl-1">
-            <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
-        </div>
-    </div> --}}
 </div>
 @endif
 
@@ -163,12 +124,13 @@
 @php
     $testimonials = DB::table('testimonials')->where('aproved', true)->take(5)->get();
 @endphp
+@if($testimonials->count() > 0)
 <div class="testimonials">
     <h3>REFERENCJE</h3>    
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             @for ($i = $testimonials->count(); $i > 0; $i--)
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" @if($i == $testimonials->count()) class="active" aria-current="true" @else aria-current="false" @endif aria-label="Slide {{ $i }}"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i-1 }}" @if($i == $testimonials->count()) class="active" aria-current="true" @else aria-current="false" @endif aria-label="Slide {{ $i }}"></button>
             @endfor
         </div>
         <div class="carousel-inner">
@@ -196,7 +158,8 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-</div>
+</div>    
+@endif
 
 <div class="portfolio">
     <h4 id="fotografia">FOTOGRAFIA</h4>

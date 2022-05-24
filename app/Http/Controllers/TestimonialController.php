@@ -57,7 +57,7 @@ class TestimonialController extends Controller
         $counter = Testimonials::where('user_id', Auth::user()->id)->count();
         
         if(strlen($request->testimonial) > 150) {
-            return redirect('/testimonial-add')->with('danger', 'Maksymalna ilość znaków to 150!');
+            return redirect('/testimonial/create')->with('danger', 'Maksymalna ilość znaków to 150!');
         }
 
         if($counter == 0) {
@@ -75,7 +75,7 @@ class TestimonialController extends Controller
 
         $testimonial->save();
 
-        return redirect('/testimonial-add')->with('success', 'Pomyślnie dodano nową referencję do bazy!');
+        return redirect('/testimonial/create')->with('success', 'Pomyślnie dodano nową referencję do bazy!');
     }
 
     /**

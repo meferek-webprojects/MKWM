@@ -67,6 +67,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/account', [DashboardController::class, 'account']);
 
     Route::resource('user', UserController::class)->except(['index','create', 'destroy']);
+    Route::resource('session', SessionController::class)->only(['show']);
     Route::resource('testimonial', TestimonialController::class)->except(['index', 'destroy']);
 
 });
@@ -91,7 +92,7 @@ Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
 
     Route::resource('user', UserController::class)->only(['index','create', 'destroy']);
     Route::resource('testimonial', TestimonialController::class)->only(['index','destroy']);
-    Route::resource('session', SessionController::class);
+    Route::resource('session', SessionController::class)->except(['show']);
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('sessionfiles', SessionFilesController::class);
     Route::resource('place', PlaceController::class);

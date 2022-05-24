@@ -46,7 +46,7 @@
                         if(Auth::user()->hasRole(10))
                             $userSessions = DB::table('sessions')->where('kind', 'photo')->orWhere('kind', 'both');
                         else
-                            $userSessions = DB::table('sessions')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->where('kind', 'photo')->orWhere('kind', 'both');
+                            $userSessions = DB::table('sessions')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both']);
 
                         if($userSessions->count() > 0){
                             $lastYear = date('Y', strtotime($userSessions->orderBy('date', 'desc')->first()->date));

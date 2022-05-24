@@ -191,7 +191,7 @@
                     
                     <div class="col-lg-6">
                         @php
-                            $userSessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file')->where('session_files.favourite', '1')->orderBy('date', 'desc')->limit(5)->get();
+                            $userSessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file')->where('session_files.favourite', '1')->orderBy('date', 'desc')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->limit(5)->get();
                         @endphp
                         @if($userSessions->count() > 0)
                         @foreach ($userSessions as $uS)

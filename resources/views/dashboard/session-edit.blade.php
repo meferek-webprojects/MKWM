@@ -122,6 +122,7 @@
                                     <div class="row">
                                         <div class="col mt-4">
                                             <button class="btn btn-primary" type="submit">Edytuj</button>
+                                            <a href="{{ url('/session/'.$session->id) }}"><button class="btn btn-info" type="button">Zobacz</button></a>
                                             <button class="btn btn-warning" type="reset">Resetuj</button>
                                         </div>
                                     </div>

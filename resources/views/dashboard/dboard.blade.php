@@ -190,19 +190,14 @@
                     </div>
                     
                     <div class="col-lg-6">
-                        @php 
-                            $counter = 0;
-                            $userSessions = DB::table('sessions')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->orderBy('date', 'desc')->get()->take(5);
+                        @php
+                            $userSessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file')->where('session_files.favourite', '1')->orderBy('date', 'desc')->limit(5)->get();
                         @endphp
                         @if($userSessions->count() > 0)
                         @foreach ($userSessions as $uS)
-                            @php
-                                $photo = DB::table('session_files')->where('session_id', $uS->id)->first();
-                            @endphp
-                            @if($photo != NULL)
                             <a href="{{ url('/session/'.$uS->id) }}" style="cursor: pointer;">
                                 <div class="card bg-dark text-white preview-box-big">
-                                    <img src="{{ url('images/photoshoots/'.$uS->id.'/'.$photo->file) }}" class="card-img" alt="...">
+                                    <img src="{{ url('images/photoshoots/'.$uS->id.'/'.$uS->file) }}" class="card-img" alt="...">
                                     <div class="card-img-overlay">
                                     <h5 class="card-title text-white">{{ $uS->name }}</h5>
                                     <p class="card-text m-t-md">{{ $uS->description }}</p>
@@ -210,7 +205,6 @@
                                     </div>
                                 </div>
                             </a>
-                            @endif
                         @endforeach
                         @else
                             <a href="#">

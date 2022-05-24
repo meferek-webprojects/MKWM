@@ -63,8 +63,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dboard', [DashboardController::class, 'dashboard']);
     Route::get('/account', [DashboardController::class, 'account']);
 
-    Route::resource('user', UserController::class)->except(['index','create']);
-    Route::resource('testimonial', TestimonialController::class)->except(['index']);
+    Route::resource('user', UserController::class)->except(['index','create', 'destroy']);
+    Route::resource('testimonial', TestimonialController::class)->except(['index', 'destroy']);
 
 });
 
@@ -84,7 +84,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
 
-    Route::resource('user', UserController::class)->only(['index','create']);
+    Route::resource('user', UserController::class)->only(['index','create', 'destroy']);
     Route::resource('session', SessionController::class);
     
     Route::get('/portfolio-photo', [PortfolioController::class, 'photo_index']);
@@ -94,8 +94,9 @@ Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('sessionfiles', SessionFilesController::class);
     Route::resource('place', PlaceController::class);
-    Route::resource('testimonial', TestimonialController::class)->only(['index']);
 
+    Route::post('/testimonial-aproved', [TestimonialController::class, 'testimonial_aproved']);
+    Route::resource('testimonial', TestimonialController::class)->only(['index','destroy']);
     
 });
 

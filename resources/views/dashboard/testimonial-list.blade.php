@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="page-description">
-                            <h1>Lista wszystkich sesji</h1>
+                            <h1>Lista wszystkich opinii</h1>
                         </div>
                     </div>
                 </div>
@@ -29,49 +29,48 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nazwa</th>
-                                            <th>Model/ka</th>
-                                            <th>Data sesji</th>
-                                            <th>&nbsp;</th>
+                                            <th>Treść</th>
+                                            <th>Autor</th>
+                                            <th>Status</th>
+                                            <th>Data dodania</th>
                                             <th>&nbsp;</th>
                                             <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($sessions as $session)
-                                            @php
-                                                $users = json_decode($session->users_id)
-                                            @endphp
+                                        @php
+                                            $testimonials = DB::table('testimonials')->get();
+                                        @endphp
+                                        @foreach($testimonials as $testimonial)
                                             <tr>
-                                                <td>{{ $session->id }}</td>
-                                                <td>{{ $session->name }}</td>
+                                                <td>{{ $testimonial->id }}</td>
+                                                <td>{{ $testimonial->testimonial }}</td>
                                                 <td>
                                                     @php
-                                                        foreach($users as $user){
-                                                            echo DB::table('users')->where('id', $user)->first()->name.', ';
-                                                        }
+                                                        $user = DB::table('users')->where('id', $testimonial->user_id)->first();
+                                                        echo $user->name.' '.$user->surname;
                                                     @endphp
                                                 </td>
-                                                <td>{{ $session->created_at }}</td>
+                                                @if($testimonial->aproved == true)
+                                                    <td><span class="badge badge-success badge-style-light">ZWERYFIKOWANO</span></td>
+                                                @else 
+                                                    <td><span class="badge badge-warning badge-style-light">TRWA WERYFIKACJA</span></td>
+                                                @endif
+                                                <td>{{ $testimonial->created_at }}</td>
                                                 <td>
-                                                    <form action="{{ route('session.show', $session->id) }}" method="POST">
+                                                    <form action="{{ url('/testimonial-aproved') }}" method="POST">
                                                         @csrf
-                                                        @method('GET')
-                                                        
-                                                        <button class="btn btn-outline-primary" type="submit"><i class="material-icons mx-0">visibility</i></button>
+                                                        <input type="hidden" name="user_id" value="{{ $testimonial->user_id }}">
+                                                        <input type="hidden" name="id" value="{{ $testimonial->id }}">
+
+                                                        <button class="btn btn-outline-success" type="submit"><i class="material-icons mx-0">published_with_changes</i></button>
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('session.edit', $session->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('GET')
-                                                        <button class="btn btn-outline-info" type="submit"><i class="material-icons mx-0">edit</i></button>
-                                                    </form>
-                                                </td>
-                                                <td>
-                                                    <form action="{{ route('session.destroy', $session->id) }}" method="POST">
+                                                    <form action="{{ route('testimonial.destroy', $testimonial->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
+
                                                         <button class="btn btn-outline-danger" type="submit"><i class="material-icons mx-0">delete</i></button>
                                                     </form>
                                                 </td>

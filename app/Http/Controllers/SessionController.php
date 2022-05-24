@@ -107,8 +107,16 @@ class SessionController extends Controller
     public function show($id)
     {
         $session = Sessions::find($id);
+        $users = DB::table('users')->get();
+        $userInSession = false;
 
-        return view('dashboard.session')->with('session', $session);
+        if( str_contains($session->users_id, Auth::user()->id) )
+            $userInSession = true;
+
+        if(Auth::user()->hasRole(10) || $userInSession)
+            return view('dashboard.session')->with('session', $session);
+        else
+            return abort(403);
     }
 
     /**

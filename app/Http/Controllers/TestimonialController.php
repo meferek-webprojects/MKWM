@@ -17,7 +17,23 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        //
+        $testimonials = DB::table('testimonials')->get();
+
+        return view('dashboard.testimonial-list')->with('testimonials', $testimonials);
+    }
+
+    public function testimonial_aproved(Request $request)
+    {
+        $testimonial = Testimonials::find($request->id);
+
+        if($testimonial->aproved == true)
+            $testimonial->aproved = false;
+        else
+            $testimonial->aproved = true;
+
+        $testimonial->save();
+
+        return redirect('/testimonial')->with('success', 'Pomyślnie zmieniono status opinię');
     }
 
     /**
@@ -39,18 +55,23 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $counter = Testimonials::where('user_id', Auth::user()->id)->count();
+        
+        if(strlen($request->testimonial) > 150) {
+            return redirect('/testimonial-add')->with('danger', 'Maksymalna ilość znaków to 150!');
+        }
 
         if($counter == 0) {
             $testimonial = new Testimonials;
             $testimonial->user_id = $request->user_id;
-            $testimonial->testimonial = $request->testimonial;
+            $testimonial->testimonial = substr($request->testimonial, 0, 150); 
         }
         else {
             $testimonial = Testimonials::where('user_id', Auth::user()->id)->first();
             $testimonial->user_id = $request->user_id;
             $testimonial->aproved = false;
-            $testimonial->testimonial = $request->testimonial; 
+            $testimonial->testimonial = substr($request->testimonial, 0, 150); 
         }
+
 
         $testimonial->save();
 
@@ -99,6 +120,9 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Testimonials::find($id)->delete();
+
+        return redirect('/testimonial')->with('warning', 'Pomyślnie usunięto opinie');
     }
+
 }

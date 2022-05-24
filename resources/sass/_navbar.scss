@@ -97,12 +97,12 @@
 
     .navbar-show{
         opacity: 1;
-        transition: opacity 0s 0s;
+        transition: opacity 0s .2s;
     }
 
     .navbar-show[aria-expanded=true]{
         opacity: 0;
-        transition: opacity 0s .2s;
+        transition: opacity 0s .1s;
     }
 
     #search-button{

@@ -103,11 +103,11 @@
 }
 .navbar .navbar-show {
   opacity: 1;
-  transition: opacity 0s 0s;
+  transition: opacity 0s 0.2s;
 }
 .navbar .navbar-show[aria-expanded=true] {
   opacity: 0;
-  transition: opacity 0s 0.2s;
+  transition: opacity 0s 0.1s;
 }
 .navbar #search-button {
   cursor: pointer;
@@ -576,6 +576,9 @@ hr.breakline {
   margin: 50px 0;
 }
 
+.about {
+  background-color: white;
+}
 .about h3 {
   font-family: "TypoBold";
   letter-spacing: 7px;

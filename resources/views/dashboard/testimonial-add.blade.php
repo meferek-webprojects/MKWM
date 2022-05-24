@@ -24,8 +24,16 @@
                     <div class="col">
                         <div class="alert alert-custom alert-indicator-left indicator-warning" role="alert">
                             <div class="alert-content">
+                                <span class="alert-title">Pamiętaj!</span>
+                                <span class="alert-text">Twoja referencja będzie widoczna na naszej stronie głównej wraz z twoim imieniem i nazwiskiem. Pisząc ową opinię zgadzasz się na wykorzystanie jej na naszej stronie.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="alert alert-custom alert-indicator-left indicator-warning" role="alert">
+                            <div class="alert-content">
                                 <span class="alert-title">UWAGA!</span>
-                                <span class="alert-text">Każda nowa referencja musi zostać zweryfikowana pod kątem niecenzuralnych słów itp. oraz maksymalna ilość znaków to 150!</span>
+                                <span class="alert-text">Każda nowa referencja musi zostać zweryfikowana pod kątem niecenzuralnych słów itp. oraz maksymalna ilość znaków to <b>150</b>.</span>
                             </div>
                         </div>
                     </div>

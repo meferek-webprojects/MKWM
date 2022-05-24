@@ -54,7 +54,10 @@
                                                 </td>
                                                 <td>{{ $session->created_at }}</td>
                                                 <td>
-                                                    <form action="#" method="POST">
+                                                    <form action="{{ route('session.show', $session->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('GET')
+                                                        
                                                         <button class="btn btn-outline-primary" type="submit"><i class="material-icons mx-0">visibility</i></button>
                                                     </form>
                                                 </td>

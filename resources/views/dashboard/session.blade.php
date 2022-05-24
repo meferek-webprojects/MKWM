@@ -41,6 +41,9 @@
                             </div>
                         </div> 
 
+                        @php 
+                            $photos = DB::table('session_files')->where('session_id', $session->id)->get();
+                        @endphp
                         <div class="card">
                             <div class="card-body">
                                 Pliki
@@ -50,11 +53,16 @@
                     </div>
 
                     <div class="col-lg-4">
+                        @php
+                            $fav = DB::table('session_files')->where('session_id', $session->id)->where('favourite', true)->first();
+                        @endphp
+                        @if(isset($fav))
                         <div class="card">
                             <div class="card-body">
-                                FAVKA (ulubione zdjęcie)
+                                <img src="{{ $fav->link }}" class="img-fluid" alt="...">
                             </div>
                         </div> 
+                        @endif
                         <div class="card">
                             <div class="card-body">
                                 <div class="flatpickr-calendar animate open arrowTop arrowLeft" tabindex="-1" style="top: 448.344px; left: 388.844px; right: auto;"><div class="flatpickr-months"><span class="flatpickr-prev-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z"></path></svg></span><div class="flatpickr-month"><div class="flatpickr-current-month"><select class="flatpickr-monthDropdown-months" aria-label="Month" tabindex="-1"><option class="flatpickr-monthDropdown-month" value="0" tabindex="-1">January</option><option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">February</option><option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">March</option><option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">April</option><option class="flatpickr-monthDropdown-month" value="4" tabindex="-1">May</option><option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">June</option><option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">July</option><option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">August</option><option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">September</option><option class="flatpickr-monthDropdown-month" value="9" tabindex="-1">October</option><option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">November</option><option class="flatpickr-monthDropdown-month" value="11" tabindex="-1">December</option></select><div class="numInputWrapper"><input class="numInput cur-year" type="number" tabindex="-1" aria-label="Year"><span class="arrowUp"></span><span class="arrowDown"></span></div></div></div><span class="flatpickr-next-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z"></path></svg></span></div><div class="flatpickr-innerContainer"><div class="flatpickr-rContainer"><div class="flatpickr-weekdays"><div class="flatpickr-weekdaycontainer">
@@ -65,20 +73,34 @@
                             </div>
                         </div> 
 
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="avatar avatar-rounded">
+                                            <div class="avatar-title">LK</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-9 d-flex">
+                                        <h2 class="my-auto">AGNieszka Chylińska</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+
                         @php
                             $place = DB::table('places')->where('id', $session->place_id)->first();
                         @endphp
                         <div class="card overflow-hidden">
                             <div class="card-body">
-                              <h5 class="card-title">MIEJSCE SESJI</h5>
-                              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              <h5 class="card-title">{{ $place->name }}</h5>
+                              <p class="card-text">Ta sesja odbywała się w tej okolicy.</p>
                             </div>
                             <div class="map-frame">
                                 @if(Auth::user()->theme == 'dark')
                                     <iframe style="filter: grayscale(90%) invert(90%) contrast(100%);" class="w-100" src="{{ $place->link }}" height="400" allowfullscreen=""></iframe>
                                 @else
-                                    <iframe class="w-100" src="{{ $place->link }}" height="400" allowfullscreen=""></iframe>
+                                    <iframe class="w-100" src="{{ $place->link.'&zoom=12&format=png&maptype=roadmap&style=feature:administrative%7Celement:geometry%7Cvisibility:off&style=feature:administrative.neighborhood%7Cvisibility:off&style=feature:poi%7Cvisibility:off&style=feature:poi%7Celement:labels.text%7Cvisibility:off&style=feature:road%7Cvisibility:off&style=feature:road%7Celement:labels%7Cvisibility:off&style=feature:road%7Celement:labels.icon%7Cvisibility:off&style=feature:transit%7Cvisibility:off&style=feature:water%7Celement:labels.text%7Cvisibility:off&size=480x360' }}" height="400" allowfullscreen=""></iframe>
                                 @endif
                             </div>
                         </div>

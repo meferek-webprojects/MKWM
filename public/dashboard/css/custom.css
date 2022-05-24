@@ -104,6 +104,26 @@ body[theme="dark"] .select2-container--default .select2-selection--multiple {
     object-position: center 10%;
 }
 
+.preview-session {
+    overflow: hidden;
+    height: 250px;
+}
+
+.preview-session img{
+    transition: all 0.3s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+}
+
+.preview-session:hover img {
+    transition: all 0.3s;
+    transform: scale(1.2);
+    filter: brightness(70%);
+}
+
+
 .preview-box {
     overflow: hidden;
     width: 200px;

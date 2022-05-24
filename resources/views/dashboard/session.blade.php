@@ -5,18 +5,8 @@
 @endsection
 
 @section('added-css')
-    <link href="{{ url('dashboard/plugins/aec/simple-calendar.css') }}" rel="stylesheet">
-    <style>
-        .flatpickr-calendar {
-            position: static;
-            top: 0;
-            left: 0;
-        }
-
-        .flatpickr-months {
-            display: none!important;
-        }
-    </style>
+    {{-- <link href="{{ url('dashboard/plugins/aec/simple-calendar.css') }}" rel="stylesheet"> --}}
+    <link href="{{ url('dashboard/plugins/lightGallery/dist/css/lightgallery.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -34,42 +24,148 @@
 
                 <div class="row">
 
-                    <div class="col-lg-8">
+                    <div class="col-xxl-8">
                         <div class="card">
                             <div class="card-body">
-                                <h1>{{ $session->name }}</h1>
+                                <h3 class="my-1">{{ $session->name }}</h3>
                             </div>
-                        </div> 
+                        </div>
+
+                        @if($session->kind == 'both')
+                        <div class="card">
+                            <div class="card-body">
+                                <iframe class="w-100" height="500vh" src="https://www.youtube-nocookie.com/embed/{{ substr($session->link, 17) }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                         
+                            </div>
+                        </div>
+                        @endif
 
                         @php 
                             $photos = DB::table('session_files')->where('session_id', $session->id)->get();
                         @endphp
                         <div class="card">
+                            <div class="card-header">
+                                <h4 class="d-flex"><span class="badge badge-info badge-style-bordered ms-auto">Ilość zdjęć: {{ $photos->count() }}</span></h4>
+                            </div>
                             <div class="card-body">
-                                Pliki
-                                <button class="btn btn-outline-primary w-100 mt-4">Pobierz wszystkie zdjęcia jako .zip</button>
+                                <div class="row">
+                                    <ul id="lightgallery" class="list-unstyled row px-4 py-3 mx-auto">
+                                        @foreach($photos as $photo)
+                                        <li 
+                                        @if($loop->first) 
+                                            style="border-top-left-radius: 10px;" 
+                                        @elseif($loop->iteration == 3) 
+                                            style="border-top-right-radius: 10px;" 
+                                        @elseif($loop->index == $loop->count-3) 
+                                            @if(($loop->count % 3 == 0)) 
+                                                style="border-bottom-left-radius: 10px;" 
+                                            @endif
+                                        @elseif($loop->last)
+                                            style="border-bottom-right-radius: 10px;"
+                                        @endif
+                                        class="col-xs-12 col-sm-12 p-0 col-md-4 square overflow-hidden preview-session" data-src="{{ url('images/photoshoots/'.$photo->session_id.'/'.$photo->file) }}">
+                                            <a href="{{ url('images/photoshoots/'.$photo->session_id.'/'.$photo->file) }}">
+                                                <img src="{{ url('images/photoshoots/'.$photo->session_id.'/'.$photo->file) }}">
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <form action="{{ url('/download-all') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $session->id }}">
+                                    <button class="btn btn-outline-primary w-100 mt-4">Pobierz wszystkie zdjęcia jako .zip</button>
+                                </form>
                             </div>
                         </div> 
+
+                        @if($session->kind == 'both')
+                        <div class="card widget">
+                            <div class="card-header">
+                                <h5 class="card-title">Link do twojego filmu z sesji</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted d-block">Ten link jest dostępny tylko dla ciebie.</p>
+                                <div class="input-group">
+                                    <input type="text" class="form-control form-control-solid-bordered" value="{{ $session->link }}" aria-label="https://themeforest.net/user/stacks/portfolio" aria-describedby="share-link1">
+                                    <button class="btn btn-primary" type="button" id="share-link1"><i class="material-icons no-m fs-5">content_copy</i></button>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-xxl-4">
+
+                        @if(Auth::user()->hasRole(10)) 
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Narzędzia administratorskie</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form action="{{ route('session.edit', $session->id) }}" method="POST">
+                                        @csrf
+                                        @method('GET')
+                                        <button type="submit" class="btn btn-primary m-r-xs"><i class="material-icons">edit</i>Edytuj</button>
+                                    </form>
+                                    <form action="{{ url('/change-privacy') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $session->id }}">
+                                        <button type="submit" class="btn {{ $session->type == "public" ? 'btn-info' : 'btn-warning'}} m-r-xs"><i class="material-icons">{{ $session->type == "public" ? 'lock_open' : 'lock'}}</i>Zmień prywatność</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        @endif
 
                         @php
+                            use Carbon\Carbon;
                             $fav = DB::table('session_files')->where('session_id', $session->id)->where('favourite', true)->first();
                         @endphp
 
                         @if(isset($fav))
                         <div class="card">
+                            <div class="card-header">
+                                <h4 class="d-flex">
+                                    <span class="badge badge-warning badge-style-bordered mx-auto d-flex my-auto"><p class="my-auto pe-2">NAJLEPSZE ZDJĘCIE Z SESJI</p><i class="material-icons my-auto p-0">star</i></span>
+                                </h4>
+                            </div>
                             <div class="card-body">
-                                <img src="{{ $fav->link }}" class="img-fluid" alt="...">
+                                <img src="{{ url('images/photoshoots/'.$fav->session_id.'/'.$fav->file) }}" class="img-fluid rounded" alt="...">
                             </div>
                         </div> 
                         @endif
 
-                        <div class="card">
-                            <div class="card-body">
-                                <div id="calendar">
+                        @php
+                            $m_en = array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+                            $m_pl = array("Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru");
 
+                            $data = str_replace($m_en, $m_pl, (date('d M Y', strtotime($session->date) )));
+                        @endphp
+                        <div class="card widget widget-stats">
+                            <div class="card-body">
+                                <div class="widget-stats-container d-flex">
+                                    <div class="widget-stats-icon widget-stats-icon-primary">
+                                        <i class="material-icons-outlined">event</i>
+                                    </div>
+                                    <div class="widget-stats-content flex-fill">
+                                        <span class="widget-stats-title">Sesja zdjęciowa odbyła się</span>
+                                        <span class="widget-stats-amount">{{ $data }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card widget widget-stats">
+                            <div class="card-body">
+                                <div class="widget-stats-container d-flex">
+                                    <div class="widget-stats-icon widget-stats-icon-primary">
+                                        <i class="material-icons-outlined">{{ $session->type == "public" ? 'lock_open' : 'lock' }}</i>
+                                    </div>
+                                    <div class="widget-stats-content flex-fill">
+                                        <span class="widget-stats-title">Typ sesji zdjęciowej</span>
+                                        <span class="widget-stats-amount">{{ $session->type == "public" ? 'Publiczna' : 'Prywatna'  }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -122,8 +218,13 @@
 @endsection
 
 @section('added-js')
-    <script src="{{ url('dashboard/plugins/aec/jquery.simple-calendar.js') }}"></script>
+    <script src="{{ url('dashboard/plugins/lightGallery/dist/js/lightgallery-all.min.js') }}"></script>
+    {{-- <script src="{{ url('dashboard/plugins/aec/jquery.simple-calendar.js') }}"></script> --}}
+
     <script>
+        $(document).ready(function() {
+            $("#lightgallery").lightGallery(); 
+        });
           $("#calendar").simpleCalendar({
                 // displays events
                 displayEvent: false,

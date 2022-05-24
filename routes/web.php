@@ -12,6 +12,8 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SessionFilesController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ZipController;
+
 
 
 /////////////////// LANDING PAGE ///////////////////
@@ -76,7 +78,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::get('/change-theme', [ShortTaskController::class, 'change_theme']);
-    Route::get('/faq', [ShortTaskController::class, 'faq']);
+    Route::post('/download-all', [ZipController::class, 'download_all']);
+    Route::get('/faq', [ShortTaskController::class, 'faq']);    
 
 });
 
@@ -87,19 +90,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
 
     Route::resource('user', UserController::class)->only(['index','create', 'destroy']);
+    Route::resource('testimonial', TestimonialController::class)->only(['index','destroy']);
     Route::resource('session', SessionController::class);
-    
-    Route::get('/portfolio-photo', [PortfolioController::class, 'photo_index']);
-    Route::get('/portfolio-video', [PortfolioController::class, 'video_index']);
-    Route::post('/usun', [PortfolioController::class, 'usun']);
-
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('sessionfiles', SessionFilesController::class);
     Route::resource('place', PlaceController::class);
     Route::resource('news', NewsController::class);
 
+    Route::get('/portfolio-photo', [PortfolioController::class, 'photo_index']);
+    Route::get('/portfolio-video', [PortfolioController::class, 'video_index']);
+    Route::post('/usun', [PortfolioController::class, 'usun']);
+    Route::get('/faq', [ShortTaskController::class, 'faq']);
+    Route::post('/change-privacy', [ShortTaskController::class, 'change_privacy']);
     Route::post('/testimonial-aproved', [TestimonialController::class, 'testimonial_aproved']);
-    Route::resource('testimonial', TestimonialController::class)->only(['index','destroy']);
     
 });
 

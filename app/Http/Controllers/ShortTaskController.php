@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
+use App\Models\Sessions;
 use App\Mail\ContactMail;
 
 class ShortTaskController extends Controller
@@ -36,5 +37,16 @@ class ShortTaskController extends Controller
 
     public function faq(Request $request){
         return view('dashboard.faq');
+    }
+
+    public function change_privacy(Request $request){
+        $session = Sessions::find($request->id);
+        if($session->type == 'private')
+           $session->type = 'public';
+        else
+            $session->type = 'private';
+        $session->save();
+
+        return redirect()->back()->with('success', 'Pomyślnie zmieniono prywatność sesji');
     }
 }

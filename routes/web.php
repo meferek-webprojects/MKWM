@@ -86,12 +86,16 @@ Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
 
     Route::resource('user', UserController::class)->only(['index','create']);
     Route::resource('session', SessionController::class);
+    
     Route::get('/portfolio-photo', [PortfolioController::class, 'photo_index']);
     Route::get('/portfolio-video', [PortfolioController::class, 'video_index']);
     Route::post('/usun', [PortfolioController::class, 'usun']);
+
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('sessionfiles', SessionFilesController::class);
     Route::resource('place', PlaceController::class);
+    Route::resource('testimonial', TestimonialController::class)->only(['index']);
+
     
 });
 

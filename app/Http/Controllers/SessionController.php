@@ -108,7 +108,7 @@ class SessionController extends Controller
     {
         $session = Sessions::find($id);
 
-        return view('dashboard.session-add')->with('session', $session);
+        return view('dashboard.session')->with('session', $session);
     }
 
     /**

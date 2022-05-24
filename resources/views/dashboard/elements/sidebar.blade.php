@@ -23,8 +23,8 @@
                 <li class="sidebar-title">
                     GŁÓWNE
                 </li>
-                <li class="active-page">
-                    <a href="{{ url('/dboard') }}" class="active"><i class="material-icons-two-tone">dashboard</i>Strona główna</a>
+                <li>
+                    <a href="{{ url('/dboard') }}"><i class="material-icons-two-tone">dashboard</i>Strona główna</a>
                 </li>
                 <li>
                     <a href="{{ url('/account') }}"><i class="material-icons-two-tone">account_circle</i>Twój profil</a>
@@ -40,56 +40,80 @@
                         use Carbon\Carbon;
                         use Illuminate\Support\Facades\DB;
 
-                        $query = 'users_id->'.Auth::user()->id;
-
-                        $userSessions = DB::table('sessions')->whereJsonContains('users_id', [[Auth::user()->id => [Auth::user()->id => Auth::user()->id]]])->where('type', 'photo')->orWhere('type', 'both')->get();
-                        print_r($userSessions);
-                        // if($userSessions->count() > 0){
-                        //     $lastYear = DB::table('sessions')->where('users_id->'.Auth::user()->id, Auth::user()->id)->where('type', 'photo')->orWhere('type', 'both')->orderBy('date', 'desc')->first()->date->format('Y');
-                        //     $firstYear = DB::table('sessions')->where('users_id->'.Auth::user()->id, Auth::user()->id)->where('type', 'photo')->orWhere('type', 'both')->orderBy('date', 'asc')->first()->date->format('Y');
-                        // }
+                        $userSessions = DB::table('sessions')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->where('kind', 'photo')->orWhere('kind', 'both');
+                        if($userSessions->count() > 0){
+                            $lastYear = date('Y', strtotime($userSessions->orderBy('date', 'desc')->first()->date));
+                            $firstYear = date('Y', strtotime($userSessions->orderBy('date', 'asc')->first()->date));
+                        }
                     @endphp
-                    {{-- @for ($i = $firstYear; $i < $lastYear; $i++) --}}
-                    <a href=""><i class="material-icons-two-tone">photo</i>10<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
-                    <ul class="sub-menu" style="display: none;">
-                        <li>
-                            <a href="#">MIESIĄC<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+
+                    @if($userSessions->count() > 0)
+                        @for ($i = $lastYear; $i >= $lastYear; $i--)
+                            <a href=""><i class="material-icons-two-tone">photo</i>{{ $i }}<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                             <ul class="sub-menu" style="display: none;">
-                                <li>
-                                    <a href="sign-in.html">NAZWA</a>
-                                </li>
-                                <li>
-                                    <a href="sign-up.html">NAZWA 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">NAZWA 3</a>
-                                </li>
+                                @for ($m = 1; $m <= 12; $m++)
+                                    @php
+                                        $sm = DB::table('sessions')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereYear('date', $i)->whereMonth('date', $m)->whereIn('kind', ['photo','both'])->get();
+                                        $months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+                                    @endphp
+                                    @if($sm->count() > 0)
+                                        <li>
+                                            <a href="#">{{ $months[$m-1] }}<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                                            <ul class="sub-menu" style="display: none;">
+                                                @foreach($sm as $s)
+                                                    <li>
+                                                        <a href="{{ route('session.show', $s->id) }}">{{ $s->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endif
+                                @endfor
                             </ul>
-                        </li>
-                    </ul>
-                    {{-- @endfor --}}
+                        @endfor
+                    @else
+                        <a href="#">BRAK DOSTĘPNYCH SESJI</a>
+                    @endif
                 </li>
                 <li class="sidebar-title">
                     TWOJE FILMY
                 </li>
                 <li>
-                    <a href=""><i class="material-icons-two-tone">movie</i>ROK<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
-                    <ul class="sub-menu" style="display: none;">
-                        <li>
-                            <a href="#">MIESIĄC<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                    @php
+                        $userSessions = DB::table('sessions')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->where('kind', 'video');
+                        if($userSessions->count() > 0){
+                            $lastYear = date('Y', strtotime($userSessions->orderBy('date', 'desc')->first()->date));
+                            $firstYear = date('Y', strtotime($userSessions->orderBy('date', 'asc')->first()->date));
+                        }
+                    @endphp
+
+                    @if($userSessions->count() > 0)
+                        @for ($i = $lastYear; $i >= $lastYear; $i--)
+                            <a href=""><i class="material-icons-two-tone">movie</i>{{ $i }}<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                             <ul class="sub-menu" style="display: none;">
-                                <li>
-                                    <a href="sign-in.html">NAZWA</a>
-                                </li>
-                                <li>
-                                    <a href="sign-up.html">NAZWA 2</a>
-                                </li>
-                                <li>
-                                    <a href="#">NAZWA 3</a>
-                                </li>
+                                @for ($m = 1; $m <= 12; $m++)
+                                    @php
+                                        $sm = DB::table('sessions')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereYear('date', $i)->whereMonth('date', $m)->where('kind', 'video')->get();
+                                        $months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+                                    @endphp
+                                    @if($sm->count() > 0)
+                                        <li>
+                                            <a href="#">{{ $months[$m-1] }}<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                                            <ul class="sub-menu" style="display: none;">
+                                                @foreach($sm as $s)
+                                                    <li>
+                                                        <a href="{{ route('session.show', $s->id) }}">{{ $s->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endif
+                                @endfor
                             </ul>
-                        </li>
-                    </ul>
+                        @endfor
+                    @else 
+                        <a href="#">BRAK DOSTĘPNYCH FILMÓW</a>
+                    @endif
                 </li>
                 @if(Auth::user()->hasRole(10))
                 <li class="sidebar-title">
@@ -130,6 +154,9 @@
                 </li>
                 <li>
                     <a href="{{ url('/portfolio-video') }}"><i class="material-icons-two-tone">camera</i>Filmografia</a>
+                </li>
+                <li>
+                    <a href="{{ route('testimonial.index') }}"><i class="material-icons-two-tone">photo_library</i>Referencje</a>
                 </li>
                 @endif
             </ul>

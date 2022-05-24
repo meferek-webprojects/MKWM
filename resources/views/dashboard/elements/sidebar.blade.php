@@ -30,13 +30,27 @@
                     <a href="{{ url('/account') }}"><i class="material-icons-two-tone">account_circle</i>Twój profil</a>
                 </li>
                 <li>
-                    <a href="{{ url('/testimonial-add') }}"><i class="material-icons-two-tone">rate_review</i>Dodaj opinię</a>
+                    <a href="{{ route('testimonial.create') }}"><i class="material-icons-two-tone">rate_review</i>Dodaj opinię</a>
                 </li>
                 <li class="sidebar-title">
                     TWOJE SESJE
                 </li>
                 <li>
-                    <a href=""><i class="material-icons-two-tone">photo</i>ROK<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                    @php
+                        use Carbon\Carbon;
+                        use Illuminate\Support\Facades\DB;
+
+                        $query = 'users_id->'.Auth::user()->id;
+
+                        $userSessions = DB::table('sessions')->whereJsonContains('users_id', [[Auth::user()->id => [Auth::user()->id => Auth::user()->id]]])->where('type', 'photo')->orWhere('type', 'both')->get();
+                        print_r($userSessions);
+                        // if($userSessions->count() > 0){
+                        //     $lastYear = DB::table('sessions')->where('users_id->'.Auth::user()->id, Auth::user()->id)->where('type', 'photo')->orWhere('type', 'both')->orderBy('date', 'desc')->first()->date->format('Y');
+                        //     $firstYear = DB::table('sessions')->where('users_id->'.Auth::user()->id, Auth::user()->id)->where('type', 'photo')->orWhere('type', 'both')->orderBy('date', 'asc')->first()->date->format('Y');
+                        // }
+                    @endphp
+                    {{-- @for ($i = $firstYear; $i < $lastYear; $i++) --}}
+                    <a href=""><i class="material-icons-two-tone">photo</i>10<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                     <ul class="sub-menu" style="display: none;">
                         <li>
                             <a href="#">MIESIĄC<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
@@ -53,6 +67,7 @@
                             </ul>
                         </li>
                     </ul>
+                    {{-- @endfor --}}
                 </li>
                 <li class="sidebar-title">
                     TWOJE FILMY

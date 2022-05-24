@@ -1,4 +1,93 @@
-/* Your Custom CSS Goes here */
+
+body[theme="dark"] .input-group-text, body[theme="dark"] .flatpickr-input {
+    background-color: #1f1f2b!important;
+    border-color: #2d2d3f!important;
+    color: #c2c4d1;
+}
+
+body[theme="dark"] .flatpickr-calendar {
+    background-color: #1f1f2b!important;
+    border-color: #2d2d3f!important;
+    color: #c2c4d1;
+}
+
+body[theme="dark"] .flatpickr-day.today {
+    color: #1f1f2b!important;
+}
+
+body[theme="dark"] .flatpickr-day.today:hover {
+    background-color: #eccfa292!important;
+    color: white!important;
+    border: 1px solid transparent!important;
+}
+
+body[theme="dark"] .flatpickr-day:hover {
+    background-color: transparent!important;
+}
+
+body[theme="dark"] .flatpickr-day,
+body[theme="dark"] span.flatpickr-weekday,
+body[theme="dark"] .flatpickr-current-month .flatpickr-monthDropdown-months, 
+body[theme="dark"] .flatpickr-current-month input.cur-year,
+body[theme="dark"] .flatpickr-months .flatpickr-prev-month, .flatpickr-months .flatpickr-next-month,
+body[theme="dark"] .numInputWrapper span.arrowUp {
+    color: #c2c4d1!important;
+    fill: #c2c4d1!important;
+}
+
+
+/* CUSTOM DARK MODE FOR SELECT2 */
+
+body[theme="dark"] .select2-dropdown {
+    background-color: #1f1f2b;
+    border-color: #2d2d3f!important;
+    color: #c2c4d1;
+}
+
+body[theme="dark"] .select2-search--dropdown .select2-search__field {
+    background-color: #1f1f2b;
+    border-color: #2d2d3f!important;
+    color: #c2c4d1;
+}
+
+body[theme="dark"] .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #9a9cab;
+    line-height: 28px;
+}
+
+body[theme="dark"] .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #1f1f2b;
+    border-color: #2d2d3f!important;
+    color: #f1f2f4;
+}
+
+body[theme="dark"] .select2-container--default .select2-selection--single, 
+body[theme="dark"] .select2-container--default .select2-search--inline .select2-search__field,
+body[theme="dark"] .select2-container--default .select2-selection--multiple {
+    background-color: #1f1f2b;
+    border-color: #2d2d3f!important;
+    color: #c2c4d1!important;
+}
+
+.new-loader .spinner-border {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.new-loader .logo {
+    margin-bottom: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130px;
+}
+
+.new-loader .logo img{
+    width: 150px;
+}
+
 .preview-box {
     overflow: hidden;
     width: 200px;

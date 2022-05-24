@@ -10,6 +10,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SessionFilesController;
+use App\Http\Controllers\TestimonialController;
 
 
 /////////////////// LANDING PAGE ///////////////////
@@ -63,6 +64,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/account', [DashboardController::class, 'account']);
 
     Route::resource('user', UserController::class)->except(['index','create']);
+    Route::resource('testimonial', TestimonialController::class)->except(['index']);
 
 });
 

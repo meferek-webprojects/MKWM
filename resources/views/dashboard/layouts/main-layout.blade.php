@@ -705,7 +705,13 @@
     </style>
 
 </head>
-<body class="pace-done no-loader">
+<body class="pace-done" @if(Auth::user()->theme == 'dark') theme="dark" @endif>
+
+    <div class="new-loader" id="new-loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden" style="z-index: 99999999;">Ładowanie...</span>
+        </div>
+    </div>
     <div class="pace pace-inactive">
         <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
             <div class="pace-progress-inner"></div>

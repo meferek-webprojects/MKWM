@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
+            $table->enum('type', ['event', 'product', 'plener', 'studio']);
             $table->enum('kind', ['photo', 'video', 'web', 'design']);
-            $table->string('file');
             $table->string('link')->nullable();
             $table->timestamps();
         });

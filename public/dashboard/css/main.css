@@ -13,6 +13,14 @@
 
 ------------------------------------------------------------*/
 
+.new-loader {
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: fixed;
+}
+
 /*------------------------------------------------------------
 [1. Global Styles]
 ------------------------------------------------------------*/
@@ -6541,7 +6549,7 @@ span.flatpickr-weekday {
     flex: 1;
     content: '';
     display: block;
-    background: url('../images/backgrounds/error.svg') no-repeat;
+    background: url('../../images/dashboard/backgrounds/error.svg') no-repeat;
     background-size: 60%;
     background-position: center center;
 }

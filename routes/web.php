@@ -8,6 +8,9 @@ use App\Http\Controllers\ShortTaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\SessionFilesController;
+use App\Http\Controllers\TestimonialController;
 
 
 /////////////////// LANDING PAGE ///////////////////
@@ -61,6 +64,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/account', [DashboardController::class, 'account']);
 
     Route::resource('user', UserController::class)->except(['index','create']);
+    Route::resource('testimonial', TestimonialController::class)->except(['index']);
 
 });
 
@@ -82,8 +86,12 @@ Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
 
     Route::resource('user', UserController::class)->only(['index','create']);
     Route::resource('session', SessionController::class);
+    Route::get('/portfolio-photo', [PortfolioController::class, 'photo_index']);
+    Route::get('/portfolio-video', [PortfolioController::class, 'video_index']);
+    Route::post('/usun', [PortfolioController::class, 'usun']);
+    Route::resource('portfolio', PortfolioController::class);
+    Route::resource('sessionfiles', SessionFilesController::class);
     Route::resource('place', PlaceController::class);
-
     
 });
 

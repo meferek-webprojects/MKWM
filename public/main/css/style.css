@@ -841,6 +841,7 @@ hr.breakline {
 }
 .portfolio .portfolio-images .portfolio-image img:hover {
   filter: brightness(25%);
+  cursor: pointer;
 }
 .portfolio .portfolio-images .portfolio-image .type {
   color: white;
@@ -1077,6 +1078,13 @@ hr.breakline {
   .footer h6 a:hover, .footer h6 a:not(:hover):hover {
     color: rgb(255, 255, 255);
     transition: 0.3s all;
+  }
+}
+@media only screen and (max-width: 993px) {
+  footer {
+    font-size: 12px;
+    width: 100vw;
+    font-family: "Roboto";
   }
 }
 footer {

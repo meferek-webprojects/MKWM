@@ -12,6 +12,7 @@
     &.full{
         padding-top: 7px;
         background-color: #000;
+        position: sticky;
     }
     
     .nav-item{
@@ -170,6 +171,7 @@
         &.full{
             padding-top: 0px;
             background-color: #0000;
+            position: fixed;
         }
 
         .navbar-collapse{

@@ -27,24 +27,16 @@
         <div class="mx-auto">
             <div class="row">
                 <div class="col-12" id="lightgallery">
-                    <a href="{{ url('images/photoshoots/1/1.jpg') }}">
-                        <img class="img-fluid mb-1" alt=".." src="{{ url('images/photoshoots/1/1.jpg') }}" />
-                    </a>
-                    <a href="{{ url('images/photoshoots/1/1.jpg') }}">
-                        <img class="img-fluid mb-1" alt=".." src="{{ url('images/photoshoots/1/2.jpg') }}" />
-                    </a>
-                    <a href="{{ url('images/photoshoots/1/1.jpg') }}">
-                        <img class="img-fluid mb-1" alt=".." src="{{ url('images/photoshoots/1/3.jpg') }}" />
-                    </a>
-                    <a href="{{ url('images/photoshoots/1/1.jpg') }}">
-                        <img class="img-fluid mb-1" alt=".." src="{{ url('images/photoshoots/1/4.jpg') }}" />
-                    </a>
-                    <a href="{{ url('images/photoshoots/1/1.jpg') }}">
-                        <img class="img-fluid mb-1" alt=".." src="{{ url('images/photoshoots/1/5.jpg') }}" />
-                    </a>
-                    <a href="{{ url('images/photoshoots/1/1.jpg') }}">
-                        <img class="img-fluid mb-1" alt=".." src="{{ url('images/photoshoots/1/6.jpg') }}" />
-                    </a>
+                    @php
+                        $photos = DB::table('portfolios')->join('portfolio_files', 'portfolios.id', '=', 'portfolio_files.portfolio_id')->select('portfolio_files.*', 'portfolios.type')->where('kind', 'photo');  
+                    @endphp
+                    @forelse($photos->where('type', 'product')->get() as $photo)
+                        <a href="{{ url('images/portfolios/'.$photo->file) }}">
+                            <img class="img-fluid mb-1" alt=".." src="{{ url('images/portfolios/'.$photo->file) }}" />
+                        </a>
+                    @empty
+                        <h3>WKRÓTCE</h3>
+                    @endforelse
                 </div>
             </div>
         </div>    

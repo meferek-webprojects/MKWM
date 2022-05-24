@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col">
                         @php
-                            $portfolios = DB::table('portfolios')->join('portfolio_files', 'portfolios.id', '=', 'portfolio_files.portfolio_id')->select('portfolio_files.*', 'portfolios.type')->where('kind', 'photo')->take(3)->get();
+                            $portfolios = DB::table('portfolios')->join('portfolio_files', 'portfolios.id', '=', 'portfolio_files.portfolio_id')->select('portfolio_files.*', 'portfolios.type')->where('kind', 'photo')->whereIn('type', ['studio', 'plener'])->take(3)->get();
                             // $portfolios = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('session_files.*', 'sessions.users_id')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->where('favourite', true)->take(3)->get();
                         @endphp
                         @if($portfolios->count() > 2)

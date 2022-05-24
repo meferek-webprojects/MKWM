@@ -2,39 +2,73 @@
 
 @section('content')
 
+@php
+    $session = DB::table('sessions')->join('session_files', 'session_files.session_id', '=', 'sessions.id')->select('sessions.*', 'session_files.file', 'session_files.favourite')->where('type', 'public')->orderBy('date', 'desc')->where('favourite', true)->orderBy('date', 'desc')->first();
+    $place = DB::table('places')->where('id', $session->place_id)->first();
+    $user = DB::table('users')->where('id', json_decode($session->users_id))->first();
+@endphp
 <div class="last-photoshoot d-flex flex-wrap w-100" onclick="window.location='{{ url('/photoshoot') }}'">
     <div class="photoshoot-info my-auto">
         <div class="type">
             OSTATNIA SESJA
         </div>
         <div class="place">
-            Studio
+            {{ $place->name }}
         </div>
         <div class="person">
-            Natalia Regulska
+            {{ $user->name.' '.$user->surname }}
         </div>
     </div>
     <div class="photoshoot-image overflow-hidden">
-        <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
+        <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->file) }}" alt="">
     </div>
 </div>
 
+@php
+    $sessions = DB::table('sessions')->where('type', 'public')->join('session_files', 'session_files.session_id', '=', 'sessions.id')->select('sessions.*', 'session_files.file', 'session_files.favourite')->orderBy('date', 'desc')->skip(1)->take(4)->get();
+@endphp
+@if($sessions->count() >= 4)
 <div class="extra-photoshoots d-none d-sm-flex flex-wrap">
+
+    @foreach($sessions as $session)
+    @php
+        $place = DB::table('places')->where('id', $session->place_id)->first();
+        $user = DB::table('users')->where('id', json_decode($session->users_id))->first();
+    @endphp
     <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
-        <div class="photoshoot-info order-xl-1">
+        <div class="photoshoot-info 
+        @if($loop->iteration == 1)
+            order-xl-1
+        @elseif($loop->iteration == 2)
+            order-1
+        @elseif($loop->iteration == 3)
+        @elseif($loop->iteration == 4)
+            order-1 order-xl-0
+        @endif
+        ">
             <div class="place">
-                Studio
+                {{ $place->name }}
             </div>
             <div class="person">
-                Natalia Regulska
+                {{ $user->name.' '.$user->surname }}
             </div>
         </div>
-        <div class="photoshoot-image order-xl-0">
-            <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
+        <div class="photoshoot-image 
+        @if($loop->iteration == 1)
+            order-xl-0
+        @elseif($loop->iteration == 2)
+            order-0
+        @elseif($loop->iteration == 3)
+        @elseif($loop->iteration == 4)
+            order-0 order-xl-1
+        @endif
+        ">
+            <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->file) }}" alt="">
         </div>
     </div>
+    @endforeach
 
-    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
+    {{-- <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
         <div class="photoshoot-info order-1">
             <div class="place">
                 Studio
@@ -74,8 +108,9 @@
         <div class="photoshoot-image order-0 order-xl-1">
             <img class="img-fluid" src="{{ url('images/img/natalia.jpg') }}" alt="">
         </div>
-    </div>
+    </div> --}}
 </div>
+@endif
 
 <div class="cta">
     <div class="row p-0 m-0">
@@ -125,32 +160,32 @@
     </div>
 </div>
 
+@php
+    $testimonials = DB::table('testimonials')->where('aproved', true)->take(5)->get();
+@endphp
 <div class="testimonials">
     <h3>REFERENCJE</h3>    
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            @for ($i = $testimonials->count(); $i > 0; $i--)
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $i }}" @if($i == $testimonials->count()) class="active" aria-current="true" @else aria-current="false" @endif aria-label="Slide {{ $i }}"></button>
+            @endfor
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item position-relative active">
-                <img src="{{ url('/images/img/mateusz.jpg') }}" class="d-block w-100" alt="">
-                <div class="testimonial position-absolute top-50 start-50 translate-middle text-center">
-                    <p class="text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis iusto blanditiis doloribus porro dolor officiis repudiandae illum sint maxime. At!
-                    </p>
-                    <div class="person">Mateusz Krysiak</div>
-                </div>
-            </div>
-            <div class="carousel-item position-relative">
+            @foreach($testimonials as $testimonial)
+            @php
+                $user = DB::table('users')->where('id', $testimonial->user_id)->first();
+            @endphp
+            <div class="carousel-item position-relative @if($loop->first) active @endif">
                 <img src="{{ url('/images/img/natalia.jpg') }}" class="d-block w-100" alt="">
                 <div class="testimonial position-absolute top-50 start-50 translate-middle text-center">
                     <p class="text">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni totam quas dicta non quisquam amet aliquam dolorum distinctio molestiae reiciendis.
+                        {{ $testimonial->testimonial }}
                     </p>
-                    <div class="person">Natalia Regulska</div>
+                    <div class="person">{{ $user->name.' '.$user->surname }}</div>
                 </div>
             </div>
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -168,20 +203,28 @@
     <h3>PORTFOLIO</h3>
     <div class="portfolio-images d-flex flex-wrap w-100">
         <div class="portfolio-image">
-            <img src="{{ url('/images/img/plener.jpg') }}" alt="" class="img-fluid">
-            <div class="type">Plener</div>
+            <a href="{{ url('/plener') }}">
+                <img src="{{ url('/images/img/plener.jpg') }}" alt="" class="img-fluid">
+                <div class="type">Plener</div>
+            </a>
         </div>
         <div class="portfolio-image">
-            <img src="{{ url('/images/img/studio.jpg') }}" alt="" class="img-fluid">
-            <div class="type">Studio</div>
+            <a href="{{ url('/studio') }}">
+                <img src="{{ url('/images/img/studio.jpg') }}" alt="" class="img-fluid">
+                <div class="type">Studio</div>
+            </a>
         </div>
         <div class="portfolio-image">
-            <img src="{{ url('/images/img/product.jpg') }}" alt="" class="img-fluid">
-            <div class="type">Produkt</div>
+            <a href="{{ url('/product') }}">
+                <img src="{{ url('/images/img/product.jpg') }}" alt="" class="img-fluid">
+                <div class="type">Produkt</div>
+            </a>
         </div>
         <div class="portfolio-image">
-            <img src="{{ url('/images/img/event.jpg') }}" alt="" class="img-fluid">
-            <div class="type">Event</div>
+            <a href="{{ url('/event') }}">
+                <img src="{{ url('/images/img/event.jpg') }}" alt="" class="img-fluid">
+                <div class="type">Event</div>
+            </a>
         </div>
     </div>
 </div>

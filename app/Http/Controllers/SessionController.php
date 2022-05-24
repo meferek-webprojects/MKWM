@@ -73,7 +73,7 @@ class SessionController extends Controller
 
             $files = $request->file('files');
 
-            foreach($files as $file){
+            foreach($files as $key=>$file){
 
                 $sid = SessionFiles::orderByDesc('id')->first();
                 if(!isset($sid)) $id = 0; else $id = $sid->id;
@@ -81,6 +81,7 @@ class SessionController extends Controller
                 $session_file = new SessionFiles;
                 $session_file->id = $id+1;
                 $session_file->session_id = $session->id;
+                if($key == 0) $session_file->favourite = '1';
                 $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
                 $path = 'images/photoshoots/'.$session->id;
                 $file->move($path, $fileName);
@@ -177,7 +178,6 @@ class SessionController extends Controller
 
                 $session_file->file = $fileName;
                 $session_file->save();
-
             }
 
         }   

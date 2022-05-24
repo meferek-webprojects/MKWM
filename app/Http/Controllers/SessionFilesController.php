@@ -71,7 +71,16 @@ class SessionFilesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $session_file = SessionFiles::find($id);
+
+        if($session_file->favourite == 0){
+            SessionFiles::where('session_id', $session_file->session_id)->where('favourite', '1')->update(['favourite' => '0']);
+            $session_file->favourite = 1;
+        }else $session_file->favourite = 0;
+
+        $session_file->save();
+
+        return redirect()->back()->with('warning', 'Pomyślnie zaktualizowano element sesji!');
     }
 
     /**

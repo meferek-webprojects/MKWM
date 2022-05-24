@@ -143,6 +143,7 @@
                                             <th>Podgląd</th>
                                             <th>Data stworzenia</th>
                                             <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,6 +158,18 @@
                                                     </div>
                                                 </td>
                                                 <td>{{ $photo->created_at }}</td>
+                                                <td>
+                                                    <form action="{{ route('sessionfiles.update', $photo->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        @if($photo->favourite == '1')
+                                                            <button class="btn btn-warning" type="submit"><i class="material-icons mx-0">star</i></button>
+                                                        @else
+                                                            <button class="btn btn-outline-warning" type="submit"><i class="material-icons mx-0">star</i></button>
+                                                        @endif
+                                                    </form>
+                                                </td>
                                                 <td>
                                                     <form action="{{ route('sessionfiles.destroy', $photo->id) }}" method="POST">
                                                         @csrf

@@ -192,15 +192,42 @@
     </div>
 </div>
 
+@php 
+    $movies = DB::table('portfolios')->whereNotNull('link')->get();
+@endphp
 <div class="portfolio">
     <h4 id="filmografia">FILMOGRAFIA</h4>
     <h3>PORTFOLIO</h3>    
     <div class="container">
         <div class="row">
             <div class="col-12 movies">
-                <div class="youtube-player" data-id="R9vtT7CEETo"></div>
+                <div class="youtube-player" data-id="R9vtT7CEETo">
+                    <img src="{{ url('images/yt-thumbnail/2.jpg') }}" alt="">
+                </div>
                 <div class="text">BACKSTAGE</div>
             </div>
+            @forelse($movies as $movie)
+            <div class="col-12 movies">
+                <div class="youtube-player" data-id="{{ substr($movie->link, 17) }}">
+                    @if($movie->type == 'event')
+                        <img src="{{ url('images/yt-thumbnail/event.jpg') }}" alt="">
+                    @elseif($movie->type == 'product')
+                        <img src="{{ url('images/yt-thumbnail/product.jpg') }}" alt="">
+                    @elseif($movie->type == 'event')
+                        <img src="{{ url('images/yt-thumbnail/plener.jpg') }}" alt="">
+                    @elseif($movie->type == 'studio')
+                        <img src="{{ url('images/yt-thumbnail/studio.jpg') }}" alt="">
+                    @else
+                        <img src="{{ url('images/yt-thumbnail/universal.jpg') }}" alt="">
+                    @endif
+                </div>
+                <div class="text" style="text-transform: uppercase;">{{ $movie->type }}</div>
+            </div>
+            @empty
+            <div class="col-12 movies">
+                <h3 class="text-center">WKRÓTCE WIĘCEJ</h3>
+            </div>
+            @endforelse
         </div>
     </div>
 </div>
@@ -226,9 +253,9 @@
         var videoId = playerElements[n].dataset.id;
         var div = document.createElement('div');
         div.setAttribute('data-id', videoId);
-        var photoshootImageNode = document.createElement('img');
-        photoshootImageNode.src = '../../images/yt-thumbnail/2.jpg'.replace('ID', videoId);
-        div.appendChild(photoshootImageNode);
+        // var photoshootImageNode = document.createElement('img');
+        // photoshootImageNode.src = '../../images/yt-thumbnail/2.jpg'.replace('ID', videoId);
+        // div.appendChild(photoshootImageNode);
         var playButton = document.createElement('div');
         playButton.setAttribute('class', 'play');
         div.appendChild(playButton);

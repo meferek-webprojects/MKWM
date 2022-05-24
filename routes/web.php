@@ -100,7 +100,6 @@ Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
     Route::get('/portfolio-photo', [PortfolioController::class, 'photo_index']);
     Route::get('/portfolio-video', [PortfolioController::class, 'video_index']);
     Route::post('/usun', [PortfolioController::class, 'usun']);
-    Route::get('/faq', [ShortTaskController::class, 'faq']);
     Route::post('/change-privacy', [ShortTaskController::class, 'change_privacy']);
     Route::post('/testimonial-aproved', [TestimonialController::class, 'testimonial_aproved']);
     

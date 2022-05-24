@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\News;
 
 class NewsController extends Controller
 {
@@ -13,7 +17,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = DB::table('news')->get();
+
+        return view('dashboard.news')->with('news', $news);
     }
 
     /**
@@ -34,7 +40,14 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $news = new News();
+        $news->title = $request->title;
+        $news->type = $request->type;
+        $news->description = $request->description;
+
+        $news->save();
+
+        return redirect('/news')->with('success', 'Pomyślnie dodano nową informację');
     }
 
     /**
@@ -79,6 +92,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        News::find($id)->delete();
+
+        return redirect('/news')->with('warning', 'Pomyślnie usunięto informację');
     }
 }

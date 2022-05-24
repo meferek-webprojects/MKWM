@@ -11,6 +11,7 @@ use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SessionFilesController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\NewsController;
 
 
 /////////////////// LANDING PAGE ///////////////////
@@ -95,6 +96,7 @@ Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
     Route::resource('portfolio', PortfolioController::class);
     Route::resource('sessionfiles', SessionFilesController::class);
     Route::resource('place', PlaceController::class);
+    Route::resource('news', NewsController::class);
 
     Route::post('/testimonial-aproved', [TestimonialController::class, 'testimonial_aproved']);
     Route::resource('testimonial', TestimonialController::class)->only(['index','destroy']);

@@ -46,7 +46,7 @@
                         </li>
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/account') }}" aria-current="page"><i data-feather="user"></i></a>
+                                <a class="nav-link" href="{{ url('/dboard') }}" aria-current="page"><i data-feather="user"></i></a>
                             </li>
                         @endauth
                         @guest

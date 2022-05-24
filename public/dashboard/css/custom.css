@@ -1,3 +1,7 @@
+.map-frame {
+    overflow: hidden;
+}
+
 
 body[theme="dark"] .input-group-text, body[theme="dark"] .flatpickr-input {
     background-color: #1f1f2b!important;

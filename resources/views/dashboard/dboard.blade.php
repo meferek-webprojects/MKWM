@@ -22,8 +22,14 @@
 
                 <div class="row">
                     <div class="col">
+                        @php
+                            $portfolios = DB::table('portfolios')->join('portfolio_files', 'portfolios.id', '=', 'portfolio_files.portfolio_id')->select('portfolio_files.*', 'portfolios.type')->where('kind', 'photo')->take(3)->get();
+                            // $portfolios = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('session_files.*', 'sessions.users_id')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->where('favourite', true)->take(3)->get();
+                        @endphp
+                        @if($portfolios->count() > 2)
                         <div class="card">
                             <div class="card-body preview-box-big">
+                                
                                 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-indicators">
                                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -31,27 +37,11 @@
                                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                     </div>
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="{{ url('images/img/natalia.jpg') }}" class="d-block w-100" alt="...">
-                                            <div class="carousel-caption d-none d-md-block">
-                                                <h5>First slide label</h5>
-                                                <p>Some representative placeholder content for the first slide.</p>
+                                        @foreach ($portfolios as $portfolio)
+                                            <div class="carousel-item @if($loop->first) active @endif">
+                                                <img src="{{ url('images/portfolios/'.$portfolio->file) }}" class="d-block w-100" alt="...">
                                             </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{ url('images/img/natalia.jpg') }}" class="d-block w-100" alt="...">
-                                            <div class="carousel-caption d-none d-md-block">
-                                                <h5>Second slide label</h5>
-                                                <p>Some representative placeholder content for the second slide.</p>
-                                            </div>
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{ url('images/img/natalia.jpg') }}" class="d-block w-100" alt="...">
-                                            <div class="carousel-caption d-none d-md-block">
-                                                <h5>Third slide label</h5>
-                                                <p>Some representative placeholder content for the third slide.</p>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -64,6 +54,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
+
                     </div>
                 </div>
 
@@ -123,7 +115,7 @@
 
                 <div class="row">
                     <div class="col-lg-3">
-                        @php
+                       @php
                             use Carbon\Carbon;
 
                             $news = DB::table('news')->get();
@@ -142,19 +134,75 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="card widget widget-list">
+                            <div class="card-header">
+                                <h5 class="card-title">Linki do naszych social mediów</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="widget-list-content list-unstyled">
+                                    <li class="widget-list-item widget-list-item-blue">
+                                        <span class="widget-list-item-icon"><i class="material-icons-outlined">facebook</i></span>
+                                        <span class="widget-list-item-description">
+                                            <a href="https://www.facebook.com/mkwmstudios" target="_blank" class="widget-list-item-description-title">
+                                                MKWM
+                                            </a>
+                                            <span class="widget-list-item-description-subtitle">
+                                                Facebook
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="widget-list-item widget-list-item-purple">
+                                        <span class="widget-list-item-icon"><i class="material-icons-outlined">photo_camera</i></span>
+                                        <span class="widget-list-item-description">
+                                            <a href="https://www.instagram.com/mkwm_studios/" target="_blank" class="widget-list-item-description-title">
+                                                MKWM
+                                            </a>
+                                            <span class="widget-list-item-description-subtitle">
+                                                Instagram
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="widget-list-item widget-list-item-blue">
+                                        <span class="widget-list-item-icon"><i class="material-icons-outlined">facebook</i></span>
+                                        <span class="widget-list-item-description">
+                                            <a href="https://www.facebook.com/meferphotoofficial" target="_blank" class="widget-list-item-description-title">
+                                                Mateusz "MeferPhoto" Krysiak
+                                            </a>
+                                            <span class="widget-list-item-description-subtitle">
+                                                Facebook
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="widget-list-item widget-list-item-purple">
+                                        <span class="widget-list-item-icon"><i class="material-icons-outlined">photo_camera</i></span>
+                                        <span class="widget-list-item-description">
+                                            <a href="https://www.instagram.com/meferphoto/" target="_blank" class="widget-list-item-description-title">
+                                                MeferPhoto
+                                            </a>
+                                            <span class="widget-list-item-description-subtitle">
+                                                Instagram
+                                            </span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="col-lg-6">
                         @php 
+                            $counter = 0;
                             $userSessions = DB::table('sessions')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->orderBy('date', 'desc')->get()->take(5);
                         @endphp
                         @if($userSessions->count() > 0)
                         @foreach ($userSessions as $uS)
                             @php
-                                $mainPhoto = DB::table('session_files')->where('session_id', $uS->id)->first();
+                                $photo = DB::table('session_files')->where('session_id', $uS->id)->first();
                             @endphp
-                            <a href="#" style="cursor: pointer;">
+                            @if($photo != NULL)
+                            <a href="{{ url('/session/'.$uS->id) }}" style="cursor: pointer;">
                                 <div class="card bg-dark text-white preview-box-big">
-                                    <img src="{{ url('images/photoshoots/'.$uS->id.'/'.$mainPhoto->file) }}" class="card-img" alt="...">
+                                    <img src="{{ url('images/photoshoots/'.$uS->id.'/'.$photo->file) }}" class="card-img" alt="...">
                                     <div class="card-img-overlay">
                                     <h5 class="card-title text-white">{{ $uS->name }}</h5>
                                     <p class="card-text m-t-md">{{ $uS->description }}</p>
@@ -162,6 +210,7 @@
                                     </div>
                                 </div>
                             </a>
+                            @endif
                         @endforeach
                         @else
                             <a href="#">
@@ -188,6 +237,36 @@
                                 </blockquote>
                             </div>
                         </div>
+                        <div class="card widget widget-list">
+                            @php 
+                                $allUsers = DB::table('users')->orderBy('created_at', 'desc');
+                            @endphp
+                            <div class="card-header">
+                                <h5 class="card-title">Nowi użytkownicy MKWM<span class="badge badge-success badge-style-light">Łącznie {{ $allUsers->count() }}</span></h5>
+                            </div>
+                            <div class="card-body">
+                                {{-- <span class="text-muted m-b-xs d-block">showing 5 out of 14 new users.</span> --}}
+                                <ul class="widget-list-content list-unstyled">
+                                    @foreach ($allUsers->limit(6)->get() as $aU)
+                                        <li class="widget-list-item widget-list-item-red">
+                                            <span class="widget-list-item-avatar">
+                                                <div class="avatar avatar-rounded">
+                                                    <div class="avatar-title">{{ $aU->initials }}</div>
+                                                </div>
+                                            </span>
+                                            <span class="widget-list-item-description">
+                                                <a href="#" class="widget-list-item-description-title">
+                                                    {{ $aU->name.' '.$aU->surname }}
+                                                </a>
+                                                <span class="widget-list-item-description-subtitle">
+                                                    Członek rodziny MKWM
+                                                </span>
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -197,4 +276,5 @@
 @endsection
 
 @section('added-js')
+    <script src="{{ url('dashboard/plugins/lightbox/fslightbox.js') }}"></script>
 @endsection

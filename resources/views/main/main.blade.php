@@ -225,7 +225,7 @@
             </div>
             @empty
             <div class="col-12 movies">
-                <h3 class="text-center">WKRÓTCE</h3>
+                <h3 class="text-center">WKRÓTCE WIĘCEJ</h3>
             </div>
             @endforelse
         </div>

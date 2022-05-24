@@ -111,7 +111,7 @@ class SessionController extends Controller
         $users = DB::table('users')->get();
         $userInSession = false;
 
-        if( str_contains($session->users_id, Auth::user()->id) )
+        if( str_contains(json_decode($session->users_id), Auth::user()->id) )
             $userInSession = true;
 
         if(Auth::user()->hasRole(10) || $userInSession)

@@ -86,8 +86,8 @@
                             <div class="card-body">
                                 <p class="text-muted d-block">Ten link jest dostępny tylko dla ciebie.</p>
                                 <div class="input-group">
-                                    <input type="text" class="form-control form-control-solid-bordered" value="{{ $session->link }}" aria-label="https://themeforest.net/user/stacks/portfolio" aria-describedby="share-link1">
-                                    <button class="btn btn-primary" type="button" id="share-link1"><i class="material-icons no-m fs-5">content_copy</i></button>
+                                    <input type="text" class="form-control form-control-solid-bordered" id="linkToMovie" value="{{ $session->link }}" aria-label="https://themeforest.net/user/stacks/portfolio" aria-describedby="share-link1">
+                                    <button class="btn btn-primary" type="button" onClick="copyToClipBoard()" id="share-link1"><i class="material-icons no-m fs-5">content_copy</i></button>
                                 </div>
                             </div>
                         </div>
@@ -222,18 +222,17 @@
     {{-- <script src="{{ url('dashboard/plugins/aec/jquery.simple-calendar.js') }}"></script> --}}
 
     <script>
+
+        function copyToClipBoard() {
+            var toCopy = document.getElementById('linkToMovie');
+            toCopy.select();
+            toCopy.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(toCopy.value);
+            alert("Skopiowano: " + toCopy.value);
+        }
+
         $(document).ready(function() {
             $("#lightgallery").lightGallery(); 
         });
-          $("#calendar").simpleCalendar({
-                // displays events
-                displayEvent: false,
-
-                // disable showing event details
-                disableEventDetails: true,
-
-                // disable showing empty date details
-                disableEmptyDetails: true 
-            });
     </script>
 @endsection

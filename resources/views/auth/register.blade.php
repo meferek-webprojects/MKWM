@@ -48,7 +48,7 @@
                 <div class="form-check mb-5">
                     <input class="form-check-input" type="checkbox" id="warunki-korzystania" required>
                     <label class="form-check-label" for="warunki-korzystania">
-                        Zgadzam się na <a href="{{ url('/warunki-korzystania') }}">warunki korzystania</a> z serwisu i newsletter
+                        Zgadzam się na <a href="{{ url('/polityka-i-ciasteczka') }}">warunki korzystania</a> z serwisu i newsletter
                     </label>
                 </div>
 

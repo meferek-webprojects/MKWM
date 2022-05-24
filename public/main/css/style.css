@@ -789,6 +789,7 @@ hr.breakline {
     color: white;
   }
   .cta h3 {
+    padding: 50px 0;
     font-size: 18px;
     margin-bottom: 20px;
   }
@@ -802,7 +803,6 @@ hr.breakline {
   }
   .cta h3 {
     font-size: 18px;
-    padding: 5px 30px;
     margin-bottom: 20px;
   }
 }

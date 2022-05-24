@@ -80,7 +80,7 @@
 <div class="cta">
     <div class="row p-0 m-0">
         <div class="col-lg-6 p-0 m-0">
-            <h3>Zapisz się na sesję</h3>
+            <h3>Zapisz się<br class="d-block d-sm-none"> na sesję</h3>
         </div>
         <div class="col-lg-6 p-0 m-0">
             <form action="{{ url('/') }}" method="GET">

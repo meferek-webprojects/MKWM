@@ -88,12 +88,23 @@ body[theme="dark"] .select2-container--default .select2-selection--multiple {
     width: 150px;
 }
 
+.preview-box-big {
+    overflow: hidden;
+    height: 400px;
+}
+
+.preview-box-big img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 .preview-box {
     overflow: hidden;
     width: 200px;
     height: 200px;
 }
-
 
 .preview-box img{
     width: 100%;

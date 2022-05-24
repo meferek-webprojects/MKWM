@@ -32,7 +32,9 @@
                 <li>
                     <a href="{{ route('testimonial.create') }}"><i class="material-icons-two-tone">rate_review</i>Dodaj opinię</a>
                 </li>
-                
+                <li>
+                    <a href="{{ url('/faq') }}"><i class="material-icons-two-tone">quiz</i>FAQ</a>
+                </li>
                 <li class="sidebar-title">
                     @if(Auth::user()->hasRole(10)) WSZYSTKIE SESJE @else TWOJE SESJE @endif
                 </li>

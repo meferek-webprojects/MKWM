@@ -41,7 +41,12 @@
                         <li class="nav-item d-flex">
                             <a class="nav-link my-auto" href="{{ url('/logout') }}"><i class="material-icons">logout</i></a>
                         </li>
-                        <li class="nav-item hidden-on-mobile">
+
+                        {{-- 
+                            
+                            KIEDYŚ ZROBIMY TE POWIADOMIENIA
+                            
+                            <li class="nav-item hidden-on-mobile">
                             <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown">4</a>
                             <div class="dropdown-menu dropdown-menu-end notifications-dropdown" aria-labelledby="notificationsDropDown">
                                 <h6 class="dropdown-header">Powiadomienia</h6>
@@ -113,7 +118,8 @@
                                     </a>
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
+
                     </ul>
                 </div>
             </div>

@@ -213,9 +213,9 @@ class SessionController extends Controller
             
         }
         
-        $deletedRows = Sessions::where('id', $id)->delete();
-
         if(is_dir('images/photoshoots/'.$session->id)) rmdir('images/photoshoots/'.$session->id);
+
+        $deletedRows = Sessions::where('id', $id)->delete();
 
         return redirect('/session')->with('warning', 'Pomyślnie usunięto sesję!');
     }

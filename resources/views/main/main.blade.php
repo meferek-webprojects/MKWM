@@ -28,7 +28,8 @@
 @endif
 
 @php
-    $sessions = DB::table('sessions')->where('type', 'public')->orderBy('date', 'desc')->orderBy('date', 'desc')->take(4)->skip(1)->get();
+    $sessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file')->where('session_files.favourite', '1')->orderBy('date', 'desc')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->limit(4)->skip(1)->get();
+    // $sessions = DB::table('sessions')->where('type', 'public')->orderBy('date', 'desc')->orderBy('date', 'desc')->take(4)->skip(1)->get();
     // $sessions = DB::select("select sessions.*, session_files.file from `sessions` inner join `session_files` on `session_files`.`session_id` = `sessions`.`id` WHERE `type` LIKE 'public' GROUP BY `id` ORDER BY 'date' LIMIT 4 OFFSET 1")->get();
     // $sessions = DB::table('sessions')->join('session_files', 'session_files.session_id', '=', 'sessions.id')->selectRaw('sessions.*, session_files.file')->orderBy('date', 'desc')->groupBy(DB::raw('id'))->skip(1)->take(4)->get();
 @endphp
@@ -37,9 +38,8 @@
 
     @foreach($sessions as $session)
     @php
-        $photo = DB::table('session_files')->where('session_id', $session->id)->where('favourite', true)->first();
         $place = DB::table('places')->where('id', $session->place_id)->first();
-        $user = DB::table('users')->where('id', json_decode($session->users_id))->first();
+        $user = DB::table('users')->where('id', substr($session->users_id,2,strpos($session->users_id, '"')))->first();
     @endphp
     <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center" onclick="window.location.href='{{ url('/photoshoot/'.$session->id) }}'">
         <div class="photoshoot-info 
@@ -69,7 +69,7 @@
             order-0 order-xl-1
         @endif
         ">
-            <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$photo->file) }}" alt="">
+            <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->file) }}" alt="">
         </div>
     </div>
     @endforeach

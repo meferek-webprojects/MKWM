@@ -201,25 +201,26 @@
     <div class="container">
         <div class="row">
             <div class="col-12 movies">
-                <div class="youtube-player" data-id="R9vtT7CEETo">
-                    <img src="{{ url('images/yt-thumbnail/2.jpg') }}" alt="">
+                <div class="youtube-player" data-id="R9vtT7CEETo" img-type="studio">
+                    {{-- <img src="{{ url('images/yt-thumbnail/2.jpg') }}" alt=""> --}}
                 </div>
                 <div class="text">BACKSTAGE</div>
             </div>
             @forelse($movies as $movie)
             <div class="col-12 movies">
-                <div class="youtube-player" data-id="{{ substr($movie->link, 17) }}">
+                <div class="youtube-player" data-id="{{ substr($movie->link, 17) }}""
                     @if($movie->type == 'event')
-                        <img src="{{ url('images/yt-thumbnail/event.jpg') }}" alt="">
+                        img-type="event"
                     @elseif($movie->type == 'product')
-                        <img src="{{ url('images/yt-thumbnail/product.jpg') }}" alt="">
-                    @elseif($movie->type == 'event')
-                        <img src="{{ url('images/yt-thumbnail/plener.jpg') }}" alt="">
+                        img-type="product"
+                    @elseif($movie->type == 'plener')
+                        img-type="plener"
                     @elseif($movie->type == 'studio')
-                        <img src="{{ url('images/yt-thumbnail/studio.jpg') }}" alt="">
+                    img-type="studio"
                     @else
-                        <img src="{{ url('images/yt-thumbnail/universal.jpg') }}" alt="">
+                     img-type="universal"
                     @endif
+                ">
                 </div>
                 <div class="text" style="text-transform: uppercase;">{{ $movie->type }}</div>
             </div>
@@ -253,9 +254,29 @@
         var videoId = playerElements[n].dataset.id;
         var div = document.createElement('div');
         div.setAttribute('data-id', videoId);
-        // var photoshootImageNode = document.createElement('img');
-        // photoshootImageNode.src = '../../images/yt-thumbnail/2.jpg'.replace('ID', videoId);
-        // div.appendChild(photoshootImageNode);
+        var photoshootImageNode = document.createElement('img');
+
+        var imgType = playerElements[n].getAttribute('img-type');
+        switch (imgType){
+            default:
+                photoshootImageNode.src = '../../images/yt-thumbnail/universal.jpg'.replace('ID', videoId);
+                break;
+            case 'event':
+                photoshootImageNode.src = '../../images/yt-thumbnail/event.jpg'.replace('ID', videoId);
+                break;
+            case 'plener':
+                photoshootImageNode.src = '../../images/yt-thumbnail/plener.jpg'.replace('ID', videoId);
+                break;
+            case 'studio':
+                photoshootImageNode.src = '../../images/yt-thumbnail/studio.jpg'.replace('ID', videoId);
+                break;
+            case 'product':
+                photoshootImageNode.src = '../../images/yt-thumbnail/product.jpg'.replace('ID', videoId);
+                break;
+        }
+
+
+        div.appendChild(photoshootImageNode);
         var playButton = document.createElement('div');
         playButton.setAttribute('class', 'play');
         div.appendChild(playButton);

@@ -6,20 +6,32 @@
 
 @section('content')
 
+    @php
+        $thissession = DB::table('sessions')
+                ->select('sessions.id', 'sessions.users_id', 'session_files.file as photo', 'places.name as place')
+                ->join('session_files', 'sessions.id', '=', 'session_files.session_id')
+                ->join('places', 'sessions.place_id', '=', 'places.id')
+                ->where('session_files.favourite', '1')
+                ->whereIn('kind', ['photo', 'both'])
+                ->where('type', 'public')
+                ->orderBy('date', 'desc')
+                ->first();
+        $user = DB::table('users')->where('id', json_decode($thissession->users_id)[0])->first();
+    @endphp
     <div class="banner">
         <div class="text">
             <div class="type">
                 SESJA
             </div>
             <div class="place">
-                Fotografia
+                {{ $thissession->place }}
             </div>
             <div class="person">
-                Studyjna
+                {{ $user->name.' '.$user->surname }}
             </div>
         </div>
         <div class="background">
-            <img class="img-fluid" src="{{ url('images/img/natalia.jpg')}}" alt="">
+            <img class="img-fluid" src="{{ url('images/photoshoots/'.$thissession->id.'/'.$thissession->photo )}}" alt="">
         </div>
     </div>
 
@@ -29,10 +41,10 @@
                 <div class="col-12" id="lightgallery">
                     @php
                         use App\Models\SessionFiles;
-                        $photos = SessionFiles::where('session_id', $session->id)->get();
+                        $photos = DB::table('session_files')->where('session_id', $session)->get();
                     @endphp
-                    @forelse($photos->where('type', 'studio')->get() as $photo)
-                        <a href="{{ url('images/portfolios/'.$photo->file) }}">
+                    @forelse($photos as $photo)
+                        <a href="{{ url('images/photoshoots/'.$photo->session_id.'/'.$photo->file) }}">
                             <img class="img-fluid mb-1" alt=".." src="{{ url('images/photoshoots/'.$photo->session_id.'/'.$photo->file) }}" />
                         </a>
                     @empty

@@ -65,4 +65,12 @@ class ShortTaskController extends Controller
         return redirect()->back()->with('success', 'Zmieniono blokadę użytkownika');
 
     }
+
+    public function photoshoot(Request $request){
+        $session = Sessions::find($request->id);
+        if(isset($session))
+            return view('main.photoshoot')->with('session', $session);
+        else
+            return abort('404');
+    }
 }

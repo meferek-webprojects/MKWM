@@ -41,7 +41,7 @@
         $place = DB::table('places')->where('id', $session->place_id)->first();
         $user = DB::table('users')->where('id', substr($session->users_id,2,strpos($session->users_id, '"')))->first();
     @endphp
-    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center" onclick="window.location.href='{{ url('/photoshoot/'.$session->id) }}'">
+    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center" onclick="window.location.href='{{ url('/photoshoot?id='.$session->id) }}'">
         <div class="photoshoot-info 
         @if($loop->iteration == 1)
             order-xl-1

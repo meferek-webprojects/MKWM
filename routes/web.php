@@ -56,6 +56,7 @@ Route::get('/logout', function () {
 });
 
 Route::post('/wiadomosc', [ShortTaskController::class, 'send_mail']);
+Route::get('/send-photoshoot', [ShortTaskController::class, 'send_photoshoot']);
 Route::get('/photoshoot', [ShortTaskController::class, 'photoshoot']);
 
 

@@ -82,10 +82,10 @@
             <h3>Zapisz się<br class="d-block d-sm-none"> na sesję</h3>
         </div>
         <div class="col-lg-6 p-0 m-0">
-            <form action="{{ url('/') }}" method="GET">
+            <form action="{{ url('/send-photoshoot') }}" method="GET">
                 <div class="row">
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" placeholder="E-mail">
+                        <input type="email" class="form-control" name="email" placeholder="E-mail" required>
                     </div>
                     <div class="col-sm-4">
                         <button class="btn btn-light mt-3 mt-sm-0">WYŚLIJ</button>

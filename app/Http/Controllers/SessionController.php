@@ -18,6 +18,11 @@ use App\Models\SessionFiles;
 
 class SessionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('adminaccess')->except('show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -109,9 +114,10 @@ class SessionController extends Controller
     {
         $session = Sessions::find($id);
         $users = DB::table('users')->get();
+        $counter = DB::table('sessions')->where('id', $id)->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->count();
         $userInSession = false;
 
-        if( str_contains(json_decode($session->users_id), Auth::user()->id) )
+        if( $counter > 0 )
             $userInSession = true;
 
         if(Auth::user()->hasRole(10) || $userInSession)

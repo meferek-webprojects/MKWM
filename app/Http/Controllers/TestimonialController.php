@@ -10,6 +10,10 @@ use App\Models\Testimonials;
 
 class TestimonialController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('adminaccess')->except('create', 'store', 'update', 'show', 'destroy');
+    }
     /**
      * Display a listing of the resource.
      *

@@ -41,6 +41,7 @@
                 object-fit: cover;
                 object-position: center;
                 transition: transform .3s, filter .3s;
+                aspect-ratio: 3 / 2;
                 
                 &:hover{
                     transform: scale(1.15);

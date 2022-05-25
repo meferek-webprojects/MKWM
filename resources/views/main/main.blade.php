@@ -3,8 +3,15 @@
 @section('content')
 
 @php
-    $session = DB::table('sessions')->join('session_files', 'session_files.session_id', '=', 'sessions.id')->select('sessions.*', 'session_files.file', 'session_files.favourite')->where('type', 'public')->orderBy('date', 'desc')->where('favourite', true)->orderBy('date', 'desc')->first();
-    if(isset($session)) $place = DB::table('places')->where('id', $session->place_id)->first();
+    $session = DB::table('sessions')
+            ->select('sessions.id', 'sessions.users_id', 'session_files.file as photo', 'places.name as place')
+            ->join('session_files', 'sessions.id', '=', 'session_files.session_id')
+            ->join('places', 'sessions.place_id', '=', 'places.id')
+            ->where('session_files.favourite', '1')
+            ->whereIn('kind', ['photo', 'both'])
+            ->where('type', 'public')
+            ->orderBy('date', 'desc')
+            ->first();
     if(isset($session)) $user = DB::table('users')->where('id', json_decode($session->users_id))->first();
 @endphp
 
@@ -15,61 +22,61 @@
             OSTATNIA SESJA
         </div>
         <div class="place">
-            {{ $place->name }}
+            {{ $session->place }}
         </div>
         <div class="person">
             {{ $user->name.' '.$user->surname }}
         </div>
     </div>
     <div class="photoshoot-image overflow-hidden">
-        <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->file) }}" alt="">
+        <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="">
     </div>
 </div>
 @endif
 
 @php
-    $sessions = DB::table('sessions')->where('type', 'public')->orderBy('date', 'desc')->orderBy('date', 'desc')->take(4)->skip(1)->get();
-    // $sessions = DB::select("select sessions.*, session_files.file from `sessions` inner join `session_files` on `session_files`.`session_id` = `sessions`.`id` WHERE `type` LIKE 'public' GROUP BY `id` ORDER BY 'date' LIMIT 4 OFFSET 1")->get();
-    // $sessions = DB::table('sessions')->join('session_files', 'session_files.session_id', '=', 'sessions.id')->selectRaw('sessions.*, session_files.file')->orderBy('date', 'desc')->groupBy(DB::raw('id'))->skip(1)->take(4)->get();
+    $sessions = DB::table('sessions')
+                ->select('sessions.id', 'sessions.users_id', 'session_files.file as photo', 'places.name as place')
+                ->join('session_files', 'sessions.id', '=', 'session_files.session_id')
+                ->join('places', 'sessions.place_id', '=', 'places.id')
+                ->where('session_files.favourite', '1')
+                ->whereIn('kind', ['photo', 'both'])
+                ->where('type', 'public')
+                ->orderBy('date', 'desc')
+                ->limit(4)
+                ->skip(1)
+                ->get();
 @endphp
+
 @if($sessions->count() >= 4)
 <div class="extra-photoshoots d-none d-sm-flex flex-wrap">
 
     @foreach($sessions as $session)
     @php
-        $photo = DB::table('session_files')->where('session_id', $session->id)->where('favourite', true)->first();
-        $place = DB::table('places')->where('id', $session->place_id)->first();
-        $user = DB::table('users')->where('id', json_decode($session->users_id))->first();
+        $user = DB::table('users')->where('id', json_decode($session->users_id)[0])->first();
     @endphp
+    
     <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center" onclick="window.location.href='{{ url('/photoshoot/'.$session->id) }}'">
         <div class="photoshoot-info 
-        @if($loop->iteration == 1)
-            order-xl-1
-        @elseif($loop->iteration == 2)
-            order-1
-        @elseif($loop->iteration == 3)
-        @elseif($loop->iteration == 4)
-            order-1 order-xl-0
-        @endif
+            @if($loop->iteration == 1) order-xl-1
+            @elseif($loop->iteration == 2) order-1
+            @elseif($loop->iteration == 4) order-1 order-xl-0
+            @endif
         ">
             <div class="place">
-                {{ $place->name }}
+                {{ $session->place }}
             </div>
             <div class="person">
                 {{ $user->name.' '.$user->surname }}
             </div>
         </div>
         <div class="photoshoot-image 
-        @if($loop->iteration == 1)
-            order-xl-0
-        @elseif($loop->iteration == 2)
-            order-0
-        @elseif($loop->iteration == 3)
-        @elseif($loop->iteration == 4)
-            order-0 order-xl-1
-        @endif
+            @if($loop->iteration == 1) order-xl-0
+            @elseif($loop->iteration == 2) order-0
+            @elseif($loop->iteration == 4) order-0 order-xl-1
+            @endif
         ">
-            <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$photo->file) }}" alt="">
+            <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="">
         </div>
     </div>
     @endforeach
@@ -123,7 +130,6 @@
         </div>
     </div>
 </div>
-
 @php
     $testimonials = DB::table('testimonials')->where('aproved', true)->take(5)->get();
 @endphp

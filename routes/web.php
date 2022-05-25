@@ -56,7 +56,8 @@ Route::get('/logout', function () {
 });
 
 Route::post('/wiadomosc', [ShortTaskController::class, 'send_mail']);
-
+Route::get('/send-photoshoot', [ShortTaskController::class, 'send_photoshoot']);
+Route::get('/photoshoot', [ShortTaskController::class, 'photoshoot']);
 
 
 /////////////////// AUTH /////////////////// 
@@ -81,7 +82,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/change-theme', [ShortTaskController::class, 'change_theme']);
     Route::post('/download-all', [ZipController::class, 'download_all']);
     Route::get('/faq', [ShortTaskController::class, 'faq']);    
-    Route::post('/user-lock', [ShortTaskController::class, 'user_lock']);    
 
 });
 
@@ -101,6 +101,7 @@ Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
     Route::post('/usun', [PortfolioController::class, 'usun']);
     Route::post('/change-privacy', [ShortTaskController::class, 'change_privacy']);
     Route::post('/testimonial-aproved', [TestimonialController::class, 'testimonial_aproved']);
+    Route::post('/user-lock', [ShortTaskController::class, 'user_lock']);    
     
 });
 

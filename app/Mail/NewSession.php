@@ -7,26 +7,17 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMail extends Mailable
+class NewSession extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $title;
-    public $message;
-    public $mailTo;
-    public $author;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($message, $author, $title, $mailTo = "kontakt@mkwmstudios.pl")
-    {   
-        $this->title = '[KONTAKT] '.$title;
-        $this->message = $message;
-        $this->mailTo = $mailTo;
-        $this->author = $author;
+    public function __construct()
+    {
     }
 
     /**
@@ -36,8 +27,8 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-        $this->markdown('emails.contact-plain');
-        $this->subject('[KONTAKT]');
+        $this->markdown('emails.new-session-plain');
+        $this->subject('[ZAPISZ SIĘ NA SESJĘ]');
         $this->from('kontakt@mkwmstudios.pl', 'MKWM');
         
         return $this;

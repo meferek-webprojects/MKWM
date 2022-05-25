@@ -16,6 +16,16 @@
 
     <title>MKWM - photo and viedo masters</title>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BXT39VT2C"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9BXT39VT2C');
+    </script>
+
 </head>
 <body>
     

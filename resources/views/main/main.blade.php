@@ -16,7 +16,7 @@
 @endphp
 
 @if(isset($session))
-<div class="last-photoshoot d-flex flex-wrap w-100" onclick="window.location='{{ url('/photoshoot') }}'">
+<div class="last-photoshoot d-flex flex-wrap w-100" onclick="window.location.href='{{ url('/photoshoot?id='.$session->id) }}'">
     <div class="photoshoot-info my-auto">
         <div class="type">
             OSTATNIA SESJA
@@ -56,7 +56,7 @@
         $user = DB::table('users')->where('id', json_decode($session->users_id)[0])->first();
     @endphp
     
-    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center" onclick="window.location.href='{{ url('/photoshoot/'.$session->id) }}'">
+    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center" onclick="window.location.href='{{ url('/photoshoot?id='.$session->id) }}'">
         <div class="photoshoot-info 
             @if($loop->iteration == 1) order-xl-1
             @elseif($loop->iteration == 2) order-1
@@ -89,10 +89,10 @@
             <h3>Zapisz się<br class="d-block d-sm-none"> na sesję</h3>
         </div>
         <div class="col-lg-6 p-0 m-0">
-            <form action="{{ url('/') }}" method="GET">
+            <form action="{{ url('/send-photoshoot') }}" method="GET">
                 <div class="row">
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" placeholder="E-mail">
+                        <input type="email" class="form-control" name="email" placeholder="E-mail" required>
                     </div>
                     <div class="col-sm-4">
                         <button class="btn btn-light mt-3 mt-sm-0">WYŚLIJ</button>

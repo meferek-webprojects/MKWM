@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Sessions;
 use App\Mail\ContactMail;
+use App\Mail\NewSession;
+
 
 class ShortTaskController extends Controller
 {
@@ -30,7 +32,7 @@ class ShortTaskController extends Controller
 
     public function send_mail(Request $request){
 
-        Mail::to('mkwm.studios@outlook.com')->queue(new ContactMail($request->title, $request->message, $request->author));
+        Mail::to('kontakt@mkwmstudios.pl')->queue(new ContactMail($request->title, $request->message, $request->author));
 
         return redirect()->back()->with('success', 'Twoje złoszenie zostało wysłane!');
     }
@@ -63,6 +65,23 @@ class ShortTaskController extends Controller
         $user->save();
         
         return redirect()->back()->with('success', 'Zmieniono blokadę użytkownika');
+
+    }
+
+    public function photoshoot(Request $request){
+
+        $session = Sessions::find($request->id)->id;
+
+        if(isset($session))
+            return view('main.photoshoot')->with(compact('session'));
+        else
+            return abort('404');
+    }
+
+    public function send_photoshoot(Request $request){
+
+        Mail::to($request->input('email'))->send(new NewSession());
+        return redirect()->back();
 
     }
 }

@@ -9,7 +9,7 @@
 @endphp
 
 @if(isset($session))
-<div class="last-photoshoot d-flex flex-wrap w-100" onclick="window.location='{{ url('/photoshoot') }}'">
+<div class="last-photoshoot d-flex flex-wrap w-100" onclick="window.location.href='{{ url('/photoshoot?id='.$session->id) }}'">
     <div class="photoshoot-info my-auto">
         <div class="type">
             OSTATNIA SESJA

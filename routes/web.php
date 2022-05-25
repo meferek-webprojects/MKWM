@@ -61,7 +61,7 @@ Route::post('/wiadomosc', [ShortTaskController::class, 'send_mail']);
 
 /////////////////// AUTH /////////////////// 
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'checkrole'])->group(function () {
 
     Route::get('/dboard', [DashboardController::class, 'dashboard']);
     Route::get('/account', [DashboardController::class, 'account']);
@@ -81,6 +81,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/change-theme', [ShortTaskController::class, 'change_theme']);
     Route::post('/download-all', [ZipController::class, 'download_all']);
     Route::get('/faq', [ShortTaskController::class, 'faq']);    
+    Route::post('/user-lock', [ShortTaskController::class, 'user_lock']);    
 
 });
 

@@ -44,12 +44,16 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>
-                                                    <form action="#" method="POST">
-                                                        <button class="btn btn-outline-warning" type="submit"><i class="material-icons mx-0">lock</i></button>
+                                                    <form action="{{ url('/user-lock') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $user->id }}">
+                                                        <button class="btn {{ $user->role == 0 ? 'btn-outline-warning' : 'btn-outline-info'}}" type="submit"><i class="material-icons mx-0">{{ $user->role == 0 ? 'lock' : 'lock_open'}}</i></button>
                                                     </form>
                                                 </td>
                                                 <td>
-                                                    <form action="#" method="POST">
+                                                    <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
                                                         <button class="btn btn-outline-danger" type="submit"><i class="material-icons mx-0">delete</i></button>
                                                     </form>
                                                 </td>

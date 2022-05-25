@@ -49,4 +49,20 @@ class ShortTaskController extends Controller
 
         return redirect()->back()->with('success', 'Pomyślnie zmieniono prywatność sesji');
     }
+
+    public function user_lock(Request $request){
+
+        $user = User::find($request->id);
+        if( $user->role == 1)
+            $user->role = 0;
+        else if($user->role == 10)
+            return redirect()->back()->with('danger', 'Nie możesz zablokować administratora!');
+        else 
+            $user->role = 1;
+        
+        $user->save();
+        
+        return redirect()->back()->with('success', 'Zmieniono blokadę użytkownika');
+
+    }
 }

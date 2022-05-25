@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('adminaccess')->except('create');
+        $this->middleware('adminaccess')->except('update');
     }
     /**
      * Display a listing of the resource.
@@ -97,6 +97,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        if($user->role == 10)
+            return redirect()->back()->with('danger', 'Nie możesz usunąć administratora');
+        else {
+            $user->delete();
+            return redirect()->back()->with('warning', 'Pomyślnie usunięto użytkownika');
+        }
+ 
     }
 }

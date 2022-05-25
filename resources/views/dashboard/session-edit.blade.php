@@ -23,11 +23,15 @@
                 <div class="row">
                     <div class="col">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-flex">
                                 <h5 class="card-title">Dane sesji</h5>
+                                <form action="{{ route('session.destroy', $session->id) }}" method="POST" class="d-flex ms-auto">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-outline-danger" type="submit"><i class="material-icons mx-0">delete</i></button>
+                                </form>
                             </div>
                             <div class="card-body">
-
                                 <form action="{{ route('session.update', $session->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method("PUT")

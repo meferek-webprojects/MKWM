@@ -28,17 +28,20 @@
 @endif
 
 @php
-    $sessions = DB::table('sessions')->where('type', 'public')->join('session_files', 'session_files.session_id', '=', 'sessions.id')->select('sessions.*', 'session_files.file', 'session_files.favourite')->orderBy('date', 'desc')->skip(1)->take(4)->get();
+    $sessions = DB::table('sessions')->where('type', 'public')->orderBy('date', 'desc')->orderBy('date', 'desc')->take(4)->skip(1)->get();
+    // $sessions = DB::select("select sessions.*, session_files.file from `sessions` inner join `session_files` on `session_files`.`session_id` = `sessions`.`id` WHERE `type` LIKE 'public' GROUP BY `id` ORDER BY 'date' LIMIT 4 OFFSET 1")->get();
+    // $sessions = DB::table('sessions')->join('session_files', 'session_files.session_id', '=', 'sessions.id')->selectRaw('sessions.*, session_files.file')->orderBy('date', 'desc')->groupBy(DB::raw('id'))->skip(1)->take(4)->get();
 @endphp
 @if($sessions->count() >= 4)
 <div class="extra-photoshoots d-none d-sm-flex flex-wrap">
 
     @foreach($sessions as $session)
     @php
+        $photo = DB::table('session_files')->where('session_id', $session->id)->where('favourite', true)->first();
         $place = DB::table('places')->where('id', $session->place_id)->first();
         $user = DB::table('users')->where('id', json_decode($session->users_id))->first();
     @endphp
-    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center">
+    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center" onclick="window.location.href='{{ url('/photoshoot/'.$session->id) }}'">
         <div class="photoshoot-info 
         @if($loop->iteration == 1)
             order-xl-1
@@ -66,7 +69,7 @@
             order-0 order-xl-1
         @endif
         ">
-            <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->file) }}" alt="">
+            <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$photo->file) }}" alt="">
         </div>
     </div>
     @endforeach
@@ -137,9 +140,14 @@
             @foreach($testimonials as $testimonial)
             @php
                 $user = DB::table('users')->where('id', $testimonial->user_id)->first();
+                $session = DB::table('session_files')->join('sessions', 'sessions.id', '=','session_files.session_id')->select('sessions.*', 'session_files.file')->where('users_id', 'like', '%"'.$testimonial->user_id.'"%')->where('type', 'public')->orderBy('id', 'desc');
             @endphp
             <div class="carousel-item position-relative @if($loop->first) active @endif">
-                <img src="{{ url('/images/img/natalia.jpg') }}" class="d-block w-100" alt="">
+                @if($session->count() > 0)
+                    <img src="{{ url('/images/photoshoots/'.$session->first()->id.'/'.$session->first()->file) }}" class="d-block w-100" alt="">
+                @else
+                    <img src="{{ url('/images/img/natalia.jpg') }}" class="d-block w-100" alt="">
+                @endif
                 <div class="testimonial position-absolute top-50 start-50 translate-middle text-center">
                     <p class="text">
                         {{ $testimonial->testimonial }}

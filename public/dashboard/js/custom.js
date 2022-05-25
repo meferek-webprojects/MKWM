@@ -5,7 +5,7 @@ $(window).on("load",function(){
         $('#new-loader').fadeOut( "slow", function() {
             $('#new-loader').remove();
         });
-    },1e3)
+    },500)
 });
 
 

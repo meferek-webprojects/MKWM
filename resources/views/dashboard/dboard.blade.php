@@ -39,7 +39,19 @@
                                     <div class="carousel-inner">
                                         @foreach ($portfolios as $portfolio)
                                             <div class="carousel-item @if($loop->first) active @endif">
-                                                <img src="{{ url('images/portfolios/'.$portfolio->file) }}" class="d-block w-100" alt="...">
+                                                <img style="filter: brightness(50%);" src="{{ url('images/portfolios/'.$portfolio->file) }}" class="d-block w-100" alt="...">
+                                                <div class="carousel-caption d-none d-md-block">
+                                                    @if($loop->iteration == 1)
+                                                    <h5>Dzięki, że z nami jesteś i wspólne wspomagasz zespół MKWM</h5>
+                                                    <p>MKWM</p>
+                                                    @elseif($loop->iteration == 2)
+                                                    <h5>Witamy w naszym nowym panelu dla członków MKWM!</h5>
+                                                    <p>MKWM</p>
+                                                    @elseif($loop->iteration == 3)
+                                                    <h5>Jeśli zauważysz gdzieś błąd prosimy o zgłoszenie tego na kontakt@mkwmstudios.pl</h5>
+                                                    <p>MKWM</p>
+                                                    @endif
+                                                </div>
                                             </div>
                                         @endforeach
                                     </div>

@@ -81,8 +81,8 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->surname = $request->surname;
-        // $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->initials = strtoupper(substr($request->name, 0, 1).substr($request->surname, 0, 1));
 
         $user->save();
 

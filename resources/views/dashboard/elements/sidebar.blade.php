@@ -202,7 +202,10 @@
                     <a href="{{ url('/portfolio-video') }}"><i class="material-icons-two-tone">camera</i>Filmografia</a>
                 </li>
                 <li>
-                    <a href="{{ route('testimonial.index') }}"><i class="material-icons-two-tone">reviews</i>Referencje</a>
+                    @php
+                        $testimonials = DB::table('testimonials')->where('aproved', false)->get();
+                    @endphp
+                    <a href="{{ route('testimonial.index') }}"><i class="material-icons-two-tone">reviews</i>Referencje @if($testimonials->count() > 0)<span class="badge rounded-pill badge-info float-end mt-1">{{ $testimonials->count() }}</span>@endif</a>
                 </li>
                 <li>
                     <a href="{{ route('news.index') }}"><i class="material-icons-two-tone">info</i>Informacje</a>

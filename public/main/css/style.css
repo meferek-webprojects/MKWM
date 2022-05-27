@@ -331,6 +331,7 @@
 }
 .banner .background img {
   opacity: 35%;
+  width: 100%;
 }
 
 .gallery {

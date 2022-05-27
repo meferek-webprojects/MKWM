@@ -13,7 +13,6 @@ class ContactMail extends Mailable
 
     public $title;
     public $message;
-    public $mailTo;
     public $author;
 
     /**
@@ -21,11 +20,10 @@ class ContactMail extends Mailable
      *
      * @return void
      */
-    public function __construct($message, $author, $title, $mailTo = "kontakt@mkwmstudios.pl")
+    public function __construct($title, $message, $author)
     {   
         $this->title = '[KONTAKT] '.$title;
         $this->message = $message;
-        $this->mailTo = $mailTo;
         $this->author = $author;
     }
 

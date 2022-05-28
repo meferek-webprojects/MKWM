@@ -220,6 +220,12 @@
                 </div>
                 <div class="text">BACKSTAGE</div>
             </div>
+            <div class="col-12 movies">
+                <div class="youtube-player" data-id="MnFyQ9WAUtA" img-type="universal">
+                    {{-- <img src="{{ url('images/yt-thumbnail/2.jpg') }}" alt=""> --}}
+                </div>
+                <div class="text">TELEDYSK</div>
+            </div>
             @forelse($movies as $movie)
             <div class="col-12 movies">
                 <div class="youtube-player" data-id="{{ substr($movie->link, 17) }}""

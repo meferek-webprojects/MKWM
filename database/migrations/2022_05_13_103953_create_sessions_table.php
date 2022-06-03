@@ -36,5 +36,12 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('sessions');
+        
+        foreach(glob('public/images/photoshoots/*') as $directory){
+            foreach(glob($directory.'/*') as $image){
+                unlink($image);
+            }
+            rmdir($directory);
+        }
     }
 };

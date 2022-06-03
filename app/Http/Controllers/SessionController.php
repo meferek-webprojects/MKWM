@@ -13,8 +13,8 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 
-use App\Models\Sessions;
-use App\Models\SessionFiles;
+use App\Models\Session;
+use App\Models\SessionFile;
 
 class SessionController extends Controller
 {
@@ -56,9 +56,9 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        $session = new Sessions;
+        $session = new Session;
 
-        $id = Sessions::orderByDesc('id')->first();
+        $id = Session::orderByDesc('id')->first();
         if(!isset($id)) $id = 0; else $id = $id->id;
         $session->id = $id+1;
 
@@ -80,10 +80,10 @@ class SessionController extends Controller
 
             foreach($files as $key=>$file){
 
-                $sid = SessionFiles::orderByDesc('id')->first();
+                $sid = SessionFile::orderByDesc('id')->first();
                 if(!isset($sid)) $id = 0; else $id = $sid->id;
 
-                $session_file = new SessionFiles;
+                $session_file = new SessionFile;
                 $session_file->id = $id+1;
                 $session_file->session_id = $session->id;
                 if($key == 0) $session_file->favourite = '1';
@@ -112,7 +112,7 @@ class SessionController extends Controller
      */
     public function show($id)
     {
-        $session = Sessions::find($id);
+        $session = Session::find($id);
         $users = DB::table('users')->get();
         $counter = DB::table('sessions')->where('id', $id)->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->count();
         $userInSession = false;
@@ -134,7 +134,7 @@ class SessionController extends Controller
      */
     public function edit($id)
     {
-        $session = Sessions::find($id);
+        $session = Session::find($id);
         
         return view('dashboard.session-edit')->with('session', $session);
     }
@@ -148,7 +148,7 @@ class SessionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $session = Sessions::find($id);
+        $session = Session::find($id);
 
         $session->name = $request->name;
         $session->date = $request->date;
@@ -172,10 +172,10 @@ class SessionController extends Controller
 
             foreach($files as $file){
 
-                $sid = SessionFiles::orderByDesc('id')->first();
+                $sid = SessionFile::orderByDesc('id')->first();
                 if(!isset($sid)) $id = 0; else $id = $sid->id;
 
-                $session_file = new SessionFiles;
+                $session_file = new SessionFile;
                 $session_file->id = $id+1;
                 $session_file->session_id = $session->id;
                 $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
@@ -201,21 +201,21 @@ class SessionController extends Controller
      */
     public function destroy($id)
     {
-        $files = SessionFiles::where('session_id', $id)->get();
-        $session = Sessions::where('id', $id)->first();
+        $files = SessionFile::where('session_id', $id)->get();
+        $session = Session::where('id', $id)->first();
 
         foreach($files as $file){
 
             if(file_exists('images/photoshoots/'.$session->id.'/'.$file->file)){
                 $deletedFiles = unlink('images/photoshoots/'.$session->id.'/'.$file->file);
             }
-            $deletedRows = SessionFiles::where('id', $file->id)->delete();
+            $deletedRows = SessionFile::where('id', $file->id)->delete();
             
         }
         
         if(is_dir('images/photoshoots/'.$session->id)) rmdir('images/photoshoots/'.$session->id);
 
-        $deletedRows = Sessions::where('id', $id)->delete();
+        $deletedRows = Session::where('id', $id)->delete();
 
         return redirect('/session')->with('warning', 'Pomyślnie usunięto sesję!');
     }

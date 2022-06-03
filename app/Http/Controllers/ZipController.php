@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use ZipArchive;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Sessions;
+use App\Models\Session;
 
 class ZipController extends Controller
 {
@@ -37,7 +37,7 @@ class ZipController extends Controller
             $zip->close();            
         }
 
-        $session = Sessions::where('id', $id)->first();
+        $session = Session::where('id', $id)->first();
         $session->downloads = $session->downloads+1;
         $session->save();
         

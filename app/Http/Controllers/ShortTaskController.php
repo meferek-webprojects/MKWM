@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
-use App\Models\Sessions;
+use App\Models\Session;
 use App\Mail\ContactMail;
 use App\Mail\NewSession;
 
@@ -42,7 +42,7 @@ class ShortTaskController extends Controller
     }
 
     public function change_privacy(Request $request){
-        $session = Sessions::find($request->id);
+        $session = Session::find($request->id);
         if($session->type == 'private')
            $session->type = 'public';
         else
@@ -70,7 +70,7 @@ class ShortTaskController extends Controller
 
     public function photoshoot(Request $request){
 
-        $session = Sessions::find($request->id)->id;
+        $session = Session::find($request->id)->id;
 
         if(isset($session))
             return view('main.photoshoot')->with(compact('session'));

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Testimonials;
+use App\Models\Testimonial;
 
 class TestimonialController extends Controller
 {
@@ -28,7 +28,7 @@ class TestimonialController extends Controller
 
     public function testimonial_aproved(Request $request)
     {
-        $testimonial = Testimonials::find($request->id);
+        $testimonial = Testimonial::find($request->id);
 
         if($testimonial->aproved == true)
             $testimonial->aproved = false;
@@ -58,19 +58,19 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        $counter = Testimonials::where('user_id', Auth::user()->id)->count();
+        $counter = Testimonial::where('user_id', Auth::user()->id)->count();
         
         if(strlen($request->testimonial) > 150) {
             return redirect('/testimonial/create')->with('danger', 'Maksymalna ilość znaków to 150!');
         }
 
         if($counter == 0) {
-            $testimonial = new Testimonials;
+            $testimonial = new Testimonial;
             $testimonial->user_id = $request->user_id;
             $testimonial->testimonial = substr($request->testimonial, 0, 150); 
         }
         else {
-            $testimonial = Testimonials::where('user_id', Auth::user()->id)->first();
+            $testimonial = Testimonial::where('user_id', Auth::user()->id)->first();
             $testimonial->user_id = $request->user_id;
             $testimonial->aproved = false;
             $testimonial->testimonial = substr($request->testimonial, 0, 150); 
@@ -124,7 +124,7 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
-        Testimonials::find($id)->delete();
+        Testimonial::find($id)->delete();
 
         return redirect('/testimonial')->with('warning', 'Pomyślnie usunięto opinie');
     }

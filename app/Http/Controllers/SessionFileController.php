@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Sessions;
-use App\Models\SessionFiles;
+use App\Models\Session;
+use App\Models\SessionFile;
 
-class SessionFilesController extends Controller
+class SessionFileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -71,10 +71,10 @@ class SessionFilesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $session_file = SessionFiles::find($id);
+        $session_file = SessionFile::find($id);
 
         if($session_file->favourite == 0){
-            SessionFiles::where('session_id', $session_file->session_id)->where('favourite', '1')->update(['favourite' => '0']);
+            SessionFile::where('session_id', $session_file->session_id)->where('favourite', '1')->update(['favourite' => '0']);
             $session_file->favourite = 1;
         }else $session_file->favourite = 0;
 
@@ -91,7 +91,7 @@ class SessionFilesController extends Controller
      */
     public function destroy($id)
     {
-        SessionFiles::find($id)->delete();
+        SessionFile::find($id)->delete();
 
         return redirect()->back()->with('warning', 'Pomyślnie usunięto element sesji!');
     }

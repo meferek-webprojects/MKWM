@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Places;
+use App\Models\Place;
 
 class PlaceController extends Controller
 {
@@ -40,7 +40,7 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        $place = new Places;
+        $place = new Place;
         $place->name = $request->name;
         $link = substr(explode(" ", $request->link)[1], 5);
         $place->link = substr($link, 0, -1);
@@ -69,7 +69,7 @@ class PlaceController extends Controller
      */
     public function edit($id)
     {
-        $place = Places::find($id);
+        $place = Place::find($id);
 
         return view('dashboard.place-add')->with('place', $place);
     }
@@ -83,7 +83,7 @@ class PlaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $place = Places::find($id);
+        $place = Place::find($id);
         $place->name = $request->name;
         if(strpos($request->link, " ")){ 
             $link = substr(explode(" ", $request->link)[1], 5);
@@ -107,7 +107,7 @@ class PlaceController extends Controller
      */
     public function destroy($id)
     {
-        Places::find($id)->delete();
+        Place::find($id)->delete();
 
         return redirect('/place')->with('warning', 'Pomyślnie usunięto miejsce');
     }

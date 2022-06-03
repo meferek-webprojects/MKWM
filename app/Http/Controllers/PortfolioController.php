@@ -13,8 +13,8 @@ use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 
-use App\Models\Portfolios;
-use App\Models\PortfolioFiles;
+use App\Models\Portfolio;
+use App\Models\PortfolioFile;
 
 class PortfolioController extends Controller
 {
@@ -61,9 +61,9 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
 
-        $portfolio = new Portfolios;
+        $portfolio = new Portfolio;
         
-        $id = Portfolios::orderByDesc('id')->first();
+        $id = Portfolio::orderByDesc('id')->first();
         if(!isset($id)) $id = 0; else $id = $id->id;
         $portfolio->id = $id+1;
 
@@ -77,10 +77,10 @@ class PortfolioController extends Controller
 
             foreach($files as $file){
 
-                $sid = PortfolioFiles::orderByDesc('id')->first();
+                $sid = PortfolioFile::orderByDesc('id')->first();
                 if(!isset($sid)) $id = 0; else $id = $sid->id;
 
-                $portfolio_file = new PortfolioFiles;
+                $portfolio_file = new PortfolioFile;
                 $portfolio_file->id = $id+1;
                 $portfolio_file->portfolio_id = $portfolio->id;
                 $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
@@ -147,13 +147,13 @@ class PortfolioController extends Controller
 
     public function usun(Request $request) {
         if(!isset($request->isLink)) {
-            $checkID = PortfolioFiles::find($request->id)->portfolio_id;
-            PortfolioFiles::find($request->id)->delete();
+            $checkID = PortfolioFile::find($request->id)->portfolio_id;
+            PortfolioFile::find($request->id)->delete();
 
-            $checkFiles = PortfolioFiles::where('portfolio_id', $checkID)->count();
-            if($checkFiles == 0) Portfolios::find($checkID)->delete();
+            $checkFiles = PortfolioFile::where('portfolio_id', $checkID)->count();
+            if($checkFiles == 0) Portfolio::find($checkID)->delete();
         }
-        else Portfolios::find($request->id)->delete();
+        else Portfolio::find($request->id)->delete();
 
         return redirect('/portfolio-photo')->with('warning', 'Pomyślnie usunięto element portfolio');
     }

@@ -40,19 +40,19 @@
                                     <tbody>
                                         @foreach($sessions as $session)
                                             @php
-                                                $users = json_decode($session->users_id)
+                                                $users_id = json_decode($session->users_id)
                                             @endphp
                                             <tr>
                                                 <td>{{ $session->id }}</td>
                                                 <td>{{ $session->name }}</td>
                                                 <td>
                                                     @php
-                                                        foreach($users as $user){
-                                                            echo DB::table('users')->where('id', $user)->first()->name.', ';
+                                                        foreach($users_id as $key=>$user_id){
+                                                            echo ($key == 0 ? '' : ', ').DB::table('users')->find($user_id)->name;
                                                         }
                                                     @endphp
                                                 </td>
-                                                <td>{{ $session->created_at }}</td>
+                                                <td>{{ $session->date }}</td>
                                                 <td>
                                                     <form action="{{ route('session.show', $session->id) }}" method="POST">
                                                         @csrf

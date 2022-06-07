@@ -46,18 +46,22 @@
                 ->limit(4)
                 ->skip(1)
                 ->get();
+
+    if($sessions->count() == 3) $sessions->pop(1);
 @endphp
 
-@if($sessions->count() >= 4)
+@if($sessions->count() >= 2)
 <div class="extra-photoshoots d-none d-sm-flex flex-wrap">
-
     @foreach($sessions as $session)
     @php
-        $user = DB::table('users')->where('id', json_decode($session->users_id)[0])->first();
+        $user = DB::table('users')
+                ->where('id', json_decode($session->users_id)[0])
+                ->select('name', 'surname')
+                ->first();
     @endphp
     
-    <div class="extra-photoshoot col-xl-6 m-0 p-0 h-50 d-flex align-items-center" onclick="window.location.href='{{ url('/photoshoot?id='.$session->id) }}'">
-        <div class="photoshoot-info 
+    <div class="extra-photoshoot m-0 p-0 h-50 d-flex align-items-center" onclick="window.location.href='{{ url('/photoshoot?id='.$session->id) }}'">
+        <div class="photoshoot-info
             @if($loop->iteration == 1) order-xl-1
             @elseif($loop->iteration == 2) order-1
             @elseif($loop->iteration == 4) order-1 order-xl-0
@@ -70,15 +74,16 @@
                 {{ $user->name.' '.$user->surname }}
             </div>
         </div>
-        <div class="photoshoot-image 
+        <div class="photoshoot-image
             @if($loop->iteration == 1) order-xl-0
             @elseif($loop->iteration == 2) order-0
             @elseif($loop->iteration == 4) order-0 order-xl-1
             @endif
         ">
-            <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="">
+            <img src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="">
         </div>
     </div>
+
     @endforeach
 </div>
 @endif
@@ -155,9 +160,7 @@
                     <img src="{{ url('/images/img/natalia.jpg') }}" class="d-block w-100" alt="">
                 @endif
                 <div class="testimonial position-absolute top-50 start-50 translate-middle text-center">
-                    <p class="text">
-                        {{ $testimonial->testimonial }}
-                    </p>
+                    <p class="text">{{ $testimonial->testimonial }}</p>
                     <div class="person">{{ $user->name.' '.$user->surname }}</div>
                 </div>
             </div>
@@ -209,6 +212,7 @@
 @php 
     $movies = DB::table('portfolios')->whereNotNull('link')->get();
 @endphp
+
 <div class="portfolio">
     <h4 id="filmografia">FILMOGRAFIA</h4>
     <h3>PORTFOLIO</h3>    
@@ -216,32 +220,16 @@
         <div class="row">
             <div class="col-12 movies">
                 <div class="youtube-player" data-id="R9vtT7CEETo" img-type="studio">
-                    {{-- <img src="{{ url('images/yt-thumbnail/2.jpg') }}" alt=""> --}}
-                </div>
                 <div class="text">BACKSTAGE</div>
             </div>
             <div class="col-12 movies">
                 <div class="youtube-player" data-id="MnFyQ9WAUtA" img-type="universal">
-                    {{-- <img src="{{ url('images/yt-thumbnail/2.jpg') }}" alt=""> --}}
                 </div>
                 <div class="text">TELEDYSK</div>
             </div>
             @forelse($movies as $movie)
             <div class="col-12 movies">
-                <div class="youtube-player" data-id="{{ substr($movie->link, 17) }}""
-                    @if($movie->type == 'event')
-                        img-type="event"
-                    @elseif($movie->type == 'product')
-                        img-type="product"
-                    @elseif($movie->type == 'plener')
-                        img-type="plener"
-                    @elseif($movie->type == 'studio')
-                    img-type="studio"
-                    @else
-                     img-type="universal"
-                    @endif
-                ">
-                </div>
+                <div class="youtube-player" data-id="{{ substr($movie->link, 17) }}" @if($movie->type) img-type="{{ $movie->type }}" @else img-type="universal" @endif></div>
                 <div class="text" style="text-transform: uppercase;">{{ $movie->type }}</div>
             </div>
             @empty

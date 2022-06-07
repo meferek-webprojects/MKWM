@@ -760,6 +760,7 @@
     <script src="{{ url('dashboard/js/pages/dashboard.js') }}"></script>
     <script src="{{ url('dashboard/js/alertDismiss.js') }}"></script>
     <script src="{{ url('dashboard/js/dashboard-cookie-state.js') }}"></script>
+    <script src="{{ url('dashboard/js/image-positioner.js') }}"></script>
 
 
     @yield('added-js')

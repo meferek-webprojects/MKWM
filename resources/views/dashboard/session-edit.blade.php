@@ -15,7 +15,6 @@
     <div class="app-content">
         <div class="content-wrapper">
             <div class="container-fluid">
-                
                 <div class="page-description">
                     <h1>Edytuj sesję</h1>
                 </div>
@@ -171,7 +170,7 @@
                                                         @if($photo->favourite == '1')
                                                             <button class="btn btn-warning" type="submit"><i class="material-icons mx-0">star</i></button>
                                                         @else
-                                                            <button class="btn btn-outline-warning" type="submit"><i class="material-icons mx-0">star</i></button>
+                                                            <button class="btn btn-outline-warning" type="button" onclick="createImagePositioner(this, '{{ url('/images/photoshoots/'.$session->id.'/'.$photo->file) }}')"><i class="material-icons mx-0">star</i></button>
                                                         @endif
                                                     </form>
                                                 </td>
@@ -191,7 +190,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

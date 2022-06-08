@@ -11,14 +11,15 @@ $(window).on("load",function(){
 
 // Active Page
 
-var element = document.querySelector('[href="'+window.location.href+'"]');
+var element;
 
-element.classList.add('active');
+if(element = document.querySelector('[href="'+window.location.href+'"]')){
+    element.classList.add('active');
+    element.closest('.accordion-menu > li').classList.add('active-page');
 
-element.closest('.accordion-menu > li').classList.add('active-page');
-
-if(element.closest('.sub-menu .sub-menu')){
-    $(window).on('load',function(){
-        element.closest('.sub-menu').parentNode.querySelector('a').click();
-    });
+    if(element.closest('.sub-menu .sub-menu')){
+        $(window).on('load',function(){
+            element.closest('.sub-menu').parentNode.querySelector('a').click();
+        });
+    }
 }

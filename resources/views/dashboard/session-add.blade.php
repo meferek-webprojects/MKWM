@@ -44,12 +44,12 @@
                                         <div class="col-md-6 my-2">
                                             <div class="input-group mb-3">
                                                 <span class="input-group-text" id="basic-addon1"><i class="material-icons">edit_calendar</i></span>
-                                                <input class="form-control flatpickr1" name="date" type="text" placeholder="Data sesji"  aria-label="Username" aria-describedby="basic-addon1">
+                                                <input class="form-control flatpickr1" name="date" type="text" placeholder="Data sesji"  aria-label="Username" aria-describedby="basic-addon1" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 my-2">
                                             <select id="place" class="js-states form-control" name="place" tabindex="-1" style="display: none; width: 100%" required>
-                                                <option disabled selected>--- Miejsce sesji ---</option>
+                                                <option value="" disabled selected>--- Miejsce sesji ---</option>
                                                 @foreach($places as $place)
                                                     <option value="{{ $place->id }}">{{ $place->name }}</option>
                                                 @endforeach
@@ -60,14 +60,14 @@
                                     <div class="row">
                                         <div class="col-md-6 my-2">
                                             <select id="type" class="js-states form-control" name="type" tabindex="-1" style="display: none; width: 100%" required>
-                                                <option disabled selected>--- Typ sesji ---</option>
+                                                <option value="" disabled selected>--- Typ sesji ---</option>
                                                 <option value="public">Sesja publiczna</option>
                                                 <option value="private">Sesja prywatna</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6 my-2">
                                             <select id="kind" class="js-states form-control" name="kind" tabindex="-1" style="display: none; width: 100%" required>
-                                                <option disabled selected>--- Rodzaj sesji ---</option>
+                                                <option value="" disabled selected>--- Rodzaj sesji ---</option>
                                                 <option value="photo">Sesja fotograficzna</option>
                                                 <option value="video">Sesja filmowa</option>
                                                 <option value="both">Sesja fotograficzno-filmowa</option>

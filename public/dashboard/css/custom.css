@@ -145,28 +145,31 @@ body[theme="dark"] .select2-container--default .select2-selection--multiple {
     width: 300px;
 }
 
-.positioner-background{
+/* .positioner-background{
     inset: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2000;
 }
 
 .image-positioner{
-    width: 500px;
+    width: 800px;
 }
 
 .image-box{
     width: 100%;
+    height: 350px;
+    background-color: white;
     aspect-ratio: 1;
     position: relative;
     user-select: none;
-    border: 2px solid grey;
+    overflow: hidden;
 }
 
 .image-box::before{
     content: '';
     position: absolute;
     background-color: red;
+    pointer-events: none;
     opacity: 0.5;
     height: 1px;
     width: 100%;
@@ -180,6 +183,7 @@ body[theme="dark"] .select2-container--default .select2-selection--multiple {
     content: '';
     position: absolute;
     background-color: red;
+    pointer-events: none;
     opacity: 0.5;
     width: 1px;
     top: 0;
@@ -194,8 +198,46 @@ body[theme="dark"] .select2-container--default .select2-selection--multiple {
     object-fit: cover;
 }
 
-.image-editor{
-    width: 500px;
+.image-position{
+    width: 100%;
+} */
+
+.positioner-background{
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+}
+
+.image-positioner{
+    width: 800px;
+}
+
+.placement-selector{
+    position: relative;
+    width: fit-content;
+    user-select: none;
+}
+
+.image{
+    max-width: 50vw;
+    max-height: 50vh;
+    width: auto;
+    height: auto;
+}
+
+.image-box{
+    position: absolute;
+    opacity: 0.75;
+    border: 4px solid red;
+    box-sizing: border-box;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+}
+
+.image-position{
+    width: 100%;
 }
 
 @media only screen and (max-width: 1101px) {

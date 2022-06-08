@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('session_id');
             $table->string('file');
+            $table->boolean('locked')->default(false);
             $table->boolean('favourite')->default(false);
-            $table->text('link')->nullable();
+            $table->string('centered')->nullable();
             $table->timestamps();
         });
     }

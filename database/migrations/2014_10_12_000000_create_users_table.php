@@ -26,6 +26,7 @@ return new class extends Migration
             $table->enum('theme', ['light', 'dark'])->default('light');
             $table->boolean('newsletter')->default(false);
             $table->string('avatar')->nullable();
+            $table->string('centered')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

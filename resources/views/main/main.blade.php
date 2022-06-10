@@ -4,7 +4,7 @@
 
 @php
     $session = DB::table('sessions')
-            ->select('sessions.id', 'sessions.users_id', 'session_files.file as photo', 'places.name as place')
+            ->select('sessions.id', 'sessions.users_id', 'session_files.file as photo', 'places.name as place', 'session_files.centered as centered')
             ->join('session_files', 'sessions.id', '=', 'session_files.session_id')
             ->join('places', 'sessions.place_id', '=', 'places.id')
             ->where('session_files.favourite', '1')
@@ -29,14 +29,14 @@
         </div>
     </div>
     <div class="photoshoot-image overflow-hidden">
-        <img class="img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="">
+        <img class="center-image img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="" @if($centered = $session->centered) centered-percentage="{{ $centered }}" @endif>
     </div>
 </div>
 @endif
 
 @php
     $sessions = DB::table('sessions')
-                ->select('sessions.id', 'sessions.users_id', 'session_files.file as photo', 'places.name as place')
+                ->select('sessions.id', 'sessions.users_id', 'session_files.file as photo', 'places.name as place', 'session_files.centered as centered')
                 ->join('session_files', 'sessions.id', '=', 'session_files.session_id')
                 ->join('places', 'sessions.place_id', '=', 'places.id')
                 ->where('session_files.favourite', '1')
@@ -80,7 +80,7 @@
             @elseif($loop->iteration == 4) order-0 order-xl-1
             @endif
         ">
-            <img src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="">
+            <img class="center-image" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="" @if($centered = $session->centered) centered-percentage="{{ $centered }}" @endif>
         </div>
     </div>
 
@@ -241,6 +241,7 @@
     </div>
 </div>
 
+<script src="{{ url('main/js/image-center.js') }}"></script>
 <script>
     /*
      * Light YouTube Embeds by @labnol
@@ -296,6 +297,8 @@
     }
   
     document.addEventListener('DOMContentLoaded', initYouTubeVideos);
+
+
 </script>
 
 @endsection

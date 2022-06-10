@@ -78,6 +78,9 @@ class SessionFileController extends Controller
             $session_file->favourite = 1;
         }else $session_file->favourite = 0;
 
+        if($request->centered)
+            $session_file->centered = $request->centered;
+
         $session_file->save();
 
         return redirect()->back()->with('warning', 'Pomyślnie zaktualizowano element sesji!');

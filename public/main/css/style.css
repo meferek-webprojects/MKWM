@@ -218,20 +218,21 @@
 }
 .last-photoshoot .photoshoot-image {
   width: 50%;
+  background-color: black;
 }
 .last-photoshoot .photoshoot-image img {
-  transition: transform 0.3s, filter 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  -o-object-position: center 20%;
+     object-position: center 20%;
   aspect-ratio: 5/4;
 }
-.last-photoshoot .photoshoot-image img:hover {
+.last-photoshoot .photoshoot-image:hover img {
   transform: scale(1.15);
-  filter: brightness(75%);
+  opacity: 0.75;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -476,12 +477,12 @@
 }
 .extra-photoshoots {
   background-color: white;
-  cursor: pointer;
   width: 100%;
 }
 .extra-photoshoots .extra-photoshoot {
   width: 50%;
   background-color: white;
+  cursor: pointer;
 }
 .extra-photoshoots .extra-photoshoot .photoshoot-info {
   width: 50%;
@@ -506,6 +507,8 @@
   overflow: hidden;
   width: 50%;
   height: 100%;
+  background-color: black;
+  aspect-ratio: 3/2;
 }
 .extra-photoshoots .extra-photoshoot .photoshoot-image img {
   width: 100%;
@@ -514,12 +517,12 @@
      object-fit: cover;
   -o-object-position: center 20%;
      object-position: center 20%;
-  transition: transform 0.3s, filter 0.3s;
-  aspect-ratio: 3/2;
+  transition: height 0.3s, width 0.3s, opacity 0.3s, transform 0.3s;
+  transform: scale(1.01);
 }
-.extra-photoshoots .extra-photoshoot .photoshoot-image img:hover {
+.extra-photoshoots .extra-photoshoot .photoshoot-image:hover img {
   transform: scale(1.15);
-  filter: brightness(75%);
+  opacity: 0.75;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -844,6 +847,8 @@ hr.breakline {
   width: 50%;
   height: 50%;
   position: relative;
+  background-color: black;
+  cursor: pointer;
 }
 .portfolio .portfolio-images .portfolio-image img {
   width: 100%;
@@ -852,12 +857,11 @@ hr.breakline {
      object-fit: cover;
   -o-object-position: center 25%;
      object-position: center 25%;
-  filter: brightness(50%);
-  transition: filter 0.3s;
+  opacity: 0.5;
+  transition: opacity 0.3s;
 }
-.portfolio .portfolio-images .portfolio-image img:hover {
-  filter: brightness(25%);
-  cursor: pointer;
+.portfolio .portfolio-images .portfolio-image:hover img {
+  opacity: 0.25;
 }
 .portfolio .portfolio-images .portfolio-image .type {
   color: white;

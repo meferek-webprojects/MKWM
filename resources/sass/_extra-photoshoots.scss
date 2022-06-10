@@ -1,11 +1,11 @@
 .extra-photoshoots {
     background-color: white;
-    cursor: pointer;
     width: 100%;
 
     .extra-photoshoot {
         width: 50%;
         background-color: white;
+        cursor: pointer;
 
         .photoshoot-info {
             width: 50%;
@@ -33,20 +33,21 @@
             overflow: hidden;
             width: 50%;
             height: 100%;
-            
+            background-color: black;
+            aspect-ratio: 3 / 2;
 
             img{
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 object-position: center 20%;
-                transition: transform .3s, filter .3s;
-                aspect-ratio: 3 / 2;
-                
-                &:hover{
-                    transform: scale(1.15);
-                    filter: brightness(75%);
-                }
+                transition: height .3s, width .3s, opacity .3s, transform .3s;
+                transform: scale(1.01);
+            }
+
+            &:hover img{
+                transform: scale(1.15);
+                opacity: .75;
             }
         }
 

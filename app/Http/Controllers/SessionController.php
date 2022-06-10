@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 use Carbon\Carbon;
@@ -99,8 +100,6 @@ class SessionController extends Controller
                 $image = Image::make($file)->encode('webp', 90)->save($webpPath.$webpName.'.webp');
                 
                 $file->move($path, $fileName);
-
-                
 
                 $session_file->file = $fileName;
                 $session_file->save();
@@ -230,7 +229,7 @@ class SessionController extends Controller
                 $deletedFiles = unlink('images/photoshoots/'.$session->id.'/'.$file->file);
             }
             if(file_exists('images/webp/'.$session->id.'/'.substr($file->file, 0, -4).'.webp')){
-                $deletedFiles = unlink('images/webp/'.$session->id.'/'.substr($file->file, 0, -4).'.webp');
+                $deletedFiles = Storage::delete('images/webp/'.$session->id.'/'.substr($file->file, 0, -4).'.webp');
             }
             $deletedRows = SessionFiles::where('id', $file->id)->delete();
             

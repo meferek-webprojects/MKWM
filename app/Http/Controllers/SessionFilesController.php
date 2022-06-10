@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 use App\Models\Sessions;
 use App\Models\SessionFiles;
@@ -94,10 +96,10 @@ class SessionFilesController extends Controller
         $file = SessionFiles::find($id);
 
         if(file_exists('images/photoshoots/'.$file->session_id.'/'.$file->file)){
-            $deletedFiles = unlink('images/photoshoots/'.$file->session_id.'/'.$file->file);
+            unlink('images/photoshoots/'.$file->session_id.'/'.$file->file);
         }
         if(file_exists('images/webp/'.$file->session_id.'/'.substr($file->file, 0, -4).'.webp')){
-            $deletedFiles = unlink('images/webp/'.$file->session_id.'/'.substr($file->file, 0, -4).'.webp');
+            unlink('images/webp/'.$file->session_id.'/'.substr($file->file, 0, -4).'.webp');
         }
 
         $file->delete();

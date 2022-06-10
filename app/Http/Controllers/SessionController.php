@@ -87,9 +87,20 @@ class SessionController extends Controller
                 $session_file->id = $id+1;
                 $session_file->session_id = $session->id;
                 if($key == 0) $session_file->favourite = '1';
-                $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
+                $fileCode = Str::random(32);
+                $fileName = $fileCode.'.'.$file->getClientOriginalExtension();
                 $path = 'images/photoshoots/'.$session->id;
+
+                $webpName = $fileCode;
+                $webpPath = 'images/webp/'.$session->id.'/';
+                if (!file_exists($webpPath)) {
+                    mkdir($webpPath, 666, true);
+                }
+                $image = Image::make($file)->encode('webp', 90)->save($webpPath.$webpName.'.webp');
+                
                 $file->move($path, $fileName);
+
+                
 
                 $session_file->file = $fileName;
                 $session_file->save();

@@ -1,19 +1,18 @@
 const showImagePositioner = (button, file) => {
     const imagePositioner = `
         <div class="positioner-background position-fixed">
-            <div class="image-positioner mx-auto text-center">
+            <div class="image-positioner mx-auto text-center mt-5 card px-4 py-5">
                 <div class="placement-selector mx-auto">
                     <img src="`+file+`" alt="..." class="image">
                     <div class="image-box"></div>
                 </div>
-                <div class="image-position">
-                    <label for="image-box-size" class="form-label">Example range</label>
+                <div class="image-position mt-5">
                     <input type="range" class="form-range" value="100" min="30" id="image-box-size">
                     X: <input type="text" class="form-control" value="50%" id="position-x" required>
                     Y: <input type="text" class="form-control" value="50%" id="position-y" required>
                     <input type="hidden" name="centered" id="centered-input">
-                    <button class="btn btn-secondary" type="button" id="hide-positioner">Anuluj</button>
-                    <button class="btn btn-primary" type="submit">Zapisz</button>
+                    <button class="btn btn-secondary mt-5" type="button" id="hide-positioner">Anuluj</button>
+                    <button class="btn btn-primary mt-5" type="submit">Zapisz</button>
                 </div>
             </div>
         </div>

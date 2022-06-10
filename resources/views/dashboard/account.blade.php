@@ -29,7 +29,7 @@
                         <div class="col-lg-2">
                             <div class="card text-center">
                                 <div class="card-body my-1">
-                                    <div class="avatar avatar-xxl">
+                                    <div class="avatar avatar-xxl status status-online">
                                         <div class="avatar-title">{{ Auth::user()->initials }}</div>
                                     </div>
                                 </div>

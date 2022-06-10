@@ -72,10 +72,16 @@ class ShortTaskController extends Controller
 
         $session = Session::find($request->id)->id;
 
-        if(isset($session))
-            return view('main.photoshoot')->with(compact('session'));
-        else
-            return abort('404');
+        if(isset($session)){
+
+            $thisSesssion = Session::find($request->id)->type;
+
+            if($thisSesssion == 'public')
+                return view('main.photoshoot')->with(compact('session'));
+
+        }
+
+        return abort('404');
     }
 
     public function send_photoshoot(Request $request){

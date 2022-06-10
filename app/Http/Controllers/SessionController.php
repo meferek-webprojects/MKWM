@@ -195,7 +195,7 @@ class SessionController extends Controller
                 $webpName = $fileCode;
                 $webpPath = 'images/webp/'.$session->id.'/';
                 if (!file_exists($webpPath)) {
-                    mkdir($webpPath, 775, true);
+                    mkdir($webpPath, 775);
                     chmod($webpPath, 02775);
                 }
                 $image = Image::make($file)->encode('webp', 90)->save($webpPath.$webpName.'.webp');

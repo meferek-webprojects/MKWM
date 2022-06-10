@@ -189,8 +189,17 @@ class SessionController extends Controller
                 $session_file = new SessionFiles;
                 $session_file->id = $id+1;
                 $session_file->session_id = $session->id;
-                $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
+                $fileCode = Str::random(32);
+                $fileName = $fileCode.'.'.$file->getClientOriginalExtension();
                 $path = 'images/photoshoots/'.$session->id;
+
+                $webpName = $fileCode;
+                $webpPath = 'images/webp/'.$session->id.'/';
+                if (!file_exists($webpPath)) {
+                    mkdir($webpPath, 666, true);
+                }
+                $image = Image::make($file)->encode('webp', 90)->save($webpPath.$webpName.'.webp');
+                
                 $file->move($path, $fileName);
 
                 $session_file->file = $fileName;
@@ -220,11 +229,15 @@ class SessionController extends Controller
             if(file_exists('images/photoshoots/'.$session->id.'/'.$file->file)){
                 $deletedFiles = unlink('images/photoshoots/'.$session->id.'/'.$file->file);
             }
+            if(file_exists('images/webp/'.$session->id.'/'.substr($file->file, 0, -4).'.webp')){
+                $deletedFiles = unlink('images/webp/'.$session->id.'/'.substr($file->file, 0, -4).'.webp');
+            }
             $deletedRows = SessionFiles::where('id', $file->id)->delete();
             
         }
         
         if(is_dir('images/photoshoots/'.$session->id)) rmdir('images/photoshoots/'.$session->id);
+        if(is_dir('images/webp/'.$session->id)) rmdir('images/webp/'.$session->id);
 
         $deletedRows = Sessions::where('id', $id)->delete();
 

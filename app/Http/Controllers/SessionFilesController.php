@@ -91,7 +91,16 @@ class SessionFilesController extends Controller
      */
     public function destroy($id)
     {
-        SessionFiles::find($id)->delete();
+        $file = SessionFiles::find($id);
+
+        if(file_exists('images/photoshoots/'.$file->session_id.'/'.$file->file)){
+            $deletedFiles = unlink('images/photoshoots/'.$file->session_id.'/'.$file->file);
+        }
+        if(file_exists('images/webp/'.$file->session_id.'/'.substr($file->file, 0, -4).'.webp')){
+            $deletedFiles = unlink('images/webp/'.$file->session_id.'/'.substr($file->file, 0, -4).'.webp');
+        }
+
+        $file->delete();
 
         return redirect()->back()->with('warning', 'Pomyślnie usunięto element sesji!');
     }

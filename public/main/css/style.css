@@ -689,8 +689,8 @@ hr.breakline {
   color: white;
 }
 .testimonials .carousel-inner .carousel-item .testimonial .text {
-  font-size: 22px;
-  font-family: "Roboto";
+  font-size: 28px;
+  font-family: "Semi";
 }
 .testimonials .carousel-inner .carousel-item .testimonial .person {
   margin-top: 35px;
@@ -705,7 +705,7 @@ hr.breakline {
     aspect-ratio: 10/4;
   }
   .testimonials .carousel-inner .testimonial .text {
-    font-size: 22px !important;
+    font-size: 28px !important;
   }
   .testimonials .carousel-inner .testimonial .person {
     font-size: 26px !important;
@@ -716,7 +716,7 @@ hr.breakline {
     aspect-ratio: 10/5;
   }
   .testimonials .carousel-inner .testimonial .text {
-    font-size: 20px !important;
+    font-size: 25px !important;
   }
   .testimonials .carousel-inner .testimonial .person {
     font-size: 24px !important;
@@ -735,7 +735,7 @@ hr.breakline {
     aspect-ratio: 10/7;
   }
   .testimonials .carousel-inner .testimonial .text {
-    font-size: 18px !important;
+    font-size: 25px !important;
   }
   .testimonials .carousel-inner .testimonial .person {
     font-size: 22px !important;

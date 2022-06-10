@@ -4,6 +4,7 @@
 /storage/*.key
 /public/images/photoshoots/*
 /public/images/portfolios/*
+/public/images/webp/*
 /vendor
 .env
 .env.backup

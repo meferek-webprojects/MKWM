@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 use Carbon\Carbon;
@@ -87,8 +88,18 @@ class SessionController extends Controller
                 $session_file->id = $id+1;
                 $session_file->session_id = $session->id;
                 if($key == 0) $session_file->favourite = '1';
-                $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
+                $fileCode = Str::random(32);
+                $fileName = $fileCode.'.'.$file->getClientOriginalExtension();
                 $path = 'images/photoshoots/'.$session->id;
+
+                $webpName = $fileCode;
+                $webpPath = 'images/webp/'.$session->id.'/';
+                if (!file_exists($webpPath)) {
+                    mkdir($webpPath, 0775);
+                    chmod($webpPath, 02775);
+                }
+                $image = Image::make($file)->encode('webp', 90)->save($webpPath.$webpName.'.webp');
+                
                 $file->move($path, $fileName);
 
                 $session_file->file = $fileName;
@@ -178,8 +189,18 @@ class SessionController extends Controller
                 $session_file = new SessionFile;
                 $session_file->id = $id+1;
                 $session_file->session_id = $session->id;
-                $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
+                $fileCode = Str::random(32);
+                $fileName = $fileCode.'.'.$file->getClientOriginalExtension();
                 $path = 'images/photoshoots/'.$session->id;
+
+                $webpName = $fileCode;
+                $webpPath = 'images/webp/'.$session->id.'/';
+                if (!file_exists($webpPath)) {
+                    mkdir($webpPath, 0775);
+                    chmod($webpPath, 02775);
+                }
+                $image = Image::make($file)->encode('webp', 90)->save($webpPath.$webpName.'.webp');
+                
                 $file->move($path, $fileName);
 
                 $session_file->file = $fileName;
@@ -209,11 +230,15 @@ class SessionController extends Controller
             if(file_exists('images/photoshoots/'.$session->id.'/'.$file->file)){
                 $deletedFiles = unlink('images/photoshoots/'.$session->id.'/'.$file->file);
             }
-            $deletedRows = SessionFile::where('id', $file->id)->delete();
+            if(file_exists('images/webp/'.$session->id.'/'.substr($file->file, 0, -4).'.webp')){
+                $deletedFiles = Storage::delete('images/webp/'.$session->id.'/'.substr($file->file, 0, -4).'.webp');
+            }
+            $deletedRows = SessionFiles::where('id', $file->id)->delete();
             
         }
         
         if(is_dir('images/photoshoots/'.$session->id)) rmdir('images/photoshoots/'.$session->id);
+        if(is_dir('images/webp/'.$session->id)) rmdir('images/webp/'.$session->id);
 
         $deletedRows = Session::where('id', $id)->delete();
 

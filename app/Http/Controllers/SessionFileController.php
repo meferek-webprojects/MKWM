@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 use App\Models\Session;
 use App\Models\SessionFile;
@@ -96,7 +98,16 @@ class SessionFileController extends Controller
      */
     public function destroy($id)
     {
-        SessionFile::find($id)->delete();
+        $file = SessionFiles::find($id);
+
+        if(file_exists('images/photoshoots/'.$file->session_id.'/'.$file->file)){
+            unlink('images/photoshoots/'.$file->session_id.'/'.$file->file);
+        }
+        if(file_exists('images/webp/'.$file->session_id.'/'.substr($file->file, 0, -4).'.webp')){
+            unlink('images/webp/'.$file->session_id.'/'.substr($file->file, 0, -4).'.webp');
+        }
+
+        $file->delete();
 
         return redirect()->back()->with('warning', 'Pomyślnie usunięto element sesji!');
     }

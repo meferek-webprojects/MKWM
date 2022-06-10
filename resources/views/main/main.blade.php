@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="photoshoot-image overflow-hidden">
-        <img src="{{ url('images/webp/'.$session->id.'/'.substr($session->photo, 0, -4).'webp') }}" alt="" @if($centered = $session->centered) image-center="{{ $centered }}" @endif>
+        <img src="{{ url('images/webp/'.$session->id.'/'.substr($session->photo, 0, -4).'.webp') }}" alt="" @if($centered = $session->centered) image-center="{{ $centered }}" @endif>
     </div>
 </div>
 @endif
@@ -80,7 +80,7 @@
             @elseif($loop->iteration == 4) order-0 order-xl-1
             @endif
         ">
-            <img src="{{ url('images/webp/'.$session->id.'/'.substr($session->photo, 0, -4).'webp') }}" alt="" @if($centered = $session->centered) image-center="{{ $centered }}" @endif>
+            <img src="{{ url('images/webp/'.$session->id.'/'.substr($session->photo, 0, -4).'.webp') }}" alt="" @if($centered = $session->centered) image-center="{{ $centered }}" @endif>
         </div>
     </div>
 

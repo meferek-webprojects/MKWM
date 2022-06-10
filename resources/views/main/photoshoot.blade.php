@@ -13,8 +13,8 @@
                 ->join('places', 'sessions.place_id', '=', 'places.id')
                 ->where('session_files.favourite', '1')
                 ->whereIn('kind', ['photo', 'both'])
+                ->where('session_id', $session)
                 ->where('type', 'public')
-                ->orderBy('date', 'desc')
                 ->first();
         $user = DB::table('users')->where('id', json_decode($thissession->users_id)[0])->first();
     @endphp
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="background">
-            <img src="{{ url('images/webp/'.$thissession->id.'/'.substr($thissession->photo, 0, -4).'webp') }}" alt="" @if($centered = $thissession->centered) image-center="{{ $centered }}" @endif>
+            <img src="{{ url('images/webp/'.$thissession->id.'/'.substr($thissession->photo, 0, -4).'.webp') }}" alt="" @if($centered = $thissession->centered) image-center="{{ $centered }}" @endif>
         </div>
     </div>
 
@@ -45,7 +45,7 @@
                     @endphp
                     @forelse($photos as $photo)
                         <a href="{{ url('images/webp/'.$photo->session_id.'/'.substr($photo->file, 0, -4).'webp') }}">
-                            <img class="img-fluid mb-1" alt=".." src="{{ url('images/webp/'.$photo->session_id.'/'.substr($photo->file, 0, -4).'webp') }}" />
+                            <img class="img-fluid mb-1" alt=".." src="{{ url('images/webp/'.$photo->session_id.'/'.substr($photo->file, 0, -4).'.webp') }}" />
                         </a>
                     @empty
                         <h3>WKRÓTCE</h3>

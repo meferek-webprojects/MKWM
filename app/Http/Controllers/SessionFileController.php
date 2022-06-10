@@ -98,7 +98,7 @@ class SessionFileController extends Controller
      */
     public function destroy($id)
     {
-        $file = SessionFiles::find($id);
+        $file = SessionFile::find($id);
 
         if(file_exists('images/photoshoots/'.$file->session_id.'/'.$file->file)){
             unlink('images/photoshoots/'.$file->session_id.'/'.$file->file);

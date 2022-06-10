@@ -87,7 +87,10 @@ class SessionController extends Controller
                 $session_file = new SessionFile;
                 $session_file->id = $id+1;
                 $session_file->session_id = $session->id;
-                if($key == 0) $session_file->favourite = '1';
+                if($key == 0){
+                    $session_file->favourite = '1';
+                    $session_file->centered = '0.5 0.5';
+                }
                 $fileCode = Str::random(32);
                 $fileName = $fileCode.'.'.$file->getClientOriginalExtension();
                 $path = 'images/photoshoots/'.$session->id;
@@ -95,7 +98,7 @@ class SessionController extends Controller
                 $webpName = $fileCode;
                 $webpPath = 'images/webp/'.$session->id.'/';
                 if (!file_exists($webpPath)) {
-                    mkdir($webpPath, 0775);
+                    mkdir($webpPath, 0775, true);
                     chmod($webpPath, 02775);
                 }
                 $image = Image::make($file)->encode('webp', 90)->save($webpPath.$webpName.'.webp');
@@ -196,7 +199,7 @@ class SessionController extends Controller
                 $webpName = $fileCode;
                 $webpPath = 'images/webp/'.$session->id.'/';
                 if (!file_exists($webpPath)) {
-                    mkdir($webpPath, 0775);
+                    mkdir($webpPath, 0775, true);
                     chmod($webpPath, 02775);
                 }
                 $image = Image::make($file)->encode('webp', 90)->save($webpPath.$webpName.'.webp');
@@ -228,12 +231,12 @@ class SessionController extends Controller
         foreach($files as $file){
 
             if(file_exists('images/photoshoots/'.$session->id.'/'.$file->file)){
-                $deletedFiles = unlink('images/photoshoots/'.$session->id.'/'.$file->file);
+                unlink('images/photoshoots/'.$session->id.'/'.$file->file);
             }
             if(file_exists('images/webp/'.$session->id.'/'.substr($file->file, 0, -4).'.webp')){
-                $deletedFiles = Storage::delete('images/webp/'.$session->id.'/'.substr($file->file, 0, -4).'.webp');
+                unlink('images/webp/'.$file->session_id.'/'.substr($file->file, 0, -4).'.webp');
             }
-            $deletedRows = SessionFiles::where('id', $file->id)->delete();
+            $deletedRows = SessionFile::where('id', $file->id)->delete();
             
         }
         

@@ -1,5 +1,5 @@
 const centerImage = image => {
-    var centered = $(image).attr('centered-percentage');
+    var centered = $(image).attr('image-center');
     var percentageCenteredX = centered.split(' ')[0];
     var percentageCenteredY = centered.split(' ')[1];
 
@@ -35,12 +35,18 @@ const centerImage = image => {
     }
 };
 
-$('.center-image').on('load', function(){
-    centerImage(this);
+// $('img[image-center]').on('load', function(){
+//     centerImage(this);
+// });
+
+$(window).on('load', function(){
+    $('img[image-center]').each(function(){
+        centerImage(this);
+    });
 });
 
 $(window).resize(() => {
-    $('.center-image').each(function(){
+    $('img[image-center]').each(function(){
         centerImage(this);
     });
 })

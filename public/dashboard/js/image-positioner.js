@@ -12,7 +12,7 @@ const showImagePositioner = (button, file) => {
                     X: <input type="text" class="form-control" value="50%" id="position-x" required>
                     Y: <input type="text" class="form-control" value="50%" id="position-y" required>
                     <input type="hidden" name="centered" id="centered-input">
-                    <button class="btn btn-warning" type="button" id="hide-positioner">Anuluj</button>
+                    <button class="btn btn-secondary" type="button" id="hide-positioner">Anuluj</button>
                     <button class="btn btn-primary" type="submit">Zapisz</button>
                 </div>
             </div>

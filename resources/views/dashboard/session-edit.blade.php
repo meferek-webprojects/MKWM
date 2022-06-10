@@ -148,6 +148,7 @@
                                             <th>Data stworzenia</th>
                                             <th>&nbsp;</th>
                                             <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -173,6 +174,18 @@
                                                             <button class="btn btn-outline-warning" type="button" onclick="showImagePositioner(this, '{{ url('/images/photoshoots/'.$session->id.'/'.$photo->file) }}')"><i class="material-icons mx-0">star</i></button>
                                                         @endif
                                                     </form>
+                                                </td>
+                                                <td>
+                                                    @if($photo->centered)
+                                                    <form action="{{ route('sessionfiles.update', $photo->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        @if($photo->favourite == '1')
+                                                            <button class="btn btn-outline-info" type="button" onclick="showImagePositioner(this, '{{ url('/images/photoshoots/'.$session->id.'/'.$photo->file) }}')"><i class="material-icons mx-0">crop</i></button>
+                                                        @endif
+                                                    </form>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('sessionfiles.destroy', $photo->id) }}" method="POST">

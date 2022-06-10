@@ -78,7 +78,7 @@
                 <div>to see their own beauty</div>
             </div>
         </div>
-
+        
         @yield('content')
 
         <footer id="ciastko" class="d-none">
@@ -187,10 +187,11 @@
 
 
     </script>
-
+    
     <script>
         feather.replace();
     </script>
+    <script src="{{ url('main/js/image-center.js') }}"></script>
 
 </body>
 </html>

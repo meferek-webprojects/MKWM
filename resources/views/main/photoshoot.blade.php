@@ -8,7 +8,7 @@
 
     @php
         $thissession = DB::table('sessions')
-                ->select('sessions.id', 'sessions.users_id', 'session_files.file as photo', 'places.name as place')
+                ->select('sessions.id', 'sessions.users_id', 'session_files.file as photo', 'places.name as place', 'session_files.centered as centered')
                 ->join('session_files', 'sessions.id', '=', 'session_files.session_id')
                 ->join('places', 'sessions.place_id', '=', 'places.id')
                 ->where('session_files.favourite', '1')
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="background">
-            <img class="img-fluid" src="{{ url('images/photoshoots/'.$thissession->id.'/'.$thissession->photo )}}" alt="">
+            <img src="{{ url('images/webp/'.$thissession->id.'/'.substr($thissession->photo, 0, -4).'webp') }}" alt="" @if($centered = $thissession->centered) image-center="{{ $centered }}" @endif>
         </div>
     </div>
 
@@ -44,8 +44,8 @@
                         $photos = DB::table('session_files')->where('session_id', $session)->get();
                     @endphp
                     @forelse($photos as $photo)
-                        <a href="{{ url('images/photoshoots/'.$photo->session_id.'/'.$photo->file) }}">
-                            <img class="img-fluid mb-1" alt=".." src="{{ url('images/photoshoots/'.$photo->session_id.'/'.$photo->file) }}" />
+                        <a href="{{ url('images/webp/'.$photo->session_id.'/'.substr($photo->file, 0, -4).'webp') }}">
+                            <img class="img-fluid mb-1" alt=".." src="{{ url('images/webp/'.$photo->session_id.'/'.substr($photo->file, 0, -4).'webp') }}" />
                         </a>
                     @empty
                         <h3>WKRÓTCE</h3>

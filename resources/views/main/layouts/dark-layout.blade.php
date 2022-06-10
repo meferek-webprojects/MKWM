@@ -194,6 +194,7 @@
     <script>
         feather.replace();
     </script>
+    <script src="{{ url('main/js/image-center.js') }}"></script>
 
 </body>
 </html>

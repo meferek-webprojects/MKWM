@@ -73,10 +73,12 @@ class SessionFileController extends Controller
     {
         $session_file = SessionFile::find($id);
 
-        if($session_file->favourite == 0){
-            SessionFile::where('session_id', $session_file->session_id)->where('favourite', '1')->update(['favourite' => '0']);
-            $session_file->favourite = 1;
-        }else $session_file->favourite = 0;
+        if((!isset($request->centered) && $session_file->favourite == 1) || $session_file->favourite == 0){
+            if($session_file->favourite == 0){
+                SessionFile::where('session_id', $session_file->session_id)->where('favourite', '1')->update(['favourite' => '0']);
+                $session_file->favourite = 1;
+            }else $session_file->favourite = 0;
+        }
 
         if($request->centered)
             $session_file->centered = $request->centered;

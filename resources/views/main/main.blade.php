@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="photoshoot-image overflow-hidden">
-        <img class="center-image img-fluid" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="" @if($centered = $session->centered) centered-percentage="{{ $centered }}" @endif>
+        <img src="{{ url('images/webp/'.$session->id.'/'.substr($session->photo, 0, -4).'webp') }}" alt="" @if($centered = $session->centered) image-center="{{ $centered }}" @endif>
     </div>
 </div>
 @endif
@@ -80,7 +80,7 @@
             @elseif($loop->iteration == 4) order-0 order-xl-1
             @endif
         ">
-            <img class="center-image" src="{{ url('images/photoshoots/'.$session->id.'/'.$session->photo) }}" alt="" @if($centered = $session->centered) centered-percentage="{{ $centered }}" @endif>
+            <img src="{{ url('images/webp/'.$session->id.'/'.substr($session->photo, 0, -4).'webp') }}" alt="" @if($centered = $session->centered) image-center="{{ $centered }}" @endif>
         </div>
     </div>
 
@@ -241,7 +241,6 @@
     </div>
 </div>
 
-<script src="{{ url('main/js/image-center.js') }}"></script>
 <script>
     /*
      * Light YouTube Embeds by @labnol

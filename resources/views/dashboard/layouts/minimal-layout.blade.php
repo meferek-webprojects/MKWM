@@ -46,6 +46,7 @@
     <script src="{{ url('dashboard/js/main.min.js') }}"></script>
     <script src="{{ url('dashboard/js/custom.js') }}"></script>
     <script src="{{ url('dashboard/js/pages/dashboard.js') }}"></script>
+    <script src="{{ url('main/js/image-center.js') }}"></script>
 
     @yield('added-js')
 

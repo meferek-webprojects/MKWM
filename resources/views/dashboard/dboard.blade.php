@@ -203,13 +203,13 @@
                     
                     <div class="col-lg-6">
                         @php
-                            $userSessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file')->where('session_files.favourite', '1')->orderBy('date', 'desc')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->limit(5)->get();
+                            $userSessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file', 'session_files.centered as centered')->where('session_files.favourite', '1')->orderBy('date', 'desc')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->limit(5)->get();
                         @endphp
                         @if($userSessions->count() > 0)
                         @foreach ($userSessions as $uS)
                             <a href="{{ url('/session/'.$uS->id) }}" style="cursor: pointer;">
                                 <div class="card bg-dark text-white preview-box-big">
-                                    <img src="{{ url('images/photoshoots/'.$uS->id.'/'.$uS->file) }}" class="card-img" alt="...">
+                                    <img src="{{ url('images/photoshoots/'.$uS->id.'/'.$uS->file) }}" class="card-img" alt="..." @if($centered = $uS->centered) image-center="{{ $centered }}" @endif>
                                     <div class="card-img-overlay">
                                     <h5 class="card-title text-white">{{ $uS->name }}</h5>
                                     <p class="card-text m-t-md">{{ $uS->description }}</p>

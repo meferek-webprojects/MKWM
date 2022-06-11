@@ -9,8 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
 use App\Models\Session;
+use App\Models\SessionFile;
+
 use App\Mail\ContactMail;
 use App\Mail\NewSession;
+
 
 
 class ShortTaskController extends Controller
@@ -88,6 +91,21 @@ class ShortTaskController extends Controller
 
         Mail::to($request->input('email'))->send(new NewSession());
         return redirect()->back();
+
+    }
+
+    public function photo_lock(Request $request){
+
+        $photo = SessionFile::find($request->id);
+
+        if($photo->locked == true)
+           $photo->locked = false;
+        else
+            $photo->locked = true;
+
+        $photo->save();
+
+        return redirect()->back()->with('success', 'Pomyślnie zmieniono prywatność sesji');
 
     }
 }

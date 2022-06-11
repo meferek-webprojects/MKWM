@@ -101,7 +101,8 @@ Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
     Route::post('/usun', [PortfolioController::class, 'usun']);
     Route::post('/change-privacy', [ShortTaskController::class, 'change_privacy']);
     Route::post('/testimonial-aproved', [TestimonialController::class, 'testimonial_aproved']);
-    Route::post('/user-lock', [ShortTaskController::class, 'user_lock']);    
+    Route::post('/user-lock', [ShortTaskController::class, 'user_lock']);
+    Route::post('/photo-lock', [ShortTaskController::class, 'photo_lock']);    
     
 });
 

@@ -149,6 +149,7 @@
                                             <th>&nbsp;</th>
                                             <th>&nbsp;</th>
                                             <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -186,6 +187,20 @@
                                                         @endif
                                                     </form>
                                                     @endif
+                                                </td>
+                                                <td>
+                                                    <form action="{{ url('/photo-lock') }}" method="POST">
+                                                        @csrf
+                                                        @method('POST')
+
+                                                        <input type="hidden" name="id" value="{{ $photo->id }}">
+                                                        
+                                                        @if($photo->locked == true)
+                                                            <button class="btn btn-warning" type="submit"><i class="material-icons mx-0">lock</i></button>
+                                                        @else 
+                                                            <button class="btn btn-outline-warning" type="submit"><i class="material-icons mx-0">lock_open</i></button>
+                                                        @endif 
+                                                    </form>
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('sessionfiles.destroy', $photo->id) }}" method="POST">

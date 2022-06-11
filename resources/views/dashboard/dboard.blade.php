@@ -20,7 +20,8 @@
                     </div>
                 </div>
 
-                <div class="row">
+                {{-- ZOSTAW TO NA PRZYSZŁOŚĆ --}}
+                {{-- <div class="row">
                     <div class="col">
                         @php
                             $portfolios = DB::table('portfolios')->join('portfolio_files', 'portfolios.id', '=', 'portfolio_files.portfolio_id')->select('portfolio_files.*', 'portfolios.type')->where('kind', 'photo')->whereIn('type', ['studio', 'plener'])->take(3)->get();
@@ -69,8 +70,33 @@
                         @endif
 
                     </div>
-                </div>
+                </div> --}}
 
+                @php
+                    $userSessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file', 'session_files.centered as centered')->where('session_files.favourite', '1')->orderBy('date', 'desc')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->limit(5)->get();
+                @endphp
+
+                @if($userSessions->count() > 0)
+                @php
+                    $hero = $userSessions->first();
+                @endphp
+                <div class="row">
+                    <div class="col-12 welcome-hero">
+                        <div class="card">
+                            <div class="avatar avatar-xxl status status-online">
+                                <div class="avatar-title">{{ Auth::user()->initials }}</div>
+                            </div>
+                            <div class="photo-box">
+                                <img src="{{ url('images/photoshoots/'.$hero->id.'/'.$hero->file) }}" alt="" @if($centered = $hero->centered) image-center="{{ $centered }}" @endif>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="p-0 m-0">{{ Auth::user()->name.' '.Auth::user()->surname }}</h3>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                @endif
+                
                 <div class="row">
                     <div class="col-xl-4">
                         <div class="card widget widget-stats">
@@ -202,9 +228,6 @@
                     </div>
                     
                     <div class="col-lg-6">
-                        @php
-                            $userSessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file', 'session_files.centered as centered')->where('session_files.favourite', '1')->orderBy('date', 'desc')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->limit(5)->get();
-                        @endphp
                         @if($userSessions->count() > 0)
                         @foreach ($userSessions as $uS)
                             <a href="{{ url('/session/'.$uS->id) }}" style="cursor: pointer;">

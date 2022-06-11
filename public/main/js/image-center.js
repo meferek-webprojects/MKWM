@@ -15,23 +15,27 @@ const centerImage = image => {
     if(imageRatio < boxRatio){
         var imageWidth = boxWidth;
         var imageHeight = imageWidth / imageRatio;
-        
-        var positionX = ((percentageCenteredY * imageHeight) - boxHeight) + boxHeight / 2;
 
-        if(positionX < 0)
-            $(image).css('object-position', '50% 0px');
+        var positionY = ((percentageCenteredY * imageHeight) - boxHeight) + boxHeight / 2;
+
+        if(positionY < 0)
+            $(image).css('object-position', 'center top');
+        else if(positionY > (imageHeight - boxHeight))
+            $(image).css('object-position', 'center bottom');
         else
-            $(image).css('object-position', '50% '+(-positionX)+'px');
+            $(image).css('object-position', 'center '+(-positionY)+'px');
     }else{
         var imageHeight = boxHeight;
         var imageWidth = imageHeight * imageRatio;
 
-        var positionY = ((percentageCenteredX * imageWidth) - boxWidth) + boxWidth / 2;
+        var positionX = ((percentageCenteredX * imageWidth) - boxWidth) + boxWidth / 2;
 
-        if(positionY < 0)
-            $(image).css('object-position', '0px 50%');
+        if(positionX < 0)
+            $(image).css('object-position', 'left center');
+        else if(positionX > (imageWidth - boxWidth))
+            $(image).css('object-position', 'right center');
         else
-            $(image).css('object-position', (-positionY)+'px 50%');
+            $(image).css('object-position', (-positionX)+'px center');
     }
 };
 

@@ -41,7 +41,7 @@
                 <div class="col-12" id="lightgallery">
                     @php
                         use App\Models\SessionFiles;
-                        $photos = DB::table('session_files')->where('session_id', $session)->get();
+                        $photos = DB::table('session_files')->where('session_id', $session)->where('locked', false)->get();
                     @endphp
                     @forelse($photos as $photo)
                         <a href="{{ url('images/webp/'.$photo->session_id.'/'.substr($photo->file, 0, -4).'webp') }}">

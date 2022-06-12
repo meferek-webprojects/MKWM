@@ -92,7 +92,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
 
     Route::resource('portfolio', PortfolioController::class);
-    Route::resource('sessionfiles', PortfolioController::class);
+    Route::resource('sessionfiles', SessionFileController::class);
     Route::resource('place', PlaceController::class);
     Route::resource('news', NewsController::class);
 

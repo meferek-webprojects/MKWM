@@ -30,7 +30,7 @@ class PortfolioController extends Controller
 
     public function photo_index()
     {
-        $portfolios = DB::table('portfolios')->join('portfolio_files', 'portfolios.id', '=', 'portfolio_files.portfolio_id')->select('portfolio_files.*', 'portfolios.type')->where('kind', 'photo')->get();  
+        $portfolios = DB::table('portfolios')->where('kind', 'photo')->get();  
         
         return view('dashboard.portfolio-photo')->with('portfolios', $portfolios);
     }
@@ -61,40 +61,59 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
 
-        $portfolio = new Portfolio;
-        
-        $id = Portfolio::orderByDesc('id')->first();
-        if(!isset($id)) $id = 0; else $id = $id->id;
-        $portfolio->id = $id+1;
-
-        $portfolio->type = $request->type;
-        $portfolio->kind = $request->kind;
-        if(isset($request->link )) $portfolio->link = $request->link;
-
         if($request->file('files')){
-
+            
             $files = $request->file('files');
 
             foreach($files as $file){
 
-                $sid = PortfolioFile::orderByDesc('id')->first();
-                if(!isset($sid)) $id = 0; else $id = $sid->id;
+                $portfolio = new Portfolio;
+        
+                $id = Portfolio::orderByDesc('id')->first();
+                if(!isset($id)) $id = 0; else $id = $id->id;
+                $portfolio->id = $id+1;
+        
+                $portfolio->type = $request->type;
+                $portfolio->kind = $request->kind;
+                if(isset($request->link )) $portfolio->link = $request->link;
 
-                $portfolio_file = new PortfolioFile;
-                $portfolio_file->id = $id+1;
-                $portfolio_file->portfolio_id = $portfolio->id;
-                $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
-                $path = 'images/portfolios/';
-                $file->move($path, $fileName);
+                $webpName = Str::random(32);
+                $webpPath = 'images/portfolios/';
 
-                $portfolio_file->file = $fileName;
-                $portfolio_file->save();
+                if (!file_exists($webpPath)) {
+                    mkdir($webpPath, 0775, true);
+                    chmod($webpPath, 02775);
+                }
+                
+                $image = Image::make($file)->encode('webp', 90)->save($webpPath.$webpName.'.webp');
+
+                // $fileName = Str::random(32).'.'.$file->getClientOriginalExtension();
+                // $path = 'images/portfolios/';
+                // $file->move($path, $fileName);
+
+                $portfolio->file = $webpName.'.webp';
+                $portfolio->save();
 
             }
 
-        } 
+        }
+        else {
+
+            $portfolio = new Portfolio;
         
-        $portfolio->save();
+            $id = Portfolio::orderByDesc('id')->first();
+            if(!isset($id)) $id = 0; else $id = $id->id;
+            $portfolio->id = $id+1;
+    
+            $portfolio->type = $request->type;
+            $portfolio->kind = $request->kind;
+            $portfolio->file = 'NONE';
+            if(isset($request->link)) $portfolio->link = $request->link;
+
+            $portfolio->save();
+
+        }
+        
 
         if($request->file('files')) return redirect('/portfolio-photo')->with('sucess', 'Pomyślnie dodano element portfolio');
         else return redirect('/portfolio-video')->with('sucess', 'Pomyślnie dodano element portfolio');
@@ -131,7 +150,34 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $portfolio = Portfolio::find($id);
+
+        if(isset($request->hero)){
+            $oldhero = Portfolio::where('hero', true)->orderBy('updated_at', 'asc')->get();
+
+            if($oldhero->count() >= 5) {
+                $oldhero = $oldhero->first();
+                $oldhero->hero = false;
+                $oldhero->save();
+            }
+
+            $portfolio->hero = !$portfolio->hero;
+        }
+        if(isset($request->type_header)){
+            $oldheader = Portfolio::where('type_header', true)->where('type', $portfolio->type)->first();
+            if(isset($oldheader)) {
+                $oldheader->type_header = false;
+                $oldheader->save();
+            }
+            
+            $portfolio->type_header = !$portfolio->type_header;
+        }
+
+        $portfolio->save();
+
+        return redirect('/portfolio-photo')->with('success', 'Pomyślnie zaktualizowano portfolio');
+
     }
 
     /**
@@ -142,21 +188,15 @@ class PortfolioController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        //
-    }
+        $file = Portfolio::find($id);
 
-    public function usun(Request $request) {
-        if(!isset($request->isLink)) {
-            $checkID = PortfolioFile::find($request->id)->portfolio_id;
-            PortfolioFile::find($request->id)->delete();
-
-            $checkFiles = PortfolioFile::where('portfolio_id', $checkID)->count();
-            if($checkFiles == 0) Portfolio::find($checkID)->delete();
+        if(file_exists('images/portfolios/'.$file->file)){
+            unlink('images/portfolios/'.$file->file);
         }
-        else Portfolio::find($request->id)->delete();
 
-        return redirect('/portfolio-photo')->with('warning', 'Pomyślnie usunięto element portfolio');
+        $file->delete();
+
+        return redirect()->back()->with('warning', 'Pomyślnie usunięto element sesji!');
     }
 
-    
 }

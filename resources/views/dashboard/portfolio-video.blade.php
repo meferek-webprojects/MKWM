@@ -22,6 +22,17 @@
 
                 <div class="row">
                     <div class="col">
+                        <div class="alert alert-custom alert-indicator-left indicator-warning" role="alert">
+                            <div class="alert-content">
+                                <span class="alert-title">UWAGA!</span>
+                                <span class="alert-text">Dodając link do filmu wklej tylko skrócony URL, który znajdziesz pod przyciskiem UDOSTĘPNIJ na YouTube!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="card-title">Dodaj elementy do portfolio</h5>
@@ -87,11 +98,10 @@
                                                 <td>{{ $portfolio->kind }}</td>
                                                 <td>{{ $portfolio->created_at }}</td>
                                                 <td>
-                                                    <form action="{{ url('/usun') }}" method="POST">
+                                                    <form action="{{ route('portfolio.destroy', $portfolio->id) }}" method="POST">
                                                         @csrf
+                                                        @method('DELETE')
 
-                                                        <input type="hidden" name="id" value="{{ $portfolio->id }}">
-                                                        <input type="hidden" name="isLink" value="true">
                                                         <button class="btn btn-outline-danger" type="submit"><i class="material-icons mx-0">delete</i></button>
                                                     </form>
                                                 </td>

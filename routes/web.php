@@ -92,13 +92,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified', 'adminaccess'])->group(function () {
 
     Route::resource('portfolio', PortfolioController::class);
-    Route::resource('sessionfiles', SessionFileController::class);
+    Route::resource('sessionfiles', PortfolioController::class);
     Route::resource('place', PlaceController::class);
     Route::resource('news', NewsController::class);
 
     Route::get('/portfolio-photo', [PortfolioController::class, 'photo_index']);
     Route::get('/portfolio-video', [PortfolioController::class, 'video_index']);
-    Route::post('/usun', [PortfolioController::class, 'usun']);
     Route::post('/change-privacy', [ShortTaskController::class, 'change_privacy']);
     Route::post('/testimonial-aproved', [TestimonialController::class, 'testimonial_aproved']);
     Route::post('/user-lock', [ShortTaskController::class, 'user_lock']);

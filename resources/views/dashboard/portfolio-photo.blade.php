@@ -78,6 +78,8 @@
                                             <th>Typ</th>
                                             <th>Data stworzenia</th>
                                             <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -91,10 +93,36 @@
                                                 <td>{{ $portfolio->type }}</td>
                                                 <td>{{ $portfolio->created_at }}</td>
                                                 <td>
-                                                    <form action="{{ url('/usun') }}" method="POST">
+                                                    <form action="{{ route('portfolio.update', $portfolio->id) }}" method="POST">
                                                         @csrf
+                                                        @method('PUT')
+                                                        <input type="hidden" name="hero" value="change">
 
-                                                        <input type="hidden" name="id" value="{{ $portfolio->id }}">
+                                                        @if($portfolio->hero == false)
+                                                            <button class="btn btn-outline-primary" type="submit"><i class="material-icons mx-0">home</i></button>
+                                                        @else
+                                                            <button class="btn btn-primary" type="submit"><i class="material-icons mx-0">home</i></button>
+                                                        @endif
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('portfolio.update', $portfolio->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="hidden" name="type_header" value="change">
+
+                                                        @if($portfolio->type_header == false)
+                                                            <button class="btn btn-outline-info" type="submit"><i class="material-icons mx-0">fullscreen</i></button>
+                                                        @else
+                                                            <button class="btn btn-info" type="submit"><i class="material-icons mx-0">fullscreen</i></button>
+                                                        @endif
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('portfolio.destroy', $portfolio->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+
                                                         <button class="btn btn-outline-danger" type="submit"><i class="material-icons mx-0">delete</i></button>
                                                     </form>
                                                 </td>

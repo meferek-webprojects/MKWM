@@ -26,7 +26,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <div class="alert alert-custom alert-indicator-left indicator-info" role="alert">
+                        <div class="alert alert-custom alert-indicator-left indicator-warning" role="alert">
                             <div class="alert-content">
                                 <span class="alert-title">UWAGA!</span>
                                 <span class="alert-text">Dodając link do miejsca wklej cały link z Google Maps wraz z całym iframe!</span>

@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->enum('type', ['event', 'product', 'plener', 'studio']);
             $table->enum('kind', ['photo', 'video', 'web', 'design']);
+            $table->boolean('hero')->default(false);
+            $table->boolean('typeheader')->default(false);
+            $table->string('file');
             $table->string('link')->nullable();
             $table->timestamps();
         });

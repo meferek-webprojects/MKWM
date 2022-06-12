@@ -135,11 +135,15 @@
                                 <form class="d-flex" action="{{ url('/change-profile-photo') }}" method="POST">
                                     @csrf
 
-                                    <input type="hidden" name="avatar" value="{{ 'images/webp/'.$fav->session_id.'/'.substr($fav->file, 0, -4).'.webp' }}">
+                                    {{-- To tutaj gdybym profilowe chciał w WEBP --}}
+                                    {{-- <input type="hidden" name="avatar" value="{{ 'images/webp/'.$fav->session_id.'/'.substr($fav->file, 0, -4).'.webp' }}"> --}}
+                                    
+                                    <input type="hidden" name="avatar" value="{{ 'images/photoshoots/'.$fav->session_id.'/'.$fav->file}}">
+
                                     <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                                     <input type="hidden" name="centered" value="{{ $fav->centered }}">
 
-                                    <button class="btn btn-outline-warning mt-3 mx-auto btn-lg">Ustaw jako zdjęcie profilowe<i class="material-icons p-0 ps-1 m-0">face_retouching_natural</i></button>
+                                    <button class="btn btn-outline-warning mt-4 mx-auto">Ustaw jako zdjęcie profilowe<i class="material-icons p-0 ps-1 m-0">face_retouching_natural</i></button>
                                 </form>
                             </div>
                         </div> 

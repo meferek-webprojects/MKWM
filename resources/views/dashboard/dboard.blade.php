@@ -83,11 +83,15 @@
                 <div class="row">
                     <div class="col-12 welcome-hero">
                         <div class="card">
-                            <div class="avatar avatar-xxl status status-online">
-                                <div class="avatar-title">{{ Auth::user()->initials }}</div>
+                            <div class="avatar avatar-xxl">
+                                @if(Auth::user()->avatar !== NULL)
+                                    <img src="{{ url(Auth::user()->avatar) }}" alt="" @if($centered = Auth::user()->centered) image-center="{{ $centered }}" @endif>
+                                @else
+                                    <div class="avatar-title">{{ Auth::user()->initials }}</div>
+                                @endif
                             </div>
                             <div class="photo-box">
-                                <img src="{{ url('images/photoshoots/'.$hero->id.'/'.$hero->file) }}" alt="" @if($centered = $hero->centered) image-center="{{ $centered }}" @endif>
+                                <img src="{{ url('images/webp/'.$hero->id.'/'.substr($hero->file, 0, -4).'.webp') }}" alt="" @if($centered = $hero->centered) image-center="{{ $centered }}" @endif>
                             </div>
                             <div class="card-body">
                                 <h3 class="p-0 m-0">{{ Auth::user()->name.' '.Auth::user()->surname }}</h3>
@@ -280,7 +284,11 @@
                                         <li class="widget-list-item widget-list-item-red">
                                             <span class="widget-list-item-avatar">
                                                 <div class="avatar avatar-rounded">
-                                                    <div class="avatar-title">{{ $aU->initials }}</div>
+                                                    @if($aU->avatar !== NULL)
+                                                        <img src="{{ url($aU->avatar) }}" alt="" @if($centered = $aU->centered) image-center="{{ $centered }}" @endif>
+                                                    @else
+                                                        <div class="avatar-title">{{ $aU->initials }}</div>
+                                                    @endif
                                                 </div>
                                             </span>
                                             <span class="widget-list-item-description">

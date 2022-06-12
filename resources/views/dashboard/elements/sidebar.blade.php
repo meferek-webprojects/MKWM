@@ -3,15 +3,15 @@
         <div class="logo" id="logo">
             <a href="{{ url('/') }}" class="logo-icon"><span class="logo-text">MKWM</span></a>
             <div class="sidebar-user-switcher user-activity-online">
-                <a href="#">
-                    
-                    @if(Auth::user()->avatar == NULL)
-                        <div class="avatar avatar-xs" id="avatar-index">
+                <a href="{{ url('/account') }}">
+
+                    <div class="avatar avatar-xs" id="avatar-index">
+                        @if(Auth::user()->avatar !== NULL)
+                            <img src="{{ url(Auth::user()->avatar) }}" alt="" @if($centered = Auth::user()->centered) image-center="{{ $centered }}" @endif>
+                        @else
                             <div class="avatar-title">{{ Auth::user()->initials }}</div>
-                        </div>
-                    @else
-                        <img src="{{ url('images/img/logo.png') }}">
-                    @endif
+                        @endif
+                    </div>
                     
                     <span class="user-info-text">{{ Auth::user()->name; }}<br><span class="user-state-info">Super człowiek</span></span>
                     

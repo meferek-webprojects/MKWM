@@ -132,6 +132,15 @@
                             </div>
                             <div class="card-body">
                                 <img src="{{ url('images/photoshoots/'.$fav->session_id.'/'.$fav->file) }}" class="img-fluid rounded" alt="...">
+                                <form class="d-flex" action="{{ url('/change-profile-photo') }}" method="POST">
+                                    @csrf
+
+                                    <input type="hidden" name="avatar" value="{{ 'images/webp/'.$fav->session_id.'/'.substr($fav->file, 0, -4).'.webp' }}">
+                                    <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="centered" value="{{ $fav->centered }}">
+
+                                    <button class="btn btn-outline-warning mt-3 mx-auto btn-lg">Ustaw jako zdjęcie profilowe<i class="material-icons p-0 ps-1 m-0">face_retouching_natural</i></button>
+                                </form>
                             </div>
                         </div> 
                         @endif

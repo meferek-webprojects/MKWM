@@ -108,4 +108,26 @@ class ShortTaskController extends Controller
         return redirect()->back()->with('success', 'Pomyślnie zmieniono prywatność sesji');
 
     }
+
+    public function change_profile_photo(Request $request){
+
+        $user = User::find($request->id);
+        $user->avatar = $request->avatar;
+        $user->centered = $request->centered;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Pomyślnie zmieniono zdjęcie profilowe!');
+
+    }
+
+    public function remove_profile_photo(Request $request){
+
+        $user = User::find($request->id);
+        $user->avatar = NULL;
+        $user->centered = NULL;
+        $user->save();
+
+        return redirect()->back()->with('warning', 'Pomyślnie usunięto zdjęcie profilowe!');
+
+    }
 }

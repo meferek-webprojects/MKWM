@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('session_id');
             $table->string('file');
             $table->boolean('locked')->default(false);
-            $table->boolean('photoofmonth')->default(false);
+            $table->boolean('photo_of_month')->default(false);
             $table->boolean('favourite')->default(false);
             $table->string('centered')->nullable();
             $table->timestamps();

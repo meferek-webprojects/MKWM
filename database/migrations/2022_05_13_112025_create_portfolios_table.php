@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('type_header')->default(false);
             $table->string('file');
             $table->string('link')->nullable();
+            $table->string('centered')->nullable();
             $table->timestamps();
         });
     }

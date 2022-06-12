@@ -74,7 +74,7 @@
         </nav>
 
         <div class="hero position-sticky overflow-hidden w-100">
-            <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image position-absolute start-50 translate-middle-x">
+            <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image" @if($centered = $session->centered) image-center="{{ $centered }}" @endif>
             <div id="hero-text" class="hero-text text-center position-absolute top-50 start-50 translate-middle">
                 <div>EVERYONE DESERVES</div>
                 <div>to see their own beauty</div>

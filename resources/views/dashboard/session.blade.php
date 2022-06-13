@@ -194,7 +194,11 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="avatar avatar-rounded">
-                                            <div class="avatar-title">{{ $aU->initials }}</div>
+                                            @if(Auth::user()->avatar !== NULL)
+                                                <img src="{{ url($aU->avatar) }}" alt="" @if($centered = $aU->centered) image-center="{{ $centered }}" @endif>
+                                            @else
+                                                <div class="avatar-title">{{ $aU->initials }}</div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-9 d-flex">

@@ -81,7 +81,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::get('/change-theme', [ShortTaskController::class, 'change_theme']);
     Route::post('/download-all', [ZipController::class, 'download_all']);
-    Route::get('/faq', [ShortTaskController::class, 'faq']);    
+    Route::post('/change-profile-photo', [ShortTaskController::class, 'change_profile_photo']);
+    Route::post('/remove-profile-photo', [ShortTaskController::class, 'remove_profile_photo']);
+    Route::get('/faq', [ShortTaskController::class, 'faq']);
 
 });
 

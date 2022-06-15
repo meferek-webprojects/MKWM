@@ -20,17 +20,18 @@
                     </div>
                 </div>
 
-                {{-- ZOSTAW TO NA PRZYSZŁOŚĆ --}}
-                {{-- <div class="row">
-                    <div class="col">
-                        @php
-                            $portfolios = DB::table('portfolios')->join('portfolio_files', 'portfolios.id', '=', 'portfolio_files.portfolio_id')->select('portfolio_files.*', 'portfolios.type')->where('kind', 'photo')->whereIn('type', ['studio', 'plener'])->take(3)->get();
-                            // $portfolios = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('session_files.*', 'sessions.users_id')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->where('favourite', true)->take(3)->get();
-                        @endphp
-                        @if($portfolios->count() > 2)
-                        <div class="card">
-                            <div class="card-body preview-box-big">
-                                
+                @php
+                    $userSessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file', 'session_files.centered as centered')->where('session_files.favourite', '1')->orderBy('date', 'desc')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->limit(5)->get();
+                @endphp
+
+                {{-- To dodamy jak zostanie wprowadzone centrowanie zdjęć dla portfolio --}}
+                {{-- @php
+                    $portfolios = DB::table('portfolios')->where('kind', 'photo')->where('hero', true)->orWhere('type_header', true)->whereIn('type', ['studio', 'plener'])->take(3)->get();
+                @endphp
+                @if($portfolios->count() > 2)
+                    <div class="row">
+                        <div class="col-lg-12 mb-4">
+                            <div class="height" style="max-height: 400px; border-radius: 10px; overflow: hidden;">
                                 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-indicators">
                                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -40,7 +41,7 @@
                                     <div class="carousel-inner">
                                         @foreach ($portfolios as $portfolio)
                                             <div class="carousel-item @if($loop->first) active @endif">
-                                                <img style="filter: brightness(50%);" src="{{ url('images/portfolios/'.$portfolio->file) }}" class="d-block w-100" alt="...">
+                                                <img style="filter: brightness(50%);" src="{{ url('images/portfolios/'.$portfolio->file) }}" class="d-block w-100" alt="..." @if($centered = $portfolio->centered) image-center="{{ $centered }}" @endif>
                                                 <div class="carousel-caption d-none d-md-block">
                                                     @if($loop->iteration == 1)
                                                     <h5>Dzięki, że z nami jesteś i wspólne wspomagasz zespół MKWM</h5>
@@ -67,34 +68,35 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
-
                     </div>
-                </div> --}}
-
-                @php
-                    $userSessions = DB::table('sessions')->join('session_files', 'sessions.id', '=', 'session_files.session_id')->select('sessions.*', 'session_files.file', 'session_files.centered as centered')->where('session_files.favourite', '1')->orderBy('date', 'desc')->where('users_id', 'like', '%"'.Auth::user()->id.'"%')->whereIn('kind', ['photo', 'both'])->limit(5)->get();
-                @endphp
+                @endif --}}
 
                 @if($userSessions->count() > 0)
-                @php
-                    $hero = $userSessions->first();
-                @endphp
-                <div class="row">
-                    <div class="col-12 welcome-hero">
-                        <div class="card">
-                            <div class="avatar avatar-xxl status status-online">
-                                <div class="avatar-title">{{ Auth::user()->initials }}</div>
+                    @php
+                        $hero = $userSessions->first();
+                    @endphp
+                    
+                    <div class="row">
+                        <div class="col-lg-12 welcome-hero">
+                            <div class="card">
+                                <div class="avatar avatar-xxl">
+                                    @if(Auth::user()->avatar !== NULL)
+                                        <img src="{{ url(Auth::user()->avatar) }}" alt="" @if($centered = Auth::user()->centered) image-center="{{ $centered }}" @endif>
+                                    @else
+                                        <div class="avatar-title">{{ Auth::user()->initials }}</div>
+                                    @endif
+                                </div>
+                                <div class="photo-box">
+                                    {{-- To na przyszłość gdybym chciał to w WEBP --}}
+                                    {{-- <img src="{{ url('images/webp/'.$hero->id.'/'.substr($hero->file, 0, -4).'.webp') }}" alt="" @if($centered = $hero->centered) image-center="{{ $centered }}" @endif> --}}
+                                    <img src="{{ url('images/photoshoots/'.$hero->id.'/'.$hero->file) }}" alt="" @if($centered = $hero->centered) image-center="{{ $centered }}" @endif>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="p-0 m-0">{{ Auth::user()->name.' '.Auth::user()->surname }}</h3>
+                                </div> 
                             </div>
-                            <div class="photo-box">
-                                <img src="{{ url('images/photoshoots/'.$hero->id.'/'.$hero->file) }}" alt="" @if($centered = $hero->centered) image-center="{{ $centered }}" @endif>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="p-0 m-0">{{ Auth::user()->name.' '.Auth::user()->surname }}</h3>
-                            </div> 
                         </div>
                     </div>
-                </div>
                 @endif
                 
                 <div class="row">
@@ -253,6 +255,44 @@
                                 </div>
                             </a>
                         @endif
+                        {{-- @if($portfolios->count() > 2)
+                        <div style="max-height: 400px; border-radius: 10px;">
+                            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="max-height: 400px; border-radius: 10px;">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner" style="max-height: 400px; border-radius: 10px;">
+                                    @foreach ($portfolios as $portfolio)
+                                        <div class="carousel-item @if($loop->first) active @endif">
+                                            <img style="filter: brightness(50%);" src="{{ url('images/portfolios/'.$portfolio->file) }}" class="d-block w-100" alt="..." @if($centered = $portfolio->centered) image-center="{{ $centered }}" @endif>
+                                            <div class="carousel-caption d-none d-md-block">
+                                                @if($loop->iteration == 1)
+                                                <h5>Dzięki, że z nami jesteś i wspólne wspomagasz zespół MKWM</h5>
+                                                <p>MKWM</p>
+                                                @elseif($loop->iteration == 2)
+                                                <h5>Witamy w naszym nowym panelu dla członków MKWM!</h5>
+                                                <p>MKWM</p>
+                                                @elseif($loop->iteration == 3)
+                                                <h5>Jeśli zauważysz gdzieś błąd prosimy o zgłoszenie tego na kontakt@mkwmstudios.pl</h5>
+                                                <p>MKWM</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        @endif --}}
                     </div>
                     <div class="col-lg-3">
                         <div class="card">
@@ -280,7 +320,11 @@
                                         <li class="widget-list-item widget-list-item-red">
                                             <span class="widget-list-item-avatar">
                                                 <div class="avatar avatar-rounded">
-                                                    <div class="avatar-title">{{ $aU->initials }}</div>
+                                                    @if($aU->avatar !== NULL)
+                                                        <img src="{{ url($aU->avatar) }}" alt="" @if($centered = $aU->centered) image-center="{{ $centered }}" @endif>
+                                                    @else
+                                                        <div class="avatar-title">{{ $aU->initials }}</div>
+                                                    @endif
                                                 </div>
                                             </span>
                                             <span class="widget-list-item-description">

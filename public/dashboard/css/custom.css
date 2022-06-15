@@ -152,7 +152,7 @@ body[theme="dark"] .select2-container--default .select2-selection--multiple {
 }
 
 .image-positioner{
-    width: 800px;
+    width: 80vw;
 }
 
 .placement-selector{
@@ -191,7 +191,7 @@ body[theme="dark"] .select2-container--default .select2-selection--multiple {
 }
 
 .welcome-hero .photo-box {
-    height: 150px;
+    height: 200px;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -200,12 +200,29 @@ body[theme="dark"] .select2-container--default .select2-selection--multiple {
     padding-top: 11px;
 }
 
+.sidebar-user-switcher img {
+    width: 50px!important;
+    height: 50px!important;
+}
+
+.avatar img, sidebar-user-switcher img {
+    width: 100%!important;
+    height: 100%!important;
+    object-fit: cover;
+    object-position: center;
+}
+
 .welcome-hero .avatar {
     position: absolute;
     bottom: 20px;
     left: 40px;
     width: 120px;
     height: 120px;
+    border-radius: 100%;
+}
+
+.welcome-hero .card-body {
+    padding: 31px 30px!important;
 }
 
 .welcome-hero h3 {
@@ -215,6 +232,15 @@ body[theme="dark"] .select2-container--default .select2-selection--multiple {
 .welcome-hero {
     overflow: hidden;
     position: relative;
+}
+
+.account-settings .avatar-title {
+    padding-top: 25px;
+}
+
+.account-settings.avatar-xxl {
+    width: 150px;
+    height: 150px;
 }
 
 @media only screen and (max-width: 1101px) {

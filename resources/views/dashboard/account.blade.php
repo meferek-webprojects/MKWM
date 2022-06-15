@@ -20,22 +20,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
 
-                <form action="{{ route('user.update', Auth::user()->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-
-                    <div class="row">
-                        <div class="col-lg-2">
-                            <div class="card text-center">
-                                <div class="card-body my-1">
-                                    <div class="avatar avatar-xxl status status-online">
+                    <div class="col-lg-3">
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <h5 class="card-title">Zdjęcie profilowe</h5>
+                            </div>
+                            <div class="card-body my-1">
+                                <div class="avatar avatar-xxl account-settings">
+                                    @if(Auth::user()->avatar !== NULL)
+                                        <img src="{{ url(Auth::user()->avatar) }}" alt="" @if($centered = Auth::user()->centered) image-center="{{ $centered }}" @endif>
+                                    @else
                                         <div class="avatar-title">{{ Auth::user()->initials }}</div>
-                                    </div>
+                                    @endif
                                 </div>
+                                @if(Auth::user()->avatar !== NULL)
+                                    <form action="{{ url('/remove-profile-photo') }}" method="POST" class="m-0">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                        
+                                        <button class="btn btn-outline-danger mt-3"><i class="material-icons p-0 ps-1 m-0">delete</i></button>
+                                    </form>
+                                @endif
                             </div>
                         </div>
-                        <div class="col-lg-10">
+                    </div>
+
+                    <div class="col-lg-9">
+                        <form action="{{ route('user.update', Auth::user()->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title">Podstawowe informacje</h5>
@@ -57,11 +72,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title">Dane kontaktowe</h5>
@@ -86,11 +96,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-
-                </form>
-
+                </div>
             </div>
         </div>
     </div>

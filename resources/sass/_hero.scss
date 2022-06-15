@@ -11,6 +11,12 @@
         width: 100%;
         object-fit: cover;
         object-position: center;
+        position: absolute;
+        transition: width 2s;
+    }
+
+    .hero-text{
+        z-index: 3;
     }
 
     .hero-text div:first-child{

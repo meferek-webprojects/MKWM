@@ -574,6 +574,11 @@
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+  position: absolute;
+  transition: width 2s;
+}
+.hero .hero-text {
+  z-index: 3;
 }
 .hero .hero-text div:first-child {
   font-family: "Typo";

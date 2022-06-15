@@ -35,7 +35,7 @@
                                     <div class="row">
                                         <div class="col-md-12 my-2">
                                             <select id="type" class="js-states form-control" name="type" tabindex="-1" style="display: none; width: 100%" required>
-                                                <option disabled selected>--- Rodzaj portfolio ---</option>
+                                                <option value="" disabled selected>--- Rodzaj portfolio ---</option>
                                                 <option value="event">Fotografia eventowa</option>
                                                 <option value="plener">Fotografia plenerowa</option>
                                                 <option value="studio">Fotografia studyjna</option>
@@ -47,7 +47,7 @@
                                     <div class="row">
                                         <div class="col my-2">
                                             <label for="desc" class="form-label">Pliki</label>
-                                            <input class="form-control" type="file" name="files[]" multiple/>
+                                            <input class="form-control" type="file" name="files[]" multiple required/>
                                         </div>
                                     </div>
 

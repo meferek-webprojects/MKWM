@@ -73,8 +73,23 @@
             </div>
         </nav>
 
+        @php
+            $hero_images = DB::table('portfolios')
+                ->select('file', 'centered')
+                ->where('hero', '1')
+                ->orderBy('updated_at', 'desc')
+                ->get();
+        @endphp
+
         <div class="hero position-sticky overflow-hidden w-100">
-            <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image" @if($centered = $session->centered) image-center="{{ $centered }}" @endif>
+            @if($hero_images->count() > 1)
+                <img alt="" class="hero-image">
+                <img alt="" class="hero-image">
+            @elseif($hero_images->count() == 1)
+                <img src="{{ url('images/portfolios/'.$hero_images->first()->file) }}" alt="" class="hero-image">
+            @else
+                <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image">
+            @endif
             <div id="hero-text" class="hero-text text-center position-absolute top-50 start-50 translate-middle">
                 <div>EVERYONE DESERVES</div>
                 <div>to see their own beauty</div>
@@ -98,6 +113,40 @@
     </div>
 
     <script>
+        @if($hero_images->count() > 1)
+            var heroImages = [];
+
+            @foreach($hero_images as $hero_image)
+                heroImages.push('{{ url('images/portfolios/'.$hero_image->file) }}');
+            @endforeach
+
+            var counter = 1;
+            var image1 = $('.hero-image:nth-child(1)');
+            var image2 = $('.hero-image:nth-child(2)');
+
+            image1.attr('src', heroImages[0]);
+            image2.css('left', '-100vw');
+
+            const heroSlider = () => {
+                image1.css('width', '100%');
+                image2.css('width', 0);
+
+
+                setTimeout(() => {
+                    image1.css({'right': 0, 'left': ''});
+                    image2.css({'left': 0, 'right': ''});
+
+                    image2.attr('src', heroImages[counter++]);
+
+                    if(counter == heroImages.length) counter = 0;
+                    [image1, image2] = [image2, image1];
+                }, 2000);
+            }
+
+            heroSlider();
+            setInterval(heroSlider, 5000);
+        @endif
+
         $(document).scroll(() => {
             let scrollTop = $(document).scrollTop();
 

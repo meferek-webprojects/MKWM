@@ -194,7 +194,7 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="avatar avatar-rounded">
-                                            @if($aU->avatar !== NULL)
+                                            @if(Auth::user()->avatar !== NULL)
                                                 <img src="{{ url($aU->avatar) }}" alt="" @if($centered = $aU->centered) image-center="{{ $centered }}" @endif>
                                             @else
                                                 <div class="avatar-title">{{ $aU->initials }}</div>

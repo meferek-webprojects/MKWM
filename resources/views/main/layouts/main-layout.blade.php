@@ -87,7 +87,7 @@
                     <img src="{{ url('images/portfolios/'.$hero_image->file) }}" alt="" class="position-absolute top-50 start-50 translate-middle h-100" @if($centered = $hero_image->centered) image-center="{{ $centered }}" @endif>
                 </div>
             @empty
-                <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="position-absolute top-50 start-50 translate-middle">
+                <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="position-absolute top-50 start-50 translate-middle h-100 w-100" image-center="0.485 0.5">
             @endforelse
             <div id="hero-text" class="hero-text text-center position-absolute top-50 start-50 translate-middle">
                 <div>EVERYONE DESERVES</div>

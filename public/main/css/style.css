@@ -573,7 +573,7 @@
 .hero .hero-image.w-0 {
   width: 0;
 }
-.hero .hero-image img {
+.hero img {
   opacity: 40%;
   -o-object-fit: cover;
      object-fit: cover;

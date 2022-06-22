@@ -141,7 +141,7 @@
                 }, 2000);
             }
 
-            setTimeout(heroSlider, 5000);
+            setInterval(heroSlider, 5000);
         @elseif($hero_images->count() == 1)
             $('.hero-image').addClass('w-100');
             $('.hero-image img').css('width', $('.hero').width());

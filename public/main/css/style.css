@@ -567,18 +567,21 @@
   z-index: -1;
 }
 .hero .hero-image {
-  opacity: 40%;
   height: 100%;
-  width: 100%;
+  transition: width 2s;
+}
+.hero .hero-image.w-0 {
+  width: 0;
+}
+.hero .hero-image img {
+  opacity: 40%;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-  position: absolute;
-  transition: width 2s;
 }
 .hero .hero-text {
-  z-index: 3;
+  z-index: 2;
 }
 .hero .hero-text div:first-child {
   font-family: "Typo";

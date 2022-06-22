@@ -173,6 +173,9 @@ class PortfolioController extends Controller
             
             $portfolio->type_header = !$portfolio->type_header;
         }
+        if(isset($request->centered)){
+            $portfolio->centered = $request->centered;
+        }
 
         $portfolio->save();
 

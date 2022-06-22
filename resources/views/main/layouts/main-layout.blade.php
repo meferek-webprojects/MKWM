@@ -8,7 +8,6 @@
     <meta name="description" content="Młoda grupa ambitnych twórców fotograficzno-filowych, dzięki którym uwiecznisz swoje najważniejsze wydarzenia takie jak komunie, 18 urodziny czy śluby. Zdjęcia i filmy bardzo wysokiej jakości nie pozowlą abyś zapomniał o tak ważnych eventach!">
     <meta name="keywords" content="fotografia, filmografia, filmy, fotograf, filmowiec, zdjęcia, filmy, teledyski, backstage, 18stka, śluba, komunia, mkwm, MKWM, studio">
     <link rel="stylesheet" href="{{ url('/main/plugins/bs5/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('/main/plugins/aos/aos.min.css') }}">
     <link rel="stylesheet" href="{{ url('main/css/style.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url('favicon.ico') }}">
     <script src="{{ url('/main/plugins/bs5/js/bootstrap.bundle.min.js') }}"></script>
@@ -83,14 +82,13 @@
         @endphp
 
         <div class="hero position-sticky overflow-hidden w-100">
-            @if($hero_images->count() > 1)
-                <img alt="" class="hero-image">
-                <img alt="" class="hero-image">
-            @elseif($hero_images->count() == 1)
-                <img src="{{ url('images/portfolios/'.$hero_images->first()->file) }}" alt="" class="hero-image">
-            @else
+            @forelse ($hero_images as $hero_image)
+                <div class="hero-image position-absolute overflow-hidden h-100">
+                    <img src="{{ url('images/portfolios/'.$hero_image->file) }}" alt="" class="position-absolute top-50 start-50 translate-middle h-100" @if($centered = $hero_image->centered) image-center="{{ $centered }}" @endif>
+                </div>
+            @empty
                 <img src="{{ url('images/img/natalia.jpg') }}" alt="" class="hero-image">
-            @endif
+            @endforelse
             <div id="hero-text" class="hero-text text-center position-absolute top-50 start-50 translate-middle">
                 <div>EVERYONE DESERVES</div>
                 <div>to see their own beauty</div>
@@ -115,37 +113,35 @@
 
     <script>
         @if($hero_images->count() > 1)
-            var heroImages = [];
-
-            @foreach($hero_images as $hero_image)
-                heroImages.push('{{ url('images/portfolios/'.$hero_image->file) }}');
-            @endforeach
-
             var counter = 1;
-            var image1 = $('.hero-image:nth-child(1)');
-            var image2 = $('.hero-image:nth-child(2)');
+            var heroImages = $('.hero-image');
+            $('.hero-image img').css('width', $('.hero').width());
 
-            image1.attr('src', heroImages[0]);
-            image2.css('left', '-100vw');
+            $(window).resize(() => {
+                $('.hero-image img').css('width', $('.hero').width());
+            })
+            
+            var imageSlideOut = heroImages.first();
+            var imageSlideIn = heroImages.eq(counter++);
+            heroImages.not(imageSlideOut).addClass('w-0 start-0');
+            imageSlideOut.addClass('w-100 end-0');
 
             const heroSlider = () => {
-                image1.css('width', '100%');
-                image2.css('width', 0);
+                imageSlideOut.removeClass('w-100').addClass('w-0');
+                imageSlideIn.removeClass('w-0').addClass('w-100');
 
 
                 setTimeout(() => {
-                    image1.css({'right': 0, 'left': ''});
-                    image2.css({'left': 0, 'right': ''});
+                    imageSlideOut.removeClass('end-0').addClass('start-0');
+                    imageSlideIn.removeClass('start-0').addClass('end-0');
 
-                    image2.attr('src', heroImages[counter++]);
-
-                    if(counter == heroImages.length) counter = 0;
-                    [image1, image2] = [image2, image1];
+                    imageSlideOut = imageSlideIn;
+                    imageSlideIn = heroImages.eq(counter++);
+                    if(counter == $('.hero-image').length) counter = 0;
                 }, 2000);
             }
 
-            heroSlider();
-            setInterval(heroSlider, 5000);
+            setTimeout(heroSlider, 5000);
         @endif
 
         $(document).scroll(() => {
@@ -239,14 +235,11 @@
 
 
     </script>
-
-    <script src="{{ url('main/js/image-center.js') }}"></script>
-    <script src="{{ url('main/plugins/aos/aos.min.js') }}"></script>
     
     <script>
-        AOS.init();
         feather.replace();
     </script>
+    <script src="{{ url('main/js/image-center.js') }}"></script>
 
 </body>
 </html>

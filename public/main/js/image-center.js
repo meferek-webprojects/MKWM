@@ -1,13 +1,14 @@
-const centerImage = image => {
+const centerImage = (image, imageNaturalWidth, imageNaturalHeight) => {
     var centered = $(image).attr('image-center');
     var percentageCenteredX = centered.split(' ')[0];
     var percentageCenteredY = centered.split(' ')[1];
 
-    var boxWidth = $(image).parent().width();
-    var boxHeight = $(image).parent().height();
+    if($(image).parent().width() == 0)
+        var boxWidth = $(image).parent().parent().width();
+    else
+        var boxWidth = $(image).parent().width();
 
-    var imageNaturalWidth = image.naturalWidth;
-    var imageNaturalHeight = image.naturalHeight;
+    var boxHeight = $(image).parent().height();
 
     var imageRatio = imageNaturalWidth / imageNaturalHeight;
     var boxRatio = boxWidth / boxHeight;
@@ -39,18 +40,20 @@ const centerImage = image => {
     }
 };
 
-// $('img[image-center]').on('load', function(){
-//     centerImage(this);
-// });
-
-$(window).on('load', function(){
-    $('img[image-center]').each(function(){
-        centerImage(this);
-    });
+$('img[image-center]').each(function(){
+    var img = document.createElement('img');
+    img.src = this.src;
+    img.onload = () => {
+        centerImage(this, img.naturalWidth, img.naturalHeight);
+    };
 });
 
 $(window).resize(() => {
     $('img[image-center]').each(function(){
-        centerImage(this);
+        var img = document.createElement('img');
+        img.src = this.src;
+        img.onload = () => {
+            centerImage(this, img.naturalWidth, img.naturalHeight);
+        };
     });
 })

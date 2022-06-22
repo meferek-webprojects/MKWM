@@ -26,11 +26,7 @@ const showImagePositioner = (button, file) => {
         })
     });
 
-    $('.placement-selector').on('mousedown', event => {
-        event.stopPropagation();
-    });
-
-    $('.image-position').on('mousedown', event => {
+    $('.image-positioner').on('mousedown', event => {
         event.stopPropagation();
     });
 

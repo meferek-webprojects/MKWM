@@ -98,10 +98,10 @@
                                                         @method('PUT')
                                                         <input type="hidden" name="hero" value="change">
 
-                                                        @if($portfolio->hero == false)
-                                                            <button class="btn btn-outline-primary" type="submit"><i class="material-icons mx-0">home</i></button>
+                                                        @if($portfolio->hero == true)
+                                                            <button class="btn btn-primary" type="submit" ><i class="material-icons mx-0">home</i></button>
                                                         @else
-                                                            <button class="btn btn-primary" type="submit"><i class="material-icons mx-0">home</i></button>
+                                                            <button class="btn btn-outline-primary" type="button" onclick="showImagePositioner(this, '{{ url('/images/portfolios/'.$portfolio->file) }}')"><i class="material-icons mx-0">home</i></button>
                                                         @endif
                                                     </form>
                                                 </td>
@@ -111,10 +111,20 @@
                                                         @method('PUT')
                                                         <input type="hidden" name="type_header" value="change">
 
-                                                        @if($portfolio->type_header == false)
-                                                            <button class="btn btn-outline-info" type="submit"><i class="material-icons mx-0">fullscreen</i></button>
-                                                        @else
+                                                        @if($portfolio->type_header == true)
                                                             <button class="btn btn-info" type="submit"><i class="material-icons mx-0">fullscreen</i></button>
+                                                        @else
+                                                            <button class="btn btn-outline-info" type="button" onclick="showImagePositioner(this, '{{ url('/images/portfolios/'.$portfolio->file) }}')"><i class="material-icons mx-0">fullscreen</i></button>
+                                                        @endif
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('portfolio.update', $portfolio->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        @if($portfolio->hero == true || $portfolio->type_header == true)
+                                                            <button class="btn btn-outline-info" type="button" onclick="showImagePositioner(this, '{{ url('/images/portfolios/'.$portfolio->file) }}')"><i class="material-icons mx-0">crop</i></button>
                                                         @endif
                                                     </form>
                                                 </td>

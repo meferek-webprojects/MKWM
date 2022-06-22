@@ -6,17 +6,22 @@
     z-index: -1;
     
     .hero-image{
-        opacity: 40%;
         height: 100%;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-        position: absolute;
         transition: width 2s;
+
+        &.w-0{
+            width: 0;
+        }
+
+        img{
+            opacity: 40%;
+            object-fit: cover;
+            object-position: center;
+        }
     }
 
     .hero-text{
-        z-index: 3;
+        z-index: 2;
     }
 
     .hero-text div:first-child{

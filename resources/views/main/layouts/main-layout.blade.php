@@ -123,6 +123,7 @@
 
             var imageSlideOut = heroImages.first();
             var imageSlideIn = heroImages.eq(counter++);
+            if(counter == $('.hero-image').length) counter = 0;
             heroImages.not(imageSlideOut).addClass('w-0 start-0');
             imageSlideOut.addClass('w-100 end-0');
 

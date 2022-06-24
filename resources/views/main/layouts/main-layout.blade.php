@@ -123,6 +123,7 @@
 
             var imageSlideOut = heroImages.first();
             var imageSlideIn = heroImages.eq(counter++);
+            if(counter == $('.hero-image').length) counter = 0;
             heroImages.not(imageSlideOut).addClass('w-0 start-0');
             imageSlideOut.addClass('w-100 end-0');
 
@@ -141,7 +142,14 @@
                 }, 2000);
             }
 
-            setTimeout(heroSlider, 5000);
+            setInterval(heroSlider, 5000);
+        @elseif($hero_images->count() == 1)
+            $('.hero-image').addClass('w-100');
+            $('.hero-image img').css('width', $('.hero').width());
+
+            $(window).resize(() => {
+                $('.hero-image img').css('width', $('.hero').width());
+            })
         @endif
 
         $(document).scroll(() => {

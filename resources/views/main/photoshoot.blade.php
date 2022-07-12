@@ -44,7 +44,7 @@
                         $photos = DB::table('session_files')->where('session_id', $session)->where('locked', false)->get();
                     @endphp
                     @forelse($photos as $photo)
-                        <a href="{{ url('images/webp/'.$photo->session_id.'/'.substr($photo->file, 0, -4).'webp') }}">
+                        <a href="{{ url('images/webp/'.$photo->session_id.'/'.substr($photo->file, 0, -4).'.webp') }}">
                             <img class="img-fluid mb-1" alt=".." src="{{ url('images/webp/'.$photo->session_id.'/'.substr($photo->file, 0, -4).'.webp') }}" />
                         </a>
                     @empty

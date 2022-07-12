@@ -145,11 +145,7 @@
             setInterval(heroSlider, 5000);
         @elseif($hero_images->count() == 1)
             $('.hero-image').addClass('w-100');
-            $('.hero-image img').css('width', $('.hero').width());
-
-            $(window).resize(() => {
-                $('.hero-image img').css('width', $('.hero').width());
-            })
+            $('.hero-image img').addClass('w-100');
         @endif
 
         $(document).scroll(() => {

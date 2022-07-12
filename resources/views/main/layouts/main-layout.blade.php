@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Młoda grupa ambitnych twórców fotograficzno-filowych, dzięki którym uwiecznisz swoje najważniejsze wydarzenia takie jak komunie, 18 urodziny czy śluby. Zdjęcia i filmy bardzo wysokiej jakości nie pozowlą abyś zapomniał o tak ważnych eventach!">
+    <meta name="description" content="Młoda grupa ambitnych twórców fotograficzno-filmowych, dzięki którym uwiecznisz swoje najważniejsze wydarzenia takie jak komunie, 18 urodziny czy śluby. Zdjęcia i filmy bardzo wysokiej jakości nie pozowlą abyś zapomniał o tak ważnych eventach!">
     <meta name="keywords" content="fotografia, filmografia, filmy, fotograf, filmowiec, zdjęcia, filmy, teledyski, backstage, 18stka, śluba, komunia, mkwm, MKWM, studio">
     <link rel="stylesheet" href="{{ url('/main/plugins/bs5/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('main/css/style.css') }}">

@@ -16,7 +16,20 @@
         </div>
     </div>
 
-    <div class="big-form">
+    <div class="container mt-5">
+        <div class="row text-center pt-5">
+            <div class="col-lg-6">
+                <h6>Wiktor Majewski</h6>
+                <i data-feather="phone"></i> <a style="text-decoration: none; color: black;" href="tel:+48 601 070 371">+48 601 070 371</a>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0">
+                <h6>Mateusz Krysiak</h6>
+                <i data-feather="phone"></i> <a style="text-decoration: none; color: black;" href="tel:48 530 771 550">+48 530 771 550</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="big-form mt-4">
 
         @if( @session('success') )
 

@@ -219,22 +219,33 @@
     <div class="container">
         <div class="row">
             <div class="col-12 movies">
-                <div class="youtube-player" data-id="R9vtT7CEETo" img-type="studio">
+                <div class="youtube-player" data-id="R9vtT7CEETo" img-type="studio"></div>
                 <div class="text">BACKSTAGE</div>
             </div>
-            <div class="col-12 movies">
-                <div class="youtube-player" data-id="MnFyQ9WAUtA" img-type="universal">
-                </div>
+            <div class="col-12 col-lg-6 movies">
+                <div class="youtube-player" data-id="MnFyQ9WAUtA" img-type="jacajaca"></div>
+                <div class="text">TELEDYSK</div>
+            </div>
+            <div class="col-12 col-lg-6 movies">
+                <div class="youtube-player" data-id="1LmIxlY3VBM" img-type="interviewmiekus"></div>
+                <div class="text">WYWIAD</div>
+            </div>
+            <div class="col-12 col-lg-6 movies">
+                <div class="youtube-player" data-id="q-n_8n3re-s" img-type="sephora"></div>
+                <div class="text">WYWIAD</div>
+            </div>
+            <div class="col-12 col-lg-6 movies">
+                <div class="youtube-player" data-id="Pfy7nUkuMPs" img-type="videoclip"></div>
                 <div class="text">TELEDYSK</div>
             </div>
             @forelse($movies as $movie)
-            <div class="col-12 movies">
+            <div class="col-12 col-lg-6 movies">
                 <div class="youtube-player" data-id="{{ substr($movie->link, 17) }}" @if($movie->type) img-type="{{ $movie->type }}" @else img-type="universal" @endif></div>
                 <div class="text" style="text-transform: uppercase;">{{ $movie->type }}</div>
             </div>
             @empty
             <div class="col-12 movies">
-                <h3 class="text-center">WKRÓTCE WIĘCEJ</h3>
+                <h3 class="text-center"></h3>
             </div>
             @endforelse
         </div>
@@ -277,6 +288,21 @@
                 break;
             case 'studio':
                 photoshootImageNode.src = '../../images/yt-thumbnail/studio.jpg'.replace('ID', videoId);
+                break;
+            case 'sephora':
+                photoshootImageNode.src = '../../images/yt-thumbnail/eventsephora.jpg'.replace('ID', videoId);
+                break;
+            case 'videoclip':
+                photoshootImageNode.src = '../../images/yt-thumbnail/videoclip.jpg'.replace('ID', videoId);
+                break;
+            case 'interviewmiekus':
+                photoshootImageNode.src = '../../images/yt-thumbnail/interviewmiekus.jpg'.replace('ID', videoId);
+                break;
+            case 'interview':
+                photoshootImageNode.src = '../../images/yt-thumbnail/interview.jpg'.replace('ID', videoId);
+                break;
+            case 'jacajaca':
+                photoshootImageNode.src = '../../images/yt-thumbnail/jacajaca.jpg'.replace('ID', videoId);
                 break;
             case 'product':
                 photoshootImageNode.src = '../../images/yt-thumbnail/product.jpg'.replace('ID', videoId);
